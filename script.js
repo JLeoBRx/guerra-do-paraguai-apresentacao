@@ -75,9 +75,10 @@
   helpModal.addEventListener('click', e => { if (e.target === helpModal) helpModal.hidden = true; });
   document.getElementById('printButton').addEventListener('click', () => window.print());
   document.getElementById('resetNames').addEventListener('click', () => {
-    document.querySelectorAll('[contenteditable="true"]').forEach((field, i) => {
-      field.textContent = i === 0 ? 'Clique para inserir os nomes' : 'Clique para preencher';
-      try { localStorage.removeItem(`guerra-paraguai-capa-${i}`); } catch (_) {}
+    document.querySelectorAll('[contenteditable="true"]').forEach(field => {
+      field.textContent = field.dataset.default || '';
+      const key = `guerra-paraguai-capa-${field.dataset.storageKey || 'campo'}`;
+      try { localStorage.removeItem(key); } catch (_) {}
     });
   });
   document.addEventListener('keydown', e => {
@@ -108,12 +109,16 @@
     touchX = null;
   }, { passive: true });
   document.querySelectorAll('[contenteditable="true"]').forEach((field, index) => {
-    const key = `guerra-paraguai-capa-${index}`;
+    const key = `guerra-paraguai-capa-${field.dataset.storageKey || index}`;
+    const defaultValue = field.dataset.default || field.textContent.trim();
     try {
       const saved = localStorage.getItem(key);
-      if (saved !== null) field.textContent = saved;
+      field.textContent = saved !== null ? saved : defaultValue;
       field.addEventListener('input', () => { try { localStorage.setItem(key, field.textContent || ''); } catch (_) {} });
-    } catch (_) { /* Armazenamento indisponível neste modo de navegação. */ }
+    } catch (_) {
+      field.textContent = defaultValue;
+      field.addEventListener('input', () => {});
+    }
   });
   const match = location.hash.match(/slide-(\d+)/);
   setSlide(match ? Number(match[1]) - 1 : 0, false);
