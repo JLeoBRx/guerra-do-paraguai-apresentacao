@@ -6,3 +6,31 @@
 @media(max-height:650px) and (min-width:701px){.app{grid-template-rows:54px minmax(0,1fr) 47px}.topbar{padding:0 1.5rem}.slide-inner{padding-top:1.25rem;padding-bottom:1.25rem}.hero-content{padding-top:1.2rem;padding-bottom:1rem}h1{font-size:clamp(3rem,6vw,5.5rem)}h2{font-size:clamp(2.3rem,4vw,3.7rem)}.lead{font-size:.9rem;line-height:1.6;margin-bottom:.7rem}.cause-card{min-height:170px}.consequence-grid article{min-height:180px}.battle-image img{height:200px}.finale-image img{height:300px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 @media print{html,body{height:auto;overflow:visible;background:white}.app{height:auto;display:block}.topbar,.rail,.bottom-bar,.notes-panel,.help-modal{display:none!important}.workspace{display:block}.stage{overflow:visible}.slide,.slide[hidden]{position:relative;display:block!important;overflow:visible;page-break-after:always;min-height:100vh;animation:none}.slide-inner{min-height:100vh;padding:1.8cm}.hero,.treaty,.human,.closing{-webkit-print-color-adjust:exact;print-color-adjust:exact}.speaker-note{display:block!important;margin-top:1rem;padding:.7rem;border-top:1px solid currentColor;font-size:9pt}.hero-image-credit{display:none}}
+
+/* --- Pesquisa e autoria: camada editorial acrescentada --- */
+.cover-fields-upgraded{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(155px,.55fr);align-items:start;gap:clamp(1rem,2.5vw,2.5rem);max-width:980px}
+.cover-team-block>span,.cover-class-block>span{display:block;font:500 .55rem var(--mono);letter-spacing:.14em;color:var(--gold-light)}
+.team-roster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:.8rem;row-gap:.08rem;margin-top:.15rem}
+.team-roster span{display:block;min-width:0;padding:.26rem .1rem;border-bottom:1px solid rgba(229,208,168,.25);color:rgba(255,250,241,.92);font-size:.66rem;line-height:1.5;white-space:normal;overflow-wrap:anywhere;cursor:text}
+.team-roster span:focus-visible{outline-color:var(--gold-light)}
+.cover-class-block p{font:600 1.15rem var(--serif);color:var(--paper-3);margin:.24rem 0 .15rem;border-bottom:1px dashed rgba(229,208,168,.45);padding:.25rem 0 .45rem}
+.cover-class-block small{font-size:.58rem;color:rgba(255,250,241,.58)}
+.source-strip{display:flex;align-items:center;flex-wrap:wrap;gap:.48rem .9rem;margin-top:.65rem;padding-top:.55rem;border-top:1px solid var(--line);font-size:.58rem;line-height:1.45;color:var(--muted)}
+.source-strip>span{font:500 .52rem var(--mono);letter-spacing:.1em;color:var(--red);white-space:nowrap}
+.source-strip a{color:#656b68;text-decoration:underline;text-decoration-color:rgba(163,69,55,.35);text-underline-offset:3px;text-decoration-thickness:1px}
+.source-strip a:hover{color:var(--red);text-decoration-color:currentColor}
+.source-strip-dark{border-color:var(--line-dark)}
+.source-strip-dark>span{color:var(--gold-light)}
+.source-strip-dark a{color:rgba(244,239,229,.72);text-decoration-color:rgba(229,208,168,.35)}
+.source-strip-dark a:hover{color:var(--gold-light);text-decoration-color:currentColor}
+.sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:clamp(.8rem,2vw,1.5rem);align-items:stretch}
+.sources-heading{grid-column:1/-1}
+.sources a{grid-template-columns:22px minmax(0,1fr) 14px;grid-template-rows:auto auto;align-content:center;gap:.08rem .55rem;min-width:0;min-height:39px;padding:.38rem 0}
+.sources a>span{grid-column:1;grid-row:1 / span 2;align-self:start;padding-top:.08rem}
+.sources a strong{grid-column:2;grid-row:1;min-width:0;line-height:1.4}
+.sources a small{grid-column:2;grid-row:2;line-height:1.35;min-width:0}
+.sources a>b{grid-column:3;grid-row:1 / span 2;align-self:center}
+.portrait.image-fallback:before,.battle-image.image-fallback:before,.finale-image.image-fallback:before{content:"Imagem indisponível · consulte o acervo indicado na legenda";display:grid;place-items:center;min-height:180px;padding:1.5rem;text-align:center;background:var(--paper-2);color:var(--muted);font:500 .65rem var(--mono);line-height:1.6}
+@media(max-width:1050px){.cover-fields-upgraded{grid-template-columns:minmax(0,1.5fr) minmax(140px,.6fr);gap:1.1rem}.team-roster{grid-template-columns:repeat(2,minmax(0,1fr))}.sources{column-gap:.9rem}.sources a strong{font-size:.62rem}.sources a small{font-size:.56rem}}
+@media(max-width:700px){.cover-fields-upgraded{grid-template-columns:1fr;gap:.75rem}.team-roster{grid-template-columns:repeat(2,minmax(0,1fr));gap:.1rem .6rem}.team-roster span{font-size:.63rem}.cover-class-block p{font-size:1rem}.source-strip{align-items:flex-start;gap:.35rem .65rem;font-size:.55rem}.source-strip>span{width:100%}.sources{grid-template-columns:1fr;column-gap:0}.sources-heading{grid-column:1}.sources a{min-height:37px}.closing .slide-inner{padding-top:1.2rem;padding-bottom:1.2rem}.sources-heading>span{font-size:.56rem}}
+@media print{.cover-fields-upgraded{max-width:none}.source-strip{display:flex!important}.sources{display:grid!important;grid-template-columns:1fr 1fr}}
