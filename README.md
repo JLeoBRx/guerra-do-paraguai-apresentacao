@@ -67,6 +67,7 @@ Fontes tipográficas e imagens externas requerem internet. Se uma imagem falhar,
 
 ### Acervos, fontes primárias e história militar
 
+- **Exército Brasileiro — Efemérides brasileiras: síntese das questões platinas**, mapa explicativo de operações militares e territórios durante a guerra: https://eblog.eb.mil.br/ja/w/efem%C3%A9rides-brasileiras-s%C3%ADntese-das-quest%C3%B5es-platinas
 - **Atlas Histórico do Brasil — Fundação Getulio Vargas**, mapas e grandes batalhas: https://atlas.fgv.br/marcos/guerra-do-paraguai/mapas/guerra-do-paraguai-grandes-batalhas
 - **Marinha do Brasil — Batalha Naval do Riachuelo**, sobre o confronto de 11 de junho de 1865 e seus efeitos na navegação e logística: https://www.agencia.marinha.mil.br/educacao-e-cultura/batalha-naval-do-riachuelo-data-magna-da-marinha
 - **Biblioteca Nacional Digital — Planta do acampamento e da Batalha de Tuyuty (24 de maio de 1866)**, atribuída a André Rebouças e Bernardino de Sena Madureiro: https://bdlb.bn.gov.br/acervo/handle/20.500.12156.3/44811?locale-attribute=en
