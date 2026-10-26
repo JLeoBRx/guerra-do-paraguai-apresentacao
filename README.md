@@ -31,12 +31,17 @@ O projeto deixou de ser uma apresentação de slides e foi reconstruído como um
 
 ## Recursos do site
 
+- **Modo de leitura:** navegação lateral por capítulos, resumo acadêmico completo, figuras, referências e links para os acervos.
+- **Modo apresentação:** ao ativar a tela cheia do navegador com `F11`, o site detecta a tela cheia e muda para uma apresentação resumida de 10 slides. Ao sair da tela cheia do navegador, retorna ao site de leitura.
+- Botão **Apresentar** como alternativa: abre a apresentação em tela cheia quando o navegador permite; o botão **Voltar ao site** retorna ao artigo.
+- Navegação dos slides por setas esquerda/direita, Page Up/Page Down, Espaço e botões na tela.
+- Escape fecha a apresentação e retorna ao site.
 - Navegação lateral por capítulos com indicação da seção atual.
 - Barra de progresso de leitura.
 - Sumário adaptado para a navegação no celular.
 - Visualizador de imagem ampliada.
 - Botão de impressão e opção do navegador de salvar como PDF.
-- Layout responsivo para computador, tablet e celular.
+- Layout responsivo para computador, tablet e celular, nos dois modos.
 - Estilos de impressão preparados para uma versão legível em papel A4.
 
 ## Imagens e mapas
