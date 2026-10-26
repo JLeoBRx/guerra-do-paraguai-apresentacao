@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="6" fill="#101923"/>
+  <rect x="7" y="7" width="50" height="50" fill="none" stroke="#c5a778" stroke-width="1.5"/>
+  <rect x="13" y="13" width="38" height="38" fill="none" stroke="#a34537"/>
+  <text x="32" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="38" fill="#f4efe5">H</text>
+  <path d="M11 53H23" stroke="#c5a778" stroke-width="2"/>
+</svg>
