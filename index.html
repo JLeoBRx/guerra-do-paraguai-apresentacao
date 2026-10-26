@@ -1,295 +1,156 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101923">
-  <meta name="description" content="Apresentação histórica interativa sobre a Guerra do Paraguai, suas causas, campanhas e consequências (1864–1870).">
-  <meta property="og:title" content="A Guerra do Paraguai — Arquivo Histórico">
-  <meta property="og:description" content="Uma apresentação visual e interativa sobre um conflito que transformou a América do Sul.">
-  <title>A Guerra do Paraguai — Arquivo Histórico</title>
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#17231f">
+<meta name="description" content="Dossiê acadêmico sobre a Guerra do Paraguai (1864–1870), com contexto político, campanhas, mapas históricos, fotografias, impactos sociais e debates historiográficos.">
+<meta property="og:title" content="Guerra do Paraguai — Dossiê de pesquisa"><meta property="og:description" content="Pesquisa histórica ilustrada por mapas, fotografias e documentos de acervos públicos.">
+<title>Guerra do Paraguai — Dossiê de pesquisa</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"><script src="script.js" defer></script>
 </head>
 <body>
-<div class="app" id="app">
-  <header class="topbar">
-    <a class="brand" href="#slide-1" aria-label="Voltar à capa">
-      <span class="brand-mark" aria-hidden="true">H</span>
-      <span><strong>Arquivo Histórico</strong><small>História · América do Sul</small></span>
-    </a>
-    <div class="header-meta"><span class="live-dot"></span><span>Mecatrônica 2</span><span class="meta-separator">1864 — 1870</span></div>
-    <div class="top-actions">
-      <button class="button quiet" id="notesToggle" aria-pressed="false">Notas <kbd>N</kbd></button>
-      <button class="button primary" id="presentToggle">Apresentar <span aria-hidden="true">↗</span></button>
-    </div>
-  </header>
-  <div class="workspace">
-    <nav class="rail" aria-label="Navegação dos slides">
-      <span class="rail-label">Capítulos</span>
-      <button class="rail-btn" data-go="0" aria-label="Slide 1: Abertura" aria-current="step">01</button>
-      <button class="rail-btn" data-go="1" aria-label="Slide 2: Roteiro">02</button>
-      <button class="rail-btn" data-go="2" aria-label="Slide 3: Contexto geopolítico">03</button>
-      <button class="rail-btn" data-go="3" aria-label="Slide 4: Paraguai antes da guerra">04</button>
-      <button class="rail-btn" data-go="4" aria-label="Slide 5: Causas">05</button>
-      <button class="rail-btn" data-go="5" aria-label="Slide 6: Cronologia">06</button>
-      <button class="rail-btn" data-go="6" aria-label="Slide 7: Tratado">07</button>
-      <button class="rail-btn" data-go="7" aria-label="Slide 8: Batalhas">08</button>
-      <button class="rail-btn" data-go="8" aria-label="Slide 9: Campanha final">09</button>
-      <button class="rail-btn" data-go="9" aria-label="Slide 10: Experiência humana">10</button>
-      <button class="rail-btn" data-go="10" aria-label="Slide 11: Consequências">11</button>
-      <button class="rail-btn" data-go="11" aria-label="Slide 12: Conclusão e fontes">12</button>
-      <span class="rail-spacer"></span>
-      <button class="rail-btn help-open" id="helpToggle" aria-label="Ajuda e atalhos">?</button>
-      <span class="rail-count" id="railCount">01 / 12</span>
-    </nav>
-    <main class="stage" id="stage" aria-live="polite">
-      <section class="slide hero" data-title="A Guerra do Paraguai">
-        <div class="hero-image-credit">Gravura histórica · Batalha naval do Riachuelo</div>
-        <div class="slide-inner hero-content">
-          <div class="kicker kicker-light">História · Dossiê especial <span>01 / 12</span></div>
-          <p class="hero-date">1864 — 1870</p>
-          <h1>A Guerra<br>do <em>Paraguai</em></h1>
-          <p class="hero-subtitle">Poder, território e o custo humano de um conflito que transformou a América do Sul.</p>
-          <div class="hero-rule"></div>
-          <div class="cover-fields cover-fields-upgraded">
-            <div class="cover-team-block"><span>INTEGRANTES</span>
-              <div class="team-roster" aria-label="Integrantes do grupo">
-                <span contenteditable="true" spellcheck="false" data-default="Pedro Henrique" data-storage-key="integrante-pedro" aria-label="Editar Pedro Henrique">Pedro Henrique</span>
-                <span contenteditable="true" spellcheck="false" data-default="Clara Maria" data-storage-key="integrante-clara" aria-label="Editar Clara Maria">Clara Maria</span>
-                <span contenteditable="true" spellcheck="false" data-default="Anthony Claudio" data-storage-key="integrante-anthony" aria-label="Editar Anthony Claudio">Anthony Claudio</span>
-                <span contenteditable="true" spellcheck="false" data-default="Gabriel Willian" data-storage-key="integrante-gabriel" aria-label="Editar Gabriel Willian">Gabriel Willian</span>
-                <span contenteditable="true" spellcheck="false" data-default="Leandro Farias" data-storage-key="integrante-leandro" aria-label="Editar Leandro Farias">Leandro Farias</span>
-                <span contenteditable="true" spellcheck="false" data-default="Lohan David" data-storage-key="integrante-lohan" aria-label="Editar Lohan David">Lohan David</span>
-              </div>
-            </div>
-            <div class="cover-class-block"><span>TURMA</span><p contenteditable="true" spellcheck="false" data-default="Mecatrônica 2" data-storage-key="turma" aria-label="Editar turma">Mecatrônica 2</p><small>Seminário de História</small></div>
-          </div>
-          <button class="button primary big" data-next>Iniciar apresentação <span aria-hidden="true">→</span></button>
-          <p class="cover-note">Mecatrônica 2 · 19/11/2026 · 15–25 minutos</p>
-        </div>
-      </section>
-      <section class="slide" data-title="Roteiro da apresentação" hidden>
-        <div class="slide-inner">
-          <div class="kicker">Percurso · 02 / 12</div>
-          <h2>Uma guerra.<br><em>Cinco questões essenciais.</em></h2>
-          <p class="lead">Para compreender o conflito, precisamos observar o contexto regional, as decisões políticas, o desenrolar das campanhas e as consequências para a população.</p>
-          <div class="chapter-list">
-            <div><span>01</span><strong>O Paraguai antes da guerra</strong><small>Estado, economia e posição geográfica</small></div>
-            <div><span>02</span><strong>As causas do conflito</strong><small>Disputas regionais e escalada militar</small></div>
-            <div><span>03</span><strong>Tratado da Tríplice Aliança</strong><small>A coalizão e seus objetivos</small></div>
-            <div><span>04</span><strong>Principais batalhas</strong><small>Rios, fortificações e campanhas</small></div>
-            <div><span>05</span><strong>Consequências da guerra</strong><small>Perdas humanas, política e reconstrução</small></div>
-          </div>
-          <aside class="speaker-note">Apresente o objetivo: não decorar uma lista de batalhas, mas entender como tensões regionais se transformaram em uma guerra prolongada e devastadora. Transição: primeiro, vamos localizar o conflito no mapa.</aside>
-        </div>
-      </section>
-      <section class="slide split" data-title="A região antes do conflito" hidden>
-        <div class="slide-inner">
-          <div class="kicker">Contexto geopolítico · 03 / 12</div>
-          <div class="split-grid">
-            <div>
-              <h2>O destino da região passava <em>pelos rios.</em></h2>
-              <p class="lead">No século XIX, a navegação fluvial conectava territórios interiores aos mercados e portos do estuário do Prata. Rotas, fronteiras e influência política eram interesses estratégicos.</p>
-              <div class="country-list">
-                <div><b class="flag-dot brazil"></b><span><strong>Império do Brasil</strong><small>Fronteiras extensas e acesso à bacia fluvial</small></span></div>
-                <div><b class="flag-dot argentina"></b><span><strong>Argentina</strong><small>Disputas internas e consolidação estatal</small></span></div>
-                <div><b class="flag-dot paraguay"></b><span><strong>Paraguai</strong><small>País interior, dependente de rotas fluviais</small></span></div>
-                <div><b class="flag-dot uruguay"></b><span><strong>Uruguai</strong><small>Localização estratégica entre vizinhos maiores</small></span></div>
-              </div>
-              <p class="caption">Mapa explicativo da região e das grandes campanhas (1864–1870). Para comparar rotas e territórios, consulte também o <a href="https://atlas.fgv.br/marcos/guerra-do-paraguai/mapas/guerra-do-paraguai-grandes-batalhas" target="_blank" rel="noopener noreferrer">Atlas Histórico do Brasil · FGV ↗</a>.</p>
-            </div>
-            <figure class="map-frame">
-              <img src="https://eblog.eb.mil.br/documents/d/guest/figura-6-png" alt="Mapa explicativo das operações militares e mudanças territoriais na Guerra do Paraguai, publicado pelo Exército Brasileiro" loading="lazy" onerror="this.closest('figure').classList.add('image-fallback');this.remove()">
-              <div class="fallback-map" aria-hidden="true"><span class="river river-a">RIO PARAGUAI</span><span class="river river-b">RIO PARANÁ</span><span class="map-label p1">PARAGUAI</span><span class="map-label p2">BRASIL</span><span class="map-label p3">ARGENTINA</span><span class="map-label p4">URUGUAI</span><span class="map-compass">N ↑</span></div>
-              <figcaption>Mapa explicativo de operações militares e territórios envolvidos. Fonte visual: <a href="https://eblog.eb.mil.br/ja/w/efem%C3%A9rides-brasileiras-s%C3%ADntese-das-quest%C3%B5es-platinas" target="_blank" rel="noopener noreferrer">Exército Brasileiro ↗</a>; consulte também o <a href="https://atlas.fgv.br/marcos/guerra-do-paraguai/mapas/guerra-do-paraguai-grandes-batalhas" target="_blank" rel="noopener noreferrer">Atlas Histórico do Brasil · FGV ↗</a>. A imagem deve ser lida como mapa de campanha, não como representação de fronteiras atuais.</figcaption>
-            </figure>
-          </div>
-          <aside class="speaker-note">Explique que rios não eram apenas acidentes geográficos: eram corredores de transporte e comunicação. Evite sugerir que o acesso fluvial, sozinho, explique a guerra; ele integra um conjunto de tensões diplomáticas e territoriais.</aside>
-        </div>
-      </section>
-      <section class="slide" data-title="O Paraguai antes da guerra" hidden>
-        <div class="slide-inner">
-          <div class="kicker">01 · O Paraguai antes da guerra · 04 / 12</div>
-          <div class="portrait-layout">
-            <figure class="portrait">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Solano_Lopez_1866_by_Garcia.jpg" alt="Retrato histórico de Francisco Solano López" loading="lazy" onerror="this.closest('figure').classList.add('image-fallback');this.remove()">
-              <figcaption>Francisco Solano López · retrato atribuído à época</figcaption>
-            </figure>
-            <div class="portrait-copy">
-              <h2>Um Estado centralizado em uma <em>região disputada.</em></h2>
-              <p class="lead">Francisco Solano López sucedeu seu pai, Carlos Antonio López, na presidência em 1862. O governo paraguaio mantinha forte controle político e investia em forças militares e setores estratégicos.</p>
-              <div class="fact-grid">
-                <article><span>POLÍTICA</span><h3>Centralização</h3><p>O poder estatal tinha papel expressivo e o regime restringia a oposição política.</p></article>
-                <article><span>ECONOMIA</span><h3>Base agroexportadora</h3><p>Produção agrícola e pecuária, comércio regional e participação do Estado em atividades estratégicas.</p></article>
-                <article><span>GEOGRAFIA</span><h3>Sem litoral</h3><p>As rotas de navegação eram essenciais para conexões com mercados externos.</p></article>
-                <article><span>DEFESA</span><h3>Preparação militar</h3><p>O governo ampliou sua capacidade militar, mas isso não tornava o país autossuficiente.</p></article>
-              </div>
-            </div>
-          </div>
-          <div class="caution"><strong>Uma ressalva historiográfica</strong><span>É simplificador descrever o Paraguai como uma potência industrial plenamente autossuficiente ou como um país completamente isolado. A economia e a sociedade eram mais complexas.</span></div>
-          <aside class="speaker-note">Apresente o país sem romantização nem caricatura. O Paraguai tinha um Estado centralizado e capacidade militar relevante, mas mantinha limites econômicos e dependia de relações regionais e rotas de comércio.</aside>
-        </div>
-      </section>
-      <section class="slide" data-title="As causas da guerra" hidden>
-        <div class="slide-inner">
-          <div class="kicker">02 · Causas do conflito · 05 / 12</div>
-          <h2>A guerra não nasceu de <em>uma causa única.</em></h2>
-          <p class="lead">Tensões acumuladas, uma crise regional imediata e decisões de governos se combinaram em uma escalada que saiu do controle diplomático.</p>
-          <div class="cause-grid">
-            <article class="cause-card"><span class="number">01</span><div class="cause-line"></div><p class="eyebrow">CAUSAS ESTRUTURAIS</p><h3>Equilíbrio regional</h3><p>Fronteiras disputadas, navegação dos rios e influência política na região do Prata alimentavam desconfianças entre os Estados.</p></article>
-            <article class="cause-card"><span class="number">02</span><div class="cause-line"></div><p class="eyebrow">CRISE IMEDIATA</p><h3>A questão uruguaia</h3><p>A disputa entre blancos e colorados e a intervenção brasileira no Uruguai, em 1864, alteraram o equilíbrio regional.</p></article>
-            <article class="cause-card"><span class="number">03</span><div class="cause-line"></div><p class="eyebrow">ESCALADA MILITAR</p><h3>Decisões e invasões</h3><p>O governo de López capturou o navio Marquês de Olinda e forças paraguaias invadiram o Mato Grosso e, depois, Corrientes.</p></article>
-          </div>
-          <div class="bottom-insight"><span class="insight-mark">!</span><p><strong>Como interpretar:</strong> a historiografia reúne leituras tradicionais, revisionistas e neorrevisionistas, que enfatizam fatores diferentes. Pesquisas sobre a região do Prata destacam a formação dos Estados e as mudanças no equilíbrio de poder; não reduza o conflito a um único líder ou a uma conspiração tratada como consenso.</p></div>
-          <div class="source-strip"><span>LEITURA ACADÊMICA</span><a href="https://ppghis.historia.ufrj.br/disciplina/guerra-do-paraguai-identidades-lealdades-e-conflitos/" target="_blank" rel="noopener noreferrer">UFRJ · formação dos Estados no Prata ↗</a><a href="https://revistas.ufrj.br/index.php/ars/article/view/46625" target="_blank" rel="noopener noreferrer">Ars Historica · revisão historiográfica ↗</a></div>
-          <aside class="speaker-note">Separe causas de longo prazo dos acontecimentos que precipitaram o combate. A pesquisa acadêmica aborda a guerra no contexto da formação dos Estados no Prata e de mudanças no equilíbrio de poder. Há correntes historiográficas que destacam fatores distintos; use os artigos indicados para comparar argumentos, não para escolher um rótulo sem examinar as fontes.</aside>
-        </div>
-      </section>
-      <section class="slide chronology" data-title="Cronologia do conflito" hidden>
-        <div class="slide-inner">
-          <div class="kicker">Cronologia · 06 / 12</div>
-          <h2>Seis anos que transformaram a <em>região.</em></h2>
-          <p class="lead">A cronologia mostra a passagem de uma crise diplomática para uma campanha militar prolongada, seguida de ocupação e reconstrução.</p>
-          <div class="timeline">
-            <article><time>1864</time><div class="timeline-dot"></div><h3>A crise se intensifica</h3><p>Intervenção brasileira no Uruguai; captura do Marquês de Olinda e invasão paraguaia do Mato Grosso.</p></article>
-            <article><time>1865</time><div class="timeline-dot"></div><h3>A aliança se forma</h3><p>Invasão de Corrientes, assinatura do tratado em 1º de maio e Batalha Naval do Riachuelo.</p></article>
-            <article><time>1866</time><div class="timeline-dot"></div><h3>Campanha difícil</h3><p>Tuiuti e Curupaiti demonstram a escala do combate e os custos das ofensivas terrestres.</p></article>
-            <article><time>1868</time><div class="timeline-dot"></div><h3>A ofensiva aliada</h3><p>A Dezembrada abre caminho para a desarticulação de posições defensivas paraguaias.</p></article>
-            <article><time>1869</time><div class="timeline-dot"></div><h3>Assunção ocupada</h3><p>A guerra prossegue em campanhas no interior; a ocupação da capital não encerra imediatamente o conflito.</p></article>
-            <article><time>1870</time><div class="timeline-dot"></div><h3>Cerro Corá</h3><p>Em 1º de março, morre Solano López e termina a fase militar da guerra.</p></article>
-          </div>
-          <aside class="speaker-note">Percorra a linha do tempo rapidamente. Enfatize que a ocupação de Assunção, em 1869, não encerrou de imediato a guerra; a campanha continuou até Cerro Corá, em 1870.</aside>
-        </div>
-      </section>
-      <section class="slide treaty" data-title="Tratado da Tríplice Aliança" hidden>
-        <div class="slide-inner">
-          <div class="kicker kicker-light">03 · Tratado da Tríplice Aliança · 07 / 12</div>
-          <div class="treaty-layout">
-            <div class="treaty-copy">
-              <p class="eyebrow gold-text">1º DE MAIO DE 1865</p>
-              <h2>Três países.<br><em>Uma aliança militar.</em></h2>
-              <p class="lead">Brasil, Argentina e o governo uruguaio dos colorados formalizaram uma coalizão contra o governo de Solano López.</p>
-              <div class="alliance-members"><div><b>BR</b><span>Império do Brasil</span></div><div><b>AR</b><span>República Argentina</span></div><div><b>UY</b><span>Governo uruguaio colorado</span></div></div>
-            </div>
-            <div class="document">
-              <div class="document-top"><span>ARQUIVO DIPLOMÁTICO</span><span>1865 · DOCUMENTO</span></div>
-              <div class="document-seal">†</div>
-              <h3>Tratado da<br>Tríplice Aliança</h3>
-              <p>Coordenação entre os aliados para conduzir a guerra e estabelecer compromissos militares e políticos relacionados ao conflito.</p>
-              <div class="document-rule"></div>
-              <small>Resumo didático — não é transcrição do documento original.</small>
-            </div>
-          </div>
-          <div class="treaty-bottom"><div><strong>Objetivo militar</strong><span>Coordenar esforços contra o governo paraguaio.</span></div><div><strong>Dimensão diplomática</strong><span>Definir compromissos entre os aliados.</span></div><div><strong>Pós-guerra</strong><span>O texto também tratava de questões territoriais e políticas posteriores.</span></div></div>
-          <p class="caption caption-light">Para interpretar o tratado, diferencie o texto principal, os protocolos e as notas diplomáticas que ajudam a revelar controvérsias posteriores.</p>
-          <div class="source-strip source-strip-dark"><span>DOCUMENTO HISTÓRICO</span><a href="https://www.senado.leg.br/publicacoes/anais/pdf/ACE/ATAS7-Terceiro_Conselho_de_Estado_1867-1868.pdf#page=37" target="_blank" rel="noopener noreferrer">Senado Federal · atas e protocolo de 1865 ↗</a></div>
-          <aside class="speaker-note">O tratado foi firmado em 1º de maio de 1865 por Brasil, Argentina e representantes do governo uruguaio colorado. Ele organizou a aliança militar e tratou de questões territoriais e de navegação. O documento, protocolos e correspondência diplomática devem ser lidos separadamente; as atas do Conselho de Estado no Senado ajudam a acompanhar as discussões brasileiras sobre as cláusulas.</aside>
-        </div>
-      </section>
-      <section class="slide" data-title="Principais batalhas" hidden>
-        <div class="slide-inner">
-          <div class="kicker">04 · Principais batalhas · 08 / 12</div>
-          <h2>Os pontos de virada da <em>campanha.</em></h2>
-          <div class="battle-feature">
-            <figure class="battle-image">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cuadro_del_Combate_Del_Riachuelo_%28Junio_10_del_1865%29_%28De_una_l%C3%A1mina_litogr%C3%A1fica_impresa_en_el_Brasil%29.jpg" alt="Gravura histórica representando o combate naval do Riachuelo" loading="lazy" onerror="this.closest('figure').classList.add('image-fallback');this.remove()">
-              <figcaption>Gravura litográfica histórica. O título da reprodução traz “10 de junho”, mas a data adotada pela Marinha do Brasil para a batalha é 11 de junho de 1865.</figcaption>
-            </figure>
-            <div class="battle-text"><span class="battle-date">11 JUN 1865</span><h3>Riachuelo</h3><p>A vitória naval brasileira dificultou o uso estratégico dos rios pelo Paraguai e foi decisiva para a movimentação e o abastecimento aliados.</p><p class="small muted">A logística fluvial foi central para toda a guerra: controlar água e transporte significava sustentar a campanha.</p></div>
-          </div>
-          <div class="battle-pair">
-            <article><div class="battle-index">02</div><div><span class="eyebrow">24 MAI 1866</span><h3>Tuiuti</h3><p>Uma das maiores batalhas campais do conflito. A ofensiva paraguaia sofreu pesadas perdas, mas a guerra continuou.</p></div><a class="battle-map-thumb" href="https://bdlb.bn.gov.br/acervo/handle/20.500.12156.3/44811?locale-attribute=en" target="_blank" rel="noopener noreferrer" aria-label="Abrir ficha da planta histórica da Batalha de Tuiuti na Biblioteca Nacional Digital"><img src="https://objdigital.bn.br/objdigital2/acervo_digital/div_cartografia/cart168928/cart168928.jpg" alt="Planta histórica do acampamento e da Batalha de Tuiuti, 24 de maio de 1866" loading="lazy" onerror="this.parentElement.classList.add('image-fallback');this.remove()"><span>PLANTA · 1866 ↗</span></a></article>
-            <article><div class="battle-index">03</div><div><span class="eyebrow">22 SET 1866</span><h3>Curupaiti</h3><p>A ofensiva aliada contra posições fortificadas fracassou, prolongando a campanha e evidenciando o custo de atacar defesas preparadas.</p></div></article>
-          </div>
-          <div class="source-strip"><span>FONTES E MAPAS</span><a href="https://www.agencia.marinha.mil.br/educacao-e-cultura/batalha-naval-do-riachuelo-data-magna-da-marinha" target="_blank" rel="noopener noreferrer">Marinha do Brasil · Riachuelo ↗</a><a href="https://bdlb.bn.gov.br/acervo/handle/20.500.12156.3/44811?locale-attribute=en" target="_blank" rel="noopener noreferrer">BNDigital · planta histórica de Tuiuti ↗</a></div>
-          <aside class="speaker-note">Explique a relevância estratégica de cada batalha. A Marinha do Brasil situa Riachuelo em 11 de junho de 1865 e destaca seus efeitos sobre o controle fluvial e a logística. A Biblioteca Nacional Digital conserva uma planta litografada do acampamento e da Batalha de Tuiuti, de 1866, atribuída a André Rebouças e Bernardino de Sena Madureiro; é uma fonte primária visual, não uma representação neutra.</aside>
-        </div>
-      </section>
-      <section class="slide finale" data-title="A ofensiva final" hidden>
-        <div class="slide-inner">
-          <div class="kicker">Campanha final · 09 / 12</div>
-          <div class="finale-grid">
-            <div><h2>Da Dezembrada a <em>Cerro Corá.</em></h2><p class="lead">Em dezembro de 1868, uma sequência de vitórias aliadas rompeu posições defensivas importantes. A guerra, porém, não terminou com a ocupação de Assunção.</p>
-              <div class="finale-steps"><div><span>1868</span><p><strong>Dezembrada</strong><small>Vitórias aliadas em uma sequência de combates decisivos.</small></p></div><div><span>1869</span><p><strong>Campanha da Cordilheira</strong><small>A guerra continua no interior, com impactos sobre militares e civis.</small></p></div><div class="last"><span>1870</span><p><strong>Cerro Corá · 1º de março</strong><small>Morte de Solano López e fim da fase militar do conflito.</small></p></div></div>
-            </div>
-            <figure class="finale-image"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Cerro_Cora.jpg" alt="Representação histórica associada à campanha final da guerra" loading="lazy" onerror="this.closest('figure').classList.add('image-fallback');this.remove()"><figcaption>Imagem histórica de contexto; confira a identificação e os metadados no acervo de origem.</figcaption></figure>
-          </div>
-          <aside class="speaker-note">A capital Assunção foi ocupada em 1869, mas a resistência e a campanha militar continuaram. Cerro Corá, em 1º de março de 1870, marcou o final convencional do conflito com a morte de Solano López.</aside>
-        </div>
-      </section>
-      <section class="slide human" data-title="O custo humano" hidden>
-        <div class="slide-inner">
-          <div class="kicker kicker-light">A guerra no cotidiano · 10 / 12</div>
-          <div class="human-layout">
-            <div class="human-heading"><p class="eyebrow gold-text">ALÉM DOS CAMPOS DE BATALHA</p><h2>Uma guerra também se mede pelo <em>que destrói.</em></h2><p class="lead">Distâncias, terreno, doenças e escassez fizeram do abastecimento e das condições sanitárias fatores tão importantes quanto a estratégia militar.</p></div>
-            <div class="human-list">
-              <article><span>01</span><div><h3>Logística</h3><p>Rios e caminhos condicionavam a movimentação de tropas, armas e alimentos.</p></div></article>
-              <article><span>02</span><div><h3>Saúde e doença</h3><p>Ferimentos, epidemias e recursos médicos limitados ampliavam o sofrimento.</p></div></article>
-              <article><span>03</span><div><h3>População civil</h3><p>Deslocamentos, escassez, destruição e separação familiar marcaram a experiência de comunidades.</p></div></article>
-              <article><span>04</span><div><h3>Uma sociedade devastada</h3><p>O impacto demográfico e material no Paraguai foi especialmente profundo e persistiu após o fim dos combates.</p></div></article>
-            </div>
-          </div>
-          <div class="source-strip source-strip-dark"><span>HISTÓRIA SOCIAL</span><a href="https://teses.usp.br/teses/disponiveis/8/8138/tde-08122010-135132/pt-br.php" target="_blank" rel="noopener noreferrer">Maria Teresa Garritano Dourado · USP ↗</a><a href="https://periodicos.furg.br/hist/article/view/4809" target="_blank" rel="noopener noreferrer">Cotidiano e sobrevivência · FURG ↗</a></div>
-          <aside class="speaker-note">A pesquisa de Maria Teresa Garritano Dourado, na USP, analisa fome, doenças, recrutamento e justiça militar a partir de documentos, memórias de combatentes e ordens do dia. Isso ajuda a compreender a guerra pela experiência cotidiana, sem reduzir o sofrimento a números de baixas.</aside>
-        </div>
-      </section>
-      <section class="slide" data-title="Consequências da guerra" hidden>
-        <div class="slide-inner">
-          <div class="kicker">05 · Consequências · 11 / 12</div>
-          <h2>Quatro países — <em>impactos diferentes.</em></h2>
-          <p class="lead">A guerra alterou a vida política e econômica da região. As consequências não foram equivalentes: o Paraguai sofreu a devastação mais profunda.</p>
-          <div class="consequence-grid">
-            <article class="consequence paraguay"><span class="country-code">PY</span><p class="eyebrow">PARAGUAI</p><h3>Devastação e reconstrução</h3><p>Perdas humanas enormes, destruição material, crise econômica e reconstrução social prolongada.</p><div class="consequence-tag">Impacto especialmente devastador</div></article>
-            <article><span class="country-code">BR</span><p class="eyebrow">BRASIL</p><h3>Custos e Exército</h3><p>Elevado custo humano e financeiro; o Exército ampliou seu peso político no período posterior.</p></article>
-            <article><span class="country-code">AR</span><p class="eyebrow">ARGENTINA</p><h3>Estado e tensões</h3><p>O conflito se cruzou com a consolidação do Estado nacional, custos militares e tensões internas.</p></article>
-            <article><span class="country-code">UY</span><p class="eyebrow">URUGUAI</p><h3>Instabilidade regional</h3><p>Participação na coalizão aliada e efeitos da crise política que antecedeu a guerra.</p></article>
-          </div>
-          <div class="bottom-insight"><span class="insight-mark">i</span><p><strong>Um debate em aberto:</strong> a dimensão das perdas demográficas paraguaias continua em discussão. O estudo de Whigham e Potthast (2022) reavalia materiais censitários, incluindo um censo de 1870; por isso, estimativas amplamente repetidas não devem ser tratadas automaticamente como consenso.</p></div>
-          <div class="source-strip"><span>PESQUISA DEMOGRÁFICA</span><a href="https://www.cambridge.org/core/journals/latin-american-research-review/article/paraguayan-rosetta-stone-new-insights-into-the-demographics-of-the-paraguayan-war-18641870/96CAE01376E54D5376172E9398F4951B" target="_blank" rel="noopener noreferrer">Whigham &amp; Potthast · LARR (2022) ↗</a></div>
-          <aside class="speaker-note">Compare os efeitos sem sugerir equivalência. O Paraguai enfrentou a devastação mais profunda. O artigo de Thomas L. Whigham e Barbara Potthast, publicado online em 2022 na Latin American Research Review, reexamina dados censitários e ilustra por que as estimativas demográficas precisam de método, fonte e cautela.</aside>
-        </div>
-      </section>
-      <section class="slide closing" data-title="Memória, conclusão e referências" hidden>
-        <div class="slide-inner">
-          <div class="kicker kicker-light">Síntese e fontes · 12 / 12</div>
-          <h2>Compreender a guerra é também compreender <em>suas memórias.</em></h2>
-          <div class="conclusion-grid">
-            <article><span>01 / POR QUÊ?</span><h3>Uma crise regional</h3><p>Tensões geopolíticas, disputas no Uruguai e decisões políticas se combinaram na escalada militar.</p></article>
-            <article><span>02 / COMO?</span><h3>Uma campanha longa</h3><p>Controle dos rios, grandes batalhas terrestres, logística e campanhas finais moldaram o conflito.</p></article>
-            <article><span>03 / E DEPOIS?</span><h3>Consequências duradouras</h3><p>Perdas humanas, destruição e mudanças políticas continuaram a marcar os países depois de 1870.</p></article>
-          </div>
-          <div class="sources">
-            <div class="sources-heading"><p class="eyebrow gold-text">BIBLIOGRAFIA E FONTES PRIMÁRIAS</p><span>Acervos, documentos e pesquisa acadêmica</span></div>
-            <a href="https://atlas.fgv.br/marcos/guerra-do-paraguai/mapas/guerra-do-paraguai-grandes-batalhas" target="_blank" rel="noopener noreferrer"><span>01</span><strong>Atlas Histórico do Brasil · FGV</strong><small>Mapas e grandes batalhas</small><b aria-hidden="true">↗</b></a>
-            <a href="https://www.agencia.marinha.mil.br/educacao-e-cultura/batalha-naval-do-riachuelo-data-magna-da-marinha" target="_blank" rel="noopener noreferrer"><span>02</span><strong>Marinha do Brasil</strong><small>Batalha Naval do Riachuelo</small><b aria-hidden="true">↗</b></a>
-            <a href="https://bdlb.bn.gov.br/acervo/handle/20.500.12156.3/44811?locale-attribute=en" target="_blank" rel="noopener noreferrer"><span>03</span><strong>Biblioteca Nacional Digital</strong><small>Planta litografada de Tuiuti, 1866</small><b aria-hidden="true">↗</b></a>
-            <a href="https://www.senado.leg.br/publicacoes/anais/pdf/ACE/ATAS7-Terceiro_Conselho_de_Estado_1867-1868.pdf#page=37" target="_blank" rel="noopener noreferrer"><span>04</span><strong>Senado Federal · fonte primária</strong><small>Atas e protocolo da Tríplice Aliança</small><b aria-hidden="true">↗</b></a>
-            <a href="https://atom-museuhistorico.museus.gov.br/index.php/guerra-do-paraguai" target="_blank" rel="noopener noreferrer"><span>05</span><strong>Museu Histórico Nacional</strong><small>Acervo documental do conflito</small><b aria-hidden="true">↗</b></a>
-            <a href="https://ppghis.historia.ufrj.br/disciplina/guerra-do-paraguai-identidades-lealdades-e-conflitos/" target="_blank" rel="noopener noreferrer"><span>06</span><strong>PPGHIS · UFRJ</strong><small>Identidades, lealdades e conflitos</small><b aria-hidden="true">↗</b></a>
-            <a href="https://revistas.ufrj.br/index.php/ars/article/view/46625" target="_blank" rel="noopener noreferrer"><span>07</span><strong>Bruno César Pereira · Ars Historica</strong><small>Revisão das correntes historiográficas</small><b aria-hidden="true">↗</b></a>
-            <a href="https://www.cambridge.org/core/journals/latin-american-research-review/article/paraguayan-rosetta-stone-new-insights-into-the-demographics-of-the-paraguayan-war-18641870/96CAE01376E54D5376172E9398F4951B" target="_blank" rel="noopener noreferrer"><span>08</span><strong>Whigham &amp; Potthast · LARR (2022)</strong><small>Debate sobre demografia e censos</small><b aria-hidden="true">↗</b></a>
-            <a href="https://teses.usp.br/teses/disponiveis/8/8138/tde-08122010-135132/pt-br.php" target="_blank" rel="noopener noreferrer"><span>09</span><strong>Maria Teresa Garritano Dourado · USP</strong><small>Fome, doenças e penalidades</small><b aria-hidden="true">↗</b></a>
-          </div>
-          <div class="closing-actions"><button class="button primary" data-go="0">↺ Voltar à capa</button><button class="button" id="printButton">Imprimir / salvar em PDF</button><button class="button" id="resetNames">Limpar dados da capa</button></div>
-          <p class="closing-footnote">Imagens históricas são representações de época e devem ser consultadas com seus metadados. As referências apoiam o aprofundamento; confira cada fonte antes de citar dados específicos.</p>
-          <aside class="speaker-note">Encerre respondendo às três perguntas da tela. Reforce que o estudo histórico exige comparar fontes, distinguir documentos de interpretações e reconhecer que a memória da guerra foi construída de modos diferentes nos países envolvidos.</aside>
-        </div>
-      </section>
-      <aside class="notes-panel" id="notesPanel" tabindex="-1" aria-label="Notas do apresentador" aria-live="polite"><div class="notes-heading"><strong>Notas do apresentador</strong><button class="close-note" id="notesClose" aria-label="Fechar notas">×</button></div><p id="notesText">Selecione uma seção para ver as notas.</p></aside>
-    </main>
-  </div>
-  <footer class="bottom-bar">
-    <div class="bottom-left"><span class="progress-copy" id="progressCopy">01 / 12 · Abertura</span><div class="progress-track" aria-label="Progresso da apresentação"><div class="progress-fill" id="progressFill"></div></div></div>
-    <div class="bottom-right"><span class="keyboard-hint">← → navegar · N notas · F tela cheia</span><button class="nav-button" id="prevButton" aria-label="Slide anterior" disabled>←</button><button class="next-label" id="nextLabel">Próximo slide <span aria-hidden="true">→</span></button><button class="nav-button" id="nextButton" aria-label="Próximo slide">→</button></div>
-  </footer>
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a><div class="reading-progress" aria-hidden="true"><span id="readingProgress"></span></div>
+<header class="site-header">
+<a class="brand" href="#topo" aria-label="Voltar ao início"><span class="brand-emblem">GP</span><span class="brand-copy"><strong>Dossiê histórico</strong><small>América do Sul · 1864—1870</small></span></a>
+<div class="header-center">TRABALHO DE PESQUISA · HISTÓRIA</div>
+<div class="header-actions"><button class="tool-button" id="printButton" type="button" title="Imprimir ou salvar em PDF"><span aria-hidden="true">↓</span><span>Exportar PDF</span></button><button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="sumario"><span class="menu-icon" aria-hidden="true">☰</span><span>Sumário</span></button></div>
+</header>
+<main id="topo">
+<section class="cover" aria-labelledby="cover-title"><div class="cover-texture" aria-hidden="true"></div><div class="cover-inner">
+<div class="cover-copy"><p class="eyebrow cover-eyebrow"><span class="eyebrow-line"></span> Pesquisa histórica ilustrada · Dossiê 01</p>
+<h1 id="cover-title">A Guerra<br>do <em>Paraguai</em></h1>
+<p class="cover-subtitle">Estados, disputas de poder e o custo humano de um conflito que redefiniu a Bacia do Prata.</p><div class="cover-rule"></div>
+<div class="cover-meta-grid"><div><span>RECORTE HISTÓRICO</span><strong>1864 — 1870</strong></div><div><span>ÁREA DE ESTUDO</span><strong>História · América Latina</strong></div></div>
+<div class="cover-authors"><span class="meta-label">INTEGRANTES · MECATRÔNICA 2</span><p>Pedro Henrique · Clara Maria · Anthony Claudio</p><p>Gabriel Willian · Leandro Farias · Lohan David</p></div>
+<a class="cover-link" href="#resumo">Ler a pesquisa <span aria-hidden="true">↘</span></a></div>
+<figure class="cover-visual"><div class="cover-image-frame"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/%28Composite_Map%29_Planta_da_Republica_do_Paraguay_-_Com_as_marchas_dos_Exercitos_alliados_en_1866-67-68-69-70._Lith._Imp._de_Ed._%28IA_dr_composite-map-planta-da-republica-do-paraguay-com-as-marchas-dos-exerci-13380023%29.jpg/960px-thumbnail.jpg" alt="Mapa militar histórico do Paraguai, com marchas dos exércitos aliados entre 1866 e 1870" fetchpriority="high"><div class="image-index">PRANCHA CARTOGRÁFICA · 1871</div></div><figcaption>Mapa histórico publicado após a guerra. <a href="https://commons.wikimedia.org/wiki/File:(Composite_Map)_Planta_da_Republica_do_Paraguay_-_Com_as_marchas_dos_Exercitos_alliados_en_1866-67-68-69-70._Lith._Imp._de_Ed._(IA_dr_composite-map-planta-da-republica-do-paraguay-com-as-marchas-dos-exerci-13380023).jpg" target="_blank" rel="noreferrer">Acervo cartográfico ↗</a></figcaption></figure>
+</div><div class="cover-bottom"><span>ESTUDO DOCUMENTAL E HISTORIOGRÁFICO</span><span>LEITURA ESTIMADA · 15–20 MIN</span></div>
+</section>
+<div class="content-layout">
+<aside class="sidebar" id="sumario"><div class="sidebar-heading"><span>SUMÁRIO</span><span class="sidebar-index">01 / 10</span></div><nav class="toc" aria-label="Sumário da pesquisa">
+<a href="#resumo" class="toc-link active"><span>00</span> Resumo</a><a href="#introducao" class="toc-link"><span>01</span> Introdução</a><a href="#metodologia" class="toc-link"><span>02</span> Objetivos e método</a><a href="#contexto" class="toc-link"><span>03</span> Contexto regional</a><a href="#causas" class="toc-link"><span>04</span> Causas e escalada</a><a href="#campanhas" class="toc-link"><span>05</span> Campanhas militares</a><a href="#sociedade" class="toc-link"><span>06</span> Sociedade e custo humano</a><a href="#consequencias" class="toc-link"><span>07</span> Consequências</a><a href="#historiografia" class="toc-link"><span>08</span> Debates historiográficos</a><a href="#conclusao" class="toc-link"><span>09</span> Considerações finais</a><a href="#referencias" class="toc-link"><span>10</span> Referências</a></nav>
+<div class="sidebar-note"><span class="note-mark">i</span><p>As imagens históricas são tratadas como fontes. As legendas identificam obra, acervo e contexto sempre que os metadados estão disponíveis.</p></div><a class="sidebar-top" href="#topo">Voltar ao início ↑</a></aside>
+<article class="research" id="conteudo">
+<section class="preliminary chapter" id="resumo"><div class="chapter-tag">ELEMENTOS INICIAIS <span>00</span></div><h2>Resumo</h2>
+<p class="abstract">A Guerra do Paraguai (1864–1870), também denominada Guerra da Tríplice Aliança, foi o maior conflito armado internacional da América do Sul no século XIX. Envolveu o Paraguai contra a aliança formada pelo Império do Brasil, a Argentina e o Uruguai. Este trabalho examina o conflito a partir das disputas políticas na região do Rio da Prata, da navegação fluvial, das crises no Uruguai e das decisões que transformaram tensões diplomáticas em guerra. Em seguida, apresenta as principais etapas militares e analisa seus impactos econômicos, políticos e sociais, com atenção às experiências de soldados, pessoas escravizadas, voluntários e populações civis. Por fim, compara interpretações historiográficas e discute os limites de explicações monocausais, especialmente a atribuição do conflito a um único governante ou a uma conspiração externa. A pesquisa é bibliográfica e documental, baseada em estudos acadêmicos, acervos públicos, mapas, fotografias e registros institucionais. Conclui-se que a guerra deve ser compreendida como um processo regional complexo, cujas consequências ultrapassaram o campo militar e permaneceram na memória e na organização política dos países envolvidos.</p>
+<p class="keywords"><strong>Palavras-chave:</strong> Guerra do Paraguai; Bacia do Prata; Tríplice Aliança; historiografia; história social.</p>
+<div class="abstract-translation"><div><span class="meta-label">OBJETO</span><strong>Conflito regional e formação dos Estados nacionais</strong></div><div><span class="meta-label">ABORDAGEM</span><strong>Pesquisa bibliográfica e documental</strong></div><div><span class="meta-label">PERÍODO</span><strong>1864–1870 e suas memórias posteriores</strong></div></div>
+</section>
+
+<section class="chapter" id="introducao"><div class="chapter-tag">CAPÍTULO 01 <span>01</span></div><h2>Introdução</h2>
+<p>A Guerra do Paraguai ocupa lugar central na história do Brasil e dos países que compartilham a Bacia do Prata. Entre 1864 e 1870, o conflito mobilizou exércitos, marinhas, recursos financeiros e populações de diferentes regiões da América do Sul. A duração da guerra, a destruição produzida no Paraguai e as mudanças políticas que se seguiram fazem do tema um objeto importante para compreender o século XIX latino-americano.</p>
+<p>A expressão “Guerra do Paraguai” é amplamente usada no Brasil; em outros contextos, também aparecem os nomes “Guerra da Tríplice Aliança” e “Guerra Grande”. A escolha do nome destaca perspectivas diferentes: o país derrotado, a coalizão que o combateu ou a memória paraguaia. Nenhuma denominação, por si só, explica o conflito.</p>
+<p>O estudo evita apresentar a guerra apenas como sequência de batalhas ou como resultado da vontade de um único líder. Considera a interação entre crises regionais, disputas de fronteiras, circulação fluvial, consolidação de Estados e decisões políticas. Essa abordagem dialoga com revisões historiográficas que questionam narrativas patrióticas tradicionais e também examinam os limites de interpretações revisionistas simplificadoras. <a class="citation" href="#ref8">[8]</a></p>
+<div class="question-box"><span class="box-label">PROBLEMA DE PESQUISA</span><p>Como as disputas políticas e estratégicas na região do Prata contribuíram para a eclosão da Guerra do Paraguai, e de que maneira o conflito transformou a vida social e a organização política dos países envolvidos?</p></div>
+<p class="chapter-conclusion"><strong>Delimitação.</strong> O foco principal recai sobre 1864 a 1870. Consequências e memórias posteriores são abordadas quando ajudam a compreender a interpretação histórica do conflito.</p></section>
+
+<section class="chapter" id="metodologia"><div class="chapter-tag">CAPÍTULO 02 <span>02</span></div><h2>Objetivos e metodologia</h2>
+<div class="two-column-copy"><div><h3>Objetivo geral</h3><p>Investigar as causas, o desenvolvimento e as consequências da Guerra do Paraguai, articulando história política, militar e social com a análise das interpretações historiográficas.</p></div><div><h3>Objetivos específicos</h3><ul class="clean-list"><li>Contextualizar a posição estratégica da Bacia do Prata.</li><li>Identificar fatores estruturais e acontecimentos imediatos da escalada.</li><li>Organizar campanhas e batalhas em sequência cronológica.</li><li>Examinar impactos humanos, econômicos e políticos.</li><li>Comparar correntes historiográficas sem tratar hipóteses como consenso automático.</li></ul></div></div>
+<h3>Procedimentos de pesquisa</h3><p>Foi adotada uma abordagem qualitativa de pesquisa bibliográfica e documental. Foram consultados artigos acadêmicos, trabalhos universitários, materiais de referência histórica e páginas de acervos institucionais. Mapas, fotografias e gravuras são usados como fontes visuais, respeitando-se a diferença entre registro documental, imagem produzida durante a guerra e representação artística posterior. A documentação consultada não resolve todas as divergências historiográficas; por isso, os pontos controversos são identificados como debates, não como fatos encerrados.</p>
+<div class="method-strip"><div><span>01</span><strong>Levantamento</strong><small>Artigos, livros e acervos digitais</small></div><div><span>02</span><strong>Comparação</strong><small>Contexto, datas e argumentos</small></div><div><span>03</span><strong>Síntese crítica</strong><small>Documento e interpretação</small></div></div>
+</section>
+
+<section class="chapter" id="contexto"><div class="chapter-tag">CAPÍTULO 03 <span>03</span></div><h2>O contexto regional: a Bacia do Prata</h2>
+<p>Na segunda metade do século XIX, os países da região ainda consolidavam suas instituições políticas e enfrentavam disputas internas e fronteiriças. Os rios Paraná, Paraguai e Uruguai eram vias de circulação de pessoas, tropas e mercadorias. Para o Paraguai, país sem litoral marítimo, a navegação fluvial era especialmente importante para acessar o comércio externo. O controle das rotas, portanto, estava associado tanto à economia como à defesa e à soberania. <a class="citation" href="#ref1">[1]</a> <a class="citation" href="#ref2">[2]</a></p>
+<figure class="figure figure-map"><button class="image-button" type="button" data-lightbox aria-label="Ampliar mapa histórico das campanhas aliadas"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/%28Composite_Map%29_Planta_da_Republica_do_Paraguay_-_Com_as_marchas_dos_Exercitos_alliados_en_1866-67-68-69-70._Lith._Imp._de_Ed._%28IA_dr_composite-map-planta-da-republica-do-paraguay-com-as-marchas-dos-exerci-13380023%29.jpg/960px-thumbnail.jpg" alt="Mapa de campanha da República do Paraguai, com marchas dos exércitos aliados em 1866–1870" loading="lazy"><span class="zoom-hint">AMPLIAR IMAGEM ↗</span></button>
+<figcaption><strong>Figura 1 — Planta da República do Paraguai com as marchas dos exércitos aliados, 1866–1870.</strong> Mapa integrante do atlas histórico-militar publicado por Eduardo Rensburg em 1871, associado aos trabalhos de Emilio Carlos Jourdan. Trata-se de cartografia produzida durante e logo depois da guerra; nomes, grafias e escolhas visuais refletem convenções da época. Fonte: Wikimedia Commons / David Rumsey Map Collection. <a href="https://commons.wikimedia.org/wiki/File:(Composite_Map)_Planta_da_Republica_do_Paraguay_-_Com_as_marchas_dos_Exercitos_alliados_en_1866-67-68-69-70._Lith._Imp._de_Ed._(IA_dr_composite-map-planta-da-republica-do-paraguay-com-as-marchas-dos-exerci-13380023).jpg" target="_blank" rel="noreferrer">Registro e licença ↗</a></figcaption></figure>
+<p class="figure-note"><span>LEITURA CARTOGRÁFICA</span> Os rios e pontos fortificados ajudam a explicar por que a guerra se prolongou. A imagem deve ser lida como documento histórico, não como representação neutra de fronteiras atuais.</p>
+<div class="country-grid">
+<article><span class="country-code">BR</span><h3>Império do Brasil</h3><p>Buscava preservar interesses e conexões no Prata, manter a navegação e influir na política uruguaia. O esforço de guerra pressionou as finanças e ampliou o papel do Exército.</p></article>
+<article><span class="country-code">AR</span><h3>Argentina</h3><p>O governo de Bartolomé Mitre conduzia um processo de consolidação política nacional. Disputas internas e a posição sobre o Paraguai condicionaram as decisões governamentais.</p></article>
+<article><span class="country-code">UY</span><h3>Uruguai</h3><p>Envolvido em disputas entre blancos e colorados, tornou-se foco imediato da crise diplomática. A intervenção brasileira e a mudança de governo alteraram o equilíbrio regional.</p></article>
+<article><span class="country-code">PY</span><h3>Paraguai</h3><p>Governado por Francisco Solano López desde 1862, tinha Estado centralizado e forças militares significativas, mas dependia das rotas fluviais e enfrentava limitações materiais.</p></article>
 </div>
-<div class="help-modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
-  <div class="help-card"><div class="kicker">Guia rápido</div><h2 id="helpTitle">Navegue pela apresentação</h2><p>Use os atalhos durante a exposição. No celular, use os controles inferiores ou deslize o conteúdo.</p><div class="shortcut-grid"><div><span>Slide anterior / próximo</span><kbd>← / →</kbd></div><div><span>Próximo slide</span><kbd>Espaço</kbd></div><div><span>Notas do apresentador</span><kbd>N</kbd></div><div><span>Modo apresentação</span><kbd>F</kbd></div><div><span>Fechar este painel</span><kbd>Esc</kbd></div><div><span>Ir ao início / fim</span><kbd>Home / End</kbd></div></div><div class="modal-actions"><button class="button primary" id="helpClose">Entendi</button></div></div>
+<p>Esses interesses não formavam blocos perfeitamente homogêneos. As alianças foram construídas em uma conjuntura de rivalidades e ameaças percebidas; os cálculos políticos de cada governo mudaram ao longo da guerra. Pesquisas sobre a origem do conflito destacam dinâmicas internas e regionais, sem atribuir a deflagração a uma única causa isolada. <a class="citation" href="#ref2">[2]</a></p>
+</section>
+
+<section class="chapter" id="causas"><div class="chapter-tag">CAPÍTULO 04 <span>04</span></div><h2>Das tensões à guerra</h2>
+<p>As causas do conflito devem ser diferenciadas dos acontecimentos que precipitaram a guerra. Entre os fatores de longo prazo estavam disputas de fronteira, navegação, influência diplomática e formação dos Estados nacionais. Os acontecimentos imediatos de 1864–1865 ocorreram em meio à crise uruguaia e às decisões dos governos envolvidos.</p>
+<div class="cause-list">
+<article><span class="cause-number">01</span><div><h3>Disputas regionais e fronteiriças</h3><p>As relações entre Brasil, Argentina, Uruguai e Paraguai eram marcadas por desacordos sobre fronteiras, circulação fluvial e influência política. Esses problemas se cruzavam com disputas internas de cada país. <a class="citation" href="#ref2">[2]</a></p></div></article>
+<article><span class="cause-number">02</span><div><h3>A crise no Uruguai</h3><p>A guerra civil uruguaia e a intervenção do Império do Brasil, em 1864, foram decisivas para a escalada. O Paraguai considerou a intervenção uma ameaça ao equilíbrio regional e adotou medidas militares contra o Brasil.</p></div></article>
+<article><span class="cause-number">03</span><div><h3>Captura de navio e invasões</h3><p>Em novembro de 1864, forças paraguaias apreenderam o vapor brasileiro <em>Marquês de Olinda</em>. Em seguida, tropas paraguaias invadiram o Mato Grosso. Em 1865, a guerra ampliou-se com a ofensiva contra Corrientes, na Argentina, e a campanha em direção ao sul.</p></div></article>
+<article><span class="cause-number">04</span><div><h3>Formação da coalizão</h3><p>O avanço paraguaio em território argentino e as alianças políticas regionais contribuíram para consolidar a coalizão que combateu o Paraguai. A guerra passou a envolver frentes terrestres, operações navais e disputas diplomáticas.</p></div></article>
 </div>
-</body>
-</html>
+<aside class="interpretation-note"><span class="note-symbol">≠</span><div><strong>Evite uma explicação simplista</strong><p>Não há base suficiente para tratar a guerra apenas como plano britânico, nem para explicar tudo pela personalidade de Solano López. A influência econômica externa pertence ao contexto, mas as relações interplatinas e as escolhas dos governos são centrais em uma análise historiográfica equilibrada. <a class="citation" href="#ref8">[8]</a> <a class="citation" href="#ref2">[2]</a></p></div></aside>
+</section>
+
+<section class="chapter" id="campanhas"><div class="chapter-tag">CAPÍTULO 05 <span>05</span></div><h2>As campanhas militares</h2>
+<p>O desenvolvimento da guerra não foi linear. A fase inicial incluiu ofensivas paraguaias e operações navais; depois, a Tríplice Aliança avançou em território paraguaio. Fortificações, dificuldades logísticas, doenças, condições ambientais e resistências locais tornaram as campanhas demoradas e custosas. A cronologia sintetiza marcos importantes, sem sugerir que uma batalha isolada explique o resultado final.</p>
+<div class="timeline-table" role="list" aria-label="Cronologia resumida da guerra">
+<div class="timeline-row" role="listitem"><span class="timeline-year">1864</span><div><strong>Crise uruguaia e escalada</strong><p>Intervenção brasileira no Uruguai; captura do <em>Marquês de Olinda</em> e início da ofensiva paraguaia no Mato Grosso.</p></div></div>
+<div class="timeline-row" role="listitem"><span class="timeline-year">1865</span><div><strong>Expansão do conflito e Riachuelo</strong><p>Invasão paraguaia de Corrientes; Batalha Naval do Riachuelo em 11 de junho; rendição paraguaia em Uruguaiana em setembro; Tratado da Tríplice Aliança em 1º de maio.</p></div></div>
+<div class="timeline-row" role="listitem"><span class="timeline-year">1866</span><div><strong>Tuiuti e Curupaiti</strong><p>A Batalha de Tuiuti, em 24 de maio, foi uma das maiores da guerra. A ofensiva aliada em Curupaiti, em setembro, terminou em derrota com grandes perdas.</p></div></div>
+<div class="timeline-row" role="listitem"><span class="timeline-year">1867–68</span><div><strong>Humaitá e avanço aliado</strong><p>Operações prolongadas envolveram fortificações, travessias, bloqueios e dificuldades de abastecimento. A passagem de Humaitá, em 1868, marcou etapa estratégica decisiva.</p></div></div>
+<div class="timeline-row" role="listitem"><span class="timeline-year">1868</span><div><strong>Dezembrada</strong><p>Uma série de combates, incluindo Itororó, Avaí e Lomas Valentinas, abriu caminho para a ocupação de Assunção em janeiro de 1869.</p></div></div>
+<div class="timeline-row" role="listitem"><span class="timeline-year">1869–70</span><div><strong>Campanha final e morte de López</strong><p>A guerra prosseguiu com a Campanha das Cordilheiras. Solano López morreu em Cerro Corá, em 1º de março de 1870, marco geralmente adotado para o fim do conflito.</p></div></div>
+</div>
+<div class="battle-feature"><figure class="figure"><button class="image-button" type="button" data-lightbox aria-label="Ampliar estudo artístico da Batalha Naval do Riachuelo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Victor_Meirelles_-_Estudo_para_a_Batalha_do_Riachuelo_%282%29.jpg/960px-Victor_Meirelles_-_Estudo_para_a_Batalha_do_Riachuelo_%282%29.jpg" alt="Estudo pictórico de Victor Meirelles para a Batalha Naval do Riachuelo" loading="lazy"><span class="zoom-hint">AMPLIAR IMAGEM ↗</span></button><figcaption><strong>Figura 2 — Estudo para a Batalha do Riachuelo.</strong> Obra de Victor Meirelles, produzida entre 1868 e 1873. É uma representação artística, não um registro fotográfico direto do acontecimento. <a href="https://commons.wikimedia.org/wiki/File:Victor_Meirelles_-_Estudo_para_a_Batalha_do_Riachuelo_(2).jpg" target="_blank" rel="noreferrer">Registro da obra e licença ↗</a></figcaption></figure>
+<div class="battle-copy"><span class="meta-label">ESTUDO DE CASO · OPERAÇÕES NAVAIS</span><h3>Riachuelo: rios como frente de guerra</h3><p>A Batalha Naval do Riachuelo ocorreu em 11 de junho de 1865, no rio Paraná, próximo à cidade de Corrientes. A vitória brasileira reduziu a capacidade paraguaia de disputar o controle naval e ajudou a restringir rotas de abastecimento e comunicação. A navegação era uma dimensão militar, econômica e estratégica do conflito. <a class="citation" href="#ref5">[5]</a></p><p>A importância da batalha precisa ser compreendida dentro de uma campanha mais ampla: o resultado naval influenciou as possibilidades de movimentação, mas a guerra terrestre se prolongou por anos.</p><a class="text-link" href="https://www.agencia.marinha.mil.br/educacao-e-cultura/batalha-naval-do-riachuelo-data-magna-da-marinha" target="_blank" rel="noreferrer">Consultar a Marinha do Brasil ↗</a></div></div>
+<div class="image-grid">
+<figure class="figure small-figure"><button class="image-button" type="button" data-lightbox aria-label="Ampliar imagem histórica das fortificações de Humaitá"><img src="https://atom-museuhistorico.museus.gov.br/uploads/r/museu-historico-nacional/5/1/d/51d77ffee9fb35561f8a8579191b484f66402330b9b32d7284ac1edbecbb6da6/GPe18.JPG" alt="Gravura histórica das baterias, fortificações e armazéns de Humaitá e Curupaiti" loading="lazy"><span class="zoom-hint">AMPLIAR ↗</span></button><figcaption><strong>Figura 3 — Fortificações de Humaitá e Curupaiti.</strong> Gravura associada a Angelo Agostini, publicada em suplemento de <em>A Vida Fluminense</em>. O Museu Histórico Nacional descreve vistas tomadas a partir de embarcações em 1867. <a href="https://atom-museuhistorico.museus.gov.br/index.php/vista-das-baterias-fortificacoes-e-armazens-de-humaita" target="_blank" rel="noreferrer">Ficha do acervo ↗</a></figcaption></figure>
+<figure class="figure small-figure"><button class="image-button" type="button" data-lightbox aria-label="Ampliar fotografia histórica da artilharia brasileira"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Brazilian_artillery_1866.jpg/960px-Brazilian_artillery_1866.jpg" alt="Fotografia histórica da artilharia brasileira durante a Guerra do Paraguai, 1866" loading="lazy"><span class="zoom-hint">AMPLIAR ↗</span></button><figcaption><strong>Figura 4 — Artilharia brasileira, 1866.</strong> Fotografia atribuída a Bate &amp; Cia, reproduzida em obra de Ricardo Salles. A legenda do arquivo a identifica como artilharia comandada pelo coronel Mallet. <a href="https://commons.wikimedia.org/wiki/File:Brazilian_artillery_1866.jpg" target="_blank" rel="noreferrer">Registro e direitos ↗</a></figcaption></figure>
+</div>
+<p class="figure-note"><span>NOTA DE FONTE</span> Fotografias, pinturas e gravuras não são intercambiáveis. A fotografia registra uma cena situada; a gravura pode narrar acontecimentos; a pintura histórica organiza visualmente a memória de um evento.</p>
+</section>
+
+<section class="chapter" id="sociedade"><div class="chapter-tag">CAPÍTULO 06 <span>06</span></div><h2>Sociedade, mobilização e custo humano</h2>
+<p>A guerra atingiu muito além dos campos de batalha. Exércitos precisavam ser recrutados, transportados, alimentados e equipados. A distância das frentes, as doenças, a escassez de suprimentos e as condições ambientais afetaram a sobrevivência dos combatentes. Pesquisas sobre a vida cotidiana de soldados e marinheiros destacam fome, enfermidades, punições disciplinares e dificuldades de acesso a recursos básicos. <a class="citation" href="#ref9">[9]</a></p>
+<figure class="figure figure-wide"><button class="image-button" type="button" data-lightbox aria-label="Ampliar fotografia de tropas brasileiras no Paraguai"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Brazilian_army_in_Paraguay.jpg/960px-Brazilian_army_in_Paraguay.jpg" alt="Fotografia do Exército brasileiro no Paraguai durante revista do Conde d’Eu, por volta de 1869" loading="lazy"><span class="zoom-hint">AMPLIAR IMAGEM ↗</span></button><figcaption><strong>Figura 5 — Tropas brasileiras no Paraguai, por volta de 1869.</strong> Fotografia de autoria desconhecida, descrita como revista do conde d’Eu; reproduzida em <em>Guerra do Paraguai: memórias &amp; imagens</em>, de Ricardo Salles (2003). A imagem mostra uma formação militar, mas não representa sozinha a experiência cotidiana de todos os soldados. <a href="https://commons.wikimedia.org/wiki/File:Brazilian_army_in_Paraguay.jpg" target="_blank" rel="noreferrer">Ficha e licença ↗</a></figcaption></figure>
+<h3>Recrutamento e desigualdade</h3><p>Os Estados mobilizaram recursos humanos por diferentes meios, incluindo recrutamento, voluntariado e mecanismos coercitivos. No Império do Brasil, pessoas escravizadas também foram envolvidas no esforço militar, em situações marcadas por desigualdade e por promessas de liberdade que precisam ser analisadas no contexto da sociedade escravista. Por isso, a guerra se relaciona com debates sobre cidadania, escravidão, patriotismo e autoridade estatal.</p>
+<h3>Populações civis e destruição</h3><p>O avanço das tropas, a ocupação de áreas, o deslocamento de pessoas, a perda de colheitas e a destruição de infraestrutura afetaram comunidades civis. No Paraguai, o peso do conflito foi especialmente devastador: a guerra destruiu recursos produtivos, alterou a demografia e contribuiu para uma longa reconstrução. A experiência não foi idêntica em todas as regiões nem para todos os grupos sociais; é importante reconhecer essa diferença sem minimizar a dimensão da catástrofe.</p>
+<div class="caution-box"><span class="caution-icon">!</span><div><strong>Sobre números de mortos e perdas populacionais</strong><p>As estimativas demográficas paraguaias são objeto de debate. Censos incompletos, registros destruídos, dificuldades de distinguir mortes diretas de efeitos indiretos e métodos distintos de cálculo produzem resultados divergentes. Estudos recentes reexaminaram dados censitários, mostrando que os números devem ser apresentados com método e ressalvas, não como uma cifra definitiva sem explicação. <a class="citation" href="#ref7">[7]</a></p></div></div>
+</section>
+
+<section class="chapter" id="consequencias"><div class="chapter-tag">CAPÍTULO 07 <span>07</span></div><h2>Consequências políticas e econômicas</h2>
+<p>O fim das operações em 1870 não encerrou imediatamente todos os efeitos da guerra. A ocupação, a reorganização política e as negociações territoriais continuaram a influenciar as relações entre os países. As consequências foram assimétricas: o Paraguai enfrentou destruição humana e material excepcionalmente grave, enquanto Brasil e Argentina também arcaram com custos fiscais, sociais e políticos importantes.</p>
+<div class="impact-table" role="table" aria-label="Síntese dos impactos por país"><div class="impact-header" role="row"><span>PAÍS</span><span>IMPACTOS A DESTACAR</span></div>
+<div class="impact-row" role="row"><strong>Paraguai</strong><p>Perda de população e capacidade produtiva; destruição de infraestrutura; ocupação e longo processo de reorganização institucional e econômica. As consequências demográficas exatas permanecem debatidas. <a class="citation" href="#ref7">[7]</a></p></div>
+<div class="impact-row" role="row"><strong>Brasil</strong><p>Endividamento e esforço financeiro prolongado; fortalecimento do Exército e ampliação de seu peso político; debates sobre escravidão, serviço militar e participação de grupos subalternizados.</p></div>
+<div class="impact-row" role="row"><strong>Argentina</strong><p>Consolidação do Estado nacional em uma conjuntura de disputas internas, mobilização militar e custos de guerra. A participação no conflito deve ser lida em conjunto com a política regional.</p></div>
+<div class="impact-row" role="row"><strong>Uruguai</strong><p>Participação militarmente menor, mas situada na crise política que precedeu a guerra. Sua posição ilustra como conflitos internos e intervenções de vizinhos alteraram a dinâmica regional.</p></div></div>
+<p>A guerra também contribuiu para a construção de memórias nacionais. Comemorações, monumentos, livros escolares e narrativas sobre heróis e derrotas moldaram a forma como o conflito foi explicado às gerações seguintes. Essas memórias são parte da história do acontecimento, mas não substituem a análise crítica dos documentos e das interpretações.</p>
+</section>
+
+<section class="chapter" id="historiografia"><div class="chapter-tag">CAPÍTULO 08 <span>08</span></div><h2>Como a guerra foi interpretada?</h2>
+<p>A historiografia da Guerra do Paraguai não é homogênea. Ao longo do tempo, autores selecionaram causas, personagens e documentos diferentes para explicar o conflito. A comparação entre correntes ajuda a identificar o que cada interpretação ilumina e o que tende a deixar em segundo plano. A síntese abaixo é didática: obras individuais podem combinar argumentos e não devem ser reduzidas a rótulos rígidos. <a class="citation" href="#ref8">[8]</a> <a class="citation" href="#ref10">[10]</a></p>
+<div class="historiography-grid">
+<article><span class="perspective-label">PERSPECTIVA TRADICIONAL</span><h3>Lideranças e operações militares</h3><p>As narrativas tradicionais costumam destacar governantes, comandantes, batalhas e patriotismo. Foram importantes para registrar campanhas e organizar memórias nacionais, mas podem privilegiar a visão dos vencedores e reduzir as causas a decisões de líderes específicos.</p><div class="strength"><strong>Contribuição</strong><span>Organização cronológica e documentação militar.</span></div><div class="limit"><strong>Limite</strong><span>Risco de narrativa heroica e pouca atenção a grupos subalternizados.</span></div></article>
+<article><span class="perspective-label">PERSPECTIVAS REVISIONISTAS</span><h3>Economia, interesses externos e desigualdade</h3><p>Interpretações revisionistas questionaram a narrativa nacional-patriótica e deram maior peso às estruturas econômicas, ao imperialismo e às consequências sociais. Algumas formulações atribuíram à influência britânica um papel determinante que não deve ser tratado automaticamente como consenso.</p><div class="strength"><strong>Contribuição</strong><span>Crítica das narrativas oficiais e atenção às relações econômicas.</span></div><div class="limit"><strong>Limite</strong><span>Uma explicação estrutural pode se tornar monocausal se negligenciar decisões regionais.</span></div></article>
+<article><span class="perspective-label">ABORDAGENS RECENTES</span><h3>Estados, diplomacia e fontes plurais</h3><p>Abordagens neorrevisionistas e estudos contemporâneos reexaminam a formação dos Estados nacionais na região do Prata e combinam política, diplomacia, história social e pesquisa documental. Buscam reconstruir a complexidade sem aceitar intactas versões patrióticas nem substituir uma explicação única por outra. <a class="citation" href="#ref2">[2]</a></p><div class="strength"><strong>Contribuição</strong><span>Articulação entre níveis local, regional e internacional.</span></div><div class="limit"><strong>Desafio</strong><span>Comparar fontes de grupos distintos e lidar com lacunas documentais.</span></div></article>
+</div>
+<div class="source-method"><span class="source-method-icon">⌕</span><p><strong>Critério adotado neste trabalho:</strong> uma interpretação é mais convincente quando explica acontecimentos com evidências identificáveis, contextualiza os documentos, compara fontes de perspectivas distintas e reconhece o que não pode ser estabelecido com segurança.</p></div>
+</section>
+
+<section class="chapter conclusion-chapter" id="conclusao"><div class="chapter-tag">CAPÍTULO 09 <span>09</span></div><h2>Considerações finais</h2>
+<p>A Guerra do Paraguai resultou da interação entre tensões políticas e estratégicas na Bacia do Prata, crises internas, disputas sobre influência regional e decisões tomadas pelos governos envolvidos. A navegação fluvial e o controle das rotas foram fatores importantes, mas não explicam isoladamente a origem e a duração do conflito. A sequência de crises entre 1864 e 1865 converteu rivalidades em uma guerra internacional que se prolongou por seis anos.</p>
+<p>A análise das campanhas evidencia que os resultados militares dependeram de logística, transporte, fortificações, recursos financeiros e condições ambientais, além dos combates. A experiência social amplia ainda mais a compreensão do conflito: doenças, fome, deslocamentos, recrutamento desigual e perdas civis foram parte essencial de sua história, não meros efeitos secundários.</p>
+<p>As consequências foram profundas e desiguais, sobretudo para a população paraguaia. Ao mesmo tempo, a guerra alterou as finanças, as instituições militares e as memórias políticas dos países participantes. O tema precisa, portanto, ser estudado para além das explicações centradas em heróis, vilões ou conspirações. A comparação historiográfica, apoiada por fontes documentais diversas e pela explicitação de incertezas, permite compreender o conflito em sua complexidade e reconhecer os custos humanos de decisões tomadas em nome da soberania e do poder.</p>
+<div class="final-thesis"><span>RESPOSTA AO PROBLEMA DE PESQUISA</span><p>A guerra foi produto de uma crise regional em que interesses estatais, navegação, intervenção política e escolhas militares se combinaram. Seus efeitos foram desiguais e duradouros, e a compreensão histórica depende da relação crítica entre documentos, interpretações e memória coletiva.</p></div>
+</section>
+
+<section class="chapter references-chapter" id="referencias"><div class="chapter-tag">FONTES E BIBLIOGRAFIA <span>10</span></div><h2>Referências</h2>
+<p class="references-intro">As referências reúnem artigos acadêmicos, estudos universitários e acervos de fontes primárias e visuais. Os links permitem consultar páginas institucionais, informações bibliográficas e, quando disponíveis, documentos digitalizados. Acesso em: 26 out. 2026.</p>
+<ol class="references-list">
+<li id="ref1"><strong>FUNDAÇÃO GETULIO VARGAS (FGV).</strong> <em>Atlas Histórico do Brasil: Guerra do Paraguai — as grandes batalhas.</em> Rio de Janeiro: FGV CPDOC. Disponível em: <a href="https://atlas.fgv.br/marcos/guerra-do-paraguai/mapas/guerra-do-paraguai-grandes-batalhas" target="_blank" rel="noreferrer">atlas.fgv.br</a>.</li>
+<li id="ref2"><strong>PATRÍCIO, Raquel de Caria.</strong> Forças e dinâmicas na origem da Guerra do Paraguai: uma perspetiva. <em>Janus</em>, v. 14, n. 2, 2024. DOI: <a href="https://doi.org/10.26619/1647-7251.DT0124.4" target="_blank" rel="noreferrer">10.26619/1647-7251.DT0124.4</a>.</li>
+<li id="ref3"><strong>UNIVERSIDADE FEDERAL DO RIO DE JANEIRO (UFRJ).</strong> <em>Guerra do Paraguai: identidades, lealdades e conflitos.</em> Programa de Pós-Graduação em História Social. Disponível em: <a href="https://ppghis.historia.ufrj.br/disciplina/guerra-do-paraguai-identidades-lealdades-e-conflitos/" target="_blank" rel="noreferrer">PPGHIS/UFRJ</a>.</li>
+<li id="ref4"><strong>BRASIL. SENADO FEDERAL.</strong> <em>Atas do Conselho de Estado Pleno: 1867–1868.</em> Documentação histórica sobre questões políticas e diplomáticas do período. Disponível em: <a href="https://www.senado.leg.br/publicacoes/anais/pdf/ACE/ATAS7-Terceiro_Conselho_de_Estado_1867-1868.pdf" target="_blank" rel="noreferrer">Senado Federal (PDF)</a>.</li>
+<li id="ref5"><strong>MARINHA DO BRASIL.</strong> <em>Batalha Naval do Riachuelo: data magna da Marinha.</em> Agência Marinha de Notícias. Disponível em: <a href="https://www.agencia.marinha.mil.br/educacao-e-cultura/batalha-naval-do-riachuelo-data-magna-da-marinha" target="_blank" rel="noreferrer">agencia.marinha.mil.br</a>.</li>
+<li id="ref6"><strong>MUSEU HISTÓRICO NACIONAL.</strong> <em>Coleção GP — Guerra do Paraguai.</em> Acervo Arquivístico: documentos iconográficos, fotografias, gravuras e cartografia. Disponível em: <a href="https://atom-museuhistorico.museus.gov.br/index.php/guerra-do-paraguai" target="_blank" rel="noreferrer">Acervo do MHN</a>. Ver também: <em>Vista das baterias, fortificações e armazéns de Humaitá</em>, item GPe18.</li>
+<li id="ref7"><strong>WHIGHAM, Thomas L.; POTTHAST, Barbara.</strong> The Paraguayan Rosetta Stone: New Insights into the Demographics of the Paraguayan War, 1864–1870. <em>Latin American Research Review</em>. Publicado on-line em 2022. Disponível em: <a href="https://www.cambridge.org/core/journals/latin-american-research-review/article/paraguayan-rosetta-stone-new-insights-into-the-demographics-of-the-paraguayan-war-18641870/96CAE01376E54D5376172E9398F4951B" target="_blank" rel="noreferrer">Cambridge Core</a>.</li>
+<li id="ref8"><strong>PEREIRA, Bruno César.</strong> As “Guerras do Paraguai”: uma breve revisão das análises da Grande Guerra a partir das perspectivas historiográficas do último quartel do século XX. <em>Ars Historica</em>, UFRJ. Disponível em: <a href="https://revistas.ufrj.br/index.php/ars/article/view/46625" target="_blank" rel="noreferrer">revistas.ufrj.br</a>.</li>
+<li id="ref9"><strong>DOURADO, Maria Teresa Garritano.</strong> <em>A história esquecida da Guerra do Paraguai: fome, doenças e penalidades.</em> Tese, Universidade de São Paulo. Disponível em: <a href="https://teses.usp.br/teses/disponiveis/8/8138/tde-08122010-135132/pt-br.php" target="_blank" rel="noreferrer">Biblioteca Digital de Teses e Dissertações da USP</a>. Ver também: <em>Cotidiano e sobrevivência: soldados e marinheiros na Guerra do Paraguai</em>, Historiæ/FURG, <a href="https://periodicos.furg.br/hist/article/view/4809" target="_blank" rel="noreferrer">FURG</a>.</li>
+<li id="ref10"><strong>GOES, Andrew Cesar de.</strong> <em>A Guerra do Paraguai em manuais didáticos: fontes para análise da cultura escolar e da cultura histórica.</em> Trabalho de Conclusão de Curso, Universidade Federal da Integração Latino-Americana, 2018. Disponível em: <a href="https://dspace.unila.edu.br/items/b8a07815-cfd1-4362-96a8-9704e6faf330" target="_blank" rel="noreferrer">Repositório Institucional da UNILA</a>.</li>
+<li id="ref11"><strong>WIKIMEDIA COMMONS / DAVID RUMSEY MAP COLLECTION.</strong> <em>Planta da República do Paraguai: com as marchas dos exércitos aliados em 1866–67–68–69–70.</em> Atlas de Eduardo Rensburg, 1871. Reprodução digital e dados de licença: <a href="https://commons.wikimedia.org/wiki/File:(Composite_Map)_Planta_da_Republica_do_Paraguay_-_Com_as_marchas_dos_Exercitos_alliados_en_1866-67-68-69-70._Lith._Imp._de_Ed._(IA_dr_composite-map-planta-da-republica-do-paraguay-com-as-marchas-dos-exerci-13380023).jpg" target="_blank" rel="noreferrer">Wikimedia Commons</a>.</li>
+<li id="ref12"><strong>MEIRELLES, Victor.</strong> <em>Estudo para a Batalha do Riachuelo.</em> c. 1868–1873. Museu Nacional de Belas Artes, Rio de Janeiro. Reprodução digital e dados da obra: <a href="https://commons.wikimedia.org/wiki/File:Victor_Meirelles_-_Estudo_para_a_Batalha_do_Riachuelo_(2).jpg" target="_blank" rel="noreferrer">Wikimedia Commons</a>.</li>
+</ol>
+<div class="references-note"><span class="note-mark">✓</span><p><strong>Transparência documental.</strong> Este site é um trabalho escolar de pesquisa em formato digital. Para uma entrega formal segundo as normas da instituição, completem a identificação institucional, local, ano, professor/orientador (se houver) e adequem a formatação às exigências docentes. Confiram a referência completa diretamente na publicação consultada.</p></div>
+</section>
+</article></div>
+</main>
+<footer class="site-footer"><div class="footer-mark">GP</div><div><strong>Guerra do Paraguai · 1864–1870</strong><p>Dossiê de pesquisa histórica · Mecatrônica 2</p></div><div class="footer-right"><a href="#topo">Voltar ao início ↑</a><span>Documento digital · versão de estudo</span></div></footer>
+<dialog class="lightbox" id="lightbox" aria-label="Visualizador de imagem"><div class="lightbox-header"><span id="lightboxCaption">Imagem histórica</span><button type="button" id="lightboxClose" aria-label="Fechar imagem ampliada">✕</button></div><img id="lightboxImage" src="" alt=""><p>Selecione fora da imagem ou pressione Esc para fechar. A legenda completa permanece no texto da pesquisa.</p></dialog>
+<button class="back-to-top" id="backToTop" type="button" aria-label="Voltar ao início">↑</button>
+</body></html>
