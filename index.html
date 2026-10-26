@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101923">
+  <meta name="description" content="Apresentação histórica interativa sobre a Guerra do Paraguai, suas causas, campanhas e consequências (1864–1870).">
+  <meta property="og:title" content="A Guerra do Paraguai — Arquivo Histórico">
+  <meta property="og:description" content="Uma apresentação visual e interativa sobre um conflito que transformou a América do Sul.">
+  <title>A Guerra do Paraguai — Arquivo Histórico</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+<div class="app" id="app">
+  <header class="topbar">
+    <a class="brand" href="#slide-1" aria-label="Voltar à capa">
+      <span class="brand-mark" aria-hidden="true">H</span>
+      <span><strong>Arquivo Histórico</strong><small>História · América do Sul</small></span>
+    </a>
+    <div class="header-meta"><span class="live-dot"></span><span>Seminário de História</span><span class="meta-separator">1864 — 1870</span></div>
+    <div class="top-actions">
+      <button class="button quiet" id="notesToggle" aria-pressed="false">Notas <kbd>N</kbd></button>
+      <button class="button primary" id="presentToggle">Apresentar <span aria-hidden="true">↗</span></button>
+    </div>
+  </header>
+  <div class="workspace">
+    <nav class="rail" aria-label="Navegação dos slides">
+      <span class="rail-label">Capítulos</span>
+      <button class="rail-btn" data-go="0" aria-label="Slide 1: Abertura" aria-current="step">01</button>
+      <button class="rail-btn" data-go="1" aria-label="Slide 2: Roteiro">02</button>
+      <button class="rail-btn" data-go="2" aria-label="Slide 3: Contexto geopolítico">03</button>
+      <button class="rail-btn" data-go="3" aria-label="Slide 4: Paraguai antes da guerra">04</button>
+      <button class="rail-btn" data-go="4" aria-label="Slide 5: Causas">05</button>
+      <button class="rail-btn" data-go="5" aria-label="Slide 6: Cronologia">06</button>
+      <button class="rail-btn" data-go="6" aria-label="Slide 7: Tratado">07</button>
+      <button class="rail-btn" data-go="7" aria-label="Slide 8: Batalhas">08</button>
+      <button class="rail-btn" data-go="8" aria-label="Slide 9: Campanha final">09</button>
+      <button class="rail-btn" data-go="9" aria-label="Slide 10: Experiência humana">10</button>
+      <button class="rail-btn" data-go="10" aria-label="Slide 11: Consequências">11</button>
+      <button class="rail-btn" data-go="11" aria-label="Slide 12: Conclusão e fontes">12</button>
+      <span class="rail-spacer"></span>
+      <button class="rail-btn help-open" id="helpToggle" aria-label="Ajuda e atalhos">?</button>
+      <span class="rail-count" id="railCount">01 / 12</span>
+    </nav>
+    <main class="stage" id="stage" aria-live="polite">
+      <section class="slide hero" data-title="A Guerra do Paraguai">
+        <div class="hero-image-credit">Gravura histórica · Batalha naval do Riachuelo</div>
+        <div class="slide-inner hero-content">
+          <div class="kicker kicker-light">História · Dossiê especial <span>01 / 12</span></div>
+          <p class="hero-date">1864 — 1870</p>
+          <h1>A Guerra<br>do <em>Paraguai</em></h1>
+          <p class="hero-subtitle">Poder, território e o custo humano de um conflito que transformou a América do Sul.</p>
+          <div class="hero-rule"></div>
+          <div class="cover-fields">
+            <div><span>INTEGRANTES</span><p contenteditable="true" spellcheck="false" aria-label="Editar nomes dos integrantes">Clique para inserir os nomes</p></div>
+            <div><span>TURMA / ESCOLA</span><p contenteditable="true" spellcheck="false" aria-label="Editar turma e escola">Clique para preencher</p></div>
+          </div>
+          <button class="button primary big" data-next>Iniciar apresentação <span aria-hidden="true">→</span></button>
+          <p class="cover-note">Seminário de História · 15–25 minutos</p>
+        </div>
+      </section>
+      <section class="slide" data-title="Roteiro da apresentação" hidden>
+        <div class="slide-inner">
+          <div class="kicker">Percurso · 02 / 12</div>
+          <h2>Uma guerra.<br><em>Cinco questões essenciais.</em></h2>
+          <p class="lead">Para compreender o conflito, precisamos observar o contexto regional, as decisões políticas, o desenrolar das campanhas e as consequências para a população.</p>
+          <div class="chapter-list">
+            <div><span>01</span><strong>O Paraguai antes da guerra</strong><small>Estado, economia e posição geográfica</small></div>
+            <div><span>02</span><strong>As causas do conflito</strong><small>Disputas regionais e escalada militar</small></div>
+            <div><span>03</span><strong>Tratado da Tríplice Aliança</strong><small>A coalizão e seus objetivos</small></div>
+            <div><span>04</span><strong>Principais batalhas</strong><small>Rios, fortificações e campanhas</small></div>
+            <div><span>05</span><strong>Consequências da guerra</strong><small>Perdas humanas, política e reconstrução</small></div>
+          </div>
+          <aside class="speaker-note">Apresente o objetivo: não decorar uma lista de batalhas, mas entender como tensões regionais se transformaram em uma guerra prolongada e devastadora. Transição: primeiro, vamos localizar o conflito no mapa.</aside>
+        </div>
+      </section>
+      <section class="slide split" data-title="A região antes do conflito" hidden>
+        <div class="slide-inner">
+          <div class="kicker">Contexto geopolítico · 03 / 12</div>
+          <div class="split-grid">
+            <div>
+              <h2>O destino da região passava <em>pelos rios.</em></h2>
+              <p class="lead">No século XIX, a navegação fluvial conectava territórios interiores aos mercados e portos do estuário do Prata. Rotas, fronteiras e influência política eram interesses estratégicos.</p>
+              <div class="country-list">
+                <div><b class="flag-dot brazil"></b><span><strong>Império do Brasil</strong><small>Fronteiras extensas e acesso à bacia fluvial</small></span></div>
+                <div><b class="flag-dot argentina"></b><span><strong>Argentina</strong><small>Disputas internas e consolidação estatal</small></span></div>
+                <div><b class="flag-dot paraguay"></b><span><strong>Paraguai</strong><small>País interior, dependente de rotas fluviais</small></span></div>
+                <div><b class="flag-dot uruguay"></b><span><strong>Uruguai</strong><small>Localização estratégica entre vizinhos maiores</small></span></div>
+              </div>
+              <p class="caption">Mapa explicativo da região e das grandes campanhas (1864–1870).</p>
+            </div>
+            <figure class="map-frame">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Map_of_the_Paraguayan_War_1864-1870.png" alt="Mapa histórico da Guerra do Paraguai e da região sul-americana" loading="lazy" onerror="this.closest('figure').classList.add('image-fallback');this.remove()">
+              <div class="fallback-map" aria-hidden="true"><span class="river river-a">RIO PARAGUAI</span><span class="river river-b">RIO PARANÁ</span><span class="map-label p1">PARAGUAI</span><span class="map-label p2">BRASIL</span><span class="map-label p3">ARGENTINA</span><span class="map-label p4">URUGUAI</span><span class="map-compass">N ↑</span></div>
+              <figcaption>Mapa da Guerra do Paraguai · Wikimedia Commons. Confira os metadados do arquivo na fonte original.</figcaption>
+            </figure>
+          </div>
+          <aside class="speaker-note">Explique que rios não eram apenas acidentes geográficos: eram corredores de transporte e comunicação. Evite sugerir que o acesso fluvial, sozinho, explique a guerra; ele integra um conjunto de tensões diplomáticas e territoriais.</aside>
+        </div>
+      </section>
+      <section class="slide" data-title="O Paraguai antes da guerra" hidden>
+        <div class="slide-inner">
+          <div class="kicker">01 · O Paraguai antes da guerra · 04 / 12</div>
+          <div class="portrait-layout">
+            <figure class="portrait">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Solano_Lopez_1866_by_Garcia.jpg" alt="Retrato histórico de Francisco Solano López" loading="lazy" onerror="this.closest('figure').classList.add('image-fallback');this.remove()">
+              <figcaption>Francisco Solano López · retrato atribuído à época</figcaption>
+            </figure>
+            <div class="portrait-copy">
+              <h2>Um Estado centralizado em uma <em>região disputada.</em></h2>
+              <p class="lead">Francisco Solano López sucedeu seu pai, Carlos Antonio López, na presidência em 1862. O governo paraguaio mantinha forte controle político e investia em forças militares e setores estratégicos.</p>
+              <div class="fact-grid">
+                <article><span>POLÍTICA</span><h3>Centralização</h3><p>O poder estatal tinha papel expressivo e o regime restringia a oposição política.</p></article>
+                <article><span>ECONOMIA</span><h3>Base agroexportadora</h3><p>Produção agrícola e pecuária, comércio regional e participação do Estado em atividades estratégicas.</p></article>
+                <article><span>GEOGRAFIA</span><h3>Sem litoral</h3><p>As rotas de navegação eram essenciais para conexões com mercados externos.</p></article>
+                <article><span>DEFESA</span><h3>Preparação militar</h3><p>O governo ampliou sua capacidade militar, mas isso não tornava o país autossuficiente.</p></article>
+              </div>
+            </div>
+          </div>
+          <div class="caution"><strong>Uma ressalva historiográfica</strong><span>É simplificador descrever o Paraguai como uma potência industrial plenamente autossuficiente ou como um país completamente isolado. A economia e a sociedade eram mais complexas.</span></div>
+          <aside class="speaker-note">Apresente o país sem romantização nem caricatura. O Paraguai tinha um Estado centralizado e capacidade militar relevante, mas mantinha limites econômicos e dependia de relações regionais e rotas de comércio.</aside>
+        </div>
+      </section>
+      <section class="slide" data-title="As causas da guerra" hidden>
+        <div class="slide-inner">
+          <div class="kicker">02 · Causas do conflito · 05 / 12</div>
+          <h2>A guerra não nasceu de <em>uma causa única.</em></h2>
+          <p class="lead">Tensões acumuladas, uma crise regional imediata e decisões de governos se combinaram em uma escalada que saiu do controle diplomático.</p>
+          <div class="cause-grid">
+            <article class="cause-card"><span class="number">01</span><div class="cause-line"></div><p class="eyebrow">CAUSAS ESTRUTURAIS</p><h3>Equilíbrio regional</h3><p>Fronteiras disputadas, navegação dos rios e influência política na região do Prata alimentavam desconfianças entre os Estados.</p></article>
+            <article class="cause-card"><span class="number">02</span><div class="cause-line"></div><p class="eyebrow">CRISE IMEDIATA</p><h3>A questão uruguaia</h3><p>A disputa entre blancos e colorados e a intervenção brasileira no Uruguai, em 1864, alteraram o equilíbrio regional.</p></article>
+            <article class="cause-card"><span class="number">03</span><div class="cause-line"></div><p class="eyebrow">ESCALADA MILITAR</p><h3>Decisões e invasões</h3><p>O governo de López capturou o navio Marquês de Olinda e forças paraguaias invadiram o Mato Grosso e, depois, Corrientes.</p></article>
+          </div>
+          <div class="bottom-insight"><span class="insight-mark">!</span><p><strong>Como interpretar:</strong> historiadores discutem o peso relativo dos fatores. Explicações monocausais — inclusive a ideia de uma única conspiração estrangeira — não dão conta de toda a complexidade.</p></div>
+          <aside class="speaker-note">Faça a distinção entre causas de longo prazo e acontecimentos que precipitaram o combate. A captura do Marquês de Olinda e as invasões marcam uma escalada concreta, dentro de uma crise diplomática já intensa.</aside>
+        </div>
+      </section>
+      <section class="slide chronology" data-title="Cronologia do conflito" hidden>
+        <div class="slide-inner">
+          <div class="kicker">Cronologia · 06 / 12</div>
+          <h2>Seis anos que transformaram a <em>região.</em></h2>
+          <p class="lead">A cronologia mostra a passagem de uma crise diplomática para uma campanha militar prolongada, seguida de ocupação e reconstrução.</p>
+          <div class="timeline">
+            <article><time>1864</time><div class="timeline-dot"></div><h3>A crise se intensifica</h3><p>Intervenção brasileira no Uruguai; captura do Marquês de Olinda e invasão paraguaia do Mato Grosso.</p></article>
+            <article><time>1865</time><div class="timeline-dot"></div><h3>A aliança se forma</h3><p>Invasão de Corrientes, assinatura do tratado em 1º de maio e Batalha Naval do Riachuelo.</p></article>
+            <article><time>1866</time><div class="timeline-dot"></div><h3>Campanha difícil</h3><p>Tuiuti e Curupaiti demonstram a escala do combate e os custos das ofensivas terrestres.</p></article>
+            <article><time>1868</time><div class="timeline-dot"></div><h3>A ofensiva aliada</h3><p>A Dezembrada abre caminho para a desarticulação de posições defensivas paraguaias.</p></article>
+            <article><time>1869</time><div class="timeline-dot"></div><h3>Assunção ocupada</h3><p>A guerra prossegue em campanhas no interior; a ocupação da capital não encerra imediatamente o conflito.</p></article>
+            <article><time>1870</time><div class="timeline-dot"></div><h3>Cerro Corá</h3><p>Em 1º de março, morre Solano López e termina a fase militar da guerra.</p></article>
+          </div>
+          <aside class="speaker-note">Percorra a linha do tempo rapidamente. Enfatize que a ocupação de Assunção, em 1869, não encerrou de imediato a guerra; a campanha continuou até Cerro Corá, em 1870.</aside>
+        </div>
+      </section>
+      <section class="slide treaty" data-title="Tratado da Tríplice Aliança" hidden>
+        <div class="slide-inner">
+          <div class="kicker kicker-light">03 · Tratado da Tríplice Aliança · 07 / 12</div>
+          <div class="treaty-layout">
+            <div class="treaty-copy">
+              <p class="eyebrow gold-text">1º DE MAIO DE 1865</p>
+              <h2>Três países.<br><em>Uma aliança militar.</em></h2>
+              <p class="lead">Brasil, Argentina e o governo uruguaio dos colorados formalizaram uma coalizão contra o governo de Solano López.</p>
+              <div class="alliance-members"><div><b>BR</b><span>Império do Brasil</span></div><div><b>AR</b><span>República Argentina</span></div><div><b>UY</b><span>Governo uruguaio colorado</span></div></div>
+            </div>
+            <div class="document">
+              <div class="document-top"><span>ARQUIVO DIPLOMÁTICO</span><span>1865 · DOCUMENTO</span></div>
+              <div class="document-seal">†</div>
+              <h3>Tratado da<br>Tríplice Aliança</h3>
+              <p>Coordenação entre os aliados para conduzir a guerra e estabelecer compromissos militares e políticos relacionados ao conflito.</p>
+              <div class="document-rule"></div>
+              <small>Resumo didático — não é transcrição do documento original.</small>
+            </div>
+          </div>
+          <div class="treaty-bottom"><div><strong>Objetivo militar</strong><span>Coordenar esforços contra o governo paraguaio.</span></div><div><strong>Dimensão diplomática</strong><span>Definir compromissos entre os aliados.</span></div><div><strong>Pós-guerra</strong><span>O texto também tratava de questões territoriais e políticas posteriores.</span></div></div>
+          <p class="caption caption-light">Para interpretar o tratado, diferencie o texto original, suas cláusulas secretas e as leituras historiográficas posteriores.</p>
+          <aside class="speaker-note">O tratado foi firmado em 1º de maio de 1865 por Brasil, Argentina e Uruguai sob o governo colorado. Explique objetivos e compromissos sem reduzir o documento a uma frase ou confundir as cláusulas com interpretações posteriores.</aside>
+        </div>
+      </section>
+      <section class="slide" data-title="Principais batalhas" hidden>
+        <div class="slide-inner">
+          <div class="kicker">04 · Principais batalhas · 08 / 12</div>
+          <h2>Os pontos de virada da <em>campanha.</em></h2>
+          <div class="battle-feature">
+            <figure class="battle-image">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Cuadro_del_Combate_Del_Riachuelo_%28Junio_10_del_1865%29_%28De_una_l%C3%A1mina_litogr%C3%A1fica_impresa_en_el_Brasil%29.jpg" alt="Gravura histórica representando o combate naval do Riachuelo" loading="lazy" onerror="this.closest('figure').classList.add('image-fallback');this.remove()">
+              <figcaption>Gravura de época · Batalha Naval do Riachuelo</figcaption>
+            </figure>
+            <div class="battle-text"><span class="battle-date">11 JUN 1865</span><h3>Riachuelo</h3><p>A vitória naval brasileira dificultou o uso estratégico dos rios pelo Paraguai e foi decisiva para a movimentação e o abastecimento aliados.</p><p class="small muted">A logística fluvial foi central para toda a guerra: controlar água e transporte significava sustentar a campanha.</p></div>
+          </div>
+          <div class="battle-pair">
+            <article><div class="battle-index">02</div><div><span class="eyebrow">24 MAI 1866</span><h3>Tuiuti</h3><p>Uma das maiores batalhas campais do conflito. A ofensiva paraguaia sofreu pesadas perdas, mas a guerra continuou.</p></div></article>
+            <article><div class="battle-index">03</div><div><span class="eyebrow">22 SET 1866</span><h3>Curupaiti</h3><p>A ofensiva aliada contra posições fortificadas fracassou, prolongando a campanha e evidenciando o custo de atacar defesas preparadas.</p></div></article>
+          </div>
+          <aside class="speaker-note">Explique a relevância estratégica de cada batalha. Riachuelo é importante pelo controle das comunicações fluviais; Tuiuti pela escala do confronto terrestre; Curupaiti pelo fracasso de uma ofensiva aliada contra posições defensivas paraguaias.</aside>
+        </div>
+      </section>
+      <section class="slide finale" data-title="A ofensiva final" hidden>
+        <div class="slide-inner">
+          <div class="kicker">Campanha final · 09 / 12</div>
+          <div class="finale-grid">
+            <div><h2>Da Dezembrada a <em>Cerro Corá.</em></h2><p class="lead">Em dezembro de 1868, uma sequência de vitórias aliadas rompeu posições defensivas importantes. A guerra, porém, não terminou com a ocupação de Assunção.</p>
+              <div class="finale-steps"><div><span>1868</span><p><strong>Dezembrada</strong><small>Vitórias aliadas em uma sequência de combates decisivos.</small></p></div><div><span>1869</span><p><strong>Campanha da Cordilheira</strong><small>A guerra continua no interior, com impactos sobre militares e civis.</small></p></div><div class="last"><span>1870</span><p><strong>Cerro Corá · 1º de março</strong><small>Morte de Solano López e fim da fase militar do conflito.</small></p></div></div>
+            </div>
+            <figure class="finale-image"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Cerro_Cora.jpg" alt="Representação histórica associada à campanha final da guerra" loading="lazy" onerror="this.closest('figure').classList.add('image-fallback');this.remove()"><figcaption>Imagem histórica de contexto; confira a identificação e os metadados no acervo de origem.</figcaption></figure>
+          </div>
+          <aside class="speaker-note">A capital Assunção foi ocupada em 1869, mas a resistência e a campanha militar continuaram. Cerro Corá, em 1º de março de 1870, marcou o final convencional do conflito com a morte de Solano López.</aside>
+        </div>
+      </section>
+      <section class="slide human" data-title="O custo humano" hidden>
+        <div class="slide-inner">
+          <div class="kicker kicker-light">A guerra no cotidiano · 10 / 12</div>
+          <div class="human-layout">
+            <div class="human-heading"><p class="eyebrow gold-text">ALÉM DOS CAMPOS DE BATALHA</p><h2>Uma guerra também se mede pelo <em>que destrói.</em></h2><p class="lead">Distâncias, terreno, doenças e escassez fizeram do abastecimento e das condições sanitárias fatores tão importantes quanto a estratégia militar.</p></div>
+            <div class="human-list">
+              <article><span>01</span><div><h3>Logística</h3><p>Rios e caminhos condicionavam a movimentação de tropas, armas e alimentos.</p></div></article>
+              <article><span>02</span><div><h3>Saúde e doença</h3><p>Ferimentos, epidemias e recursos médicos limitados ampliavam o sofrimento.</p></div></article>
+              <article><span>03</span><div><h3>População civil</h3><p>Deslocamentos, escassez, destruição e separação familiar marcaram a experiência de comunidades.</p></div></article>
+              <article><span>04</span><div><h3>Uma sociedade devastada</h3><p>O impacto demográfico e material no Paraguai foi especialmente profundo e persistiu após o fim dos combates.</p></div></article>
+            </div>
+          </div>
+          <aside class="speaker-note">Traga a narrativa de volta às pessoas. Evite tratar os civis apenas como cenário e não exiba números de vítimas sem contextualizar métodos e incertezas das estimativas.</aside>
+        </div>
+      </section>
+      <section class="slide" data-title="Consequências da guerra" hidden>
+        <div class="slide-inner">
+          <div class="kicker">05 · Consequências · 11 / 12</div>
+          <h2>Quatro países — <em>impactos diferentes.</em></h2>
+          <p class="lead">A guerra alterou a vida política e econômica da região. As consequências não foram equivalentes: o Paraguai sofreu a devastação mais profunda.</p>
+          <div class="consequence-grid">
+            <article class="consequence paraguay"><span class="country-code">PY</span><p class="eyebrow">PARAGUAI</p><h3>Devastação e reconstrução</h3><p>Perdas humanas enormes, destruição material, crise econômica e reconstrução social prolongada.</p><div class="consequence-tag">Impacto especialmente devastador</div></article>
+            <article><span class="country-code">BR</span><p class="eyebrow">BRASIL</p><h3>Custos e Exército</h3><p>Elevado custo humano e financeiro; o Exército ampliou seu peso político no período posterior.</p></article>
+            <article><span class="country-code">AR</span><p class="eyebrow">ARGENTINA</p><h3>Estado e tensões</h3><p>O conflito se cruzou com a consolidação do Estado nacional, custos militares e tensões internas.</p></article>
+            <article><span class="country-code">UY</span><p class="eyebrow">URUGUAI</p><h3>Instabilidade regional</h3><p>Participação na coalizão aliada e efeitos da crise política que antecedeu a guerra.</p></article>
+          </div>
+          <div class="bottom-insight"><span class="insight-mark">i</span><p><strong>Um debate em aberto:</strong> a dimensão exata das perdas demográficas paraguaias é discutida na historiografia. Evite apresentar uma estimativa extrema como consenso absoluto.</p></div>
+          <aside class="speaker-note">Compare efeitos, mas não sugira equivalência. O Paraguai sofreu a destruição mais profunda. No Brasil, o custo da guerra e o crescimento da influência do Exército tiveram implicações políticas no final do Império.</aside>
+        </div>
+      </section>
+      <section class="slide closing" data-title="Memória, conclusão e referências" hidden>
+        <div class="slide-inner">
+          <div class="kicker kicker-light">Síntese e fontes · 12 / 12</div>
+          <h2>Compreender a guerra é também compreender <em>suas memórias.</em></h2>
+          <div class="conclusion-grid">
+            <article><span>01 / POR QUÊ?</span><h3>Uma crise regional</h3><p>Tensões geopolíticas, disputas no Uruguai e decisões políticas se combinaram na escalada militar.</p></article>
+            <article><span>02 / COMO?</span><h3>Uma campanha longa</h3><p>Controle dos rios, grandes batalhas terrestres, logística e campanhas finais moldaram o conflito.</p></article>
+            <article><span>03 / E DEPOIS?</span><h3>Consequências duradouras</h3><p>Perdas humanas, destruição e mudanças políticas continuaram a marcar os países depois de 1870.</p></article>
+          </div>
+          <div class="sources">
+            <div class="sources-heading"><p class="eyebrow gold-text">FONTES PARA APROFUNDAR</p><span>Links institucionais e acadêmicos</span></div>
+            <a href="https://atlas.fgv.br/marcos/guerra-do-paraguai/mapas/guerra-do-paraguai-grandes-batalhas" target="_blank" rel="noopener noreferrer"><span>01</span><strong>Atlas Histórico do Brasil · FGV</strong><small>Mapas e grandes batalhas</small><b aria-hidden="true">↗</b></a>
+            <a href="https://atom-museuhistorico.museus.gov.br/index.php/guerra-do-paraguai" target="_blank" rel="noopener noreferrer"><span>02</span><strong>Museu Histórico Nacional</strong><small>Acervo documental da guerra</small><b aria-hidden="true">↗</b></a>
+            <a href="https://ppghis.historia.ufrj.br/disciplina/guerra-do-paraguai-identidades-lealdades-e-conflitos/" target="_blank" rel="noopener noreferrer"><span>03</span><strong>PPGHIS · UFRJ</strong><small>Identidades, lealdades e conflitos</small><b aria-hidden="true">↗</b></a>
+            <a href="https://objdigital.bn.br/objdigital2/acervo_digital/div_cartografia/cart168928/cart168928.jpg" target="_blank" rel="noopener noreferrer"><span>04</span><strong>Biblioteca Nacional Digital</strong><small>Planta histórica da Batalha de Tuiuti</small><b aria-hidden="true">↗</b></a>
+          </div>
+          <div class="closing-actions"><button class="button primary" data-go="0">↺ Voltar à capa</button><button class="button" id="printButton">Imprimir / salvar em PDF</button><button class="button" id="resetNames">Limpar dados da capa</button></div>
+          <p class="closing-footnote">Imagens históricas são representações de época e devem ser consultadas com seus metadados. As referências apoiam o aprofundamento; confira cada fonte antes de citar dados específicos.</p>
+          <aside class="speaker-note">Encerre respondendo às três perguntas da tela. Reforce que o estudo histórico exige comparar fontes, distinguir documentos de interpretações e reconhecer que a memória da guerra foi construída de modos diferentes nos países envolvidos.</aside>
+        </div>
+      </section>
+      <aside class="notes-panel" id="notesPanel" tabindex="-1" aria-label="Notas do apresentador" aria-live="polite"><div class="notes-heading"><strong>Notas do apresentador</strong><button class="close-note" id="notesClose" aria-label="Fechar notas">×</button></div><p id="notesText">Selecione uma seção para ver as notas.</p></aside>
+    </main>
+  </div>
+  <footer class="bottom-bar">
+    <div class="bottom-left"><span class="progress-copy" id="progressCopy">01 / 12 · Abertura</span><div class="progress-track" aria-label="Progresso da apresentação"><div class="progress-fill" id="progressFill"></div></div></div>
+    <div class="bottom-right"><span class="keyboard-hint">← → navegar · N notas · F tela cheia</span><button class="nav-button" id="prevButton" aria-label="Slide anterior" disabled>←</button><button class="next-label" id="nextLabel">Próximo slide <span aria-hidden="true">→</span></button><button class="nav-button" id="nextButton" aria-label="Próximo slide">→</button></div>
+  </footer>
+</div>
+<div class="help-modal" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" hidden>
+  <div class="help-card"><div class="kicker">Guia rápido</div><h2 id="helpTitle">Navegue pela apresentação</h2><p>Use os atalhos durante a exposição. No celular, use os controles inferiores ou deslize o conteúdo.</p><div class="shortcut-grid"><div><span>Slide anterior / próximo</span><kbd>← / →</kbd></div><div><span>Próximo slide</span><kbd>Espaço</kbd></div><div><span>Notas do apresentador</span><kbd>N</kbd></div><div><span>Modo apresentação</span><kbd>F</kbd></div><div><span>Fechar este painel</span><kbd>Esc</kbd></div><div><span>Ir ao início / fim</span><kbd>Home / End</kbd></div></div><div class="modal-actions"><button class="button primary" id="helpClose">Entendi</button></div></div>
+</div>
+</body>
+</html>
