@@ -8,7 +8,23 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightboxImage');
   const lightboxCaption = document.getElementById('lightboxCaption');
+
+  // Presentation layer: a concise 10-slide summary of the longer research site.
+  const presentation = document.getElementById('presentation');
+  const presentationButton = document.getElementById('presentButton');
+  const presentationExit = document.getElementById('presentationExit');
+  const presSlides = Array.from(document.querySelectorAll('.pres-slide'));
+  const presCounter = document.getElementById('presCounter');
+  const presProgressFill = document.getElementById('presProgressFill');
+  const presPrev = document.getElementById('presPrev');
+  const presNext = document.getElementById('presNext');
+  const presDots = document.getElementById('presDots');
+  let presIndex = 0;
+  let presentationActive = false;
+  let startedByBrowserFullscreen = false;
+  let requestedFullscreenForPresentation = false;
   let scrollQueued = false;
+  const baseTitle = 'Guerra do Paraguai — Dossiê de pesquisa';
 
   function updateScrollUI() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -24,7 +40,10 @@
       scrollQueued = true;
     }
   }, { passive: true });
-  window.addEventListener('resize', updateScrollUI);
+  window.addEventListener('resize', () => {
+    updateScrollUI();
+    syncFullscreenMode();
+  });
   updateScrollUI();
 
   function setMenu(open) {
@@ -34,11 +53,146 @@
   }
   menuButton.addEventListener('click', () => setMenu(!sidebar.classList.contains('open')));
   tocLinks.forEach(link => link.addEventListener('click', () => setMenu(false)));
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') setMenu(false);
-  });
   document.getElementById('printButton').addEventListener('click', () => window.print());
   backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  function renderPresSlide(index) {
+    presIndex = Math.max(0, Math.min(presSlides.length - 1, index));
+    presSlides.forEach((slide, i) => {
+      slide.hidden = i !== presIndex;
+      slide.setAttribute('aria-label', 'Slide ' + (i + 1) + ' de ' + presSlides.length + ': ' + (slide.dataset.presTitle || 'Apresentação'));
+    });
+    presCounter.textContent = String(presIndex + 1).padStart(2, '0') + ' / ' + String(presSlides.length).padStart(2, '0');
+    presProgressFill.style.width = ((presIndex + 1) / presSlides.length * 100) + '%';
+    presPrev.disabled = presIndex === 0;
+    presNext.disabled = presIndex === presSlides.length - 1;
+    presNext.innerHTML = presIndex === presSlides.length - 1 ? 'Fim <span aria-hidden="true">✓</span>' : 'Próximo <span aria-hidden="true">→</span>';
+    Array.from(presDots.children).forEach((dot, i) => {
+      if (i === presIndex) dot.setAttribute('aria-current', 'step');
+      else dot.removeAttribute('aria-current');
+    });
+  }
+
+  function createSlideDots() {
+    presSlides.forEach((slide, index) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'pres-dot';
+      dot.setAttribute('aria-label', 'Ir para slide ' + (index + 1) + ': ' + (slide.dataset.presTitle || 'Slide'));
+      dot.addEventListener('click', () => renderPresSlide(index));
+      presDots.appendChild(dot);
+    });
+  }
+  createSlideDots();
+
+  function setPresentation(active, source) {
+    presentationActive = active;
+    if (active) {
+      if (source === 'browser') startedByBrowserFullscreen = true;
+      if (source === 'button') startedByBrowserFullscreen = false;
+      presentation.hidden = false;
+      document.body.classList.add('is-presenting');
+      setMenu(false);
+      renderPresSlide(presIndex);
+      presentationButton.setAttribute('aria-pressed', 'true');
+      presentationButton.querySelector('span:last-child').textContent = 'Em apresentação';
+      document.title = (presSlides[presIndex].dataset.presTitle || 'Apresentação') + ' — Guerra do Paraguai';
+    } else {
+      presentation.hidden = true;
+      document.body.classList.remove('is-presenting');
+      presentationButton.setAttribute('aria-pressed', 'false');
+      presentationButton.querySelector('span:last-child').textContent = 'Apresentar';
+      document.title = baseTitle;
+      startedByBrowserFullscreen = false;
+      presSlides.forEach((slide, i) => { slide.hidden = i !== 0; });
+      presIndex = 0;
+      renderPresSlide(0);
+    }
+  }
+
+  function browserWindowIsFullscreen() {
+    // F11 usually toggles the browser chrome, not document.fullscreenElement.
+    // Infer it from the viewport filling almost all available screen height.
+    const availableHeight = window.screen && window.screen.availHeight;
+    if (!availableHeight || !window.innerHeight || !window.outerHeight) return false;
+    return window.innerHeight >= availableHeight - 45 &&
+      window.outerHeight >= availableHeight - 25;
+  }
+
+  function syncFullscreenMode() {
+    const full = Boolean(document.fullscreenElement) || browserWindowIsFullscreen();
+    if (full && !presentationActive) {
+      setPresentation(true, 'browser');
+    } else if (!full && presentationActive && startedByBrowserFullscreen && !requestedFullscreenForPresentation) {
+      setPresentation(false, 'browser-exit');
+    }
+  }
+
+  function exitPresentation() {
+    const shouldExitDocumentFullscreen = Boolean(document.fullscreenElement);
+    requestedFullscreenForPresentation = false;
+    setPresentation(false, 'exit');
+    if (shouldExitDocumentFullscreen && document.exitFullscreen) {
+      document.exitFullscreen().catch(() => {});
+    }
+  }
+
+  presentationButton.addEventListener('click', () => {
+    if (presentationActive) {
+      exitPresentation();
+      return;
+    }
+    setPresentation(true, 'button');
+    if (document.documentElement.requestFullscreen) {
+      requestedFullscreenForPresentation = true;
+      document.documentElement.requestFullscreen().catch(() => {
+        requestedFullscreenForPresentation = false;
+        // Keep the presentation usable even if the browser refuses fullscreen.
+      });
+    }
+  });
+  presentationExit.addEventListener('click', exitPresentation);
+  presPrev.addEventListener('click', () => renderPresSlide(presIndex - 1));
+  presNext.addEventListener('click', () => renderPresSlide(presIndex + 1));
+
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && requestedFullscreenForPresentation) {
+      requestedFullscreenForPresentation = false;
+      if (presentationActive) setPresentation(false, 'fullscreen-exit');
+    }
+    syncFullscreenMode();
+  });
+
+  document.addEventListener('keydown', event => {
+    const tag = (document.activeElement && document.activeElement.tagName || '').toLowerCase();
+    const inFormControl = tag === 'input' || tag === 'textarea' || document.activeElement?.isContentEditable;
+    if (event.key === 'F11' && !event.repeat) {
+      // Do not preventDefault: the browser still handles its native F11 shortcut.
+      // This branch helps browsers that dispatch the key event to the page.
+      if (!presentationActive) setPresentation(true, 'browser');
+      else if (startedByBrowserFullscreen) setPresentation(false, 'browser-exit');
+      return;
+    }
+    if (presentationActive) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        exitPresentation();
+      } else if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+        if (!inFormControl) { event.preventDefault(); renderPresSlide(presIndex + 1); }
+      } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
+        if (!inFormControl) { event.preventDefault(); renderPresSlide(presIndex - 1); }
+      } else if (event.key === 'Home') {
+        event.preventDefault(); renderPresSlide(0);
+      } else if (event.key === 'End') {
+        event.preventDefault(); renderPresSlide(presSlides.length - 1);
+      }
+      return;
+    }
+    if (event.key === 'Escape') setMenu(false);
+  });
+
+  // A native browser F11 fullscreen changes the viewport; observe it where supported.
+  syncFullscreenMode();
 
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
