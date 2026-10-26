@@ -1,97 +1,90 @@
-# A Guerra do Paraguai — Arquivo Histórico
+# Guerra do Paraguai — Dossiê de pesquisa histórica
 
-Site-apresentação interativo para o seminário de História da turma **Mecatrônica 2**, com os integrantes **Pedro Henrique, Clara Maria, Anthony Claudio, Gabriel Willian, Leandro Farias e Lohan David**.
+Site acadêmico de leitura contínua sobre a Guerra do Paraguai (1864–1870), desenvolvido como trabalho de pesquisa escolar para a turma **Mecatrônica 2**.
 
-O projeto apresenta a Guerra do Paraguai (1864–1870) como uma sequência de slides para projetor, com navegação por teclado, notas de apresentação e versões adaptadas para computador e celular.
+## Identificação do grupo
 
-## Identidade visual
+- Pedro Henrique
+- Clara Maria
+- Anthony Claudio
+- Gabriel Willian
+- Leandro Farias
+- Lohan David
 
-- **Títulos:** Cormorant Garamond — linguagem editorial/histórica.
-- **Textos e interface:** Manrope — legibilidade e consistência.
-- **Datas e metadados:** IBM Plex Mono — referências de arquivo.
-- **Paleta:** azul-noite, papel marfim, vermelho-terra e dourado envelhecido.
-- **Composição:** slides com layouts diferentes, mapa geopolítico, cronologia, documento diplomático estilizado, comparação de batalhas e painel de bibliografia.
-- **Pesquisa:** referências institucionais e acadêmicas junto dos assuntos, além da bibliografia final.
+## Nova proposta
 
-## Conteúdo
+O projeto deixou de ser uma apresentação de slides e foi reconstruído como um dossiê editorial de leitura contínua, inspirado na organização de um trabalho acadêmico. A pesquisa inclui resumo, palavras-chave, problema, objetivos, metodologia, capítulos temáticos, considerações finais e referências.
 
-1. Capa com turma e integrantes editáveis.
-2. Contexto geopolítico da região do Prata e rotas fluviais.
-3. Paraguai antes da guerra.
-4. Causas estruturais, crise regional e escalada militar.
-5. Cronologia de 1864 a 1870.
-6. Tratado da Tríplice Aliança e leitura de documentos diplomáticos.
-7. Riachuelo, Tuiuti e Curupaiti.
-8. Dezembrada, campanha final e Cerro Corá.
-9. Condições de vida, logística, fome, doenças e impactos sobre civis.
-10. Consequências para os quatro países e debate demográfico.
-11. Memória histórica, historiografia e fontes primárias.
-12. Síntese final e bibliografia.
+### Conteúdo
 
-O conteúdo evita tratar as causas como explicação única, distingue documentos de interpretações e ressalta que as estimativas de perdas demográficas paraguaias são debatidas na literatura acadêmica.
+1. Resumo e delimitação do tema.
+2. Introdução e problema de pesquisa.
+3. Objetivos e metodologia.
+4. Contexto geopolítico da Bacia do Prata.
+5. Causas estruturais e escalada de 1864–1865.
+6. Cronologia e campanhas militares.
+7. Fontes visuais com legenda e referência de acervo.
+8. Mobilização, desigualdade, condições de vida e custo humano.
+9. Consequências políticas, econômicas e demográficas.
+10. Debate historiográfico.
+11. Considerações finais e bibliografia.
 
-## Executar localmente
+## Recursos do site
 
-1. Abra o repositório e baixe os arquivos, ou clone com:
-   ```bash
-   git clone https://github.com/JLeoBRx/guerra-do-paraguai-apresentacao.git
-   cd guerra-do-paraguai-apresentacao
-   ```
-2. Abra `index.html` no navegador. Para usar um servidor estático local, execute `python -m http.server 8000` e acesse `http://localhost:8000`.
+- Navegação lateral por capítulos com indicação da seção atual.
+- Barra de progresso de leitura.
+- Sumário adaptado para a navegação no celular.
+- Visualizador de imagem ampliada.
+- Botão de impressão e opção do navegador de salvar como PDF.
+- Layout responsivo para computador, tablet e celular.
+- Estilos de impressão preparados para uma versão legível em papel A4.
 
-Não é necessário instalar dependências de Node, React ou outras ferramentas de build.
+## Imagens e mapas
 
-## Controles
+O site utiliza fontes históricas identificadas por legenda, com ligações aos registros originais:
 
-- **Setas esquerda/direita**, **Page Up/Page Down**: slide anterior/próximo.
-- **Espaço**: próximo slide.
-- **N**: abrir/fechar notas do apresentador.
-- **F**: entrar/sair do modo de apresentação.
-- **Home / End**: primeiro/último slide.
-- **Toque ou deslize** no celular para navegar.
-- **Imprimir / salvar em PDF**: botão no slide final.
+- **Mapa de campanha de 1871:** mapa da República do Paraguai com as marchas dos exércitos aliados entre 1866 e 1870, integrante de atlas histórico-militar associado a Emilio Carlos Jourdan e Eduardo Rensburg. Referência e dados de licença: Wikimedia Commons / David Rumsey Map Collection.
+- **Estudo para a Batalha do Riachuelo:** Victor Meirelles, c. 1868–1873. A legenda destaca que pintura histórica é representação artística, não registro fotográfico direto.
+- **Fortificações de Humaitá e Curupaiti:** gravura do acervo do Museu Histórico Nacional, associada à produção de Angelo Agostini.
+- **Artilharia brasileira, 1866:** fotografia atribuída a Bate & Cia, reproduzida em Ricardo Salles (2003).
+- **Exército brasileiro em revista, c. 1869:** fotografia de autoria desconhecida, identificada como revista do Conde d’Eu.
 
-Os nomes e a turma na capa são editáveis no navegador. As alterações são guardadas localmente no dispositivo, não enviadas para um servidor. O botão “Limpar dados da capa” restaura os nomes e a turma padrão.
+As imagens são carregadas de seus acervos de origem; por isso, dependem de conexão à internet. As legendas indicam registros em que autoria, data, licença e contexto podem ser conferidos. Antes de qualquer reutilização externa, confirmar as condições específicas do item original.
 
-Fontes tipográficas e imagens externas requerem internet. Se uma imagem falhar, o layout mantém um espaço de fallback.
+## Pesquisa e cuidado historiográfico
 
-## Estrutura de arquivos
+O texto combina bibliografia acadêmica, materiais de instituições públicas e acervos documentais. A pesquisa evita tratar a guerra como resultado de uma única causa, apresenta a crise do Prata como contexto central e sinaliza que as estimativas demográficas paraguaias são debatidas. As fontes não resolvem todas as divergências; os pontos em discussão são identificados como tais.
 
-- `index.html` — conteúdo e estrutura dos slides.
-- `styles.css` — identidade visual, responsividade, animações e impressão.
-- `script.js` — navegação, notas, tela cheia, atalhos e campos editáveis.
-- `assets/favicon.svg` — ícone do site.
-- `.github/workflows/deploy.yml` — tentativa de publicação automática via GitHub Pages.
+Referências principais: Atlas Histórico do Brasil/FGV; estudo de Raquel de Caria Patrício (2024); artigos de historiografia publicados pela UFRJ; documentação do Senado Federal; Marinha do Brasil; Museu Histórico Nacional; estudo demográfico de Whigham e Potthast; pesquisa de Maria Teresa Garritano Dourado; TCC de Andrew Cesar de Goes (UNILA).
 
-## Fontes e pesquisa histórica
+## Como executar localmente
 
-### Acervos, fontes primárias e história militar
+Não há dependências de build. Abra o arquivo principal no navegador ou use um servidor estático:
 
-- **Exército Brasileiro — Efemérides brasileiras: síntese das questões platinas**, mapa explicativo de operações militares e territórios durante a guerra: https://eblog.eb.mil.br/ja/w/efem%C3%A9rides-brasileiras-s%C3%ADntese-das-quest%C3%B5es-platinas
-- **Atlas Histórico do Brasil — Fundação Getulio Vargas**, mapas e grandes batalhas: https://atlas.fgv.br/marcos/guerra-do-paraguai/mapas/guerra-do-paraguai-grandes-batalhas
-- **Marinha do Brasil — Batalha Naval do Riachuelo**, sobre o confronto de 11 de junho de 1865 e seus efeitos na navegação e logística: https://www.agencia.marinha.mil.br/educacao-e-cultura/batalha-naval-do-riachuelo-data-magna-da-marinha
-- **Biblioteca Nacional Digital — Planta do acampamento e da Batalha de Tuyuty (24 de maio de 1866)**, atribuída a André Rebouças e Bernardino de Sena Madureiro: https://bdlb.bn.gov.br/acervo/handle/20.500.12156.3/44811?locale-attribute=en
-- **Senado Federal — Atas do Conselho de Estado Pleno, 1867–1868**, fonte primária para acompanhar discussões políticas e diplomáticas sobre o tratado e seus desdobramentos: https://www.senado.leg.br/publicacoes/anais/pdf/ACE/ATAS7-Terceiro_Conselho_de_Estado_1867-1868.pdf
-- **Museu Histórico Nacional — acervo sobre a Guerra do Paraguai**: https://atom-museuhistorico.museus.gov.br/index.php/guerra-do-paraguai
+1. Clone ou baixe o repositório.
+2. Abra o terminal na pasta do projeto.
+3. Execute o comando abaixo:
 
-### Historiografia, demografia e história social
+    python -m http.server 8000
 
-- **PPGHIS/UFRJ — Guerra do Paraguai: identidades, lealdades e conflitos**, contextualização da formação dos Estados nacionais na região do Prata: https://ppghis.historia.ufrj.br/disciplina/guerra-do-paraguai-identidades-lealdades-e-conflitos/
-- **Pereira, Bruno César — “As ‘Guerras do Paraguai’: uma breve revisão das análises da Grande Guerra...”**, Ars Historica/UFRJ, revisão de correntes historiográficas: https://revistas.ufrj.br/index.php/ars/article/view/46625
-- **Whigham, Thomas L.; Potthast, Barbara — “The Paraguayan Rosetta Stone: New Insights into the Demographics of the Paraguayan War, 1864–1870”**, Latin American Research Review, publicado online em 2022. Reavalia materiais censitários, incluindo um censo de 1870: https://www.cambridge.org/core/journals/latin-american-research-review/article/paraguayan-rosetta-stone-new-insights-into-the-demographics-of-the-paraguayan-war-18641870/96CAE01376E54D5376172E9398F4951B
-- **Dourado, Maria Teresa Garritano — “A história esquecida da Guerra do Paraguai: fome, doenças e penalidades”**, pesquisa universitária baseada em documentos sobre condições de vida, doença e disciplina militar: https://teses.usp.br/teses/disponiveis/8/8138/tde-08122010-135132/pt-br.php
-- **Dourado, Maria Teresa Garritano — “Cotidiano e sobrevivência: soldados e marinheiros na Guerra do Paraguai”**, Historiæ/FURG: https://periodicos.furg.br/hist/article/view/4809
+4. Acesse http://localhost:8000.
+
+## Estrutura
+
+- index.html — capa, conteúdo acadêmico, figuras, citações e referências.
+- styles.css — sistema visual, responsividade e impressão.
+- script.js — sumário, progresso, visualizador de imagens e controles.
+- assets/favicon.svg — ícone do projeto.
+- .github/workflows/deploy.yml — workflow de publicação no GitHub Pages.
+
+## Exportação para PDF
+
+Clique em **Exportar PDF** no cabeçalho e escolha “Salvar como PDF” na caixa de impressão do navegador. As configurações de impressão removem elementos de navegação e adaptam o artigo para papel A4. Recomenda-se revisar as quebras de página antes da entrega escolar.
 
 ## GitHub Pages
 
-O workflow `.github/workflows/deploy.yml` tenta publicar automaticamente a cada push na branch `main`. É necessário habilitar o Pages nas configurações do repositório:
+Para publicar no GitHub Pages, em **Settings → Pages**, defina a fonte de publicação como **GitHub Actions** e confirme que o workflow concluiu com sucesso. O endereço esperado para este repositório é https://jleobrx.github.io/guerra-do-paraguai-apresentacao/, mas só deve ser considerado ativo depois de uma implantação bem-sucedida.
 
-1. Acesse **Settings → Pages**.
-2. Em **Build and deployment → Source**, selecione **GitHub Actions**.
-3. Abra **Actions** para acompanhar a execução do workflow.
+## Nota sobre formalização acadêmica
 
-Se o GitHub Pages não estiver habilitado, a ação poderá falhar até que essa configuração seja feita. O endereço só deve ser considerado publicado após uma execução bem-sucedida.
-
-## Créditos e cuidado com fontes
-
-As imagens são representações históricas e devem ser consultadas junto dos metadados dos acervos. Uma gravura de época pode conter legendas ou datas divergentes de referências institucionais; o site procura explicitar essa diferença quando relevante. Confirme sempre autoria, título, data, contexto e condições de uso antes de reutilizar imagens.
+Este é um dossiê escolar digital em formato de pesquisa. Como o nome oficial da instituição, município, professor/orientador e requisitos locais de formatação não foram informados, esses elementos não foram inventados. Antes de entregar como TCC formal, ajustar a capa e as referências às orientações da instituição e do professor.
