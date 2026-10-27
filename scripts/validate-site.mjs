@@ -14,6 +14,7 @@ const read = (path) => {
 
 const html = read("index.html");
 const css = read("styles.css");
+const presCss = read("presentation.css");
 const js = read("script.js");
 const requiredNames = [
   "Pedro Henrique", "Clara Maria", "Anthony Claudio",
@@ -96,13 +97,14 @@ check(js.includes("browserWindowIsFullscreen") && js.includes("requestFullscreen
   "Lógica de tela cheia e navegação por teclado está presente.",
   "Falta a lógica de tela cheia ou um controle de navegação por teclado.");
 
-check(css.includes(".pres-title-slide") && css.includes(".pres-map-layout") &&
-  css.includes("@media print") && css.includes("prefers-reduced-motion"),
-  "Estilos de apresentação, impressão e redução de movimento estão presentes.",
-  "Estão ausentes estilos importantes de apresentação, impressão ou acessibilidade.");
+check(presCss.includes(".pres-title-slide") && presCss.includes(".pres-map-layout") &&
+  presCss.includes("@media print") && presCss.includes("prefers-reduced-motion"),
+  "A folha de apresentação, impressão e redução de movimento está presente.",
+  "Estão ausentes estilos de apresentação, impressão ou acessibilidade.");
 
-check((css.match(/{/g) || []).length === (css.match(/}/g) || []).length,
-  "As chaves CSS estão balanceadas.", "As chaves CSS parecem estar desbalanceadas.");
+check((css.match(/{/g) || []).length === (css.match(/}/g) || []).length &&
+  (presCss.match(/{/g) || []).length === (presCss.match(/}/g) || []).length,
+  "As chaves das duas folhas CSS estão balanceadas.", "As chaves de uma das folhas CSS parecem estar desbalanceadas.");
 
 try {
   execFileSync(process.execPath, ["--check", "script.js"], { stdio: "pipe" });
