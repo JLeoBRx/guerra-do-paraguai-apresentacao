@@ -32,8 +32,8 @@ O projeto deixou de ser uma apresentação de slides e foi reconstruído como um
 ## Recursos do site
 
 - **Modo de leitura:** navegação lateral por capítulos, resumo acadêmico completo, figuras, referências e links para os acervos.
-- **Modo apresentação:** ao ativar a tela cheia do navegador com `F11`, o site detecta a tela cheia e muda para uma apresentação resumida de 10 slides. Ao sair da tela cheia do navegador, retorna ao site de leitura.
-- Botão **Apresentar** como alternativa: abre a apresentação em tela cheia quando o navegador permite; o botão **Voltar ao site** retorna ao artigo.
+- **Modo apresentação:** apresentação resumida de 10 slides, com direção de arte editorial/cinematográfica, imagens históricas em destaque, composição widescreen, cronologia, mapa e controles de navegação. A tela cheia do navegador via `F11` ativa esse modo por detecção da área visível; ao sair da tela cheia, o site retorna ao modo de leitura. Como F11 é um atalho reservado ao navegador, o evento é detectado pela mudança de viewport, sem bloquear o atalho nativo.
+- Botão **Apresentar** como alternativa: solicita a tela cheia pelo navegador quando permitido; o botão **Voltar ao site** retorna ao artigo.
 - Navegação dos slides por setas esquerda/direita, Page Up/Page Down, Espaço e botões na tela.
 - Escape fecha a apresentação e retorna ao site.
 - Navegação lateral por capítulos com indicação da seção atual.
