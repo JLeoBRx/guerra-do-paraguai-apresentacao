@@ -25,7 +25,7 @@
   let requestedFullscreenForPresentation = false;
   let suppressBrowserFullscreenPresentation = false;
   let scrollQueued = false;
-  const baseTitle = 'Guerra do Paraguai — Dossiê de pesquisa';
+  const baseTitle = 'A Guerra do Paraguai — Museu Digital Interativo';
 
   function updateScrollUI() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -43,6 +43,41 @@
   }, { passive: true });
   window.addEventListener('resize', () => {
     updateScrollUI();
+
+  // Editorial reveal motion for the long-form research page.
+  function initRevealMotion() {
+    const selector = [
+      '.chapter > .chapter-tag', '.chapter > h2', '.chapter > .abstract',
+      '.chapter > .question-box', '.chapter > .two-column-copy', '.chapter > .method-strip',
+      '.chapter > .figure', '.chapter > .figure-note', '.country-grid article',
+      '.cause-list article', '.interpretation-note', '.timeline-row', '.battle-feature',
+      '.image-grid .figure', '.caution-box', '.impact-row', '.historiography-grid article',
+      '.source-method', '.final-thesis', '.references-list li', '.references-note'
+    ].join(',');
+    const targets = Array.from(document.querySelectorAll(selector));
+    if (!targets.length) return;
+    targets.forEach((element, index) => {
+      element.classList.add('site-reveal');
+      element.style.setProperty('--reveal-order', String(index % 5));
+    });
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!('IntersectionObserver' in window) || reduceMotion) {
+      targets.forEach(element => element.classList.add('is-revealed'));
+      return;
+    }
+    document.documentElement.classList.add('motion-ready');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
+    targets.forEach(element => observer.observe(element));
+  }
+  initRevealMotion();
+
     syncFullscreenMode();
   });
   updateScrollUI();

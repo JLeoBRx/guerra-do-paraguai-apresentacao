@@ -100,3 +100,11 @@ Para publicar no GitHub Pages, em **Settings → Pages**, defina a fonte de publ
 ## Nota sobre formalização acadêmica
 
 Este é um dossiê escolar digital em formato de pesquisa. Como o nome oficial da instituição, município, professor/orientador e requisitos locais de formatação não foram informados, esses elementos não foram inventados. Antes de entregar como TCC formal, ajustar a capa e as referências às orientações da instituição e do professor.
+
+## Direção visual nova — Museu Digital
+
+A versão atual usa uma identidade editorial diferente para o site e a apresentação: ameixa profundo, violeta, rosa elétrico e verde-limão. A folha `experience.css` faz a camada de arte sobre o dossiê e os dez slides sem substituir o conteúdo histórico nem as referências.
+
+O modo de leitura inclui animações de entrada ao rolar a página, e a apresentação possui transições direcionais, cartões animados e layouts específicos para contexto regional, causas, cronologia, campanhas, custo humano, consequências e historiografia. As animações respeitam a configuração `prefers-reduced-motion`; o layout segue responsivo em telas menores.
+
+A validação executada em cada push verifica também a existência da nova folha visual e da lógica de animação. A hospedagem continua independente da validação do código: o workflow de GitHub Actions não deve relatar uma publicação como concluída quando o serviço GitHub Pages ainda não está habilitado.
