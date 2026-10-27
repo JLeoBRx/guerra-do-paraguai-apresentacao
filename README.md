@@ -79,12 +79,17 @@ Não há dependências de build. Abra o arquivo principal no navegador ou use um
 - index.html — capa, conteúdo acadêmico, figuras, citações e referências.
 - styles.css — sistema visual, responsividade e impressão.
 - script.js — sumário, progresso, visualizador de imagens e controles.
+- scripts/validate-site.mjs — validação estática automatizada de seções, slides, links internos, referências, imagens, nomes do grupo e sintaxe JavaScript.
 - assets/favicon.svg — ícone do projeto.
 - .github/workflows/deploy.yml — workflow de publicação no GitHub Pages.
 
 ## Exportação para PDF
 
 Clique em **Exportar PDF** no cabeçalho e escolha “Salvar como PDF” na caixa de impressão do navegador. As configurações de impressão removem elementos de navegação e adaptam o artigo para papel A4. Recomenda-se revisar as quebras de página antes da entrega escolar.
+
+## Validação automática
+
+A cada push, o workflow executa `node scripts/validate-site.mjs` antes de tentar publicar. O script confere as seções acadêmicas, integrantes, IDs duplicados, links internos, citações e referências, textos alternativos de imagens, dez slides na ordem prevista, controles de apresentação e sintaxe JavaScript. Essa validação é estática: não substitui um teste visual em navegador real.
 
 ## GitHub Pages
 
