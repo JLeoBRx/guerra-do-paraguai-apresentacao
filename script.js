@@ -58,9 +58,12 @@
   backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   function renderPresSlide(index) {
+    const previousIndex = presIndex;
     presIndex = Math.max(0, Math.min(presSlides.length - 1, index));
+    const direction = presIndex >= previousIndex ? 'next' : 'prev';
     presSlides.forEach((slide, i) => {
       slide.hidden = i !== presIndex;
+      if (i === presIndex) slide.dataset.direction = direction;
       slide.setAttribute('tabindex', '-1');
       slide.setAttribute('aria-label', 'Slide ' + (i + 1) + ' de ' + presSlides.length + ': ' + (slide.dataset.presTitle || 'Apresentação'));
     });
