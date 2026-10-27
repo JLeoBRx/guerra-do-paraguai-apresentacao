@@ -60,6 +60,7 @@
     presIndex = Math.max(0, Math.min(presSlides.length - 1, index));
     presSlides.forEach((slide, i) => {
       slide.hidden = i !== presIndex;
+      slide.setAttribute('tabindex', '-1');
       slide.setAttribute('aria-label', 'Slide ' + (i + 1) + ' de ' + presSlides.length + ': ' + (slide.dataset.presTitle || 'Apresentação'));
     });
     presCounter.textContent = String(presIndex + 1).padStart(2, '0') + ' / ' + String(presSlides.length).padStart(2, '0');
