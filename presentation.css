@@ -402,3 +402,10 @@ body.is-presenting .site-header,body.is-presenting .cover,body.is-presenting .co
 @media print{
   .presentation,.present-button{display:none!important}
 }
+/* Legibility on dark documentary slides */
+#presStage>.pres-slide:nth-child(4) .pres-footnote,
+#presStage>.pres-slide:nth-child(6) .pres-footnote,
+#presStage>.pres-slide:nth-child(7) .pres-footnote{border-color:rgba(220,231,255,.2);color:#c1cae8}
+#presStage>.pres-slide:nth-child(4) .pres-slide-heading h2 em,
+#presStage>.pres-slide:nth-child(6) .pres-slide-heading h2 em,
+#presStage>.pres-slide:nth-child(7) .pres-slide-heading h2 em{color:var(--pres-turquoise)}
