@@ -48,7 +48,7 @@ check(duplicateIds.length === 0, "Não há IDs HTML duplicados.",
 
 const ids = new Set(idMatches);
 const internalLinks = [...html.matchAll(/\bhref="#([^"]+)"/g)].map((match) => match[1]);
-const brokenLinks = [...new Set(internalLinks.filter((id) => !ids.has(id))];
+const brokenLinks = [...new Set(internalLinks.filter((id) => !ids.has(id)))];
 check(brokenLinks.length === 0, "Todos os links internos têm destino.",
   "Links internos sem destino: " + brokenLinks.join(", ") + ".");
 
