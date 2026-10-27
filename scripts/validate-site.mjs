@@ -6,7 +6,7 @@ const fail = [];
 const pass = [];
 const read = (path) => {
   if (!fs.existsSync(path)) {
-    fail.push(\`Arquivo obrigatório ausente: \${path}\`);
+    fail.push("Arquivo obrigatório ausente: " + path);
     return "";
   }
   return fs.readFileSync(path, "utf8");
@@ -25,41 +25,43 @@ function check(condition, ok, error) {
   else fail.push(error);
 }
 
-check(html.includes('<html lang="pt-BR">'), "HTML declara português brasileiro.", "O HTML precisa declarar lang=\"pt-BR\".");
-check(html.includes('id="resumo"') && html.includes('id="introducao"') &&
+check(html.includes('<html lang="pt-BR">'), "HTML declara português brasileiro.", 'O HTML precisa declarar lang="pt-BR".');
+check(
+  html.includes('id="resumo"') && html.includes('id="introducao"') &&
   html.includes('id="metodologia"') && html.includes('id="contexto"') &&
   html.includes('id="causas"') && html.includes('id="campanhas"') &&
   html.includes('id="sociedade"') && html.includes('id="consequencias"') &&
   html.includes('id="historiografia"') && html.includes('id="conclusao"') &&
   html.includes('id="referencias"'),
   "Todas as seções acadêmicas principais estão presentes.",
-  "Falta uma ou mais seções acadêmicas obrigatórias.");
+  "Falta uma ou mais seções acadêmicas obrigatórias."
+);
 
 for (const name of requiredNames) {
-  check(html.includes(name), \`Integrante presente: \${name}.\`, \`Integrante ausente: \${name}.\`);
+  check(html.includes(name), "Integrante presente: " + name + ".", "Integrante ausente: " + name + ".");
 }
 
 const idMatches = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 const duplicateIds = idMatches.filter((id, index) => idMatches.indexOf(id) !== index);
 check(duplicateIds.length === 0, "Não há IDs HTML duplicados.",
-  \`IDs duplicados: \${[...new Set(duplicateIds)].join(", ")}.\`);
+  "IDs duplicados: " + [...new Set(duplicateIds)].join(", ") + ".");
 
 const ids = new Set(idMatches);
 const internalLinks = [...html.matchAll(/\bhref="#([^"]+)"/g)].map((match) => match[1]);
-const brokenLinks = [...new Set(internalLinks.filter((id) => !ids.has(id)))];
+const brokenLinks = [...new Set(internalLinks.filter((id) => !ids.has(id))];
 check(brokenLinks.length === 0, "Todos os links internos têm destino.",
-  \`Links internos sem destino: \${brokenLinks.join(", ")}.\`);
+  "Links internos sem destino: " + brokenLinks.join(", ") + ".");
 
 const citationTargets = [...html.matchAll(/\bhref="#ref(\d+)"/g)].map((match) => Number(match[1]));
 const availableReferences = new Set([...html.matchAll(/<li\b[^>]*\bid="ref(\d+)"/g)].map((match) => Number(match[1])));
 const missingReferences = [...new Set(citationTargets.filter((number) => !availableReferences.has(number)))];
 check(missingReferences.length === 0, "As citações numéricas possuem referência correspondente.",
-  \`Citações sem referência: \${missingReferences.map((n) => \`[\${n}]\`).join(", ")}.\`);
+  "Citações sem referência: " + missingReferences.map((n) => "[" + n + "]").join(", ") + ".");
 
 const slides = [...html.matchAll(/<section class="(pres-slide[^"]*)" data-pres-title="([^"]+)"([^>]*)>/g)]
   .map((match) => ({ className: match[1], title: match[2], attrs: match[3] }));
-check(slides.length === 10, \`A apresentação contém 10 slides (\${slides.length}).\`,
-  \`A apresentação deveria ter 10 slides; encontrados: \${slides.length}.\`);
+check(slides.length === 10, "A apresentação contém 10 slides (" + slides.length + ").",
+  "A apresentação deveria ter 10 slides; encontrados: " + slides.length + ".");
 if (slides.length) {
   check(!/\bhidden\b/.test(slides[0].attrs) && slides.slice(1).every((slide) => /\bhidden\b/.test(slide.attrs)),
     "Somente o primeiro slide está visível por padrão.",
@@ -82,7 +84,7 @@ const imagesMissingAlt = images.filter((attrs) => {
   return src.trim() !== "" && alt.trim() === "";
 });
 check(imagesMissingAlt.length === 0, "Todas as imagens com fonte têm texto alternativo.",
-  \`Imagens sem texto alternativo: \${imagesMissingAlt.length}.\`);
+  "Imagens sem texto alternativo: " + imagesMissingAlt.length + ".");
 
 check(html.includes('id="presentButton"') && html.includes('id="presentationExit"') &&
   html.includes('id="presPrev"') && html.includes('id="presNext"') && html.includes('id="presDots"'),
@@ -112,5 +114,5 @@ try {
 console.log("VALIDAÇÃO DO SITE — GUERRA DO PARAGUAI");
 for (const message of pass) console.log("PASS  " + message);
 for (const message of fail) console.error("FAIL  " + message);
-console.log(\`\nResultado: \${pass.length} verificações aprovadas; \${fail.length} falhas.\`);
+console.log("\nResultado: " + pass.length + " verificações aprovadas; " + fail.length + " falhas.");
 if (fail.length) process.exit(1);
