@@ -23,6 +23,7 @@
   let presentationActive = false;
   let startedByBrowserFullscreen = false;
   let requestedFullscreenForPresentation = false;
+  let suppressBrowserFullscreenPresentation = false;
   let scrollQueued = false;
   const baseTitle = 'Guerra do Paraguai — Dossiê de pesquisa';
 
@@ -92,7 +93,10 @@
   function setPresentation(active, source) {
     presentationActive = active;
     if (active) {
-      if (source === 'browser') startedByBrowserFullscreen = true;
+      if (source === 'browser') {
+        startedByBrowserFullscreen = true;
+        suppressBrowserFullscreenPresentation = false;
+      }
       if (source === 'button') startedByBrowserFullscreen = false;
       presentation.hidden = false;
       document.body.classList.add('is-presenting');
@@ -104,6 +108,8 @@
       presentationButton.querySelector('span:last-child').textContent = 'Em apresentação';
       document.title = (presSlides[presIndex].dataset.presTitle || 'Apresentação') + ' — Guerra do Paraguai';
     } else {
+      if (source === 'hide-in-browser-fullscreen') suppressBrowserFullscreenPresentation = true;
+      if (source === 'browser-exit') suppressBrowserFullscreenPresentation = false;
       presentation.hidden = true;
       document.body.classList.remove('is-presenting');
       presentationButton.setAttribute('aria-pressed', 'false');
@@ -128,9 +134,18 @@
   }
 
   function syncFullscreenMode() {
-    const full = Boolean(document.fullscreenElement) || browserWindowIsFullscreen();
-    if (full && !presentationActive) {
+    const documentFullscreen = Boolean(document.fullscreenElement);
+    const browserFullscreen = !documentFullscreen && browserWindowIsFullscreen();
+    const full = documentFullscreen || browserFullscreen;
+    if (full && !presentationActive && !suppressBrowserFullscreenPresentation) {
       setPresentation(true, 'browser');
+    } else if (full && presentationActive && browserFullscreen && !requestedFullscreenForPresentation) {
+      // If F11 is pressed after the fallback button failed to requestFullscreen,
+      // still remember that this presentation now follows browser-level fullscreen.
+      startedByBrowserFullscreen = true;
+    } else if (!full && suppressBrowserFullscreenPresentation) {
+      // The user explicitly returned to the article while browser F11 was active.
+      suppressBrowserFullscreenPresentation = false;
     } else if (!full && presentationActive && startedByBrowserFullscreen && !requestedFullscreenForPresentation) {
       setPresentation(false, 'browser-exit');
     }
@@ -138,8 +153,10 @@
 
   function exitPresentation() {
     const shouldExitDocumentFullscreen = Boolean(document.fullscreenElement);
+    const shouldStayInBrowserFullscreen = !shouldExitDocumentFullscreen &&
+      startedByBrowserFullscreen && browserWindowIsFullscreen();
     requestedFullscreenForPresentation = false;
-    setPresentation(false, 'exit');
+    setPresentation(false, shouldStayInBrowserFullscreen ? 'hide-in-browser-fullscreen' : 'exit');
     if (shouldExitDocumentFullscreen && document.exitFullscreen) {
       document.exitFullscreen().catch(() => {});
     }
