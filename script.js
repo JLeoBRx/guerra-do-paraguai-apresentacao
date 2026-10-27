@@ -64,6 +64,9 @@
     });
     presCounter.textContent = String(presIndex + 1).padStart(2, '0') + ' / ' + String(presSlides.length).padStart(2, '0');
     presProgressFill.style.width = ((presIndex + 1) / presSlides.length * 100) + '%';
+    if (presentationActive) {
+      document.title = (presSlides[presIndex].dataset.presTitle || 'Apresentação') + ' — Guerra do Paraguai';
+    }
     presPrev.disabled = presIndex === 0;
     presNext.disabled = presIndex === presSlides.length - 1;
     presNext.innerHTML = presIndex === presSlides.length - 1 ? 'Fim <span aria-hidden="true">✓</span>' : 'Próximo <span aria-hidden="true">→</span>';
@@ -167,10 +170,9 @@
     const tag = (document.activeElement && document.activeElement.tagName || '').toLowerCase();
     const inFormControl = tag === 'input' || tag === 'textarea' || document.activeElement?.isContentEditable;
     if (event.key === 'F11' && !event.repeat) {
-      // Do not preventDefault: the browser still handles its native F11 shortcut.
-      // This branch helps browsers that dispatch the key event to the page.
-      if (!presentationActive) setPresentation(true, 'browser');
-      else if (startedByBrowserFullscreen) setPresentation(false, 'browser-exit');
+      // Never toggle early: F11 belongs to the browser. Re-check after its viewport changes.
+      window.setTimeout(syncFullscreenMode, 180);
+      window.setTimeout(syncFullscreenMode, 520);
       return;
     }
     if (presentationActive) {
@@ -191,7 +193,12 @@
     if (event.key === 'Escape') setMenu(false);
   });
 
-  // A native browser F11 fullscreen changes the viewport; observe it where supported.
+  // Browser F11 can be intercepted before the page sees it; use viewport changes and
+  // deferred checks instead of cancelling or prematurely toggling the browser shortcut.
+  window.addEventListener('focus', () => window.setTimeout(syncFullscreenMode, 120));
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) window.setTimeout(syncFullscreenMode, 120);
+  });
   syncFullscreenMode();
 
   if ('IntersectionObserver' in window) {
