@@ -281,3 +281,7 @@ body.is-presenting .site-header,body.is-presenting .cover,body.is-presenting .co
 }
 @media(prefers-reduced-motion:reduce){.pres-slide{animation:none!important}}
 @media print{.presentation{display:none!important}}
+
+.pres-title-visual figcaption .pres-image-note{display:block;margin:.35rem 0;color:rgba(241,237,227,.66);font:400 .57rem/1.5 var(--sans);letter-spacing:0}
+.pres-title-visual figcaption>a:last-child{display:inline-block;margin-top:.25rem}
+@media(max-width:650px){.pres-title-visual figcaption .pres-image-note{font-size:.5rem;line-height:1.45}}
