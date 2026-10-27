@@ -429,3 +429,7 @@ body.is-presenting .site-header,body.is-presenting .cover,body.is-presenting .co
   .pres-title-slide:after{right:1rem;bottom:.6rem}
   .pres-title-slide .pres-big-number{display:none}
 }
+
+.pres-title-visual figcaption a{color:#d7c39b;text-decoration:none;border-bottom:1px solid rgba(215,195,155,.4)}
+.pres-title-visual figcaption a:hover{color:#fff;border-bottom-color:#fff}
+.pres-title-visual figcaption a:focus-visible{outline-color:#d7c39b}
