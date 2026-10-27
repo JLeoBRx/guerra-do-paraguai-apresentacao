@@ -99,6 +99,7 @@ check(js.includes("browserWindowIsFullscreen") && js.includes("ArrowRight") && j
   "Falta a lógica F11 ou há uma solicitação de tela cheia que pode conflitar com o F11 do navegador.");
 check(js.indexOf("function initRevealMotion()") < js.indexOf("function setMenu") &&
   js.includes("initRevealMotion();") &&
+  js.includes("fullscreenResyncQueued") && js.includes("window.setTimeout(() => {") &&
   js.includes("window.addEventListener('resize', () => {\n    updateScrollUI();\n    syncFullscreenMode();"),
   "A animação de leitura inicializa no carregamento e o redimensionamento só sincroniza F11.",
   "A animação de leitura parece aninhada no evento resize ou a sincronização F11 está incompleta.");

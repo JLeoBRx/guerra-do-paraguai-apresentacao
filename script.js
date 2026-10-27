@@ -25,6 +25,7 @@
   let requestedFullscreenForPresentation = false;
   let suppressBrowserFullscreenPresentation = false;
   let scrollQueued = false;
+  let fullscreenResyncQueued = false;
   const baseTitle = 'A Guerra do Paraguai — Museu Digital Interativo';
 
   function updateScrollUI() {
@@ -44,6 +45,15 @@
   window.addEventListener('resize', () => {
     updateScrollUI();
     syncFullscreenMode();
+    // F11 changes the browser chrome and viewport on separate frames in some
+    // browsers. Re-check once after the resize settles without cancelling F11.
+    if (!fullscreenResyncQueued) {
+      fullscreenResyncQueued = true;
+      window.setTimeout(() => {
+        fullscreenResyncQueued = false;
+        syncFullscreenMode();
+      }, 180);
+    }
   }, { passive: true });
   updateScrollUI();
 
