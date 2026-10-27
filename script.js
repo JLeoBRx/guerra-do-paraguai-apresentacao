@@ -97,6 +97,8 @@
       document.body.classList.add('is-presenting');
       setMenu(false);
       renderPresSlide(presIndex);
+      // Put keyboard/screen-reader focus inside the active presentation layer.
+      try { presSlides[presIndex].focus({ preventScroll: true }); } catch (_) { presSlides[presIndex].focus(); }
       presentationButton.setAttribute('aria-pressed', 'true');
       presentationButton.querySelector('span:last-child').textContent = 'Em apresentação';
       document.title = (presSlides[presIndex].dataset.presTitle || 'Apresentação') + ' — Guerra do Paraguai';
@@ -110,6 +112,8 @@
       presSlides.forEach((slide, i) => { slide.hidden = i !== 0; });
       presIndex = 0;
       renderPresSlide(0);
+      // Return focus to the control that opened the presentation when possible.
+      try { presentationButton.focus({ preventScroll: true }); } catch (_) { presentationButton.focus(); }
     }
   }
 
@@ -179,7 +183,7 @@
       if (event.key === 'Escape') {
         event.preventDefault();
         exitPresentation();
-      } else if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
+      } else if (event.key === 'ArrowRight' || event.key === 'PageDown' || (event.key === ' ' && tag !== 'button' && tag !== 'a')) {
         if (!inFormControl) { event.preventDefault(); renderPresSlide(presIndex + 1); }
       } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
         if (!inFormControl) { event.preventDefault(); renderPresSlide(presIndex - 1); }
