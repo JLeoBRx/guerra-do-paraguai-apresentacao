@@ -77,7 +77,8 @@ Não há dependências de build. Abra o arquivo principal no navegador ou use um
 ## Estrutura
 
 - index.html — capa, conteúdo acadêmico, figuras, citações e referências.
-- styles.css — sistema visual, responsividade e impressão.
+- styles.css — identidade visual do site acadêmico, responsividade e impressão.
+- presentation.css — identidade visual, layouts responsivos e controles visuais do modo de apresentação.
 - script.js — sumário, progresso, visualizador de imagens e controles.
 - scripts/validate-site.mjs — validação estática automatizada de seções, slides, links internos, referências, imagens, nomes do grupo e sintaxe JavaScript.
 - assets/favicon.svg — ícone do projeto.
