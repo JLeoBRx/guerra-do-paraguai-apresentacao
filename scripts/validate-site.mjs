@@ -92,11 +92,16 @@ check(html.includes('id="presentButton"') && html.includes('id="presentationExit
   html.includes('id="presPrev"') && html.includes('id="presNext"') && html.includes('id="presDots"'),
   "Controles do modo apresentação estão presentes.",
   "Um ou mais controles de apresentação estão ausentes.");
-check(js.includes("browserWindowIsFullscreen") && js.includes("requestFullscreen") &&
-  js.includes("ArrowRight") && js.includes("ArrowLeft") && js.includes("PageDown") &&
-  js.includes("PageUp") && js.includes("presNext"),
-  "Lógica de tela cheia e navegação por teclado está presente.",
-  "Falta a lógica de tela cheia ou um controle de navegação por teclado.");
+check(js.includes("browserWindowIsFullscreen") && js.includes("ArrowRight") && js.includes("ArrowLeft") &&
+  js.includes("PageDown") && js.includes("PageUp") && js.includes("presNext") &&
+  !js.includes("document.documentElement.requestFullscreen"),
+  "F11 do navegador e navegação por teclado estão sincronizados sem conflito de tela cheia.",
+  "Falta a lógica F11 ou há uma solicitação de tela cheia que pode conflitar com o F11 do navegador.");
+check(js.indexOf("function initRevealMotion()") < js.indexOf("function setMenu") &&
+  js.includes("initRevealMotion();") &&
+  js.includes("window.addEventListener('resize', () => {\n    updateScrollUI();\n    syncFullscreenMode();"),
+  "A animação de leitura inicializa no carregamento e o redimensionamento só sincroniza F11.",
+  "A animação de leitura parece aninhada no evento resize ou a sincronização F11 está incompleta.");
 
 check(presCss.includes(".pres-title-slide") && presCss.includes(".pres-map-layout") &&
   presCss.includes("@media print") && presCss.includes("prefers-reduced-motion"),
@@ -107,6 +112,12 @@ check(html.includes('href="experience.css"') &&
   experienceCss.includes("@keyframes experienceSlideIn"),
   "A nova identidade visual está vinculada ao site e à apresentação.",
   "A folha do novo design ou suas animações não estão corretamente conectadas.");
+check(experienceCss.includes("calc((100dvh - 164px)*1.7777778)") &&
+  experienceCss.includes("calc((100dvh - 126px)*1.7777778)") &&
+  experienceCss.includes("max-height:calc(100dvh - 146px)") &&
+  experienceCss.includes("@media (min-width:651px) and (max-height:800px)"),
+  "O dimensionamento F11 tem margens de segurança para telas altas, laptops e dispositivos móveis.",
+  "Faltam regras de dimensionamento para a altura real da área de apresentação.");
 check(js.includes("initRevealMotion") && js.includes("IntersectionObserver") && js.includes("is-revealed"),
   "Animações de entrada do conteúdo principal estão implementadas.",
   "A lógica de animação progressiva do conteúdo está ausente.");

@@ -43,6 +43,9 @@
   }, { passive: true });
   window.addEventListener('resize', () => {
     updateScrollUI();
+    syncFullscreenMode();
+  }, { passive: true });
+  updateScrollUI();
 
   // Editorial reveal motion for the long-form research page.
   function initRevealMotion() {
@@ -77,10 +80,6 @@
     targets.forEach(element => observer.observe(element));
   }
   initRevealMotion();
-
-    syncFullscreenMode();
-  });
-  updateScrollUI();
 
   function setMenu(open) {
     sidebar.classList.toggle('open', open);
@@ -205,14 +204,11 @@
       exitPresentation();
       return;
     }
+    // Keep browser F11 in charge of browser fullscreen. The button only opens
+    // the slide layer, so F11 can reliably enter/leave the deck without a
+    // competing requestFullscreen() state.
+    requestedFullscreenForPresentation = false;
     setPresentation(true, 'button');
-    if (document.documentElement.requestFullscreen) {
-      requestedFullscreenForPresentation = true;
-      document.documentElement.requestFullscreen().catch(() => {
-        requestedFullscreenForPresentation = false;
-        // Keep the presentation usable even if the browser refuses fullscreen.
-      });
-    }
   });
   presentationExit.addEventListener('click', exitPresentation);
   presPrev.addEventListener('click', () => renderPresSlide(presIndex - 1));
