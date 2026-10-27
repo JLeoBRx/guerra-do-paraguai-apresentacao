@@ -285,3 +285,373 @@ body.is-presenting .site-header,body.is-presenting .cover,body.is-presenting .co
 .pres-title-visual figcaption .pres-image-note{display:block;margin:.35rem 0;color:rgba(241,237,227,.66);font:400 .57rem/1.5 var(--sans);letter-spacing:0}
 .pres-title-visual figcaption>a:last-child{display:inline-block;margin-top:.25rem}
 @media(max-width:650px){.pres-title-visual figcaption .pres-image-note{font-size:.5rem;line-height:1.45}}
+
+
+/* -------------------------------------------------------------------------
+   REDESIGN 2026 — new electric editorial system, new slide-body compositions
+   Palette: midnight blue, cobalt, turquoise, coral and soft mineral white.
+   ------------------------------------------------------------------------- */
+.presentation{
+  --pres-forest:#111a3a;
+  --pres-night:#080e25;
+  --pres-paper:#f3f6ff;
+  --pres-paper-hi:#ffffff;
+  --pres-ink:#142044;
+  --pres-muted:#5b6684;
+  --pres-rust:#ff6d5a;
+  --pres-gold:#35d5c6;
+  --pres-line:#d8e0f2;
+  background:#080e25;
+  background-image:radial-gradient(ellipse at 12% 12%,rgba(49,85,231,.28),transparent 35%),radial-gradient(ellipse at 90% 80%,rgba(53,213,198,.15),transparent 32%);
+  color:var(--pres-paper);
+}
+.present-button{background:#3155e7;border-color:#3155e7;color:#fff;box-shadow:0 7px 18px rgba(49,85,231,.18)}
+.present-button span:first-child{color:#35d5c6}
+.present-button:hover{background:#ff6d5a;border-color:#ff6d5a}
+.pres-topbar{background:linear-gradient(100deg,#0a102a,#131e45 72%,#102d50);border-color:rgba(190,211,255,.16)}
+.pres-brand-mark{border:1px solid rgba(53,213,198,.7);border-radius:10px;color:#35d5c6;font-family:var(--sans);font-weight:800}
+.pres-brand strong{letter-spacing:.08em}
+.pres-brand small{color:rgba(230,237,255,.58)}
+.pres-counter{color:#35d5c6}
+.pres-exit{border-radius:999px;border-color:rgba(230,237,255,.3);color:#eef2ff}
+.pres-exit span{color:#ff8978}
+.pres-exit:hover{border-color:#35d5c6;color:#35d5c6}
+.pres-progress{background:rgba(230,237,255,.12)}
+.pres-progress span{background:linear-gradient(90deg,#ff6d5a 0%,#ffb071 42%,#35d5c6 100%);box-shadow:0 0 15px rgba(53,213,198,.35)}
+.pres-stage{padding:clamp(.65rem,1.8vh,1.4rem) clamp(.7rem,2.6vw,2.7rem)}
+.pres-slide{
+  --pres-ink:#142044;
+  --pres-muted:#596581;
+  position:relative;
+  border:1px solid rgba(200,216,255,.58);
+  border-radius:24px;
+  background:#f3f6ff;
+  color:#142044;
+  box-shadow:0 28px 90px rgba(1,5,20,.42);
+  animation:presEnterNext .72s cubic-bezier(.2,.82,.2,1) both;
+  scrollbar-color:#a8b8e7 transparent;
+}
+.pres-slide[data-direction="prev"]{animation-name:presEnterPrev}
+.pres-slide:before{height:6px;background:linear-gradient(90deg,#ff6d5a 0 12%,#ffb071 12% 18%,#3155e7 18% 37%,#35d5c6 37% 47%,transparent 47%);opacity:.98}
+.pres-slide-heading{margin-bottom:clamp(.8rem,1.8vh,1.35rem)}
+.pres-slide-heading:after{width:72px;height:4px;border-radius:8px;background:linear-gradient(90deg,#ff6d5a,#3155e7,#35d5c6);margin-top:.7rem;animation:presLineGrow .7s .25s both}
+.pres-slide-heading>span{display:inline-flex;align-items:center;gap:.5rem;width:max-content;max-width:100%;padding:.42rem .65rem;border-radius:999px;background:#e3e9ff;color:#3155e7;font:800 .54rem var(--mono);letter-spacing:.12em;margin-bottom:.6rem}
+.pres-slide-heading h2{color:var(--pres-ink);font-weight:700;letter-spacing:-.06em;text-wrap:balance}
+.pres-slide-heading>p{color:var(--pres-muted);font-size:clamp(.88rem,1.18vw,1.13rem);line-height:1.65}
+.pres-footnote{margin:.65rem 0 0;padding:.65rem .85rem 0;border-top:1px solid var(--pres-line);color:#727d99;font-size:clamp(.58rem,.7vw,.69rem)}
+/* Cover: intentional, cinematic contrast and geometric motion. */
+.pres-title-slide{
+  --pres-ink:#f4f6ff;
+  --pres-muted:rgba(238,243,255,.7);
+  border-radius:28px;
+  border-color:rgba(110,143,255,.4);
+  background:radial-gradient(ellipse at 70% 20%,rgba(49,85,231,.34),transparent 42%),linear-gradient(130deg,#101633 0%,#172554 58%,#0c263b 100%);
+  color:#f3f6ff;
+}
+.pres-title-slide:before{height:7px;background:linear-gradient(90deg,#ff6d5a 0 15%,#ffb071 15% 21%,#3155e7 21% 42%,#35d5c6 42% 56%,rgba(53,213,198,.16) 56%)}
+.pres-title-slide:after{right:2.6rem;bottom:1.2rem;color:rgba(130,163,255,.5);font-size:.62rem}
+.pres-title-copy{padding-left:clamp(.3rem,1.3vw,1.2rem)}
+.pres-kicker{color:#35d5c6;letter-spacing:.14em}
+.pres-kicker>span{width:38px;height:3px;border-radius:8px;background:#ff6d5a}
+.pres-title-slide h1{color:#fff;font-weight:700;letter-spacing:-.085em;text-shadow:0 8px 36px rgba(0,0,0,.18)}
+.pres-title-slide h1 em{color:#35d5c6}
+.pres-deck{color:rgba(239,243,255,.78);line-height:1.62}
+.pres-title-rule{height:3px;border-radius:8px;background:linear-gradient(90deg,#ff6d5a,#3155e7,#35d5c6);max-width:350px}
+.pres-roster{color:rgba(239,243,255,.75)}
+.pres-class{border-radius:999px;background:#ff6d5a;color:#111a3a;padding:.55rem .8rem;font-size:.52rem;font-weight:800}
+.pres-title-visual{padding-left:clamp(.5rem,1.4vw,1.5rem)}
+.pres-title-visual:before{width:3px;left:0;top:6%;bottom:12%;background:linear-gradient(#35d5c6,#3155e7,#ff6d5a);border-radius:8px}
+.pres-title-visual img{height:clamp(300px,49vh,525px);padding:8px;border-radius:20px;border:1px solid rgba(156,181,255,.62);background:rgba(255,255,255,.06);filter:saturate(1.05) contrast(1.06);box-shadow:0 25px 55px rgba(0,0,0,.28);animation:presImageFloat 8s ease-in-out infinite}
+.pres-title-visual:after{bottom:3.2rem;left:2rem;border-radius:999px;background:#35d5c6;color:#0b1431;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.pres-title-visual figcaption{color:rgba(235,241,255,.6);padding-left:.45rem}
+.pres-title-visual figcaption a{color:#35d5c6;border-bottom-color:rgba(53,213,198,.5)}
+.pres-title-visual figcaption a:hover{color:#fff}
+.pres-image-note{display:block;max-width:480px;margin:.25rem 0;color:#ffb4a8;font:400 .48rem/1.55 var(--mono)}
+.pres-big-number{right:2rem;bottom:2rem;font-weight:700;color:rgba(89,122,255,.1)}
+/* Slide 02 — question-first layout, blue/coral thesis block, tangible cards. */
+#presStage>.pres-slide:nth-child(2){background:linear-gradient(145deg,#f5f7ff,#e8efff)}
+#presStage>.pres-slide:nth-child(2) .pres-question-panel{position:relative;isolation:isolate;overflow:hidden;margin-bottom:clamp(.85rem,1.5vh,1.35rem);padding:clamp(1.1rem,2.1vw,1.8rem);border:0;border-radius:18px;border-left:0;background:linear-gradient(115deg,#3155e7 0%,#3b52be 58%,#243a91 100%);box-shadow:0 18px 32px rgba(49,85,231,.2)}
+#presStage>.pres-slide:nth-child(2) .pres-question-panel:after{content:"?";position:absolute;z-index:-1;right:1.6rem;top:-2.9rem;font:800 clamp(9rem,19vw,17rem)/1 var(--sans);color:rgba(255,255,255,.08)}
+#presStage>.pres-slide:nth-child(2) .pres-question-panel span{color:#8ff4e9;font-weight:800}
+#presStage>.pres-slide:nth-child(2) .pres-question-panel p{font-family:var(--sans);font-weight:700;line-height:1.42;max-width:980px}
+.pres-three-points{gap:.85rem}
+.pres-three-points article{min-height:120px;border:1px solid #d7dff7;border-radius:16px;padding:1rem 1.05rem;background:rgba(255,255,255,.92);box-shadow:0 8px 20px rgba(21,39,95,.055);transition:transform .25s,box-shadow .25s}
+.pres-three-points article:before{width:100%;height:4px;border-radius:16px 16px 0 0;background:linear-gradient(90deg,#3155e7,#35d5c6)}
+.pres-three-points article:nth-child(2):before{background:linear-gradient(90deg,#ff6d5a,#ffb071)}
+.pres-three-points article:nth-child(3):before{background:linear-gradient(90deg,#35b7bd,#3155e7)}
+.pres-three-points article b{font-weight:800;color:#3155e7;font-size:.72rem}
+.pres-three-points strong{font-family:var(--sans);font-size:1.02rem;color:#142044}
+.pres-three-points span{color:#5c6885}
+.pres-three-points article:hover{transform:translateY(-5px);box-shadow:0 18px 30px rgba(21,39,95,.12)}
+#presStage>.pres-slide:nth-child(2) .pres-footnote{border-top:0;border-left:3px solid #35d5c6;padding:.1rem .8rem;color:#66718e}
+/* Slide 03 — geography becomes a map-led dashboard. */
+#presStage>.pres-slide:nth-child(3){background:linear-gradient(135deg,#e9fbf8,#f2f7ff)}
+#presStage>.pres-slide:nth-child(3) .pres-slide-heading>span{background:#d5f7f0;color:#087e80}
+.pres-map-layout{grid-template-columns:minmax(0,1.15fr) minmax(280px,.85fr);gap:clamp(1.2rem,2.6vw,2.6rem)}
+.pres-map{position:relative;padding:.6rem;border-radius:20px;background:#dce8fa;border:1px solid #bfd0ef;box-shadow:0 14px 25px rgba(35,61,115,.1)}
+.pres-map img{height:clamp(290px,43vh,455px);padding:.7rem;border:1px solid #ccd8eb;border-radius:14px;background:#f8f4e9}
+.pres-map figcaption{padding:.35rem .25rem .1rem;color:#546586}
+.pres-country-list{gap:.55rem}
+.pres-country-list article{padding:.72rem .75rem;border:1px solid rgba(177,196,226,.85);border-radius:14px;background:rgba(255,255,255,.84);box-shadow:0 5px 12px rgba(29,54,107,.04);transition:transform .24s,border-color .24s}
+.pres-country-list article:hover{transform:translateX(5px);border-color:#35bdb7}
+.pres-country-list article>span{width:39px;height:38px;border-radius:11px;background:#17234d;color:#35d5c6;font-weight:800}
+.pres-country-list article:nth-child(2)>span{background:#3155e7;color:#fff}
+.pres-country-list article:nth-child(3)>span{background:#ff6d5a;color:#fff}
+.pres-country-list article:nth-child(4)>span{background:#087e80;color:#fff}
+.pres-country-list strong{font-family:var(--sans);font-size:.9rem;color:#142044}
+.pres-country-list small{color:#596683}
+/* Slide 04 — a dark, punchy causal model instead of another pale slide. */
+#presStage>.pres-slide:nth-child(4){--pres-ink:#f5f7ff;--pres-muted:#c2cce8;background:radial-gradient(ellipse at 100% 5%,rgba(49,85,231,.42),transparent 38%),linear-gradient(135deg,#111735,#1c2e63 68%,#112c43);color:#f5f7ff;border-color:rgba(115,151,255,.35)}
+#presStage>.pres-slide:nth-child(4) .pres-slide-heading>span{background:rgba(53,213,198,.14);color:#60e6db}
+#presStage>.pres-slide:nth-child(4) .pres-slide-heading:after{background:linear-gradient(90deg,#ff6d5a,#35d5c6)}
+.pres-cause-grid{gap:.7rem;margin-top:.3rem}
+.pres-cause-grid article{position:relative;overflow:hidden;padding:clamp(.85rem,1.4vw,1.25rem);border:1px solid rgba(209,222,255,.8);border-radius:16px;background:linear-gradient(155deg,#fff 0%,#eaf0ff 100%);box-shadow:0 13px 25px rgba(0,0,0,.13);transition:transform .25s,box-shadow .25s}
+.pres-cause-grid article:nth-child(2){background:linear-gradient(155deg,#fff7f3,#ffe2d8);border-color:#ffd0c5}
+.pres-cause-grid article:nth-child(3){background:linear-gradient(155deg,#f0fffd,#d5f7f1);border-color:#bce9e3}
+.pres-cause-grid article:nth-child(4){background:linear-gradient(155deg,#f5f3ff,#e2e4ff);border-color:#d0d4ff}
+.pres-cause-grid article>span{display:grid;place-items:center;width:40px;height:40px;border-radius:13px;background:#3155e7;color:#fff;font:800 .9rem var(--mono)}
+.pres-cause-grid article:nth-child(2)>span{background:#ff6d5a}
+.pres-cause-grid article:nth-child(3)>span{background:#058c89}
+.pres-cause-grid article:nth-child(4)>span{background:#6d59d7}
+.pres-cause-grid h3{font-family:var(--sans);font-weight:800;letter-spacing:-.025em;color:#142044}
+.pres-cause-grid p{color:#52607e}
+.pres-cause-grid article:after{height:4px;border-radius:8px;background:linear-gradient(90deg,#3155e7,#35d5c6);margin-top:.8rem}
+.pres-cause-grid article:hover{transform:translateY(-6px) rotate(-.3deg);box-shadow:0 22px 35px rgba(0,0,0,.2)}
+.pres-warning{gap:.85rem;margin-top:.85rem;padding:.8rem 1rem;border:1px solid #ffb2a7;border-radius:13px;background:linear-gradient(100deg,#fff1ec,#ffdfd5)}
+.pres-warning>span{display:grid;place-items:center;width:31px;height:31px;flex:none;border-radius:9px;background:#ff6d5a;color:#fff}
+.pres-warning p{color:#4f5871}
+.pres-warning strong{color:#152147}
+/* Slide 05 — timeline as a sequence of connected story-cards. */
+#presStage>.pres-slide:nth-child(5){background:linear-gradient(140deg,#f7f5ff,#eef8ff)}
+#presStage>.pres-slide:nth-child(5) .pres-slide-heading>span{background:#e8e3ff;color:#6d50d7}
+.pres-timeline{gap:.55rem;margin-top:1.1rem;align-items:stretch}
+.pres-timeline:before{top:39px;left:4%;right:4%;height:3px;border-radius:9px;background:linear-gradient(90deg,#ff6d5a,#ffb071,#3155e7,#35d5c6,#6d59d7)}
+.pres-timeline article{padding:.9rem .75rem 1rem;border:1px solid #dbe2f4;border-radius:15px;background:rgba(255,255,255,.9);box-shadow:0 8px 20px rgba(27,48,98,.05);transition:transform .25s,box-shadow .25s}
+.pres-timeline time{display:inline-flex;padding:.32rem .45rem;border-radius:7px;background:#e6ebff;color:#3155e7;font-weight:800;font-size:clamp(.76rem,1.1vw,.96rem)}
+.pres-timeline article:after{width:13px;height:13px;margin:.65rem 0 .85rem;border:3px solid #3155e7;background:#fff;box-shadow:0 0 0 4px rgba(49,85,231,.1)}
+.pres-timeline article:nth-child(2):after{border-color:#ff6d5a}
+.pres-timeline article:nth-child(3):after{border-color:#058c89}
+.pres-timeline article:nth-child(4):after{border-color:#6d59d7}
+.pres-timeline article:nth-child(5):after{border-color:#16244d}
+.pres-timeline strong{font-family:var(--sans);font-weight:800;color:#142044}
+.pres-timeline p{color:#596683}
+.pres-timeline article:hover{transform:translateY(-5px);box-shadow:0 17px 28px rgba(27,48,98,.12)}
+#presStage>.pres-slide:nth-child(5) .pres-footnote{border-left:3px solid #6d59d7;border-top:0;padding:.1rem .8rem}
+/* Slide 06 — tactical image diptych in a blue-black frame. */
+#presStage>.pres-slide:nth-child(6){--pres-ink:#f6f7ff;--pres-muted:#c0cbed;background:radial-gradient(ellipse at 15% 100%,rgba(53,213,198,.15),transparent 38%),linear-gradient(135deg,#0a1230,#17224f 66%,#0d3447);border-color:rgba(91,132,239,.42);color:#f6f7ff}
+#presStage>.pres-slide:nth-child(6) .pres-slide-heading>span{background:rgba(255,109,90,.13);color:#ff9b8d}
+#presStage>.pres-slide:nth-child(6) .pres-slide-heading:after{background:linear-gradient(90deg,#35d5c6,#3155e7,#ff6d5a)}
+.pres-battle-grid{gap:1rem}
+.pres-battle-grid figure{overflow:hidden;border:1px solid rgba(211,224,255,.8);border-radius:18px;background:#f9fbff;box-shadow:0 15px 30px rgba(0,0,0,.2);transition:transform .25s,box-shadow .25s}
+.pres-battle-grid img{height:clamp(200px,29vh,290px);filter:saturate(.88) contrast(1.07);transition:transform .6s}
+.pres-battle-grid figure:hover{transform:translateY(-5px);box-shadow:0 24px 38px rgba(0,0,0,.28)}
+.pres-battle-grid figure:hover img{transform:scale(1.035)}
+.pres-battle-grid figcaption{padding:.85rem 1rem 1rem}
+.pres-battle-grid figcaption strong{color:#142044;font-family:var(--sans);font-weight:800;font-size:1.05rem}
+.pres-battle-grid figcaption span{color:#5a6683}
+.pres-key-points{gap:.5rem;margin-top:.7rem}
+.pres-key-points span{border-radius:999px;padding:.5rem .7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,219,255,.22);color:#e1e8ff}
+.pres-key-points b{color:#35d5c6}
+#presStage>.pres-slide:nth-child(6) .pres-footnote{border-color:rgba(220,231,255,.19);color:#aab8df}
+/* Slide 07 — the human story uses a documentary-photo and editorial list. */
+#presStage>.pres-slide:nth-child(7){--pres-ink:#f5f5ff;--pres-muted:#c7c7ea;background:radial-gradient(ellipse at 5% 5%,rgba(255,109,90,.14),transparent 35%),linear-gradient(130deg,#17153f,#24205f 55%,#111c46);border-color:rgba(174,159,255,.32);color:#f5f5ff}
+#presStage>.pres-slide:nth-child(7) .pres-slide-heading>span{background:rgba(255,109,90,.12);color:#ff9f91}
+.pres-human-layout{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(1.2rem,3vw,3rem)}
+.pres-human-layout figure img{height:clamp(320px,47vh,520px);padding:6px;border-radius:18px;border:1px solid rgba(214,221,255,.35);background:rgba(255,255,255,.08);filter:saturate(.82) contrast(1.08);box-shadow:0 18px 36px rgba(0,0,0,.2)}
+.pres-human-layout figcaption{color:#b7b9df}
+.pres-human-layout .pres-slide-heading h2{color:#f5f5ff}
+.pres-human-list{gap:.35rem;margin-top:.75rem}
+.pres-human-list li{position:relative;padding:.65rem .75rem .7rem 1rem;border:0;border-left:3px solid #35d5c6;border-radius:0 12px 12px 0;background:rgba(255,255,255,.055);transition:background .25s,transform .25s}
+.pres-human-list li:nth-child(2){border-left-color:#ff6d5a}
+.pres-human-list li:nth-child(3){border-left-color:#8c7bff}
+.pres-human-list li:nth-child(4){border-left-color:#ffbd70}
+.pres-human-list li:hover{transform:translateX(4px);background:rgba(255,255,255,.1)}
+.pres-human-list strong{color:#fff;font-family:var(--sans);font-weight:800}
+.pres-human-list span{color:#c7c9e8}
+#presStage>.pres-slide:nth-child(7) .pres-footnote{border-color:rgba(235,234,255,.18);color:#b9bee3}
+/* Slide 08 — four distinct outcomes, each with its own marker and color. */
+#presStage>.pres-slide:nth-child(8){background:linear-gradient(145deg,#eaf8ff,#f4f6ff)}
+#presStage>.pres-slide:nth-child(8) .pres-slide-heading>span{background:#d6f3ff;color:#1a70a5}
+.pres-consequence-list{gap:.8rem;margin-top:.8rem}
+.pres-consequence-list article{min-height:100px;padding:1rem;border:1px solid #d2dff3;border-radius:16px;background:rgba(255,255,255,.91);box-shadow:0 8px 20px rgba(26,66,120,.05);transition:transform .24s,box-shadow .24s}
+.pres-consequence-list article:after{width:5px;border-radius:16px 0 0 16px;background:#3155e7}
+.pres-consequence-list article:nth-child(2):after{background:#ff6d5a}
+.pres-consequence-list article:nth-child(3):after{background:#6d59d7}
+.pres-consequence-list article:nth-child(4):after{background:#08a89e}
+.pres-consequence-list article>span{width:36px;height:36px;margin-left:.15rem;border-radius:11px;background:#3155e7;color:#fff;font-weight:800}
+.pres-consequence-list article:nth-child(2)>span{background:#ff6d5a}
+.pres-consequence-list article:nth-child(3)>span{background:#6d59d7}
+.pres-consequence-list article:nth-child(4)>span{background:#08a89e}
+.pres-consequence-list strong{font-family:var(--sans);font-size:1rem;font-weight:800;color:#142044}
+.pres-consequence-list p{color:#596683}
+.pres-consequence-list article:hover{transform:translateY(-4px);box-shadow:0 16px 28px rgba(26,66,120,.11)}
+#presStage>.pres-slide:nth-child(8) .pres-warning{border:0;border-radius:12px;background:#17234d}
+#presStage>.pres-slide:nth-child(8) .pres-warning>span{background:#35d5c6;color:#102044}
+#presStage>.pres-slide:nth-child(8) .pres-warning p{color:#e9efff}
+#presStage>.pres-slide:nth-child(8) .pres-warning strong{color:#35d5c6}
+/* Slide 09 — historiography as three visually separated lenses. */
+#presStage>.pres-slide:nth-child(9){background:linear-gradient(140deg,#f5f0ff,#eef5ff)}
+#presStage>.pres-slide:nth-child(9) .pres-slide-heading>span{background:#e8ddff;color:#6d50d7}
+.pres-hist-grid{gap:.8rem}
+.pres-hist-grid article{overflow:hidden;padding:1.1rem;border:1px solid #ded9f2;border-radius:17px;background:linear-gradient(160deg,#fff,#f8f7ff);box-shadow:0 9px 22px rgba(49,39,106,.05);transition:transform .25s,box-shadow .25s}
+.pres-hist-grid article:before{height:5px;background:linear-gradient(90deg,#3155e7,#35d5c6)}
+.pres-hist-grid article:nth-child(2){background:linear-gradient(160deg,#fff8f5,#fff0e9);border-color:#f0d5cf}
+.pres-hist-grid article:nth-child(2):before{background:linear-gradient(90deg,#ff6d5a,#ffb071)}
+.pres-hist-grid article:nth-child(3){background:linear-gradient(160deg,#effffb,#e5f8f3);border-color:#c8ebe2}
+.pres-hist-grid article:nth-child(3):before{background:linear-gradient(90deg,#058c89,#35d5c6)}
+.pres-hist-grid article>span{color:#5e54bd;font-weight:800}
+.pres-hist-grid article:nth-child(2)>span{color:#c24b3a}
+.pres-hist-grid article:nth-child(3)>span{color:#087e80}
+.pres-hist-grid h3{font-family:var(--sans);font-weight:800;color:#142044}
+.pres-hist-grid p{color:#596683}
+.pres-hist-grid article:hover{transform:translateY(-5px);box-shadow:0 18px 30px rgba(49,39,106,.12)}
+.pres-source-box{grid-template-columns:145px minmax(0,1fr);gap:1rem;margin-top:1rem;padding:1rem 1.1rem;border:0;border-top:4px solid #35d5c6;border-radius:14px;background:#17234d;box-shadow:0 10px 24px rgba(38,34,86,.12)}
+.pres-source-box strong{color:#35d5c6;font-family:var(--sans);font-weight:800}
+.pres-source-box p{color:#e1e7ff}
+/* Slide 10 — conclusion with high contrast and a brighter thesis. */
+#presStage>.pres-slide:nth-child(10){background:radial-gradient(ellipse at 80% 0%,rgba(49,85,231,.48),transparent 45%),linear-gradient(130deg,#101633,#1c2b62 67%,#0b273a);border-color:rgba(110,143,255,.45)}
+#presStage>.pres-slide:nth-child(10):before{background:linear-gradient(90deg,#ff6d5a 0 15%,#ffb071 15% 22%,#3155e7 22% 43%,#35d5c6 43% 58%,rgba(53,213,198,.16) 58%)}
+.pres-end-slide:after{color:rgba(132,164,255,.52)}
+.pres-end-copy .pres-kicker{color:#35d5c6}
+.pres-end-copy h2{color:#fff;font-weight:800;letter-spacing:-.07em}
+.pres-end-copy h2 em{color:#35d5c6}
+.pres-end-copy>p{color:rgba(237,242,255,.78)}
+.pres-end-thesis{border-left:4px solid #ff6d5a;border-radius:0 13px 13px 0;background:linear-gradient(100deg,rgba(255,109,90,.13),rgba(53,213,198,.08));color:#fff;font-weight:600}
+.pres-final-refs span{color:#35d5c6}
+.pres-final-refs a{color:#ffb1a6;text-underline-offset:4px}
+.pres-final-refs a:hover{color:#35d5c6}
+.pres-end-mark{color:rgba(95,126,255,.15);font-weight:800}
+/* Shared animation language: movement, staggered entrance, and responsive hover. */
+@keyframes presEnterNext{0%{opacity:0;transform:translate3d(28px,8px,0) scale(.985);filter:blur(5px)}70%{filter:blur(0)}100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}}
+@keyframes presEnterPrev{0%{opacity:0;transform:translate3d(-28px,8px,0) scale(.985);filter:blur(5px)}70%{filter:blur(0)}100%{opacity:1;transform:translate3d(0,0,0) scale(1);filter:blur(0)}}
+@keyframes presContentRise{0%{opacity:0;transform:translateY(17px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes presCardRise{0%{opacity:0;transform:translateY(22px) scale(.97)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes presLineGrow{from{width:0;opacity:.3}to{width:72px;opacity:1}}
+@keyframes presImageFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(.25deg)}}
+@keyframes presGlow{0%,100%{box-shadow:0 0 0 rgba(53,213,198,0)}50%{box-shadow:0 0 26px rgba(53,213,198,.15)}}
+.pres-slide:not(.pres-title-slide)>*{animation:presContentRise .62s cubic-bezier(.2,.75,.2,1) both}
+.pres-slide:not(.pres-title-slide)>*:nth-child(1){animation-delay:.07s}
+.pres-slide:not(.pres-title-slide)>*:nth-child(2){animation-delay:.16s}
+.pres-slide:not(.pres-title-slide)>*:nth-child(3){animation-delay:.25s}
+.pres-slide:not(.pres-title-slide)>*:nth-child(4){animation-delay:.34s}
+.pres-slide-heading h2{animation:presContentRise .7s .1s both}
+.pres-title-copy>*{animation:presContentRise .68s both}
+.pres-title-copy>*:nth-child(1){animation-delay:.08s}
+.pres-title-copy>*:nth-child(2){animation-delay:.18s}
+.pres-title-copy>*:nth-child(3){animation-delay:.3s}
+.pres-title-copy>*:nth-child(4){animation-delay:.4s}
+.pres-title-copy>*:nth-child(5){animation-delay:.5s}
+.pres-three-points article,.pres-country-list article,.pres-cause-grid article,.pres-timeline article,.pres-battle-grid figure,.pres-human-list li,.pres-consequence-list article,.pres-hist-grid article{animation:presCardRise .62s cubic-bezier(.2,.75,.2,1) both}
+.pres-three-points article:nth-child(1),.pres-country-list article:nth-child(1),.pres-cause-grid article:nth-child(1),.pres-timeline article:nth-child(1),.pres-battle-grid figure:nth-child(1),.pres-human-list li:nth-child(1),.pres-consequence-list article:nth-child(1),.pres-hist-grid article:nth-child(1){animation-delay:.12s}
+.pres-three-points article:nth-child(2),.pres-country-list article:nth-child(2),.pres-cause-grid article:nth-child(2),.pres-timeline article:nth-child(2),.pres-battle-grid figure:nth-child(2),.pres-human-list li:nth-child(2),.pres-consequence-list article:nth-child(2),.pres-hist-grid article:nth-child(2){animation-delay:.22s}
+.pres-three-points article:nth-child(3),.pres-country-list article:nth-child(3),.pres-cause-grid article:nth-child(3),.pres-timeline article:nth-child(3),.pres-human-list li:nth-child(3),.pres-consequence-list article:nth-child(3),.pres-hist-grid article:nth-child(3){animation-delay:.32s}
+.pres-country-list article:nth-child(4),.pres-timeline article:nth-child(4),.pres-human-list li:nth-child(4),.pres-consequence-list article:nth-child(4){animation-delay:.42s}
+.pres-timeline article:nth-child(5){animation-delay:.52s}
+.pres-dot{width:8px;height:8px;transition:transform .2s,background .2s,border-color .2s}
+.pres-dot:hover{transform:scale(1.4)}
+.pres-dot[aria-current="step"]{background:#35d5c6;border-color:#35d5c6;box-shadow:0 0 0 4px rgba(53,213,198,.13)}
+.pres-controls{background:#0a102a;border-top-color:rgba(190,211,255,.16)}
+.pres-controls>button{border-radius:999px;border-color:rgba(211,224,255,.3);transition:transform .2s,background .2s,border-color .2s}
+.pres-controls>button:not(:disabled):hover{transform:translateY(-2px);background:#17234d;border-color:#35d5c6;color:#35d5c6}
+.pres-controls>button span{color:#35d5c6}
+.pres-key-help{background:#080e25;color:rgba(214,225,255,.46);letter-spacing:.12em}
+#presStage>.pres-slide:nth-child(4) .pres-footnote,#presStage>.pres-slide:nth-child(6) .pres-footnote,#presStage>.pres-slide:nth-child(7) .pres-footnote{color:#c1cae8}
+@media(max-width:980px){
+  .pres-slide{border-radius:19px;padding:1.5rem}
+  .pres-map-layout{grid-template-columns:minmax(0,1.1fr) minmax(230px,.9fr)}
+  .pres-map img{height:33vh}
+  .pres-cause-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .pres-timeline{gap:.4rem}
+  .pres-timeline article{padding:.7rem .55rem .8rem}
+  .pres-timeline p{font-size:.68rem}
+  .pres-human-layout{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+}
+@media(max-height:650px) and (min-width:651px){
+  .pres-slide{padding:1.1rem 1.5rem}
+  .pres-title-slide{padding:1.8rem 2.2rem}
+  .pres-title-visual img{height:33vh}
+  .pres-map img{height:27vh}
+  .pres-human-layout figure img{height:34vh}
+  .pres-battle-grid img{height:20vh}
+  .pres-timeline{margin-top:.4rem}
+  .pres-timeline article{padding:.55rem .5rem .65rem}
+  .pres-timeline p{font-size:.62rem}
+  .pres-consequence-list article{min-height:78px;padding:.72rem}
+  .pres-hist-grid article{padding:.8rem}
+  .pres-slide-heading{margin-bottom:.6rem}
+}
+@media(max-width:650px){
+  .pres-stage{padding:.3rem}
+  .pres-slide{border-radius:14px;padding:1.05rem}
+  .pres-slide:before{height:4px}
+  .pres-title-slide{border-radius:14px;padding:1.05rem}
+  .pres-title-visual img{height:22vh;min-height:125px;border-radius:13px}
+  .pres-title-visual:after{bottom:1.8rem;left:1.4rem}
+  .pres-slide-heading h2{font-size:clamp(1.9rem,8.6vw,2.65rem);line-height:1.05}
+  .pres-slide-heading>p{font-size:.84rem}
+  .pres-question-panel p{font-size:1.05rem}
+  .pres-three-points{grid-template-columns:1fr;gap:.55rem}
+  .pres-three-points article{min-height:0;padding:.8rem .9rem}
+  .pres-map-layout{grid-template-columns:1fr;gap:.8rem}
+  .pres-map{padding:.4rem}
+  .pres-map img{height:25vh;min-height:160px}
+  .pres-country-list{grid-template-columns:1fr 1fr;gap:.4rem}
+  .pres-country-list article{grid-template-columns:30px minmax(0,1fr);gap:.45rem;padding:.55rem}
+  .pres-country-list article>span{width:29px;height:29px;font-size:.53rem}
+  .pres-country-list strong{font-size:.78rem}
+  .pres-country-list small{font-size:.63rem}
+  .pres-cause-grid{grid-template-columns:1fr 1fr;gap:.5rem}
+  .pres-cause-grid article{padding:.7rem;border-radius:12px}
+  .pres-cause-grid article>span{width:30px;height:30px;border-radius:9px;font-size:.7rem}
+  .pres-cause-grid h3{font-size:.9rem;margin:.55rem 0 .35rem}
+  .pres-cause-grid p{font-size:.68rem;line-height:1.55}
+  .pres-warning{margin-top:.7rem;padding:.65rem .7rem}
+  .pres-warning p{font-size:.68rem}
+  .pres-timeline{grid-template-columns:1fr;gap:.45rem;margin:.3rem 0 0;padding-left:1.15rem}
+  .pres-timeline:before{top:.5rem;bottom:.5rem;left:.3rem;right:auto;width:3px;height:auto;background:linear-gradient(#ff6d5a,#3155e7,#35d5c6)}
+  .pres-timeline article{padding:.6rem .7rem;border-radius:11px}
+  .pres-timeline article:after{position:absolute;left:-1.2rem;top:.75rem;margin:0;width:10px;height:10px}
+  .pres-timeline time{font-size:.75rem}
+  .pres-timeline strong{font-size:.83rem}
+  .pres-timeline p{font-size:.7rem}
+  .pres-battle-grid{grid-template-columns:1fr;gap:.7rem}
+  .pres-battle-grid img{height:20vh;min-height:115px}
+  .pres-battle-grid figcaption{padding:.6rem .7rem}
+  .pres-battle-grid figcaption strong{font-size:.88rem}
+  .pres-battle-grid figcaption span{font-size:.68rem}
+  .pres-key-points{gap:.3rem}
+  .pres-key-points span{font-size:.48rem;padding:.4rem .5rem}
+  .pres-human-layout{grid-template-columns:1fr;gap:.7rem}
+  .pres-human-layout figure img{height:21vh;min-height:125px}
+  .pres-human-layout .pres-slide-heading{margin-bottom:.5rem}
+  .pres-human-layout .pres-slide-heading h2{font-size:1.8rem}
+  .pres-human-list{gap:.25rem;margin-top:.3rem}
+  .pres-human-list li{padding:.5rem .6rem .5rem .75rem}
+  .pres-human-list strong{font-size:.82rem}
+  .pres-human-list span{font-size:.67rem}
+  .pres-consequence-list{grid-template-columns:1fr;gap:.5rem;margin-top:.3rem}
+  .pres-consequence-list article{min-height:0;padding:.75rem}
+  .pres-consequence-list strong{font-size:.88rem}
+  .pres-consequence-list p{font-size:.7rem}
+  .pres-hist-grid{grid-template-columns:1fr;gap:.5rem}
+  .pres-hist-grid article{padding:.75rem .85rem}
+  .pres-hist-grid h3{font-size:.92rem;margin:.5rem 0 .3rem}
+  .pres-hist-grid p{font-size:.69rem;line-height:1.55}
+  .pres-source-box{grid-template-columns:1fr;gap:.35rem;margin-top:.7rem;padding:.7rem .85rem}
+  .pres-source-box p{font-size:.68rem}
+  .pres-end-slide{grid-template-columns:minmax(0,1fr) auto;gap:.5rem}
+  .pres-end-copy h2{font-size:clamp(2rem,9vw,3rem);line-height:1}
+  .pres-end-copy>p{font-size:.76rem;line-height:1.6}
+  .pres-end-thesis{font-size:.83rem;padding:.7rem .8rem;margin:.7rem 0}
+  .pres-final-refs{gap:.35rem;margin-top:.6rem}
+  .pres-final-refs a{font-size:.61rem}
+  .pres-end-mark{font-size:2.8rem;padding:0}
+  .pres-controls{gap:.45rem;height:52px;padding:0 .4rem}
+  .pres-controls>button{min-width:82px;padding:.45rem .55rem;font-size:.59rem}
+  .pres-dots{gap:.27rem}
+  .pres-dot{width:6px;height:6px}
+  .pres-key-help{font-size:.4rem;letter-spacing:.04em}
+}
+@media(prefers-reduced-motion:reduce){
+  .presentation *, .presentation *:before, .presentation *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
