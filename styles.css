@@ -405,3 +405,18 @@ body.is-presenting .site-header,body.is-presenting .cover,body.is-presenting .co
   .pres-end-copy h2{font-size:clamp(2.5rem,4.5vw,4rem)}
 }
 @media print{.presentation{display:none!important}}
+
+/* Final viewport fit: preserve the widescreen slide canvas on desktop. */
+@media(min-width:651px){
+  .pres-stage{align-items:center;justify-content:center}
+  .pres-slide{
+    width:min(100%,calc((100dvh - 138px) * 1.7777778));
+    height:auto;max-height:none;aspect-ratio:16/9;flex:none;
+  }
+}
+@media(max-height:650px) and (min-width:651px){
+  .pres-slide{width:min(100%,calc((100dvh - 108px) * 1.7777778));height:auto;max-height:none;aspect-ratio:16/9}
+}
+@media(max-width:650px){
+  .pres-slide{width:100%;height:100%;max-height:calc(100dvh - 116px);aspect-ratio:auto;flex:1}
+}
