@@ -433,6 +433,7 @@
     if (fallback && image.dataset.fallbackTried !== 'true' && image.src !== fallback) {
       image.dataset.fallbackTried = 'true';
       image.alt = image.dataset.fallbackAlt || image.alt;
+      image.classList.toggle('image-kind-map', image.dataset.imageKind === 'map');
       const caption = image.closest('figure') && image.closest('figure').querySelector('figcaption');
       imageFallbackMessage(image, caption);
       image.src = fallback;

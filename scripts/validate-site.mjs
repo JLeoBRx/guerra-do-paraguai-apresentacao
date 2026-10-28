@@ -17,6 +17,7 @@ const css = read("styles.css");
 const presCss = read("presentation.css");
 const experienceCss = read("experience.css");
 const atlasCss = read("atlas.css");
+const studioCss = read("studio.css");
 const js = read("script.js");
 const requiredNames = [
   "Pedro Henrique", "Clara Maria", "Anthony Claudio",
@@ -133,9 +134,9 @@ check(js.includes("initRevealMotion") && js.includes("IntersectionObserver") && 
   "Animações de entrada do conteúdo principal estão implementadas.",
   "A lógica de animação progressiva do conteúdo está ausente.");
 
-check([css, presCss, experienceCss, atlasCss].every((sheet) =>
+check([css, presCss, experienceCss, atlasCss, studioCss].every((sheet) =>
   (sheet.match(/{/g) || []).length === (sheet.match(/}/g) || []).length),
-  "As chaves das quatro folhas CSS estão balanceadas.", "As chaves de uma das folhas CSS parecem estar desbalanceadas.");
+  "As chaves das cinco folhas CSS estão balanceadas.", "As chaves de uma das folhas CSS parecem estar desbalanceadas.");
 
 try {
   execFileSync(process.execPath, ["--check", "script.js"], { stdio: "pipe" });
@@ -168,6 +169,21 @@ check(js.includes("function initSlideInteractions") && js.includes("pres-interac
   atlasCss.includes(".pres-interactive-card.is-selected"),
   "Cartões dos slides podem ser selecionados por mouse/teclado e revelam contexto.",
   "A camada de interação dos cartões de apresentação está incompleta.");
+
+
+check(html.includes('href="studio.css"') && studioCss.includes("--studio-navy:#142838") &&
+  studioCss.includes(".pres-title-slide") && studioCss.includes("@keyframes studioSlideArrive"),
+  "A camada Studio define uma identidade editorial consistente para o site e os slides.",
+  "A camada Studio não está conectada ou não define o estilo dos slides.");
+check(studioCss.includes("@media(max-width:850px)") && studioCss.includes("@media(max-width:560px)") &&
+  studioCss.includes("prefers-reduced-motion:reduce"),
+  "A camada Studio tem layouts responsivos e respeita a preferência por movimento reduzido.",
+  "Faltam os ajustes responsivos ou a redução de movimento na camada Studio.");
+check(html.includes('data-fallback-src="https://atlas.fgv.br/sites/atlas.fgv.br/files/05-03-a2011-full_0.png"') &&
+  html.includes('data-fallback-credit-url="https://atlas.fgv.br/marcos/guerra-do-paraguai/mapas/guerra-do-paraguai-o-complexo-fortificado-de-humaita"') &&
+  js.includes("image.classList.toggle('image-kind-map'"),
+  "A alternativa sobre Humaitá usa mapa, legenda contextual, crédito e tratamento visual correspondentes.",
+  "A alternativa de Humaitá precisa de fonte, legenda ou classe visual consistente.");
 
 console.log("VALIDAÇÃO DO SITE — GUERRA DO PARAGUAI");
 for (const message of pass) console.log("PASS  " + message);
