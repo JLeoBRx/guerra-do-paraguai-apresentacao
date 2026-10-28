@@ -218,6 +218,21 @@
 </section>
 
 <footer class="site-footer"><div class="footer-mark">GP</div><div><strong>Atlas histórico · Guerra do Paraguai · 1864–1870</strong><p>Dossiê de pesquisa histórica · Mecatrônica 2</p></div><div class="footer-right"><a href="#topo">Voltar ao início ↑</a><span>Documento digital · versão de estudo</span></div></footer>
-<dialog class="lightbox" id="lightbox" aria-label="Visualizador de imagem"><div class="lightbox-header"><span id="lightboxCaption">Imagem histórica</span><button type="button" id="lightboxClose" aria-label="Fechar imagem ampliada">✕</button></div><img loading="lazy" decoding="async" id="lightboxImage" src="" alt="Imagem ampliada selecionada"><p>Selecione fora da imagem ou pressione Esc para fechar. A legenda completa permanece no texto da pesquisa.</p></dialog>
+<dialog class="lightbox atlas-lightbox" id="lightbox" aria-label="Galeria de imagens históricas">
+  <div class="lightbox-header">
+    <button type="button" id="lightboxPrev" class="lightbox-nav" aria-label="Imagem anterior">←</button>
+    <div class="lightbox-heading"><span id="lightboxCaption">Imagem histórica</span><small id="lightboxCount">01 / 01</small></div>
+    <div class="lightbox-actions">
+      <button type="button" id="lightboxZoom" aria-label="Ampliar imagem" aria-pressed="false">ZOOM +</button>
+      <button type="button" id="lightboxNext" class="lightbox-nav" aria-label="Próxima imagem">→</button>
+      <button type="button" id="lightboxClose" aria-label="Fechar imagem ampliada">✕</button>
+    </div>
+  </div>
+  <div class="lightbox-stage" id="lightboxStage">
+    <img loading="lazy" decoding="async" id="lightboxImage" src="" alt="Imagem ampliada selecionada">
+    <p id="lightboxError" hidden>Esta imagem não carregou. Consulte a fonte indicada na legenda no site.</p>
+  </div>
+  <p class="lightbox-help">Use ← e → para navegar · Z para zoom · Esc para fechar. A fonte e a legenda ficam na pesquisa.</p>
+</dialog>
 <button class="back-to-top" id="backToTop" type="button" aria-label="Voltar ao início">↑</button>
 </body></html>

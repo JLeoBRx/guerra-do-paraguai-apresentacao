@@ -518,3 +518,89 @@ html.motion-ready .site-reveal:not(.is-revealed){opacity:0;transform:translateY(
   .chapter h2:after{animation:none}
   html.motion-ready .site-reveal:not(.is-revealed){opacity:1!important;transform:none!important}
 }
+
+
+/* Reliable media, accessible image gallery, and slide exploration controls */
+.image-kind-map{object-fit:contain!important;background:#e7e2d8}
+.cover-image-frame .image-kind-map{padding:8px}
+.pres-map .image-kind-map{padding:5px}
+.image-fallback-note{
+  display:grid;gap:.24rem;padding:.65rem .8rem;margin:0 0 .5rem;
+  border-left:3px solid var(--atlas-orange);background:#f4dfd4;color:#572f25;
+  font:500 .68rem/1.5 var(--sans);text-align:left;
+}
+.image-fallback-note strong{font:700 .62rem/1.3 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.image-fallback-note a{width:max-content;max-width:100%;color:#2548e8;font:600 .62rem/1.5 var(--mono);text-underline-offset:3px}
+.image-unavailable-panel{
+  display:grid;place-items:center;min-height:150px;padding:1.2rem;border:1px dashed #9da6ab;
+  background:#e3e0d7;color:#515d66;text-align:center;font-size:.8rem;line-height:1.6
+}
+img[role="button"]{cursor:zoom-in}
+img[role="button"]:focus-visible,.image-button:focus-visible{outline:3px solid var(--atlas-orange);outline-offset:4px}
+.atlas-lightbox{
+  width:min(96vw,1500px);max-width:96vw;max-height:95vh;overflow:hidden;
+  padding:0;border:1px solid rgba(241,238,230,.3);background:#101820;color:#f1eee6
+}
+.atlas-lightbox[open]{animation:atlasDialogArrive .22s ease-out both}
+.atlas-lightbox .lightbox-header{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;
+  gap:.8rem;padding:.8rem 1rem;background:#101820;border-bottom:1px solid rgba(241,238,230,.2)
+}
+.lightbox-heading{display:grid;gap:.25rem;min-width:0}
+.lightbox-heading span{font:500 .74rem/1.4 var(--sans);color:#f1eee6}
+.lightbox-heading small{font:500 .55rem/1.3 var(--mono);letter-spacing:.1em;color:#9eabb3}
+.lightbox-actions{display:flex;align-items:center;gap:.45rem}
+.atlas-lightbox .lightbox-nav,.atlas-lightbox #lightboxZoom,.atlas-lightbox #lightboxClose{
+  display:inline-flex;align-items:center;justify-content:center;min-width:38px;min-height:36px;
+  padding:.55rem .65rem;border:1px solid rgba(241,238,230,.3);border-radius:0;
+  background:transparent;color:#f1eee6;font:500 .65rem/1 var(--mono)
+}
+.atlas-lightbox #lightboxZoom{font-size:.52rem;letter-spacing:.04em}
+.atlas-lightbox .lightbox-nav:hover,.atlas-lightbox #lightboxZoom:hover{background:var(--atlas-blue);border-color:var(--atlas-blue)}
+.atlas-lightbox #lightboxClose{background:var(--atlas-orange);border-color:var(--atlas-orange);color:#fff}
+.atlas-lightbox button:disabled{opacity:.35;cursor:not-allowed}
+.lightbox-stage{
+  position:relative;display:grid;place-items:center;min-height:220px;max-height:calc(95vh - 120px);
+  overflow:auto;background:repeating-linear-gradient(0deg,transparent 0 39px,rgba(241,238,230,.035) 40px),repeating-linear-gradient(90deg,transparent 0 39px,rgba(241,238,230,.035) 40px),#111b24
+}
+.lightbox-stage>img{
+  display:block;max-width:100%;max-height:calc(95vh - 145px);width:auto;height:auto;
+  object-fit:contain;transform:scale(1);transform-origin:center;transition:transform .25s ease
+}
+.lightbox-stage.is-zoomed{overflow:auto;place-items:start center;cursor:zoom-out}
+.lightbox-stage.is-zoomed>img{max-width:none;max-height:none;width:auto;height:auto;transform:scale(1.6);cursor:zoom-out}
+#lightboxError{padding:2rem;color:#ffb39f;text-align:center;font-size:.85rem}
+.atlas-lightbox .lightbox-help{
+  margin:0;padding:.7rem 1rem;background:#101820;color:#9eabb3;border-top:1px solid rgba(241,238,230,.12);
+  font:500 .52rem/1.5 var(--mono);letter-spacing:.05em
+}
+.pres-interactive-card{
+  cursor:pointer;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease,background .2s ease
+}
+.pres-interactive-card:hover{transform:translateY(-2px);border-color:var(--atlas-blue)!important}
+.pres-interactive-card:focus-visible{outline:3px solid var(--atlas-orange);outline-offset:3px}
+.pres-interactive-card.is-selected{
+  border-color:var(--atlas-orange)!important;box-shadow:inset 0 0 0 1px var(--atlas-orange),5px 5px 0 rgba(240,90,56,.14)!important;
+  background:#fffdf7!important
+}
+.pres-interaction-panel{
+  display:grid;grid-template-columns:auto minmax(0,.75fr) minmax(0,1.25fr);gap:.65rem;align-items:start;
+  margin:.65rem 0 0;padding:.65rem .8rem;border:1px solid #c9cbc7;border-left:4px solid var(--atlas-orange);
+  background:#e6e3da;color:#34404a
+}
+.pres-interaction-kicker{color:var(--atlas-blue);font:700 .5rem/1.5 var(--mono);letter-spacing:.08em}
+.pres-interaction-panel strong{font:700 .7rem/1.4 var(--sans);color:#101820}
+.pres-interaction-panel p{margin:0;color:#58636b;font-size:.65rem;line-height:1.5}
+.pres-human-list .pres-interactive-card{list-style:none}
+@keyframes atlasDialogArrive{from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:650px){
+  .atlas-lightbox .lightbox-header{grid-template-columns:auto minmax(0,1fr);gap:.5rem;padding:.65rem}
+  .lightbox-actions{grid-column:1/-1;justify-content:flex-end}
+  .atlas-lightbox .lightbox-help{font-size:.45rem}
+  .lightbox-stage>img{max-height:calc(92vh - 170px)}
+  .pres-interaction-panel{grid-template-columns:1fr;gap:.25rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .atlas-lightbox[open]{animation:none!important}
+  .lightbox-stage>img,.pres-interactive-card{transition:none!important}
+}
