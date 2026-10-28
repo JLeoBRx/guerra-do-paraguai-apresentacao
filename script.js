@@ -8,6 +8,15 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightboxImage');
   const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxZoom = document.getElementById('lightboxZoom');
+  const lightboxStage = document.getElementById('lightboxStage');
+  const lightboxCount = document.getElementById('lightboxCount');
+  const lightboxError = document.getElementById('lightboxError');
+  let activeLightboxImages = [];
+  let activeLightboxIndex = 0;
+  let lastImageFocus = null;
 
   // Presentation layer: a concise 10-slide summary of the longer research site.
   const presentation = document.getElementById('presentation');
@@ -26,7 +35,7 @@
   let suppressBrowserFullscreenPresentation = false;
   let scrollQueued = false;
   let fullscreenResyncQueued = false;
-  const baseTitle = 'A Guerra do Paraguai — Museu Digital Interativo';
+  const baseTitle = 'Guerra do Paraguai — Atlas Histórico Interativo';
 
   function updateScrollUI() {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
@@ -159,7 +168,63 @@
       presDots.appendChild(dot);
     });
   }
+
   createSlideDots();
+
+  // Cards become little exploration controls: selecting one updates a live
+  // context panel while keeping all slide content available.
+  function initSlideInteractions() {
+    const groupSelector = '.pres-country-list, .pres-cause-grid, .pres-timeline, .pres-consequence-list, .pres-hist-grid, .pres-human-list';
+    document.querySelectorAll(groupSelector).forEach(group => {
+      const items = Array.from(group.querySelectorAll(':scope > article, :scope > li'));
+      if (!items.length || group.dataset.interactiveReady === 'true') return;
+      group.dataset.interactiveReady = 'true';
+
+      const panel = document.createElement('div');
+      panel.className = 'pres-interaction-panel';
+      panel.setAttribute('aria-live', 'polite');
+      panel.setAttribute('role', 'status');
+      const kicker = document.createElement('span');
+      kicker.className = 'pres-interaction-kicker';
+      kicker.textContent = 'MODO EXPLORAR';
+      const title = document.createElement('strong');
+      title.textContent = 'Escolha um item';
+      const body = document.createElement('p');
+      body.textContent = 'Selecione qualquer cartão para destacá-lo e ver seu resumo nesta área.';
+      panel.append(kicker, title, body);
+      group.insertAdjacentElement('afterend', panel);
+
+      const selectItem = item => {
+        items.forEach(other => {
+          const active = other === item;
+          other.classList.toggle('is-selected', active);
+          other.setAttribute('aria-pressed', String(active));
+        });
+        const time = item.querySelector('time');
+        const heading = item.querySelector('h3, strong');
+        const titleText = [time && time.textContent.trim(), heading && heading.textContent.trim()]
+          .filter(Boolean).join(' — ') || (item.querySelector('span') && item.querySelector('span').textContent.trim()) || 'Item selecionado';
+        const detailNode = item.querySelector('p, small, li > span, div > span');
+        title.textContent = titleText;
+        body.textContent = detailNode ? detailNode.textContent.trim() : item.textContent.trim();
+      };
+
+      items.forEach(item => {
+        item.classList.add('pres-interactive-card');
+        item.tabIndex = 0;
+        item.setAttribute('role', 'button');
+        item.setAttribute('aria-pressed', 'false');
+        item.addEventListener('click', () => selectItem(item));
+        item.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            selectItem(item);
+          }
+        });
+      });
+    });
+  }
+  initSlideInteractions();
 
   function setPresentation(active, source) {
     presentationActive = active;
@@ -265,11 +330,18 @@
       window.setTimeout(syncFullscreenMode, 520);
       return;
     }
+    if (lightbox.open) {
+      if (event.key === 'ArrowRight') { event.preventDefault(); showLightboxAt(activeLightboxIndex + 1); }
+      else if (event.key === 'ArrowLeft') { event.preventDefault(); showLightboxAt(activeLightboxIndex - 1); }
+      else if (event.key.toLowerCase() === 'z' || event.key === '+') { event.preventDefault(); lightboxZoom.click(); }
+      return;
+    }
+    const interactiveCard = event.target && event.target.closest ? event.target.closest('.pres-interactive-card') : null;
     if (presentationActive) {
       if (event.key === 'Escape') {
         event.preventDefault();
         exitPresentation();
-      } else if (event.key === 'ArrowRight' || event.key === 'PageDown' || (event.key === ' ' && tag !== 'button' && tag !== 'a')) {
+      } else if (event.key === 'ArrowRight' || event.key === 'PageDown' || (event.key === ' ' && tag !== 'button' && tag !== 'a' && !interactiveCard)) {
         if (!inFormControl) { event.preventDefault(); renderPresSlide(presIndex + 1); }
       } else if (event.key === 'ArrowLeft' || event.key === 'PageUp') {
         if (!inFormControl) { event.preventDefault(); renderPresSlide(presIndex - 1); }
@@ -308,18 +380,141 @@
     sections.forEach(section => observer.observe(section));
   }
 
-  document.querySelectorAll('[data-lightbox]').forEach(button => {
-    button.addEventListener('click', () => {
-      const image = button.querySelector('img');
-      if (!image) return;
-      lightboxImage.src = image.src;
-      lightboxImage.alt = image.alt;
-      const figure = button.closest('figure');
-      const caption = figure ? figure.querySelector('figcaption') : null;
-      lightboxCaption.textContent = caption ? caption.textContent.trim().replace(/\s+/g, ' ').slice(0, 130) : image.alt;
-      if (typeof lightbox.showModal === 'function') lightbox.showModal();
-      else window.open(image.src, '_blank', 'noopener,noreferrer');
+
+  // Retry a historical image through a documented alternate source. If both
+  // sources fail, show an explicit status instead of a broken-image icon.
+  function imageFallbackMessage(image, caption) {
+    if (caption && caption.querySelector('.image-fallback-note')) return;
+    const note = document.createElement('div');
+    note.className = 'image-fallback-note';
+    note.setAttribute('role', 'note');
+    const title = document.createElement('strong');
+    title.textContent = 'Imagem alternativa exibida';
+    const detail = document.createElement('span');
+    detail.textContent = image.dataset.fallbackCaption || 'A imagem principal não carregou; esta alternativa mantém o contexto visual.';
+    note.append(title, detail);
+    if (image.dataset.fallbackCreditUrl) {
+      const source = document.createElement('a');
+      source.href = image.dataset.fallbackCreditUrl;
+      source.target = '_blank';
+      source.rel = 'noreferrer';
+      source.textContent = 'Fonte da imagem alternativa ↗';
+      note.append(source);
+    }
+    if (caption) caption.prepend(note);
+    else {
+      const parent = image.closest('figure') || image.parentElement;
+      if (parent) parent.append(note);
+    }
+  }
+
+  function showImageFailure(image) {
+    image.hidden = true;
+    const figure = image.closest('figure');
+    if (figure) {
+      figure.classList.add('image-load-failed');
+      if (!figure.querySelector('.image-unavailable-panel')) {
+        const panel = document.createElement('div');
+        panel.className = 'image-unavailable-panel';
+        panel.setAttribute('role', 'status');
+        panel.textContent = 'A imagem não pôde ser carregada. Use o link da fonte na legenda para abrir o registro original.';
+        figure.append(panel);
+      }
+    }
+  }
+
+  function handleImageError(image) {
+    const fallback = image.dataset.fallbackSrc;
+    if (fallback && image.dataset.fallbackTried !== 'true' && image.src !== fallback) {
+      image.dataset.fallbackTried = 'true';
+      image.src = fallback;
+      image.alt = image.dataset.fallbackAlt || image.alt;
+      const caption = image.closest('figure') && image.closest('figure').querySelector('figcaption');
+      imageFallbackMessage(image, caption);
+      return;
+    }
+    showImageFailure(image);
+  }
+
+  function initImageFallbacks() {
+    document.querySelectorAll('img[src]').forEach(image => {
+      if (image.id === 'lightboxImage' || !image.getAttribute('src')) return;
+      image.addEventListener('error', () => handleImageError(image));
+      if (image.complete && image.naturalWidth === 0) handleImageError(image);
     });
+  }
+  initImageFallbacks();
+
+  function getGalleryImages(referenceImage) {
+    const selector = presentationActive
+      ? '.pres-slide:not([hidden]) figure img[src]'
+      : '.cover-visual img[src], .figure .image-button img[src]';
+    const found = Array.from(document.querySelectorAll(selector)).filter(image =>
+      image.id !== 'lightboxImage' && !image.hidden && image.getAttribute('src')
+    );
+    if (referenceImage && !found.includes(referenceImage)) found.unshift(referenceImage);
+    return found;
+  }
+
+  function showLightboxAt(index) {
+    if (!activeLightboxImages.length) {
+      lightboxError.hidden = false;
+      return;
+    }
+    activeLightboxIndex = (index + activeLightboxImages.length) % activeLightboxImages.length;
+    const sourceImage = activeLightboxImages[activeLightboxIndex];
+    lightboxImage.hidden = false;
+    lightboxImage.src = sourceImage.currentSrc || sourceImage.src;
+    lightboxImage.alt = sourceImage.alt || 'Imagem histórica ampliada';
+    const caption = sourceImage.closest('figure') && sourceImage.closest('figure').querySelector('figcaption');
+    lightboxCaption.textContent = caption ? caption.textContent.trim().replace(/\s+/g, ' ').slice(0, 220) : (sourceImage.alt || 'Imagem histórica');
+    lightboxCount.textContent = String(activeLightboxIndex + 1).padStart(2, '0') + ' / ' +
+      String(activeLightboxImages.length).padStart(2, '0');
+    lightboxPrev.disabled = activeLightboxImages.length < 2;
+    lightboxNext.disabled = activeLightboxImages.length < 2;
+    lightboxError.hidden = true;
+    lightboxStage.classList.remove('is-zoomed');
+    lightboxZoom.setAttribute('aria-pressed', 'false');
+    lightboxZoom.textContent = 'ZOOM +';
+  }
+
+  function openImageViewer(image) {
+    if (!image || !image.src) return;
+    lastImageFocus = image;
+    activeLightboxImages = getGalleryImages(image);
+    activeLightboxIndex = Math.max(0, activeLightboxImages.indexOf(image));
+    showLightboxAt(activeLightboxIndex);
+    if (typeof lightbox.showModal === 'function') {
+      if (!lightbox.open) lightbox.showModal();
+    } else {
+      window.open(image.currentSrc || image.src, '_blank', 'noopener,noreferrer');
+    }
+  }
+
+  document.querySelectorAll('[data-lightbox]').forEach(button => {
+    button.addEventListener('click', () => openImageViewer(button.querySelector('img')));
+  });
+
+  // Slide and cover images can be opened with either a click or the keyboard.
+  document.querySelectorAll('.pres-slide figure img[src], .cover-visual img[src]').forEach(image => {
+    image.tabIndex = 0;
+    image.setAttribute('role', 'button');
+    image.setAttribute('aria-label', 'Ampliar imagem: ' + (image.alt || 'imagem histórica'));
+    image.addEventListener('click', () => openImageViewer(image));
+    image.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openImageViewer(image);
+      }
+    });
+  });
+
+  lightboxPrev.addEventListener('click', () => showLightboxAt(activeLightboxIndex - 1));
+  lightboxNext.addEventListener('click', () => showLightboxAt(activeLightboxIndex + 1));
+  lightboxZoom.addEventListener('click', () => {
+    const zoomed = lightboxStage.classList.toggle('is-zoomed');
+    lightboxZoom.setAttribute('aria-pressed', String(zoomed));
+    lightboxZoom.textContent = zoomed ? 'ZOOM −' : 'ZOOM +';
   });
   document.getElementById('lightboxClose').addEventListener('click', () => lightbox.close());
   lightbox.addEventListener('click', event => {
@@ -328,7 +523,24 @@
   lightbox.addEventListener('close', () => {
     lightboxImage.src = '';
     lightboxImage.alt = '';
+    lightboxStage.classList.remove('is-zoomed');
+    lightboxError.hidden = true;
+    if (lastImageFocus && document.contains(lastImageFocus)) {
+      try { lastImageFocus.focus({ preventScroll: true }); } catch (_) { lastImageFocus.focus(); }
+    }
   });
+  lightboxImage.addEventListener('error', () => {
+    const sourceImage = activeLightboxImages[activeLightboxIndex];
+    if (sourceImage && sourceImage.dataset.fallbackSrc && sourceImage.dataset.fallbackTried !== 'true') {
+      handleImageError(sourceImage);
+      lightboxImage.src = sourceImage.src;
+      lightboxImage.hidden = false;
+      return;
+    }
+    lightboxImage.hidden = true;
+    lightboxError.hidden = false;
+  });
+
   document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', () => {
     if (window.matchMedia('(max-width: 760px)').matches) setMenu(false);
   }));
