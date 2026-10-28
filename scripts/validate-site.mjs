@@ -144,6 +144,30 @@ try {
   fail.push("Erro de sintaxe em script.js: " + (error.stderr?.toString() || error.message).trim());
 }
 
+
+check(html.includes('id="lightboxPrev"') && html.includes('id="lightboxNext"') &&
+  html.includes('id="lightboxZoom"') && html.includes('id="lightboxCount"') &&
+  js.includes("function showLightboxAt") && js.includes("function getGalleryImages") &&
+  js.includes("lightboxStage.classList.toggle('is-zoomed')"),
+  "A galeria permite anterior/próxima, contagem, zoom e navegação por teclado.",
+  "Os controles interativos da galeria de imagens estão incompletos.");
+const externalImageTags = [...html.matchAll(/<img\b[^>]*src="https?:[^"]+"[^>]*>/gi)].map(match => match[0]);
+check(externalImageTags.length >= 10 && externalImageTags.every(tag =>
+  /\balt="[^"]+"/i.test(tag) && /\bdata-fallback-src="https?:/i.test(tag) &&
+  /\bdecoding="async"/i.test(tag)),
+  "As imagens externas têm texto alternativo, fonte alternativa e decodificação assíncrona.",
+  "Uma ou mais imagens externas não têm alt, fallback ou decoding async.");
+check(!html.includes("thumb.wikimedia.org") &&
+  js.includes("function handleImageError") && js.includes("imageFallbackMessage") &&
+  js.includes("image-unavailable-panel") && atlasCss.includes(".image-fallback-note"),
+  "Links de imagem foram padronizados e falhas exibem alternativa ou aviso legível.",
+  "A normalização dos links de imagem ou a contingência visual está ausente.");
+check(js.includes("function initSlideInteractions") && js.includes("pres-interactive-card") &&
+  js.includes("aria-pressed") && js.includes("pres-interaction-panel") &&
+  atlasCss.includes(".pres-interactive-card.is-selected"),
+  "Cartões dos slides podem ser selecionados por mouse/teclado e revelam contexto.",
+  "A camada de interação dos cartões de apresentação está incompleta.");
+
 console.log("VALIDAÇÃO DO SITE — GUERRA DO PARAGUAI");
 for (const message of pass) console.log("PASS  " + message);
 for (const message of fail) console.error("FAIL  " + message);
