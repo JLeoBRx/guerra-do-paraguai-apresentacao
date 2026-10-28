@@ -389,10 +389,15 @@
     note.className = 'image-fallback-note';
     note.setAttribute('role', 'note');
     const title = document.createElement('strong');
-    title.textContent = 'Imagem alternativa exibida';
+    title.textContent = 'Imagem principal indisponível';
     const detail = document.createElement('span');
     detail.textContent = image.dataset.fallbackCaption || 'A imagem principal não carregou; esta alternativa mantém o contexto visual.';
     note.append(title, detail);
+    image.addEventListener('load', () => {
+      if (image.dataset.fallbackTried === 'true' && image.naturalWidth > 0) {
+        title.textContent = 'Imagem alternativa exibida';
+      }
+    }, { once: true });
     if (image.dataset.fallbackCreditUrl) {
       const source = document.createElement('a');
       source.href = image.dataset.fallbackCreditUrl;
@@ -427,10 +432,10 @@
     const fallback = image.dataset.fallbackSrc;
     if (fallback && image.dataset.fallbackTried !== 'true' && image.src !== fallback) {
       image.dataset.fallbackTried = 'true';
-      image.src = fallback;
       image.alt = image.dataset.fallbackAlt || image.alt;
       const caption = image.closest('figure') && image.closest('figure').querySelector('figcaption');
       imageFallbackMessage(image, caption);
+      image.src = fallback;
       return;
     }
     showImageFailure(image);
@@ -531,11 +536,14 @@
   });
   lightboxImage.addEventListener('error', () => {
     const sourceImage = activeLightboxImages[activeLightboxIndex];
-    if (sourceImage && sourceImage.dataset.fallbackSrc && sourceImage.dataset.fallbackTried !== 'true') {
-      handleImageError(sourceImage);
-      lightboxImage.src = sourceImage.src;
-      lightboxImage.hidden = false;
-      return;
+    if (sourceImage && sourceImage.dataset.fallbackSrc) {
+      if (sourceImage.dataset.fallbackTried !== 'true') handleImageError(sourceImage);
+      if (sourceImage.dataset.fallbackTried === 'true' && sourceImage.src !== lightboxImage.src) {
+        lightboxImage.src = sourceImage.currentSrc || sourceImage.src;
+        lightboxImage.hidden = false;
+        lightboxError.hidden = true;
+        return;
+      }
     }
     lightboxImage.hidden = true;
     lightboxError.hidden = false;

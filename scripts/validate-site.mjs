@@ -159,9 +159,10 @@ check(externalImageTags.length >= 10 && externalImageTags.every(tag =>
   "Uma ou mais imagens externas não têm alt, fallback ou decoding async.");
 check(!html.includes("thumb.wikimedia.org") &&
   js.includes("function handleImageError") && js.includes("imageFallbackMessage") &&
-  js.includes("image-unavailable-panel") && atlasCss.includes(".image-fallback-note"),
-  "Links de imagem foram padronizados e falhas exibem alternativa ou aviso legível.",
-  "A normalização dos links de imagem ou a contingência visual está ausente.");
+  js.includes("image-unavailable-panel") && js.includes("sourceImage.dataset.fallbackTried === 'true'") &&
+  atlasCss.includes(".image-fallback-note"),
+  "Links de imagem foram padronizados, a galeria acompanha as alternativas e falhas exibem aviso legível.",
+  "A contingência de imagem não é sincronizada com a galeria ou o aviso visual está ausente.");
 check(js.includes("function initSlideInteractions") && js.includes("pres-interactive-card") &&
   js.includes("aria-pressed") && js.includes("pres-interaction-panel") &&
   atlasCss.includes(".pres-interactive-card.is-selected"),
