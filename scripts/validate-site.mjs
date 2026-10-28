@@ -16,6 +16,7 @@ const html = read("index.html");
 const css = read("styles.css");
 const presCss = read("presentation.css");
 const experienceCss = read("experience.css");
+const atlasCss = read("atlas.css");
 const js = read("script.js");
 const requiredNames = [
   "Pedro Henrique", "Clara Maria", "Anthony Claudio",
@@ -111,8 +112,17 @@ check(presCss.includes(".pres-title-slide") && presCss.includes(".pres-map-layou
 check(html.includes('href="experience.css"') &&
   experienceCss.includes("--accent-lime") && experienceCss.includes(".pres-title-slide") &&
   experienceCss.includes("@keyframes experienceSlideIn"),
-  "A nova identidade visual está vinculada ao site e à apresentação.",
-  "A folha do novo design ou suas animações não estão corretamente conectadas.");
+  "A camada visual anterior continua presente para compatibilidade.",
+  "A folha visual de compatibilidade está ausente ou incompleta.");
+check(html.includes('href="atlas.css"') && atlasCss.includes("--atlas-blue:#2548e8") &&
+  atlasCss.includes("--atlas-orange:#f05a38") && atlasCss.includes(".pres-title-slide") &&
+  atlasCss.includes("@keyframes atlasSlideArrive"),
+  "A nova identidade Atlas está conectada ao site e à apresentação, com cores e entrada animada.",
+  "A nova camada visual Atlas, suas cores ou suas animações não estão conectadas.");
+check(js.includes("initAtlasInteractions") && js.includes("atlas-tilt-x") &&
+  js.includes("prefers-reduced-motion") && atlasCss.includes("@keyframes atlasGridDrift"),
+  "A capa tem profundidade interativa acessível e movimento cartográfico.",
+  "A interação da capa ou a animação cartográfica está ausente.");
 check(experienceCss.includes("calc((100dvh - 164px)*1.7777778)") &&
   experienceCss.includes("calc((100dvh - 126px)*1.7777778)") &&
   experienceCss.includes("max-height:calc(100dvh - 146px)") &&
@@ -123,9 +133,9 @@ check(js.includes("initRevealMotion") && js.includes("IntersectionObserver") && 
   "Animações de entrada do conteúdo principal estão implementadas.",
   "A lógica de animação progressiva do conteúdo está ausente.");
 
-check([css, presCss, experienceCss].every((sheet) =>
+check([css, presCss, experienceCss, atlasCss].every((sheet) =>
   (sheet.match(/{/g) || []).length === (sheet.match(/}/g) || []).length),
-  "As chaves das três folhas CSS estão balanceadas.", "As chaves de uma das folhas CSS parecem estar desbalanceadas.");
+  "As chaves das quatro folhas CSS estão balanceadas.", "As chaves de uma das folhas CSS parecem estar desbalanceadas.");
 
 try {
   execFileSync(process.execPath, ["--check", "script.js"], { stdio: "pipe" });

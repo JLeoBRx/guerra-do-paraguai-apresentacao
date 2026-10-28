@@ -91,6 +91,30 @@
   }
   initRevealMotion();
 
+  // Subtle cover depth effect for fine pointers; it is disabled for touch
+  // devices and for users who request reduced motion.
+  function initAtlasInteractions() {
+    const cover = document.querySelector('.cover');
+    const frame = cover && cover.querySelector('.cover-image-frame');
+    if (!cover || !frame || !window.matchMedia) return;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finePointer = window.matchMedia('(pointer: fine)').matches;
+    if (reducedMotion || !finePointer) return;
+    cover.addEventListener('pointermove', event => {
+      const rect = cover.getBoundingClientRect();
+      if (!rect.width || !rect.height) return;
+      const x = (event.clientX - rect.left) / rect.width - 0.5;
+      const y = (event.clientY - rect.top) / rect.height - 0.5;
+      cover.style.setProperty('--atlas-tilt-x', (x * 3.6).toFixed(2) + 'deg');
+      cover.style.setProperty('--atlas-tilt-y', (y * -3.2).toFixed(2) + 'deg');
+    }, { passive: true });
+    cover.addEventListener('pointerleave', () => {
+      cover.style.setProperty('--atlas-tilt-x', '0deg');
+      cover.style.setProperty('--atlas-tilt-y', '0deg');
+    }, { passive: true });
+  }
+  initAtlasInteractions();
+
   function setMenu(open) {
     sidebar.classList.toggle('open', open);
     menuButton.setAttribute('aria-expanded', String(open));
