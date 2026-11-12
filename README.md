@@ -1,110 +1,131 @@
-# Guerra do Paraguai — Dossiê de pesquisa histórica
+# Guerra do Paraguai (1864–1870) — apresentação digital
 
-Site acadêmico de leitura contínua sobre a Guerra do Paraguai (1864–1870), desenvolvido como trabalho de pesquisa escolar para a turma **Mecatrônica 2**.
+Apresentação interativa, em formato de exposição de museu e documentário, sobre a Guerra do Paraguai. Trabalho de História da turma **Mecatrônica 2**.
 
-## Identificação do grupo
+**Integrantes:** Pedro Henrique · Clara Maria · Anthony Claudio · Gabriel Willian · Leandro Farias · Lohan David
 
-- Pedro Henrique
-- Clara Maria
-- Anthony Claudio
-- Gabriel Willian
-- Leandro Farias
-- Lohan David
+Site publicado: https://guerra-do-paraguai-museu-digital.onrender.com
 
-## Nova proposta
+Ao abrir o endereço, a apresentação começa direto na abertura cinematográfica. Não há página de artigo nem botão para revelar os slides.
 
-O projeto deixou de ser uma apresentação de slides e foi reconstruído como um dossiê editorial de leitura contínua, inspirado na organização de um trabalho acadêmico. A pesquisa inclui resumo, palavras-chave, problema, objetivos, metodologia, capítulos temáticos, considerações finais e referências.
+## Roteiro (13 slides)
 
-### Conteúdo
+| # | Slide | Destaques |
+|---|-------|-----------|
+| 1 | Abertura | Mapa de 1871 surgindo, rios desenhados, bússola, poeira e fumaça, título letra a letra com brilho, pintura de Victor Meirelles revelada |
+| 2 | Contexto histórico | Mapa da Bacia do Prata com os rios desenhados em sequência e a rota fluvial de Assunção ao Atlântico |
+| 3 | Causas | Fatores de longo prazo × gatilhos de 1864–1865, ligados por linhas animadas |
+| 4 | Países envolvidos | Retratos de época de D. Pedro II, Mitre, Flores e Solano López; cartões que viram e mostram o papel de cada país |
+| 5 | Aliança e início | Escalada de 1864–1865 e o Tratado da Tríplice Aliança como documento com selo |
+| 6 | Cronologia | Linha do tempo desenhada com 14 acontecimentos clicáveis, fases e destaque para início e fim |
+| 7 | Mapa das campanhas | Mapa interativo em 5 fases, com zoom, rotas desenhadas, marcadores clicáveis e o mapa histórico de 1871 |
+| 8 | Campanhas e batalhas | Galeria com Riachuelo, Tuiuti, Curupaiti, Humaitá e Avaí (pinturas e fotografias identificadas) |
+| 9 | Consequências humanas | Fotografia de famílias desabrigadas (1867), doenças, recrutamento, civis e o debate sobre os números |
+| 10 | Consequências políticas e econômicas | Quadro por país, fotografia do Palácio dos López e charge de Angelo Agostini |
+| 11 | Interpretações históricas | Correntes historiográficas e o critério adotado no trabalho |
+| 12 | Conclusão | Pergunta do trabalho e resposta, com a faixa panorâmica de Cándido López |
+| 13 | Referências | 14 referências, método e créditos de todas as imagens |
 
-1. Resumo e delimitação do tema.
-2. Introdução e problema de pesquisa.
-3. Objetivos e metodologia.
-4. Contexto geopolítico da Bacia do Prata.
-5. Causas estruturais e escalada de 1864–1865.
-6. Cronologia e campanhas militares.
-7. Fontes visuais com legenda e referência de acervo.
-8. Mobilização, desigualdade, condições de vida e custo humano.
-9. Consequências políticas, econômicas e demográficas.
-10. Debate historiográfico.
-11. Considerações finais e bibliografia.
+## Como navegar
 
-## Recursos do site
+- **→**, **Espaço** ou **PgDn**: avançar. No mapa e na galeria de batalhas, as setas passam primeiro pelas etapas.
+- **←** ou **PgUp**: voltar.
+- **Home** e **End**: primeiro e último slide.
+- **F**: tela cheia.
+- **I**: índice com miniaturas.
+- **?**: atalhos.
+- **Esc**: fechar janelas.
+- **Celular e tablet**: deslize para os lados. Em telas estreitas ou em retrato, cada slide vira uma página com rolagem própria.
+- Cada slide tem endereço próprio, por exemplo `#mapa` ou `#cronologia`.
 
-- **Modo de leitura:** navegação lateral por capítulos, resumo acadêmico completo, figuras, referências e links para os acervos.
-- **Modo apresentação:** apresentação resumida de 10 slides, com direção de arte editorial/cinematográfica, imagens históricas em destaque, composição widescreen, cronologia, mapa e controles de navegação. A tela cheia do navegador via `F11` ativa esse modo por detecção da área visível; ao sair da tela cheia, o site retorna ao modo de leitura. Como F11 é um atalho reservado ao navegador, o evento é detectado pela mudança de viewport, sem bloquear o atalho nativo.
-- Botão **Apresentar** como alternativa: solicita a tela cheia pelo navegador quando permitido; o botão **Voltar ao site** retorna ao artigo.
-- Navegação dos slides por setas esquerda/direita, Page Up/Page Down, Espaço e botões na tela.
-- Escape fecha a apresentação e retorna ao site.
-- Navegação lateral por capítulos com indicação da seção atual.
-- Barra de progresso de leitura.
-- Sumário adaptado para a navegação no celular.
-- Visualizador de imagem ampliada.
-- Botão de impressão e opção do navegador de salvar como PDF.
-- Layout responsivo para computador, tablet e celular, nos dois modos.
-- Estilos de impressão preparados para uma versão legível em papel A4.
+## Linguagem de movimento
 
-## Imagens e mapas
+- **Transições entre slides:** dissolução cinematográfica, folha de documento colocada sobre a mesa, máscara em íris, mergulho (zoom) no mapa e deslizamento com profundidade. Uma faixa de luz atravessa o palco a cada troca.
+- **Atlas persistente:** uma camada cartográfica (rios, costas e meridianos) muda de enquadramento entre as cenas e liga a abertura à conclusão.
+- **Entradas internas:**
+  - títulos palavra por palavra ou letra por letra;
+  - imagens reveladas por máscara ou “reveladas” como fotografia;
+  - linhas e rotas desenhadas;
+  - datas em contagem;
+  - documento que se desdobra e selo carimbado;
+  - zoom lento (Ken Burns) e parallax pelo mouse.
+- **Efeitos contínuos:** poeira em canvas (pausada quando não usada), fumaça, grão de filme e bússola girando.
+- **`prefers-reduced-motion`:** quem desativa animações recebe trocas rápidas por esmaecimento, sem partículas, zoom ou deslocamentos.
 
-O site utiliza fontes históricas identificadas por legenda, com ligações aos registros originais:
+## Precisão histórica e fontes
 
-- **Pintura da capa — *Combate naval do Riachuelo*:** Edoardo De Martino, acervo do Museu Histórico Nacional, registro 6216. A reprodução é carregada da plataforma Brasiliana Museus: https://brasiliana3.museus.gov.br/brasiliana/combate-naval-do-riachuelo/. A ficha informa assinatura/datação “E. De Martino/Fecit, 1870” e registra na moldura a inscrição “II de Junho de 1865”; a Marinha do Brasil identifica a batalha como ocorrida em 11 de junho. A discrepância está explicitada no modo de apresentação para não transformar uma inscrição da obra em cronologia conclusiva.
-- **Mapa de campanha de 1871:** mapa da República do Paraguai com as marchas dos exércitos aliados entre 1866 e 1870, integrante de atlas histórico-militar associado a Emilio Carlos Jourdan e Eduardo Rensburg. Referência e dados de licença: Wikimedia Commons / David Rumsey Map Collection; edição digitalizada colorizada disponível na Diretoria do Patrimônio Histórico e Documentação da Marinha: https://www.marinha.mil.br/dhn/sites/www.marinha.mil.br.dhn/files/2025-05/Atlas%20historico%20da%20Guerra%20do%20Paraguay%20-%201871%20-%20Colorizado.pdf.
-- **Estudo para a Batalha do Riachuelo:** Victor Meirelles, c. 1868–1873. A legenda destaca que pintura histórica é representação artística, não registro fotográfico direto.
-- **Fortificações de Humaitá e Curupaiti:** gravura do acervo do Museu Histórico Nacional, associada à produção de Angelo Agostini.
-- **Artilharia brasileira, 1866:** fotografia atribuída a Bate & Cia, reproduzida em Ricardo Salles (2003).
-- **Exército brasileiro em revista, c. 1869:** fotografia de autoria desconhecida, identificada como revista do Conde d’Eu.
+O conteúdo vem do trabalho original (resumo, capítulos, conclusão e referências) e foi conferido durante a reconstrução:
 
-As imagens são carregadas de seus acervos de origem; por isso, dependem de conexão à internet. As legendas indicam registros em que autoria, data, licença e contexto podem ser conferidos. Antes de qualquer reutilização externa, confirmar as condições específicas do item original.
+- **Datas checadas:** 12 nov. 1864, *Marquês de Olinda*; 1º maio 1865, Tratado; 11 jun. 1865, Riachuelo; 18 set. 1865, Uruguaiana; 24 maio 1866, Tuiuti; 22 set. 1866, Curupaiti; 19 fev. 1868, passagem de Humaitá; dez. 1868, Dezembrada; jan. 1869, Assunção; 12 e 16 ago. 1869, Piribebuy e Acosta Ñu; 1º mar. 1870, Cerro Corá.
+- **Números de mortos:** os números demográficos do Paraguai seguem apresentados como debate, sem cifra isolada.
+- **Rotas no mapa:** são esquemáticas, traçadas pela sequência de locais e datas, e as localizações são aproximadas. As fronteiras são atuais (Natural Earth), usadas só como referência.
+- **Referências corrigidas com dados da Crossref:**
+  - Whigham & Potthast: *Latin American Research Review*, v. 34, n. 1, 1999 (publicado on-line em 2022);
+  - Patrício (2024): *JANUS.NET*, v. 14, dossiê temático 1.
 
-## Pesquisa e cuidado historiográfico
-
-O texto combina bibliografia acadêmica, materiais de instituições públicas e acervos documentais. A pesquisa evita tratar a guerra como resultado de uma única causa, apresenta a crise do Prata como contexto central e sinaliza que as estimativas demográficas paraguaias são debatidas. As fontes não resolvem todas as divergências; os pontos em discussão são identificados como tais.
-
-Referências principais: Atlas Histórico do Brasil/FGV; estudo de Raquel de Caria Patrício (2024); artigos de historiografia publicados pela UFRJ; documentação do Senado Federal; Marinha do Brasil; Museu Histórico Nacional; estudo demográfico de Whigham e Potthast; pesquisa de Maria Teresa Garritano Dourado; TCC de Andrew Cesar de Goes (UNILA).
-
-## Como executar localmente
-
-Não há dependências de build. Abra o arquivo principal no navegador ou use um servidor estático:
-
-1. Clone ou baixe o repositório.
-2. Abra o terminal na pasta do projeto.
-3. Execute o comando abaixo:
-
-    python -m http.server 8000
-
-4. Acesse http://localhost:8000.
+Todas as imagens estão salvas no próprio projeto (`assets/img`), em domínio público ou CC0, com autoria, data e ficha de origem no visualizador e no slide de referências. Pinturas posteriores são identificadas como representações artísticas.
 
 ## Estrutura
 
-- index.html — capa, conteúdo acadêmico, figuras, citações e referências.
-- styles.css — identidade visual do site acadêmico, responsividade e impressão.
-- presentation.css — identidade visual, layouts responsivos e controles visuais do modo de apresentação.
-- script.js — sumário, progresso, visualizador de imagens e controles.
-- scripts/validate-site.mjs — validação estática automatizada de seções, slides, links internos, referências, imagens, nomes do grupo e sintaxe JavaScript.
-- assets/favicon.svg — ícone do projeto.
-- .github/workflows/deploy.yml — workflow de publicação no GitHub Pages.
+```
+index.html              apresentação (13 slides)
+css/base.css            fontes, paleta e texturas
+css/deck.css            palco 16:9, camadas, controles, índice, ajuda, visualizador
+css/motion.css          transições e animações (+ movimento reduzido)
+css/slides.css          layout de cada slide
+css/responsive.css      celular, tablet e paisagem baixa
+js/map-data.js          contornos e rios (gerado do Natural Earth)
+js/fx.js                tipografia cinética, contadores, poeira, parallax, atlas
+js/map.js               mapas da Bacia do Prata e das campanhas
+js/timeline.js          linha do tempo
+js/app.js               navegação, etapas, controles e créditos das imagens
+assets/img/             imagens históricas otimizadas
+assets/fonts/           Cormorant Garamond e IBM Plex (licença OFL)
+scripts/validate-site.mjs  validação estática
+scripts/build-map.mjs      gera js/map-data.js
+```
 
-## Exportação para PDF
+Não há etapa de build. Para rodar localmente:
 
-Clique em **Exportar PDF** no cabeçalho e escolha “Salvar como PDF” na caixa de impressão do navegador. As configurações de impressão removem elementos de navegação e adaptam o artigo para papel A4. Recomenda-se revisar as quebras de página antes da entrega escolar.
+```
+python -m http.server 8000
+```
 
-## Validação automática
+Depois, abra http://localhost:8000.
 
-A cada push, o workflow executa `node scripts/validate-site.mjs` antes de tentar publicar. O script confere as seções acadêmicas, integrantes, IDs duplicados, links internos, citações e referências, textos alternativos de imagens, dez slides na ordem prevista, controles de apresentação e sintaxe JavaScript. Essa validação é estática: não substitui um teste visual em navegador real.
+## Validação
 
-## GitHub Pages
+`node scripts/validate-site.mjs` confere:
 
-Para publicar no GitHub Pages, em **Settings → Pages**, defina a fonte de publicação como **GitHub Actions** e confirme que o workflow concluiu com sucesso. O endereço esperado para este repositório é https://jleobrx.github.io/guerra-do-paraguai-apresentacao/, mas só deve ser considerado ativo depois de uma implantação bem-sucedida.
+- slides e ordem;
+- integrantes;
+- IDs, âncoras, citações e referências;
+- existência dos arquivos locais;
+- textos alternativos;
+- controles;
+- suporte a movimento reduzido;
+- sintaxe do JavaScript.
 
-## Nota sobre formalização acadêmica
+O workflow `.github/workflows/deploy.yml` executa essa validação a cada push na `main`. A validação estática não substitui a conferência visual no navegador.
 
-Este é um dossiê escolar digital em formato de pesquisa. Como o nome oficial da instituição, município, professor/orientador e requisitos locais de formatação não foram informados, esses elementos não foram inventados. Antes de entregar como TCC formal, ajustar a capa e as referências às orientações da instituição e do professor.
+## Mapas
 
-## Direção visual nova — Museu Digital
+`js/map-data.js` é gerado a partir do [Natural Earth](https://www.naturalearthdata.com/) (domínio público):
 
-A versão atual usa uma identidade editorial diferente para o site e a apresentação: ameixa profundo, violeta, rosa elétrico e verde-limão. A folha `experience.css` faz a camada de arte sobre o dossiê e os dez slides sem substituir o conteúdo histórico nem as referências.
+```
+node scripts/build-map.mjs <pasta-com-os-geojson>
+```
 
-O modo de leitura inclui animações de entrada ao rolar a página, e a apresentação possui transições direcionais, cartões animados e layouts específicos para contexto regional, causas, cronologia, campanhas, custo humano, consequências e historiografia. As animações respeitam a configuração `prefers-reduced-motion`; o layout segue responsivo em telas menores.
+Arquivos necessários na pasta:
 
-A validação executada em cada push verifica também a existência da nova folha visual e da lógica de animação. A hospedagem continua independente da validação do código: o workflow de GitHub Actions não deve relatar uma publicação como concluída quando o serviço GitHub Pages ainda não está habilitado.
+- `ne_50m_admin_0_countries.geojson`
+- `ne_10m_admin_0_countries.geojson`
+- `ne_10m_rivers_lake_centerlines.geojson`
+
+## Publicação
+
+O Render publica o site estático automaticamente a partir da branch `main`. O endereço é https://guerra-do-paraguai-museu-digital.onrender.com.
+
+## Observação
+
+Este é um trabalho escolar em formato digital. Para uma entrega formal, completem a identificação institucional, o local, o ano e o nome do professor ou da professora, conforme as normas da escola.

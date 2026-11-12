@@ -1,192 +1,99 @@
 #!/usr/bin/env node
+// Validação estática da apresentação (executada no GitHub Actions a cada push).
+// Não substitui a inspeção visual no navegador.
 import fs from "node:fs";
+import path from "node:path";
 import { execFileSync } from "node:child_process";
 
 const fail = [];
 const pass = [];
-const read = (path) => {
-  if (!fs.existsSync(path)) {
-    fail.push("Arquivo obrigatório ausente: " + path);
+const check = (ok, okMsg, errMsg) => (ok ? pass.push(okMsg) : fail.push(errMsg));
+const read = (file) => {
+  if (!fs.existsSync(file)) {
+    fail.push("Arquivo obrigatório ausente: " + file);
     return "";
   }
-  return fs.readFileSync(path, "utf8");
+  return fs.readFileSync(file, "utf8");
 };
 
 const html = read("index.html");
-const css = read("styles.css");
-const presCss = read("presentation.css");
-const experienceCss = read("experience.css");
-const atlasCss = read("atlas.css");
-const studioCss = read("studio.css");
-const js = read("script.js");
-const requiredNames = [
-  "Pedro Henrique", "Clara Maria", "Anthony Claudio",
-  "Gabriel Willian", "Leandro Farias", "Lohan David"
-];
-
-function check(condition, ok, error) {
-  if (condition) pass.push(ok);
-  else fail.push(error);
-}
+const cssFiles = ["css/base.css", "css/deck.css", "css/motion.css", "css/slides.css", "css/responsive.css"];
+const jsFiles = ["js/map-data.js", "js/fx.js", "js/map.js", "js/timeline.js", "js/app.js"];
+const css = cssFiles.map(read).join("\n");
+const js = jsFiles.map(read).join("\n");
 
 check(html.includes('<html lang="pt-BR">'), "HTML declara português brasileiro.", 'O HTML precisa declarar lang="pt-BR".');
-check(
-  html.includes('id="resumo"') && html.includes('id="introducao"') &&
-  html.includes('id="metodologia"') && html.includes('id="contexto"') &&
-  html.includes('id="causas"') && html.includes('id="campanhas"') &&
-  html.includes('id="sociedade"') && html.includes('id="consequencias"') &&
-  html.includes('id="historiografia"') && html.includes('id="conclusao"') &&
-  html.includes('id="referencias"'),
-  "Todas as seções acadêmicas principais estão presentes.",
-  "Falta uma ou mais seções acadêmicas obrigatórias."
-);
 
-for (const name of requiredNames) {
+// Slides na ordem prevista
+const expected = [
+  "abertura", "contexto", "causas", "paises", "alianca", "cronologia", "mapa",
+  "batalhas", "humanas", "politicas", "interpretacoes", "conclusao", "referencias",
+];
+const slides = [...html.matchAll(/<section class="slide [^"]*" id="([^"]+)"([^>]*)>/g)].map((m) => ({ id: m[1], attrs: m[2] }));
+check(slides.length === expected.length, `A apresentação tem ${slides.length} slides.`, `Esperados ${expected.length} slides; encontrados ${slides.length}.`);
+check(expected.every((id, i) => slides[i]?.id === id), "Slides na ordem narrativa prevista.", "Ordem dos slides diferente da prevista: " + slides.map((s) => s.id).join(", "));
+check(slides.every((s) => /data-title="[^"]+"/.test(s.attrs)), "Todos os slides têm título para o índice.", "Há slide sem data-title.");
+check(!/class="(research|site-header|presentation)"/.test(html) && !html.includes('id="presentButton"'), "Não restou a antiga interface de artigo.", "Ainda há marcação da antiga interface de artigo/relatório.");
+
+// Integrantes
+for (const name of ["Pedro Henrique", "Clara Maria", "Anthony Claudio", "Gabriel Willian", "Leandro Farias", "Lohan David"]) {
   check(html.includes(name), "Integrante presente: " + name + ".", "Integrante ausente: " + name + ".");
 }
 
-const idMatches = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
-const duplicateIds = idMatches.filter((id, index) => idMatches.indexOf(id) !== index);
-check(duplicateIds.length === 0, "Não há IDs HTML duplicados.",
-  "IDs duplicados: " + [...new Set(duplicateIds)].join(", ") + ".");
+// IDs e âncoras
+const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]);
+const dup = ids.filter((id, i) => ids.indexOf(id) !== i);
+check(dup.length === 0, "Não há IDs duplicados.", "IDs duplicados: " + [...new Set(dup)].join(", "));
+const idSet = new Set(ids);
+const anchors = [...html.matchAll(/\bhref="#([^"]+)"/g)].map((m) => m[1]);
+const broken = [...new Set(anchors.filter((a) => !idSet.has(a)))];
+check(broken.length === 0, "Todos os links internos têm destino.", "Links internos sem destino: " + broken.join(", "));
+const refs = [...html.matchAll(/<li id="ref(\d+)"/g)].map((m) => Number(m[1]));
+const cites = [...html.matchAll(/data-ref="(\d+)"/g)].map((m) => Number(m[1]));
+const missingRefs = [...new Set(cites.filter((n) => !refs.includes(n)))];
+check(refs.length >= 13, `Lista com ${refs.length} referências.`, "A lista de referências está incompleta.");
+check(missingRefs.length === 0, "Todas as citações têm referência correspondente.", "Citações sem referência: " + missingRefs.join(", "));
 
-const ids = new Set(idMatches);
-const internalLinks = [...html.matchAll(/\bhref="#([^"]+)"/g)].map((match) => match[1]);
-const brokenLinks = [...new Set(internalLinks.filter((id) => !ids.has(id)))];
-check(brokenLinks.length === 0, "Todos os links internos têm destino.",
-  "Links internos sem destino: " + brokenLinks.join(", ") + ".");
+// Arquivos locais referenciados
+const localRefs = [...html.matchAll(/\b(?:src|href)="((?:assets|css|js)\/[^"#?]+)"/g)].map((m) => m[1]);
+const imgKeys = [...html.matchAll(/data-(?:lightbox|img)="([a-z0-9-]+)"/g)].map((m) => `assets/img/${m[1]}.jpg`);
+const registry = [...read("js/app.js").matchAll(/^\s+"([a-z0-9-]+)": \["/gm)].map((m) => `assets/img/${m[1]}.jpg`);
+const missingFiles = [...new Set([...localRefs, ...imgKeys, ...registry])].filter((f) => !fs.existsSync(f));
+check(missingFiles.length === 0, `Todos os ${new Set([...localRefs, ...imgKeys, ...registry]).size} arquivos locais existem.`, "Arquivos referenciados e ausentes: " + missingFiles.join(", "));
+check(!/src="https?:\/\//.test(html), "Imagens e scripts servidos pelo próprio projeto.", "Há imagem ou script carregado de domínio externo.");
 
-const citationTargets = [...html.matchAll(/\bhref="#ref(\d+)"/g)].map((match) => Number(match[1]));
-const availableReferences = new Set([...html.matchAll(/<li\b[^>]*\bid="ref(\d+)"/g)].map((match) => Number(match[1])));
-const missingReferences = [...new Set(citationTargets.filter((number) => !availableReferences.has(number)))];
-check(missingReferences.length === 0, "As citações numéricas possuem referência correspondente.",
-  "Citações sem referência: " + missingReferences.map((n) => "[" + n + "]").join(", ") + ".");
+// Acessibilidade das imagens
+const imgs = [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0]);
+const noAlt = imgs.filter((tag) => !/\balt="/.test(tag));
+check(noAlt.length === 0, `Todas as ${imgs.length} imagens têm texto alternativo (alt).`, `${noAlt.length} imagem(ns) sem alt.`);
 
-const slides = [...html.matchAll(/<section class="(pres-slide[^"]*)" data-pres-title="([^"]+)"([^>]*)>/g)]
-  .map((match) => ({ className: match[1], title: match[2], attrs: match[3] }));
-check(slides.length === 10, "A apresentação contém 10 slides (" + slides.length + ").",
-  "A apresentação deveria ter 10 slides; encontrados: " + slides.length + ".");
-if (slides.length) {
-  check(!/\bhidden\b/.test(slides[0].attrs) && slides.slice(1).every((slide) => /\bhidden\b/.test(slide.attrs)),
-    "Somente o primeiro slide está visível por padrão.",
-    "Verifique o atributo hidden inicial dos slides.");
+// Recursos de apresentação
+for (const [sel, label] of [
+  ['id="btnPrev"', "botão anterior"], ['id="btnNext"', "botão próximo"], ['id="btnFull"', "tela cheia"],
+  ['id="btnIndex"', "índice/miniaturas"], ['id="progressFill"', "barra de progresso"], ['id="navNum"', "numeração"],
+  ['id="keyHint"', "indicador de teclado"], ['id="lightbox"', "visualizador de imagens"], ['id="timeline"', "linha do tempo"],
+  ['data-map="theater"', "mapa das campanhas"], ['data-map="prata"', "mapa da Bacia do Prata"],
+]) check(html.includes(sel), "Presente: " + label + ".", "Ausente: " + label + ".");
+check(css.includes("prefers-reduced-motion"), "CSS respeita prefers-reduced-motion.", "Falta suporte a prefers-reduced-motion.");
+check(/ArrowRight/.test(js) && /ArrowLeft/.test(js) && /touchend/.test(js), "Navegação por teclado e toque implementada.", "Falta navegação por teclado ou toque.");
+check(/requestFullscreen/.test(js), "Tela cheia implementada.", "Tela cheia ausente.");
+
+// Sintaxe JavaScript
+for (const file of jsFiles) {
+  try {
+    execFileSync(process.execPath, ["--check", file], { stdio: "pipe" });
+    pass.push("Sintaxe válida: " + file + ".");
+  } catch (error) {
+    fail.push("Erro de sintaxe em " + file + ": " + String(error.stderr || error.message).split("\n")[0]);
+  }
 }
 
-const expectedSlides = [
-  "A Guerra do Paraguai", "Objetivo e método", "A região do Prata",
-  "Causas do conflito", "Cronologia essencial", "Batalhas e estratégia",
-  "O custo humano", "Consequências", "Debate historiográfico", "Conclusão"
-];
-check(expectedSlides.every((title, index) => slides[index]?.title === title),
-  "Ordem e títulos dos slides estão corretos.",
-  "A ordem ou os títulos dos slides não correspondem à sequência prevista.");
+// Tamanho total publicado
+const size = (dir) => fs.readdirSync(dir, { withFileTypes: true }).reduce((sum, e) => sum + (e.isDirectory() ? size(path.join(dir, e.name)) : fs.statSync(path.join(dir, e.name)).size), 0);
+const total = ["index.html", "css", "js", "assets"].reduce((s, p) => s + (fs.statSync(p).isDirectory() ? size(p) : fs.statSync(p).size), 0);
+check(total < 15 * 1024 * 1024, `Tamanho total do site: ${(total / 1048576).toFixed(1)} MB.`, `Site grande demais: ${(total / 1048576).toFixed(1)} MB.`);
 
-const images = [...html.matchAll(/<img\b([^>]*?)>/g)].map((match) => match[1]);
-const imagesMissingAlt = images.filter((attrs) => {
-  const src = (attrs.match(/\bsrc="([^"]*)"/) || [])[1] || "";
-  const alt = (attrs.match(/\balt="([^"]*)"/) || [])[1] || "";
-  return src.trim() !== "" && alt.trim() === "";
-});
-check(imagesMissingAlt.length === 0, "Todas as imagens com fonte têm texto alternativo.",
-  "Imagens sem texto alternativo: " + imagesMissingAlt.length + ".");
-
-check(html.includes('id="presentButton"') && html.includes('id="presentationExit"') &&
-  html.includes('id="presPrev"') && html.includes('id="presNext"') && html.includes('id="presDots"'),
-  "Controles do modo apresentação estão presentes.",
-  "Um ou mais controles de apresentação estão ausentes.");
-check(js.includes("browserWindowIsFullscreen") && js.includes("ArrowRight") && js.includes("ArrowLeft") &&
-  js.includes("PageDown") && js.includes("PageUp") && js.includes("presNext") &&
-  !js.includes("document.documentElement.requestFullscreen"),
-  "F11 do navegador e navegação por teclado estão sincronizados sem conflito de tela cheia.",
-  "Falta a lógica F11 ou há uma solicitação de tela cheia que pode conflitar com o F11 do navegador.");
-check(js.indexOf("function initRevealMotion()") < js.indexOf("function setMenu") &&
-  js.includes("initRevealMotion();") &&
-  js.includes("fullscreenResyncQueued") && js.includes("window.setTimeout(() => {") &&
-  js.includes("window.addEventListener('resize', () => {\n    updateScrollUI();\n    syncFullscreenMode();"),
-  "A animação de leitura inicializa no carregamento e o redimensionamento só sincroniza F11.",
-  "A animação de leitura parece aninhada no evento resize ou a sincronização F11 está incompleta.");
-
-check(presCss.includes(".pres-title-slide") && presCss.includes(".pres-map-layout") &&
-  presCss.includes("@media print") && presCss.includes("prefers-reduced-motion"),
-  "A folha de apresentação, impressão e redução de movimento está presente.",
-  "Estão ausentes estilos de apresentação, impressão ou acessibilidade.");
-check(html.includes('href="experience.css"') &&
-  experienceCss.includes("--accent-lime") && experienceCss.includes(".pres-title-slide") &&
-  experienceCss.includes("@keyframes experienceSlideIn"),
-  "A camada visual anterior continua presente para compatibilidade.",
-  "A folha visual de compatibilidade está ausente ou incompleta.");
-check(html.includes('href="atlas.css"') && atlasCss.includes("--atlas-blue:#2548e8") &&
-  atlasCss.includes("--atlas-orange:#f05a38") && atlasCss.includes(".pres-title-slide") &&
-  atlasCss.includes("@keyframes atlasSlideArrive"),
-  "A nova identidade Atlas está conectada ao site e à apresentação, com cores e entrada animada.",
-  "A nova camada visual Atlas, suas cores ou suas animações não estão conectadas.");
-check(js.includes("initAtlasInteractions") && js.includes("atlas-tilt-x") &&
-  js.includes("prefers-reduced-motion") && atlasCss.includes("@keyframes atlasGridDrift"),
-  "A capa tem profundidade interativa acessível e movimento cartográfico.",
-  "A interação da capa ou a animação cartográfica está ausente.");
-check(experienceCss.includes("calc((100dvh - 164px)*1.7777778)") &&
-  experienceCss.includes("calc((100dvh - 126px)*1.7777778)") &&
-  experienceCss.includes("max-height:calc(100dvh - 146px)") &&
-  experienceCss.includes("@media (min-width:651px) and (max-height:800px)"),
-  "O dimensionamento F11 tem margens de segurança para telas altas, laptops e dispositivos móveis.",
-  "Faltam regras de dimensionamento para a altura real da área de apresentação.");
-check(js.includes("initRevealMotion") && js.includes("IntersectionObserver") && js.includes("is-revealed"),
-  "Animações de entrada do conteúdo principal estão implementadas.",
-  "A lógica de animação progressiva do conteúdo está ausente.");
-
-check([css, presCss, experienceCss, atlasCss, studioCss].every((sheet) =>
-  (sheet.match(/{/g) || []).length === (sheet.match(/}/g) || []).length),
-  "As chaves das cinco folhas CSS estão balanceadas.", "As chaves de uma das folhas CSS parecem estar desbalanceadas.");
-
-try {
-  execFileSync(process.execPath, ["--check", "script.js"], { stdio: "pipe" });
-  pass.push("Sintaxe do JavaScript validada pelo Node.js.");
-} catch (error) {
-  fail.push("Erro de sintaxe em script.js: " + (error.stderr?.toString() || error.message).trim());
-}
-
-
-check(html.includes('id="lightboxPrev"') && html.includes('id="lightboxNext"') &&
-  html.includes('id="lightboxZoom"') && html.includes('id="lightboxCount"') &&
-  js.includes("function showLightboxAt") && js.includes("function getGalleryImages") &&
-  js.includes("lightboxStage.classList.toggle('is-zoomed')"),
-  "A galeria permite anterior/próxima, contagem, zoom e navegação por teclado.",
-  "Os controles interativos da galeria de imagens estão incompletos.");
-const externalImageTags = [...html.matchAll(/<img\b[^>]*src="https?:[^"]+"[^>]*>/gi)].map(match => match[0]);
-check(externalImageTags.length >= 10 && externalImageTags.every(tag =>
-  /\balt="[^"]+"/i.test(tag) && /\bdata-fallback-src="https?:/i.test(tag) &&
-  /\bdecoding="async"/i.test(tag)),
-  "As imagens externas têm texto alternativo, fonte alternativa e decodificação assíncrona.",
-  "Uma ou mais imagens externas não têm alt, fallback ou decoding async.");
-check(!html.includes("thumb.wikimedia.org") &&
-  js.includes("function handleImageError") && js.includes("imageFallbackMessage") &&
-  js.includes("image-unavailable-panel") && js.includes("sourceImage.dataset.fallbackTried === 'true'") &&
-  atlasCss.includes(".image-fallback-note"),
-  "Links de imagem foram padronizados, a galeria acompanha as alternativas e falhas exibem aviso legível.",
-  "A contingência de imagem não é sincronizada com a galeria ou o aviso visual está ausente.");
-check(js.includes("function initSlideInteractions") && js.includes("pres-interactive-card") &&
-  js.includes("aria-pressed") && js.includes("pres-interaction-panel") &&
-  atlasCss.includes(".pres-interactive-card.is-selected"),
-  "Cartões dos slides podem ser selecionados por mouse/teclado e revelam contexto.",
-  "A camada de interação dos cartões de apresentação está incompleta.");
-
-
-check(html.includes('href="studio.css"') && studioCss.includes("--studio-navy:#142838") &&
-  studioCss.includes(".pres-title-slide") && studioCss.includes("@keyframes studioSlideArrive"),
-  "A camada Studio define uma identidade editorial consistente para o site e os slides.",
-  "A camada Studio não está conectada ou não define o estilo dos slides.");
-check(studioCss.includes("@media(max-width:850px)") && studioCss.includes("@media(max-width:560px)") &&
-  studioCss.includes("prefers-reduced-motion:reduce"),
-  "A camada Studio tem layouts responsivos e respeita a preferência por movimento reduzido.",
-  "Faltam os ajustes responsivos ou a redução de movimento na camada Studio.");
-check(html.includes('data-fallback-src="https://atlas.fgv.br/sites/atlas.fgv.br/files/05-03-a2011-full_0.png"') &&
-  html.includes('data-fallback-credit-url="https://atlas.fgv.br/marcos/guerra-do-paraguai/mapas/guerra-do-paraguai-o-complexo-fortificado-de-humaita"') &&
-  js.includes("image.classList.toggle('image-kind-map'"),
-  "A alternativa sobre Humaitá usa mapa, legenda contextual, crédito e tratamento visual correspondentes.",
-  "A alternativa de Humaitá precisa de fonte, legenda ou classe visual consistente.");
-
-console.log("VALIDAÇÃO DO SITE — GUERRA DO PARAGUAI");
-for (const message of pass) console.log("PASS  " + message);
-for (const message of fail) console.error("FAIL  " + message);
-console.log("\nResultado: " + pass.length + " verificações aprovadas; " + fail.length + " falhas.");
-if (fail.length) process.exit(1);
+for (const msg of pass) console.log("✓ " + msg);
+for (const msg of fail) console.error("✗ " + msg);
+console.log(`\n${pass.length} verificações aprovadas, ${fail.length} falha(s).`);
+process.exit(fail.length ? 1 : 0);
