@@ -36,7 +36,7 @@ check(slides.every((s) => /data-title="[^"]+"/.test(s.attrs)), "Todos os slides 
 check(!/class="(research|site-header|presentation)"/.test(html) && !html.includes('id="presentButton"'), "Não restou a antiga interface de artigo.", "Ainda há marcação da antiga interface de artigo/relatório.");
 
 // Integrantes
-for (const name of ["Pedro Henrique", "Clara Maria", "Anthony Claudio", "Gabriel Willian", "Leandro Farias", "Lohan David"]) {
+for (const name of ["Pedro Henrique", "Clara Maria", "Anthony Marcos", "Gabriel Willian", "Leandro Farias", "Lohan David"]) {
   check(html.includes(name), "Integrante presente: " + name + ".", "Integrante ausente: " + name + ".");
 }
 

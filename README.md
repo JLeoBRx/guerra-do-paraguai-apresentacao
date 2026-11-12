@@ -2,7 +2,7 @@
 
 Apresentação interativa, em formato de exposição de museu e documentário, sobre a Guerra do Paraguai. Trabalho de História da turma **Mecatrônica 2**.
 
-**Integrantes:** Pedro Henrique · Clara Maria · Anthony Claudio · Gabriel Willian · Leandro Farias · Lohan David
+**Integrantes:** Pedro Henrique · Clara Maria · Anthony Marcos · Gabriel Willian · Leandro Farias · Lohan David
 
 Site publicado: https://guerra-do-paraguai-museu-digital.onrender.com
 
