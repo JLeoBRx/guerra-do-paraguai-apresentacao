@@ -6,13 +6,12 @@
 .slide-opening { padding: 0; }
 .layer-oldmap { left: calc(-6 * var(--k)); right: calc(30 * var(--k)); opacity: 0; transition: opacity 3.5s var(--ease-in-out) .6s; }
 .layer-oldmap img {
-  filter: sepia(.7) saturate(.6) brightness(.62) contrast(1.15);
-  mix-blend-mode: screen;
+  filter: sepia(.7) saturate(.6) brightness(.7) contrast(1.1);
   object-position: 50% 30%;
   -webkit-mask-image: radial-gradient(ellipse 60% 70% at 45% 50%, #000 20%, transparent 78%);
   mask-image: radial-gradient(ellipse 60% 70% at 45% 50%, #000 20%, transparent 78%);
 }
-.slide-opening.in .layer-oldmap { opacity: .34; }
+.slide-opening.in .layer-oldmap { opacity: .22; }
 
 .opening-art {
   position: absolute !important;
@@ -300,29 +299,7 @@
 .nation-py .nation-face { border-color: rgba(140, 42, 50, .35); }
 .slide-nations .footnote { right: calc(30 * var(--k)); }
 
-/* ---------- 05 · Aliança ---------- */
-.alliance-bg { left: calc(30 * var(--k)); opacity: .26; }
-.alliance-bg img { filter: sepia(.45) saturate(.7) brightness(.8); -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%); mask-image: linear-gradient(90deg, transparent, #000 45%); }
-.escalation { position: relative; margin-top: calc(2.4 * var(--k)); width: calc(52 * var(--k)); display: grid; gap: calc(.5 * var(--k)); }
-.escalation::before { content: ""; position: absolute; left: calc(10.4 * var(--k)); top: calc(.8 * var(--k)); bottom: calc(.8 * var(--k)); width: 1px; background: linear-gradient(var(--gold), var(--crimson-2)); opacity: .55; }
-.escalation li { position: relative; display: grid; grid-template-columns: calc(9.4 * var(--k)) 1fr; gap: calc(2.2 * var(--k)); align-items: start; padding: calc(.55 * var(--k)) 0; }
-.escalation li::before {
-  content: "";
-  position: absolute;
-  left: calc(10.4 * var(--k));
-  top: calc(1.15 * var(--k));
-  width: calc(.8 * var(--k));
-  height: calc(.8 * var(--k));
-  border: 1px solid var(--gold);
-  background: var(--ink-2);
-  transform: translate(-50%, 0) rotate(45deg);
-}
-.escalation time { padding-top: calc(.25 * var(--k)); font-family: var(--font-mono); font-size: max(calc(.82 * var(--k)), 11px); letter-spacing: .1em; text-align: right; text-transform: uppercase; color: var(--gold-2); }
-.escalation strong { display: block; font-family: var(--font-display); font-size: calc(1.55 * var(--k)); font-weight: 700; line-height: 1.1; }
-.escalation span { display: block; margin-top: calc(.15 * var(--k)); font-size: var(--fs-small); color: var(--fg-2); }
-.escalation li.is-key::before { background: var(--gold); box-shadow: 0 0 calc(1.2 * var(--k)) rgba(230, 205, 148, .8); }
-.escalation li.is-key strong { color: var(--gold-2); }
-
+/* ---------- Tratado (usado na cena da Tríplice Aliança) ---------- */
 .treaty { position: absolute !important; right: var(--pad-x); top: calc(7 * var(--k)); width: calc(30 * var(--k)); }
 .treaty-paper {
   position: relative;
@@ -347,7 +324,6 @@
 .treaty-seal circle:first-child { fill: rgba(140, 42, 50, .14); stroke-width: calc(3px * var(--sw, 1)); }
 .treaty-seal text { fill: var(--crimson); font: 700 11px var(--font-mono); letter-spacing: .08em; }
 .treaty-seal text:first-of-type { font: 700 15px var(--font-display); }
-.slide-alliance .footnote { left: auto; right: var(--pad-x); width: calc(30 * var(--k)); bottom: calc(7.4 * var(--k)); text-align: right; }
 
 /* ---------- 06 · Cronologia ---------- */
 .slide-timeline { display: flex; flex-direction: column; padding-bottom: calc(4.2 * var(--k)); }

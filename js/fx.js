@@ -197,7 +197,8 @@
     continent: [-86, 13, -30, -57],
     prata: [-67.5, -13, -43, -37.5],
     theater: [-63.5, -16.5, -49.5, -33.5],
-    paraguay: [-61.8, -19.5, -53.5, -28.5]
+    paraguay: [-61.8, -19.5, -53.5, -28.5],
+    finale: [-82, -12, -56, -36]
   };
   function Atlas(mount, deck) {
     this.mount = mount;
@@ -217,7 +218,7 @@
     var land = GP.svg("g", null, svg);
     ["BRA", "ARG", "URY", "PRY", "BOL", "CHL", "PER", "COL", "VEN", "ECU", "GUY", "SUR", "GUF", "PAN"].forEach(function (code) {
       if (!G.countries[code]) return;
-      GP.svg("path", { d: G.countries[code], "class": "a-land" + (["BRA", "ARG", "URY", "PRY"].indexOf(code) > -1 ? " is-key" : "") }, land);
+      GP.svg("path", { d: G.countries[code], pathLength: 1, "class": "a-land" + (["BRA", "ARG", "URY", "PRY"].indexOf(code) > -1 ? " is-key" : "") + (code === "PRY" ? " is-py" : "") }, land);
     });
     var rivers = GP.svg("g", null, svg);
     Object.keys(G.rivers).forEach(function (k) {
@@ -231,6 +232,9 @@
       var t = GP.svg("text", { x: p[0] + c[3] * 22, y: p[1] + 8 + c[4], "text-anchor": c[3] > 0 ? "start" : "end", "class": "a-city-label" }, cities);
       t.textContent = c[0];
     });
+    var pyc = GP.project(-58.2, -23.3);
+    var pyl = GP.svg("text", { x: pyc[0], y: pyc[1], "text-anchor": "middle", "class": "a-py-label" }, cities);
+    pyl.textContent = "Paraguai";
     this.labels = cities;
     this.vb = null;
     this.anim = 0;
@@ -269,6 +273,14 @@
     this.vb = vb;
     this.svg.style.setProperty("--sw", (vb.w / (this.deck.clientWidth || 1)).toFixed(4));
     this.svg.setAttribute("viewBox", [vb.x, vb.y, vb.w, vb.h].map(function (n) { return n.toFixed(1); }).join(" "));
+  };
+  // Reapresenta o desenho dos rios e contornos (abertura e conclusão)
+  Atlas.prototype.redraw = function () {
+    if (GP.reduced()) return;
+    var m = this.mount;
+    m.classList.remove("is-drawn");
+    void m.offsetWidth;
+    requestAnimationFrame(function () { requestAnimationFrame(function () { m.classList.add("is-drawn"); }); });
   };
   Atlas.prototype.draw = function () {
     var m = this.mount;

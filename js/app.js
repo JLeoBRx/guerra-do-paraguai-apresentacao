@@ -37,6 +37,19 @@
 
   var deck, slides, state = { index: 0, step: 0 }, atlas, dust, busy = null;
   var stepsOf = function (s) { return Number(s.dataset.steps || 0); };
+  // Modo prévia (usado nas miniaturas do modo apresentador): sem controles, sem áudio, sem animação
+  var PREVIEW = /[?&]preview\b/.test(location.search);
+  if (PREVIEW) {
+    document.documentElement.classList.add("is-preview");
+    GP.reduced = function () { return true; };
+  }
+  // Duração de cada transição e atraso para as animações internas começarem (ms)
+  var TR = {
+    dissolve: [1150, 140], page: [1150, 140], iris: [1350, 160], zoom: [1150, 140], slide: [1150, 140],
+    reveal: [1500, 320], dive: [1500, 260], stack: [1200, 220], carto: [1300, 260], timepass: [1150, 140],
+    dramatic: [1500, 680], sober: [2300, 1150], finale: [2700, 1300]
+  };
+  var bc = !PREVIEW && "BroadcastChannel" in window ? new BroadcastChannel("gp-apresentacao") : null;
 
   /* ---------- Navegação ---------- */
   function setChrome() {
@@ -56,6 +69,13 @@
     $$("#progressTicks button").forEach(function (b, i) { b.setAttribute("aria-current", i === state.index ? "true" : "false"); });
     deck.dataset.theme = s.classList.contains("theme-paper") ? "paper" : "dark";
     deck.dataset.atlasLevel = s.dataset.atlasLevel || "dim";
+    var nb = $("#btnNext");
+    var moreSteps = total && state.step < total;
+    nb.classList.toggle("is-step", !!moreSteps);
+    nb.setAttribute("aria-label", moreSteps ? "Próxima etapa da cena" : "Próximo slide");
+    nb.title = moreSteps ? "Próxima etapa (" + (state.step + 2) + " de " + (total + 1) + ")" : "Próximo slide";
+    broadcast();
+    document.dispatchEvent(new CustomEvent("gp:change", { detail: { index: state.index, step: state.step, slide: s } }));
     document.title = (state.index === 0 ? "" : s.dataset.title + " · ") + "Guerra do Paraguai — 1864–1870";
   }
 
@@ -67,6 +87,12 @@
     });
     // galeria de batalhas
     var items = $$(".reel-item", slide);
+    var yearEl = slide.querySelector(".reel-year span");
+    if (yearEl) {
+      var t = $$(".reel-text time", slide)[step];
+      var to = t ? Number((t.textContent.match(/1\d{3}/) || [])[0]) : 0;
+      if (to) countTo(yearEl, to, animate);
+    }
     if (items.length) {
       items.forEach(function (it, i) {
         it.classList.toggle("is-now", i === step);
@@ -79,6 +105,53 @@
       $$(".reel-text", slide).forEach(function (t, i) { t.classList.toggle("is-now", i === step); });
     }
     slide.dispatchEvent(new CustomEvent("gp:step", { detail: { step: step, animate: animate } }));
+  }
+
+  function countTo(el, to, animate) {
+    var from = Number(el.textContent) || to;
+    cancelAnimationFrame(el._raf);
+    if (!animate || GP.reduced() || from === to) { el.textContent = to; return; }
+    var t0 = performance.now();
+    var tick = function (now) {
+      var t = Math.min(1, (now - t0) / 900), e = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(from + (to - from) * e);
+      if (t < 1) el._raf = requestAnimationFrame(tick);
+    };
+    el._raf = requestAnimationFrame(tick);
+  }
+  GP.countTo = countTo;
+
+  /* Atlas: plano geral da América do Sul na abertura e retorno a ele na conclusão */
+  var atlasTimer, atlasTimer2;
+  function atlasFor(slide, instant) {
+    if (!atlas) return;
+    clearTimeout(atlasTimer);
+    clearTimeout(atlasTimer2);
+    var id = slide.id;
+    deck.classList.toggle("atlas-py", id === "abertura" || id === "conclusao");
+    // o nome "Paraguai" aparece no plano geral da abertura e fica na conclusão
+    deck.classList.toggle("atlas-label", id === "abertura" || id === "conclusao");
+    if (id === "abertura") atlasTimer2 = setTimeout(function () { deck.classList.remove("atlas-label"); }, 2600);
+    if ((id === "abertura" || id === "conclusao") && !GP.reduced()) {
+      atlas.go("continent", id === "abertura" ? true : instant);
+      atlas.redraw();
+      atlasTimer = setTimeout(function () {
+        if (slides[state.index] === slide) atlas.go(id === "abertura" ? "prata" : "finale");
+      }, id === "abertura" ? 1900 : 2300);
+      return;
+    }
+    atlas.go(slide.dataset.atlas || "prata", instant);
+  }
+
+  /* Sincronização com o modo apresentador (outra janela ou aba) */
+  function broadcast() {
+    if (!bc || !slides) return;
+    var s = slides[state.index];
+    bc.postMessage({
+      type: "state", index: state.index, step: state.step, steps: stepsOf(s), total: slides.length,
+      id: s.id, title: s.dataset.title,
+      list: slides.map(function (x) { return { id: x.id, title: x.dataset.title, steps: stepsOf(x) }; })
+    });
   }
 
   function finish() {
@@ -98,9 +171,11 @@
     var prev = slides[state.index], next = slides[n];
     var fwd = n > state.index;
     var instant = opts.instant || GP.reduced();
-    var tr = fwd ? next.dataset.transition : prev.dataset.transition;
-    deck.dataset.tr = tr || "dissolve";
+    var tr = n === 0 ? "reveal" : (fwd ? next.dataset.transition : prev.dataset.transition) || "dissolve";
+    var spec = TR[tr] || TR.dissolve;
+    deck.dataset.tr = tr;
     deck.dataset.dir = fwd ? "fwd" : "back";
+    deck.style.setProperty("--tr-dur", spec[0] + "ms");
     if (opts.origin) {
       var r = deck.getBoundingClientRect();
       next.style.setProperty("--ox", ((opts.origin[0] - r.left) / r.width * 100).toFixed(1) + "%");
@@ -127,7 +202,7 @@
       next.classList.add("is-entering");
       deck.classList.add("is-transitioning");
       busy = { prev: prev, next: next };
-      busy.timer = setTimeout(finish, 1400);
+      busy.timer = setTimeout(finish, spec[0] + 150);
     } else if (prev !== next) {
       prev.classList.remove("in");
     }
@@ -138,10 +213,10 @@
       next.classList.add("in");
       GP.runCounters(next);
       next.dispatchEvent(new CustomEvent("gp:enter"));
-    }, instant ? 30 : 140);
+    }, instant ? 30 : spec[1]);
 
     if (stepsOf(next)) applyStep(next, state.step, false);
-    if (atlas) atlas.go(next.dataset.atlas || "prata", instant);
+    atlasFor(next, instant);
     if (dust) { if ((next.dataset.fx || "").indexOf("dust") > -1) dust.start(); else dust.stop(); }
     setChrome();
     if (!opts.noHash) history.replaceState(null, "", "#" + next.id);
@@ -167,6 +242,28 @@
     setChrome();
   }
   GP.go = go;
+  GP.next = next;
+  GP.prev = prev;
+  GP.setStep = setStep;
+  GP.state = state;
+  GP.stepsOf = stepsOf;
+  GP.slides = function () { return slides; };
+
+  /* Modo apresentador */
+  function openPresenter() {
+    var w = window.open("presenter.html", "gp-presenter", "width=1360,height=860");
+    if (!w) toast('O navegador bloqueou a janela. <a href="presenter.html" target="_blank">Abrir o modo apresentador em outra aba</a>.', 9000);
+    else toast("Modo apresentador aberto em outra janela. Arraste-a para a tela do notebook.", 5000);
+  }
+  var toastTimer;
+  function toast(html, ms) {
+    var t = $("#toast");
+    t.innerHTML = html;
+    t.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.hidden = true; }, ms || 4000);
+  }
+  GP.toast = toast;
 
   /* ---------- Sobreposições ---------- */
   var overlayStack = [];
@@ -340,7 +437,9 @@
     first.inert = false;
     if (stepsOf(first)) applyStep(first, 0, false);
     setChrome();
-    atlas.go(first.dataset.atlas || "prata", true);
+    deck.classList.toggle("atlas-py", first.id === "abertura" || first.id === "conclusao");
+    deck.classList.toggle("atlas-label", first.id === "abertura" || first.id === "conclusao");
+    atlas.go(first.id === "abertura" && !GP.reduced() ? "continent" : first.dataset.atlas || "prata", true);
 
     var hero = first.querySelector(".opening-art img");
     var ready = Promise.all([
@@ -350,21 +449,51 @@
     ready.then(function () {
       document.documentElement.classList.add("is-ready");
       atlas.draw();
+      if (first.id === "abertura" && !GP.reduced()) {
+        atlasTimer = setTimeout(function () { if (state.index === 0) atlas.go("prata"); }, 1900);
+        atlasTimer2 = setTimeout(function () { deck.classList.remove("atlas-label"); }, 2600);
+      }
       first.classList.add("in");
       GP.runCounters(first);
       first.dispatchEvent(new CustomEvent("gp:enter"));
       if ((first.dataset.fx || "").indexOf("dust") > -1) dust.start();
-      setTimeout(showHint, start === 0 ? 4200 : 800);
+      if (!PREVIEW) setTimeout(showHint, start === 0 ? 4200 : 800);
       // pré-carrega as demais imagens depois da abertura
       setTimeout(function () { $$("img[loading=lazy]").forEach(function (img) { img.loading = "eager"; }); }, 2500);
     });
 
+    if (PREVIEW) { bindPreview(); return; }
     bind();
     idle();
+    if (GP.initAudio) GP.initAudio();
+    if (bc) bc.onmessage = function (e) {
+      var d = e.data || {};
+      if (d.type === "hello") broadcast();
+      else if (d.type === "cmd") {
+        if (d.action === "next") next();
+        else if (d.action === "prev") prev();
+        else if (d.action === "goto") go(d.index);
+        else if (d.action === "step") setStep(d.step);
+      }
+    };
     syncFullscreen();
     if (!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen)) $("#btnFull").hidden = true;
   }
   function wait(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+  // Prévia: recebe da janela do apresentador qual slide e etapa mostrar
+  function bindPreview() {
+    window.addEventListener("message", function (e) {
+      var d = e.data || {};
+      if (d.type !== "gp-show" || typeof d.index !== "number") return;
+      if (d.index !== state.index) go(d.index, { instant: true, noHash: true });
+      var s = slides[state.index];
+      if (stepsOf(s)) {
+        var k = Math.max(0, Math.min(stepsOf(s), d.step === "last" ? stepsOf(s) : d.step || 0));
+        if (k !== state.step) { state.step = k; applyStep(s, k, false); }
+      }
+    });
+  }
 
   function bind() {
     $("#btnNext").addEventListener("click", function (e) { next(e); });
@@ -372,6 +501,7 @@
     $("#btnFull").addEventListener("click", toggleFullscreen);
     $("#btnIndex").addEventListener("click", function () { refreshOverview(); toggleOverlay($("#overview"), this); });
     $("#btnHelp").addEventListener("click", function () { toggleOverlay($("#help"), this); });
+    $("#btnPresenter").addEventListener("click", openPresenter);
     document.addEventListener("fullscreenchange", syncFullscreen);
     document.addEventListener("webkitfullscreenchange", syncFullscreen);
 
@@ -407,7 +537,11 @@
     document.addEventListener("keydown", function (e) {
       if (e.altKey || e.ctrlKey || e.metaKey) return;
       var k = e.key;
-      if (k === "Escape") { if (closeOverlay()) e.preventDefault(); return; }
+      if (k === "Escape") {
+        if (closeOverlay()) e.preventDefault();
+        else if (GP.audio && GP.audio.closePanel()) e.preventDefault();
+        return;
+      }
       if (overlayStack.length) {
         if (k === "Tab") trapFocus(e);
         return;
@@ -421,6 +555,10 @@
       else if (k === "f" || k === "F") { toggleFullscreen(); }
       else if (k === "i" || k === "I" || k === "g" || k === "G") { refreshOverview(); toggleOverlay($("#overview"), $("#btnIndex")); }
       else if (k === "?" || k === "h" || k === "H") { toggleOverlay($("#help"), $("#btnHelp")); }
+      else if (k === "p" || k === "P") { openPresenter(); }
+      else if (GP.audio && (k === "a" || k === "A")) { GP.audio.togglePanel(); }
+      else if (GP.audio && (k === "n" || k === "N")) { GP.audio.toggleNarration(); }
+      else if (GP.audio && (k === "m" || k === "M")) { GP.audio.toggleMute(); }
     });
 
     // gestos de toque

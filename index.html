@@ -18,11 +18,14 @@
 <link rel="stylesheet" href="css/motion.css">
 <link rel="stylesheet" href="css/slides.css">
 <link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/scenes.css">
 <script>document.documentElement.classList.add("js");</script>
 <script src="js/map-data.js" defer></script>
 <script src="js/fx.js" defer></script>
 <script src="js/map.js" defer></script>
 <script src="js/timeline.js" defer></script>
+<script src="js/score.js" defer></script>
+<script src="js/audio.js" defer></script>
 <script src="js/app.js" defer></script>
 </head>
 <body>
@@ -37,6 +40,10 @@
   <symbol id="i-zoom" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M10.5 8v5M8 10.5h5"/></g></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
   <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M5 12a7 7 0 1 0 2.1-5M5 4v4h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-audio" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" stroke-linecap="round"/></g></symbol>
+  <symbol id="i-presenter" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M7 20h10M12 16v4M7 9h6M7 12h4"/><circle cx="17" cy="9.5" r="1.6"/></g></symbol>
 </svg>
 
 <a class="skip-link" href="#deck">Ir para a apresentação</a>
@@ -49,7 +56,8 @@
       <canvas class="dust" id="dust" aria-hidden="true"></canvas>
 
       <!-- 01 · ABERTURA -->
-      <section class="slide theme-dark slide-opening" id="abertura" data-title="Abertura" data-kicker="Guerra do Paraguai" data-transition="dissolve" data-atlas="prata" data-atlas-level="full" data-fx="dust smoke" data-thumb="assets/img/riachuelo-meirelles.jpg">
+      <section class="slide theme-dark slide-opening" id="abertura" data-title="Abertura" data-kicker="Guerra do Paraguai" data-transition="reveal" data-atlas="prata" data-atlas-level="full" data-fx="dust smoke" data-thumb="assets/img/riachuelo-meirelles.jpg">
+        <div class="cine-bars" aria-hidden="true"><i></i><i></i></div>
         <div class="layer layer-oldmap" data-depth="6" aria-hidden="true"><img class="kb-slow" src="assets/img/mapa-1871.jpg" alt=""></div>
         <div class="smoke" aria-hidden="true"><span></span><span></span><span></span></div>
         <figure class="opening-art" data-depth="14">
@@ -94,7 +102,7 @@
       </section>
 
       <!-- 02 · CONTEXTO -->
-      <section class="slide theme-paper slide-context" id="contexto" data-title="Contexto histórico" data-kicker="A Bacia do Prata" data-transition="page" data-atlas="prata">
+      <section class="slide theme-paper slide-context" id="contexto" data-title="Contexto histórico" data-kicker="A Bacia do Prata" data-transition="dive" data-atlas="prata">
         <header class="slide-head">
           <p class="kicker" data-anim="tracking"><b>02</b> Contexto histórico</p>
           <h2 data-anim="words" style="--d:1">A América do Sul antes da guerra</h2>
@@ -125,7 +133,7 @@
       </section>
 
       <!-- 03 · CAUSAS -->
-      <section class="slide theme-dark slide-causes" id="causas" data-title="Causas" data-kicker="Tensões e escalada" data-transition="dissolve" data-atlas="continent" data-fx="dust">
+      <section class="slide theme-dark slide-causes" id="causas" data-title="Causas" data-kicker="Tensões e escalada" data-transition="stack" data-atlas="continent" data-fx="dust">
         <header class="slide-head">
           <p class="kicker" data-anim="tracking"><b>03</b> Causas</p>
           <h2 data-anim="words" style="--d:1">Das tensões à guerra</h2>
@@ -166,7 +174,7 @@
       </section>
 
       <!-- 04 · PAÍSES ENVOLVIDOS -->
-      <section class="slide theme-paper slide-nations" id="paises" data-title="Países envolvidos" data-kicker="Quatro Estados" data-transition="page" data-atlas="prata">
+      <section class="slide theme-paper slide-nations" id="paises" data-title="Países envolvidos" data-kicker="Quatro Estados" data-transition="carto" data-atlas="prata">
         <header class="slide-head">
           <p class="kicker" data-anim="tracking"><b>04</b> Países envolvidos</p>
           <h2 data-anim="words" style="--d:1">Quatro países, interesses diferentes</h2>
@@ -243,22 +251,54 @@
         <p class="footnote" data-anim="fade" style="--d:16">Retratos: D. Pedro II (Klumb, 1865), Bartolomé Mitre (Du Mesnil, 1862), Venancio Flores (c. 1865) e Solano López (c. 1862) · Wikimedia Commons, domínio público. Contornos: fronteiras atuais.</p>
       </section>
 
-      <!-- 05 · ALIANÇA E INÍCIO -->
-      <section class="slide theme-dark slide-alliance" id="alianca" data-title="Aliança e início do conflito" data-kicker="1864–1865" data-transition="iris" data-atlas="theater" data-fx="dust">
-        <div class="layer alliance-bg" data-depth="8" aria-hidden="true"><img class="kb" src="assets/img/uruguaiana-meirelles.jpg" alt=""></div>
-        <header class="slide-head">
-          <p class="kicker" data-anim="tracking"><b>05</b> Aliança e início do conflito</p>
-          <h2 data-anim="words" style="--d:1">1864–1865: a crise vira guerra</h2>
-        </header>
-        <ol class="escalation">
-          <li data-anim="rise" style="--d:4"><time>out. 1864</time><div><strong>Intervenção no Uruguai</strong><span>Tropas do Império entram no país em apoio aos <em>colorados</em>; cerco de Paysandu (dez. 1864 – jan. 1865).</span></div></li>
-          <li data-anim="rise" style="--d:5.5"><time>12 nov. 1864</time><div><strong><em>Marquês de Olinda</em></strong><span>Forças paraguaias apreendem o vapor brasileiro no rio Paraguai.</span></div></li>
-          <li data-anim="rise" style="--d:7"><time>dez. 1864</time><div><strong>Invasão do Mato Grosso</strong><span>Ataque ao Forte de Coimbra e avanço pela província.</span></div></li>
-          <li data-anim="rise" style="--d:8.5"><time>abr. 1865</time><div><strong>Corrientes</strong><span>A ofensiva paraguaia atinge território argentino.</span></div></li>
-          <li class="is-key" data-anim="rise" style="--d:10"><time>1º maio 1865</time><div><strong>Tratado da Tríplice Aliança</strong><span>Brasil, Argentina e Uruguai formalizam a coalizão.</span></div></li>
-          <li data-anim="rise" style="--d:11.5"><time>jun.–set. 1865</time><div><strong>Riachuelo e Uruguaiana</strong><span>Vitória naval aliada (11 jun.) e rendição da coluna paraguaia em Uruguaiana (18 set.).</span></div></li>
-        </ol>
-        <article class="treaty" data-anim="unfold" style="--d:13">
+      <!-- 05 · INÍCIO DO CONFLITO (cena em etapas) -->
+      <section class="slide theme-dark slide-inicio" id="inicio" data-title="Início do conflito" data-kicker="1864–1865" data-transition="dissolve" data-atlas="theater" data-atlas-level="off" data-steps="4" data-fx="dust">
+        <div class="scene-map inicio-map" data-anim="fade" style="--d:1">
+          <div class="map-mount" role="img" aria-label="Mapa da Bacia do Prata que revela em etapas os acontecimentos de 1864 e 1865: protesto paraguaio, intervenção no Uruguai, apreensão do Marquês de Olinda, invasão de Mato Grosso e ataque a Corrientes."></div>
+          <div class="map-pop" hidden>
+            <button class="map-pop-close" type="button" aria-label="Fechar"><svg><use href="#i-close"/></svg></button>
+            <p class="map-pop-date"></p><h4></h4><p class="map-pop-text"></p>
+          </div>
+          <p class="map-note">Localizações aproximadas · regiões com limites atuais, só como referência</p>
+        </div>
+        <div class="inicio-copy">
+          <header class="slide-head">
+            <p class="kicker" data-anim="tracking"><b>05</b> Início do conflito</p>
+            <h2 data-anim="words" style="--d:1">Como a crise virou guerra</h2>
+          </header>
+          <ol class="beats" data-anim="rise" style="--d:5">
+            <li class="beat"><time>30 ago. 1864</time><strong>Protesto paraguaio</strong><p>Diante do ultimato do Império do Brasil ao governo <em>blanco</em> do Uruguai, o Paraguai declara que a ocupação do território uruguaio seria um atentado ao equilíbrio do Prata.</p></li>
+            <li class="beat"><time>out. 1864 – jan. 1865</time><strong>Intervenção no Uruguai</strong><p>Tropas do Império entram no Uruguai em apoio aos <em>colorados</em> de Venancio Flores. Paysandu é cercada e cai em janeiro de 1865.</p><button class="beat-doc" type="button" data-lightbox="paysandu-1864"><img src="assets/img/paysandu-1864.jpg" alt="" loading="lazy"><span>Ataque a Paysandu, 1864</span></button></li>
+            <li class="beat"><time>12 nov. 1864</time><strong>Apreensão do <em>Marquês de Olinda</em></strong><p>No rio Paraguai, forças paraguaias apreendem o vapor brasileiro que seguia para Mato Grosso.</p></li>
+            <li class="beat"><time>dez. 1864</time><strong>Invasão de Mato Grosso</strong><p>Tropas paraguaias atacam o Forte de Coimbra e avançam pelo sul da província brasileira.</p></li>
+            <li class="beat"><time>abr. 1865</time><strong>Ataque a Corrientes</strong><p>Depois que a Argentina nega passagem às tropas paraguaias, o Paraguai ataca a província de Corrientes — e a reação leva à Tríplice Aliança.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 06 · TRÍPLICE ALIANÇA (cena em etapas) -->
+      <section class="slide theme-paper slide-alianca" id="alianca" data-title="Tríplice Aliança" data-kicker="1º de maio de 1865" data-transition="iris" data-atlas="prata" data-steps="4">
+        <div class="scene-map alianca-map" data-anim="fade" style="--d:1">
+          <div class="map-mount" role="img" aria-label="Mapa com Brasil, Argentina e Uruguai destacados como aliados e o Paraguai isolado; um triângulo liga Rio de Janeiro, Buenos Aires e Montevidéu."></div>
+          <div class="map-pop" hidden>
+            <button class="map-pop-close" type="button" aria-label="Fechar"><svg><use href="#i-close"/></svg></button>
+            <p class="map-pop-date"></p><h4></h4><p class="map-pop-text"></p>
+          </div>
+          <p class="map-note">Fronteiras atuais (Natural Earth), só como referência</p>
+        </div>
+        <div class="alianca-copy">
+          <header class="slide-head">
+            <p class="kicker" data-anim="tracking"><b>06</b> Tríplice Aliança</p>
+            <h2 data-anim="words" style="--d:1">Três aliados contra o Paraguai</h2>
+          </header>
+          <div class="allies" data-anim="rise" style="--d:5">
+            <article class="ally ally-py" data-from="0"><span class="ally-code">PY</span><div><strong>Paraguai isolado</strong><p>Sem saída para o mar e dependente de rios que passavam por territórios vizinhos, o país enfrentaria a coalizão.</p></div></article>
+            <article class="ally" data-from="1"><span class="ally-code">BR</span><div><strong>Império do Brasil</strong><p>Forneceu a maior parte das tropas aliadas e a esquadra que atuou nos rios. Entre seus comandantes estiveram Osório e, a partir do fim de 1866, Caxias.</p></div></article>
+            <article class="ally" data-from="2"><span class="ally-code">AR</span><div><strong>Argentina</strong><p>Pelo tratado, Bartolomé Mitre assumiu o comando inicial das forças aliadas em terra. A guerra enfrentou oposição em províncias do interior.</p></div></article>
+            <article class="ally" data-from="3"><span class="ally-code">UY</span><div><strong>Uruguai</strong><p>O governo colorado de Venancio Flores completou a aliança. Flores comandou a vanguarda aliada em 1865; o contingente uruguaio foi o menor.</p></div></article>
+          </div>
+        </div>
+        <article class="treaty">
           <div class="treaty-paper">
             <p class="treaty-top">Buenos Aires · 1º de maio de 1865</p>
             <h3>Tratado da<br>Tríplice Aliança</h3>
@@ -268,21 +308,21 @@
               <li><span>Argentina</span>Rufino de Elizalde</li>
               <li><span>Uruguai</span>Carlos de Castro</li>
             </ul>
-            <p class="treaty-clause">Mantido inicialmente em segredo, o texto previa que os aliados só deporiam as armas após a queda do governo de Solano López — e declarava que a guerra não era contra o povo paraguaio.</p>
-            <span class="treaty-seal" data-anim="stamp" style="--d:20" aria-hidden="true"><svg viewBox="-50 -50 100 100"><circle r="44"/><circle r="36"/><text y="-14" text-anchor="middle">1865</text><text y="6" text-anchor="middle">TRÍPLICE</text><text y="22" text-anchor="middle">ALIANÇA</text></svg></span>
+            <p class="treaty-clause">Assinado em segredo, o texto previa que os aliados não negociariam a paz em separado e só deporiam as armas após a queda do governo de Solano López — e declarava que a guerra não era contra o povo paraguaio.</p>
+            <span class="treaty-seal" aria-hidden="true"><svg viewBox="-50 -50 100 100"><circle r="44"/><circle r="36"/><text y="-14" text-anchor="middle">1865</text><text y="6" text-anchor="middle">TRÍPLICE</text><text y="22" text-anchor="middle">ALIANÇA</text></svg></span>
           </div>
         </article>
-        <p class="footnote" data-anim="fade" style="--d:18">Fundo: Victor Meirelles, <em>Rendição de Uruguaiana</em>, c. 1870 · domínio público.</p>
       </section>
 
-      <!-- 06 · CRONOLOGIA -->
-      <section class="slide theme-paper slide-timeline" id="cronologia" data-title="Cronologia" data-kicker="1864–1870" data-transition="page" data-atlas="theater">
+      <!-- 07 · CRONOLOGIA -->
+      <section class="slide theme-paper slide-timeline" id="cronologia" data-title="Cronologia" data-kicker="1864–1870" data-transition="timepass" data-atlas="theater">
         <header class="slide-head">
-          <p class="kicker" data-anim="tracking"><b>06</b> Cronologia</p>
+          <p class="kicker" data-anim="tracking"><b>07</b> Cronologia</p>
           <h2 data-anim="words" style="--d:1">Seis anos de guerra</h2>
           <p class="lead" data-anim="rise" style="--d:4">Da crise diplomática à campanha final, o conflito mudou de escala e de frente militar. <span class="hint">Clique em um acontecimento.</span></p>
         </header>
         <div class="timeline" id="timeline">
+          <div class="tl-bigyear" aria-hidden="true"><span>1864</span></div>
           <div class="tl-stage">
           <div class="tl-track" aria-hidden="true">
             <div class="tl-phases"></div>
@@ -313,9 +353,10 @@
         </div>
       </section>
 
-      <!-- 07 · MAPA DAS CAMPANHAS -->
+      <!-- 08 · MAPA DAS CAMPANHAS -->
       <section class="slide theme-dark slide-map" id="mapa" data-title="Mapa das campanhas" data-kicker="Cartografia da guerra" data-transition="zoom" data-atlas="theater" data-atlas-level="off" data-steps="4" data-thumb="assets/img/mapa-1871.jpg">
         <div class="campaign-map" data-anim="fade" style="--d:1">
+          <div class="phase-stamp" aria-hidden="true"><span class="ps-label">Ofensiva paraguaia</span><span class="ps-years"><b class="ps-a">1864</b><i>–</i><b class="ps-b">1865</b></span></div>
           <div class="map-mount" data-map="theater" role="img" aria-label="Mapa interativo do teatro da guerra: Paraguai, nordeste da Argentina, Uruguai e sul do Brasil, com rotas e locais de batalhas por fase."></div>
           <div class="map-pop" id="mapPop" hidden>
             <button class="map-pop-close" type="button" aria-label="Fechar"><svg><use href="#i-close"/></svg></button>
@@ -323,7 +364,7 @@
           </div>
         </div>
         <aside class="map-panel">
-          <p class="kicker" data-anim="tracking"><b>07</b> Mapa das campanhas</p>
+          <p class="kicker" data-anim="tracking"><b>08</b> Mapa das campanhas</p>
           <h2 data-anim="words" style="--d:1">A guerra vista do alto</h2>
           <div class="phase-tabs" role="tablist" aria-label="Fases da guerra" data-anim="fade" style="--d:4">
             <button type="button" role="tab" data-goto-step="0">1</button>
@@ -333,17 +374,19 @@
             <button type="button" role="tab" data-goto-step="4">5</button>
           </div>
           <div class="phase-stack" data-anim="rise" style="--d:5" aria-live="polite">
-            <article class="phase" data-phase="0"><time>dez. 1864 – set. 1865</time><h3>Ofensiva paraguaia</h3><p>O Paraguai ataca em duas direções: ao norte, pelo rio Paraguai, até o Mato Grosso; ao sul, sobre Corrientes e, pelo rio Uruguai, até o Rio Grande do Sul.</p></article>
-            <article class="phase" data-phase="1"><time>jun. – nov. 1865</time><h3>A guerra nos rios</h3><p>Em Riachuelo, a esquadra brasileira derrota a paraguaia. Yataí (17 ago.) e a rendição em Uruguaiana (18 set.) encerram a ofensiva; as tropas paraguaias deixam Corrientes no fim de 1865.</p></article>
-            <article class="phase" data-phase="2"><time>abr. 1866 – jul. 1868</time><h3>Invasão e Humaitá</h3><p>Os aliados atravessam o Paraná em Passo da Pátria (abr. 1866). Seguem Tuiuti, Curupaiti e o longo cerco ao sistema de fortificações de Humaitá.</p></article>
-            <article class="phase" data-phase="3"><time>dez. 1868 – jan. 1869</time><h3>Dezembrada e Assunção</h3><p>Itororó, Avaí e Lomas Valentinas, perto de Villeta, abrem caminho para a ocupação da capital paraguaia.</p></article>
-            <article class="phase" data-phase="4"><time>ago. 1869 – mar. 1870</time><h3>Cordilheiras e Cerro Corá</h3><p>Piribebuy e Acosta Ñu marcam a campanha final. A perseguição termina em Cerro Corá, no norte do país, com a morte de López.</p></article>
+            <article class="phase" data-phase="0" data-years="1864-1865"><time>dez. 1864 – set. 1865</time><h3>Ofensiva paraguaia</h3><p>O Paraguai ataca em duas direções: ao norte, pelo rio Paraguai, até o Mato Grosso; ao sul, sobre Corrientes e, pelo rio Uruguai, até o Rio Grande do Sul.</p></article>
+            <article class="phase" data-phase="1" data-years="1865-1865"><time>jun. – nov. 1865</time><h3>A guerra nos rios</h3><p>Em Riachuelo, a esquadra brasileira derrota a paraguaia. Yataí (17 ago.) e a rendição em Uruguaiana (18 set.) encerram a ofensiva; as tropas paraguaias deixam Corrientes no fim de 1865.</p></article>
+            <article class="phase" data-phase="2" data-years="1866-1868"><time>abr. 1866 – jul. 1868</time><h3>Invasão e Humaitá</h3><p>Os aliados atravessam o Paraná em Passo da Pátria (abr. 1866). Seguem Tuiuti, Curupaiti e o longo cerco ao sistema de fortificações de Humaitá.</p></article>
+            <article class="phase" data-phase="3" data-years="1868-1869"><time>dez. 1868 – jan. 1869</time><h3>Dezembrada e Assunção</h3><p>Itororó, Avaí e Lomas Valentinas, perto de Villeta, abrem caminho para a ocupação da capital paraguaia.</p></article>
+            <article class="phase" data-phase="4" data-years="1869-1870"><time>ago. 1869 – mar. 1870</time><h3>Cordilheiras e Cerro Corá</h3><p>Piribebuy e Acosta Ñu marcam a campanha final. A perseguição termina em Cerro Corá, no norte do país, com a morte de López.</p></article>
           </div>
           <ul class="map-legend" data-anim="fade" style="--d:7">
-            <li class="lg-py">Ofensivas paraguaias</li>
-            <li class="lg-al">Avanço aliado</li>
-            <li class="lg-bt">Batalha ou cerco</li>
-            <li class="lg-nv">Combate naval</li>
+            <li class="lg-py" data-from="0">Ofensivas paraguaias</li>
+            <li class="lg-rg" data-from="0">Região atingida</li>
+            <li class="lg-bt" data-from="0">Batalha ou cerco</li>
+            <li class="lg-nv" data-from="1">Combate naval</li>
+            <li class="lg-al" data-from="2">Avanço aliado</li>
+            <li class="lg-zn" data-from="2">Área fortificada</li>
           </ul>
           <p class="map-note" data-anim="fade" style="--d:8">Trajetos esquemáticos, traçados a partir da sequência de locais e datas — não reproduzem cada movimento das tropas. Localizações aproximadas.</p>
           <button class="ghost-btn" type="button" data-lightbox="mapa-1871" data-anim="fade" style="--d:9"><svg aria-hidden="true"><use href="#i-zoom"/></svg> Ver o mapa histórico de 1871</button>
@@ -366,13 +409,15 @@
         </ol>
       </section>
 
-      <!-- 08 · CAMPANHAS E BATALHAS -->
-      <section class="slide theme-dark slide-battles" id="batalhas" data-title="Campanhas e batalhas" data-kicker="Operações militares" data-transition="slide" data-atlas="theater" data-steps="4">
+      <!-- 09 · CAMPANHAS E BATALHAS -->
+      <section class="slide theme-dark slide-battles" id="batalhas" data-title="Campanhas e batalhas" data-kicker="Operações militares" data-transition="dramatic" data-atlas="theater" data-steps="4">
         <header class="slide-head">
-          <p class="kicker" data-anim="tracking"><b>08</b> Campanhas e batalhas</p>
+          <p class="kicker" data-anim="tracking"><b>09</b> Campanhas e batalhas</p>
           <h2 data-anim="words" style="--d:1">Rios, fortalezas e logística</h2>
         </header>
         <div class="reel" data-anim="fade" style="--d:3">
+          <div class="reel-year" aria-hidden="true"><span>1865</span></div>
+          <figure class="locator" aria-hidden="true"><div class="map-mount locator-mount"></div><figcaption>Rio Paraná, perto de Corrientes</figcaption></figure>
           <figure class="reel-item" data-item="0">
             <button class="reel-media" type="button" data-lightbox="riachuelo-meirelles" aria-label="Ampliar: Estudo para a Batalha do Riachuelo"><img class="kb" src="assets/img/riachuelo-meirelles.jpg" alt="Pintura: navios em combate no rio Paraná, com fumaça e destroços na água" loading="lazy"></button>
             <figcaption><span class="badge">Pintura · c. 1868–1873</span>Victor Meirelles · <em>Estudo para a Batalha do Riachuelo</em></figcaption>
@@ -383,7 +428,7 @@
           </figure>
           <figure class="reel-item" data-item="2">
             <button class="reel-media" type="button" data-lightbox="curupaiti-trincheira" aria-label="Ampliar: Trinchera de Curupaytí, de Cándido López"><img class="kb" src="assets/img/curupaiti-trincheira.jpg" alt="Pintura panorâmica de Cándido López: a trincheira paraguaia de Curupaiti e as colunas aliadas no ataque" loading="lazy"></button>
-            <figcaption><span class="badge">Pintura · 1893</span>Cándido López · <em>Trinchera de Curupaytí</em></figcaption>
+            <figcaption><span class="badge">Pintura · 1893</span>Cándido López · <em>Trinchera de Curupaytí</em> — o pintor combateu em Curupaiti, onde perdeu o braço direito</figcaption>
           </figure>
           <figure class="reel-item" data-item="3">
             <button class="reel-media" type="button" data-lightbox="humaita-passagem" aria-label="Ampliar: Passagem de Humaitá, de Victor Meirelles"><img class="kb" src="assets/img/humaita-passagem.jpg" alt="Pintura de Victor Meirelles: encouraçados brasileiros passando sob o fogo da fortaleza de Humaitá à noite" loading="lazy"></button>
@@ -391,15 +436,15 @@
           </figure>
           <figure class="reel-item" data-item="4">
             <button class="reel-media" type="button" data-lightbox="avai-pedro-americo" aria-label="Ampliar: Batalha do Avaí, de Pedro Américo"><img class="kb" src="assets/img/avai-pedro-americo.jpg" alt="Pintura monumental de Pedro Américo: combate corpo a corpo sob chuva e fumaça na Batalha do Avaí" loading="lazy"></button>
-            <figcaption><span class="badge">Pintura · 1872–1877</span>Pedro Américo · <em>Batalha do Avaí</em></figcaption>
+            <figcaption><span class="badge">Pintura · 1872–1877</span>Pedro Américo · <em>Batalha do Avaí</em> — tela encomendada depois da guerra, que também construiu memória heroica</figcaption>
           </figure>
         </div>
         <div class="reel-info">
-          <article class="reel-text" data-item="0"><time>11 jun. 1865 · rio Paraná</time><h3>Riachuelo</h3><p>Perto de Corrientes, a esquadra brasileira derrota a paraguaia. A vitória reduziu a capacidade paraguaia de disputar os rios e ajudou a restringir rotas de abastecimento — mas a guerra terrestre se prolongaria por anos. <a class="cite" href="#referencias" data-ref="5">[5]</a></p></article>
-          <article class="reel-text" data-item="1"><time>24 maio 1866 · sul do Paraguai</time><h3>Tuiuti</h3><p>Pouco depois de atravessar o Paraná, o exército aliado enfrenta um ataque paraguaio em Tuiuti — uma das maiores batalhas da guerra, vencida pelos aliados com pesadas perdas dos dois lados.</p></article>
-          <article class="reel-text" data-item="2"><time>22 set. 1866 · rio Paraguai</time><h3>Curupaiti</h3><p>O ataque aliado às trincheiras termina em derrota, e a ofensiva fica paralisada por meses. O argentino Cándido López, que combateu ali e perdeu o braço direito, pintou a cena décadas depois.</p></article>
-          <article class="reel-text" data-item="3"><time>19 fev. 1868 · Humaitá</time><h3>Humaitá</h3><p>Fortificações, correntes e baterias controlavam o rio Paraguai. Encouraçados brasileiros forçaram a passagem em fevereiro; a fortaleza foi ocupada em julho de 1868.</p></article>
-          <article class="reel-text" data-item="4"><time>11 dez. 1868 · Dezembrada</time><h3>Avaí</h3><p>Parte da série de combates que abriu caminho para Assunção. A tela monumental, encomendada depois da guerra, também construiu uma memória heroica do conflito.</p></article>
+          <article class="reel-text" data-item="0"><time>11 jun. 1865 · rio Paraná</time><h3>Riachuelo</h3><ol class="seq"><li><b>Antes</b><span>A esquadra brasileira está fundeada no rio Paraná, perto de Corrientes.</span></li><li><b>Combate</b><span>A flotilha paraguaia ataca; Barroso, na fragata <em>Amazonas</em>, abalroa navios inimigos.</span></li><li><b>Resultado</b><span>O Paraguai perde a capacidade de disputar os rios — mas a guerra terrestre continuaria por anos. <a class="cite" href="#referencias" data-ref="5">[5]</a></span></li></ol></article>
+          <article class="reel-text" data-item="1"><time>24 maio 1866 · sul do Paraguai</time><h3>Tuiuti</h3><ol class="seq"><li><b>Antes</b><span>Depois de atravessar o Paraná em abril, o exército aliado acampa em Tuiuti.</span></li><li><b>Combate</b><span>O exército paraguaio ataca o acampamento aliado: uma das maiores batalhas da guerra.</span></li><li><b>Resultado</b><span>Vitória aliada, com pesadas perdas, sobretudo paraguaias.</span></li></ol></article>
+          <article class="reel-text" data-item="2"><time>22 set. 1866 · rio Paraguai</time><h3>Curupaiti</h3><ol class="seq"><li><b>Antes</b><span>Os aliados tomam Curuzu (3 set.) e avançam contra as trincheiras de Curupaiti.</span></li><li><b>Combate</b><span>O ataque frontal fracassa diante da artilharia paraguaia.</span></li><li><b>Resultado</b><span>Grande derrota aliada: a ofensiva fica paralisada por meses.</span></li></ol></article>
+          <article class="reel-text" data-item="3"><time>19 fev. 1868 · Humaitá</time><h3>Humaitá</h3><ol class="seq"><li><b>Antes</b><span>Fortificações, correntes e baterias de Humaitá bloqueiam o rio Paraguai.</span></li><li><b>Combate</b><span>Encouraçados brasileiros forçam a passagem diante da fortaleza.</span></li><li><b>Resultado</b><span>Cercada, a posição é ocupada pelos aliados em julho de 1868.</span></li></ol></article>
+          <article class="reel-text" data-item="4"><time>11 dez. 1868 · Dezembrada</time><h3>Avaí</h3><ol class="seq"><li><b>Antes</b><span>Os aliados contornam as defesas paraguaias por uma estrada aberta no Chaco.</span></li><li><b>Combate</b><span>Itororó (6 dez.), Avaí (11 dez.) e Lomas Valentinas (21–27 dez.).</span></li><li><b>Resultado</b><span>Caminho aberto para a ocupação de Assunção, em janeiro de 1869.</span></li></ol></article>
           <nav class="reel-tabs" aria-label="Batalhas">
             <button type="button" data-goto-step="0"><span>1865</span>Riachuelo</button>
             <button type="button" data-goto-step="1"><span>1866</span>Tuiuti</button>
@@ -411,8 +456,8 @@
         <p class="footnote source-note" data-anim="fade" style="--d:8">Fotografias, pinturas e gravuras não são intercambiáveis: a fotografia registra uma cena situada; a pintura histórica organiza visualmente a memória de um evento.</p>
       </section>
 
-      <!-- 09 · CONSEQUÊNCIAS HUMANAS -->
-      <section class="slide theme-dark theme-ember slide-human" id="humanas" data-title="Consequências humanas" data-kicker="O custo humano" data-transition="dissolve" data-atlas="paraguay" data-fx="dust">
+      <!-- 10 · CONSEQUÊNCIAS HUMANAS -->
+      <section class="slide theme-dark theme-ember slide-human" id="humanas" data-title="Consequências humanas" data-kicker="O custo humano" data-transition="sober" data-atlas="paraguay" data-fx="dust">
         <figure class="human-photo" data-depth="8">
           <button class="human-media" type="button" data-lightbox="familias-desabrigadas" aria-label="Ampliar fotografia de famílias paraguaias desabrigadas" data-anim="develop" style="--d:2">
             <img class="kb-slow" src="assets/img/familias-desabrigadas.jpg" alt="Fotografia de 1867: famílias paraguaias desabrigadas, mulheres e crianças reunidas em um acampamento" loading="lazy">
@@ -420,7 +465,8 @@
           <figcaption data-anim="fade" style="--d:8">Famílias paraguaias desabrigadas, 1867 · Fundo Polidoro da Fonseca Quintanilha Jordão · domínio público</figcaption>
         </figure>
         <div class="human-copy">
-          <p class="kicker" data-anim="tracking"><b>09</b> Consequências humanas</p>
+          <p class="kicker" data-anim="tracking"><b>10</b> Consequências humanas</p>
+          <p class="dims" data-anim="fade" style="--d:3" aria-label="Dimensões das perdas: humanas e sociais neste slide; políticas e econômicas no próximo"><span class="on">Humanas</span><span class="on">Sociais</span><span>Políticas</span><span>Econômicas</span></p>
           <h2 data-anim="words" style="--d:1">O custo humano foi além dos campos de batalha</h2>
           <ul class="human-list">
             <li data-anim="rise" style="--d:6"><strong>Doenças e fome</strong><span>Escassez, enfermidades — como o cólera, que atingiu os exércitos em 1867 — e falhas de abastecimento mataram muitos combatentes. <a class="cite" href="#referencias" data-ref="9">[9]</a></span></li>
@@ -440,10 +486,11 @@
         </div>
       </section>
 
-      <!-- 10 · CONSEQUÊNCIAS POLÍTICAS E ECONÔMICAS -->
+      <!-- 11 · CONSEQUÊNCIAS POLÍTICAS E ECONÔMICAS -->
       <section class="slide theme-paper slide-ledger" id="politicas" data-title="Consequências políticas e econômicas" data-kicker="Depois de 1870" data-transition="page" data-atlas="prata">
         <header class="slide-head">
-          <p class="kicker" data-anim="tracking"><b>10</b> Consequências políticas e econômicas</p>
+          <p class="kicker" data-anim="tracking"><b>11</b> Consequências políticas e econômicas</p>
+          <p class="dims" data-anim="fade" style="--d:3" aria-label="Dimensões das perdas: políticas e econômicas neste slide"><span>Humanas</span><span>Sociais</span><span class="on">Políticas</span><span class="on">Econômicas</span></p>
           <h2 data-anim="words" style="--d:1">Efeitos profundos e desiguais</h2>
           <p class="lead" data-anim="rise" style="--d:4">O fim das operações em 1870 não encerrou os efeitos da guerra: ocupação, reorganização política e negociações de limites continuaram por anos.</p>
         </header>
@@ -451,7 +498,7 @@
           <div class="ledger-row ledger-head" role="row" data-anim="fade" style="--d:5"><span role="columnheader">País</span><span role="columnheader">Política</span><span role="columnheader">Economia e território</span></div>
           <div class="ledger-row is-py" role="row" data-anim="ink" style="--d:6"><strong role="rowheader">Paraguai</strong><span role="cell">Ocupação aliada — tropas brasileiras permaneceram até 1876 — e longa reorganização institucional.</span><span role="cell">Perda de população e de capacidade produtiva. Limites fixados em tratados com o Brasil (1872) e a Argentina (1876). <a class="cite" href="#referencias" data-ref="7">[7]</a></span></div>
           <div class="ledger-row" role="row" data-anim="ink" style="--d:8"><strong role="rowheader">Brasil</strong><span role="cell">Fortalecimento do Exército e ampliação de seu peso político; debates sobre escravidão, serviço militar e cidadania.</span><span role="cell">Endividamento e esforço financeiro prolongado.</span></div>
-          <div class="ledger-row" role="row" data-anim="ink" style="--d:10"><strong role="rowheader">Argentina</strong><span role="cell">Consolidação do Estado nacional em meio a disputas internas.</span><span role="cell">Custos da mobilização. Parte do Chaco em disputa foi decidida por arbitragem dos Estados Unidos (1878), a favor do Paraguai.</span></div>
+          <div class="ledger-row" role="row" data-anim="ink" style="--d:10"><strong role="rowheader">Argentina</strong><span role="cell">Consolidação do Estado nacional em meio a disputas internas.</span><span role="cell">Custos da mobilização. Parte do Chaco em disputa foi decidida pela arbitragem do presidente dos Estados Unidos, Rutherford Hayes (1878), a favor do Paraguai.</span></div>
           <div class="ledger-row" role="row" data-anim="ink" style="--d:12"><strong role="rowheader">Uruguai</strong><span role="cell">Participação militar menor, mas a crise interna de 1864 esteve no centro da escalada.</span><span role="cell">Ilustra como conflitos internos e intervenções de vizinhos alteraram a dinâmica regional.</span></div>
         </div>
         <div class="ledger-docs">
@@ -466,10 +513,10 @@
         </div>
       </section>
 
-      <!-- 11 · INTERPRETAÇÕES HISTÓRICAS -->
-      <section class="slide theme-dark slide-lenses" id="interpretacoes" data-title="Interpretações históricas" data-kicker="Historiografia" data-transition="iris" data-atlas="continent" data-fx="dust">
+      <!-- 12 · INTERPRETAÇÕES HISTÓRICAS -->
+      <section class="slide theme-dark slide-lenses" id="interpretacoes" data-title="Interpretações históricas" data-kicker="Historiografia" data-transition="dissolve" data-atlas="continent" data-fx="dust">
         <header class="slide-head">
-          <p class="kicker" data-anim="tracking"><b>11</b> Interpretações históricas</p>
+          <p class="kicker" data-anim="tracking"><b>12</b> Interpretações históricas</p>
           <h2 data-anim="words" style="--d:1">Como a guerra foi interpretada?</h2>
           <p class="lead" data-anim="rise" style="--d:4">Ao longo do tempo, autores escolheram causas, personagens e documentos diferentes. As correntes não são blocos rígidos: obras podem combinar argumentos. <a class="cite" href="#referencias" data-ref="8">[8]</a> <a class="cite" href="#referencias" data-ref="10">[10]</a></p>
         </header>
@@ -503,12 +550,13 @@
         <aside class="criterion" data-anim="rise" style="--d:14"><strong>Critério adotado neste trabalho</strong><p>Uma interpretação é mais convincente quando explica os acontecimentos com evidências identificáveis, contextualiza os documentos, compara fontes de perspectivas distintas e reconhece o que não pode ser estabelecido com segurança.</p></aside>
       </section>
 
-      <!-- 12 · CONCLUSÃO -->
-      <section class="slide theme-dark slide-finale" id="conclusao" data-title="Conclusão" data-kicker="Considerações finais" data-transition="iris" data-atlas="prata" data-fx="dust smoke">
+      <!-- 13 · CONCLUSÃO -->
+      <section class="slide theme-dark slide-finale" id="conclusao" data-title="Conclusão" data-kicker="Considerações finais" data-transition="finale" data-atlas="finale" data-atlas-level="full" data-fx="dust smoke">
+        <div class="cine-bars" aria-hidden="true"><i></i><i></i></div>
         <div class="layer finale-strip" data-depth="10" aria-hidden="true"><img class="kb-pan" src="assets/img/curupaiti-depois.jpg" alt=""></div>
         <div class="smoke" aria-hidden="true"><span></span><span></span><span></span></div>
         <div class="finale-copy">
-          <p class="kicker" data-anim="tracking"><b>12</b> Conclusão</p>
+          <p class="kicker" data-anim="tracking"><b>13</b> Conclusão</p>
           <h2 class="finale-title"><span data-anim="words" style="--d:1">Uma guerra regional.</span> <em class="sheen" data-anim="words" style="--d:5">Consequências duradouras.</em></h2>
           <div class="finale-qa">
             <div class="qa-q" data-anim="rise" style="--d:9"><span class="label">Pergunta do trabalho</span><p>Como as disputas políticas e estratégicas no Prata contribuíram para a guerra, e de que maneira o conflito transformou a vida social e a organização política dos países envolvidos?</p></div>
@@ -519,10 +567,10 @@
         <p class="finale-credit" data-anim="fade" style="--d:18">Faixa: Cándido López, <em>Después de la batalla de Curupaytí</em>, 1893 · domínio público</p>
       </section>
 
-      <!-- 13 · REFERÊNCIAS -->
+      <!-- 14 · REFERÊNCIAS -->
       <section class="slide theme-paper slide-refs" id="referencias" data-title="Referências" data-kicker="Fontes" data-transition="page" data-atlas="prata">
         <header class="slide-head">
-          <p class="kicker" data-anim="tracking"><b>13</b> Referências</p>
+          <p class="kicker" data-anim="tracking"><b>14</b> Referências</p>
           <h2 data-anim="words" style="--d:1">Fontes do trabalho</h2>
         </header>
         <div class="refs-scroll" tabindex="0" aria-label="Lista de referências">
@@ -569,6 +617,8 @@
       <span><strong>Guerra do Paraguai</strong><small>1864 — 1870</small></span>
     </a>
     <div class="topbar-actions">
+      <button class="icon-btn" id="btnPresenter" type="button" aria-label="Abrir modo apresentador em outra janela" title="Modo apresentador (P)"><svg><use href="#i-presenter"/></svg></button>
+      <button class="icon-btn" id="btnAudio" type="button" aria-label="Áudio: narração e trilha" aria-controls="audioPanel" aria-expanded="false" title="Áudio (A)"><svg><use href="#i-audio"/></svg><span class="audio-dot" aria-hidden="true"></span></button>
       <button class="icon-btn" id="btnIndex" type="button" aria-label="Índice de slides" aria-controls="overview" aria-expanded="false" title="Índice (I)"><svg><use href="#i-grid"/></svg></button>
       <button class="icon-btn" id="btnHelp" type="button" aria-label="Atalhos de teclado" aria-controls="help" aria-expanded="false" title="Atalhos (?)"><svg><use href="#i-keys"/></svg></button>
       <button class="icon-btn" id="btnFull" type="button" aria-label="Tela cheia" title="Tela cheia (F)"><svg><use href="#i-full"/></svg></button>
@@ -606,11 +656,41 @@
         <div><dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>Primeiro e último slide</dd></div>
         <div><dt><kbd>F</kbd></dt><dd>Tela cheia</dd></div>
         <div><dt><kbd>I</kbd></dt><dd>Índice com miniaturas</dd></div>
+        <div><dt><kbd>P</kbd></dt><dd>Modo apresentador (outra janela)</dd></div>
+        <div><dt><kbd>A</kbd> <kbd>N</kbd> <kbd>M</kbd></dt><dd>Painel de áudio · narração · silenciar</dd></div>
         <div><dt><kbd>Esc</kbd></dt><dd>Fechar janelas</dd></div>
       </dl>
       <p class="help-touch">No celular ou tablet: deslize para os lados para mudar de slide.</p>
     </div>
   </div>
+
+  <!-- Áudio: narração opcional e trilha instrumental -->
+  <div class="audio-panel" id="audioPanel" hidden role="dialog" aria-labelledby="audioTitle">
+    <div class="ap-head"><p class="kicker" id="audioTitle">Áudio</p><button class="icon-btn" type="button" data-close aria-label="Fechar painel de áudio"><svg><use href="#i-close"/></svg></button></div>
+    <section class="ap-block">
+      <h3>Narração do slide</h3>
+      <p class="ap-status" id="narrStatus">Verificando gravações…</p>
+      <div class="ap-row">
+        <button class="ap-btn" id="narrPlay" type="button" disabled><svg aria-hidden="true"><use href="#i-play"/></svg><span>Iniciar</span></button>
+        <button class="ap-btn" id="narrReplay" type="button" disabled aria-label="Reproduzir novamente"><svg aria-hidden="true"><use href="#i-replay"/></svg></button>
+        <button class="ap-btn" id="narrNext" type="button" aria-label="Próximo slide"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+      </div>
+      <div class="ap-progress" aria-hidden="true"><span id="narrBar"></span></div>
+      <label class="ap-check"><input type="checkbox" id="narrAuto"> Avançar sozinho quando a narração terminar</label>
+      <label class="ap-check"><input type="checkbox" id="narrSync" checked> Sincronizar etapas das cenas com a narração</label>
+    </section>
+    <section class="ap-block">
+      <h3>Trilha instrumental</h3>
+      <p class="ap-status">Trilha ambiente discreta, sintetizada no próprio navegador (não é uma gravação). Opcional.</p>
+      <button class="ap-btn ap-wide" id="scoreToggle" type="button" aria-pressed="false"><svg aria-hidden="true"><use href="#i-play"/></svg><span>Ligar trilha</span></button>
+    </section>
+    <section class="ap-block">
+      <label class="ap-range">Volume geral <input type="range" id="volMaster" min="0" max="100" value="80"></label>
+      <label class="ap-range">Volume da trilha <input type="range" id="volScore" min="0" max="100" value="45"></label>
+      <button class="ap-btn ap-wide" id="muteAll" type="button" aria-pressed="false"><span>Silenciar tudo</span></button>
+    </section>
+  </div>
+  <p class="toast" id="toast" role="status" hidden></p>
 
   <!-- Visualizador de imagens -->
   <div class="lightbox" id="lightbox" hidden>

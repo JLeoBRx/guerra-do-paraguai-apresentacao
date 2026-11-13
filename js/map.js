@@ -1,4 +1,5 @@
-/* Mapas vivos: Bacia do Prata (slide 2), teatro das campanhas (slide 7) e contornos (slide 4). */
+/* Mapas vivos: Bacia do Prata, cenas do início do conflito e da Tríplice Aliança,
+   teatro das campanhas, localizador das batalhas e contornos dos países. */
 (function () {
   "use strict";
   var GP = (window.GP = window.GP || {});
@@ -120,12 +121,12 @@
     if (!this.cam) return;
     this.set(this.fit(this.cam));
   };
-  MapView.prototype.camera = function (bb, animate) {
+  MapView.prototype.camera = function (bb, animate, duration) {
     this.cam = bb;
     var to = this.fit(bb), from = this.vb, self = this;
     cancelAnimationFrame(this.raf);
     if (!animate || !from || GP.reduced()) return this.set(to);
-    var t0 = performance.now(), dur = 1500;
+    var t0 = performance.now(), dur = duration || 1500;
     var step = function (now) {
       var t = Math.min(1, (now - t0) / dur), e = ease(t);
       self.set({ x: from.x + (to.x - from.x) * e, y: from.y + (to.y - from.y) * e, w: from.w + (to.w - from.w) * e, h: from.h + (to.h - from.h) * e });
@@ -194,7 +195,15 @@
     var rl = mv.anchor(-54.2, -34.35, "m-fade");
     rl.g.style.setProperty("--delay", "4.6s");
     text(rl.g, "Rota fluvial até o Atlântico", { "class": "m-route-label", "text-anchor": "middle" });
-    mv.camera([-66.5, -14.4, -45.5, -38.8]);
+    var PRATA = [-66.5, -14.4, -45.5, -38.8];
+    mv.camera(PRATA);
+    // aproximação: do continente para a Bacia do Prata a cada entrada no slide
+    var slide = mount.closest(".slide");
+    if (slide) slide.addEventListener("gp:enter", function () {
+      if (GP.reduced()) return mv.camera(PRATA);
+      mv.camera([-84, 8, -32, -56]);
+      setTimeout(function () { mv.camera(PRATA, true, 2200); }, 60);
+    });
     return mv;
   }
 
@@ -211,7 +220,7 @@
     return [
       { phase: 0, side: "py", pts: paraguaiBetween(-25.28, -19.0), label: "Ofensiva ao Mato Grosso", off: [16, 0, "start"] },
       { phase: 0, side: "py", ll: [[-58.52, -27.06], [-58.57, -27.24], [-58.7, -27.36], [-58.83, -27.47]] },
-      { phase: 0, side: "py", ll: [[-55.87, -27.33], [-55.95, -28.0], [-56.0, -28.62]], then: uruguaiBetween(-28.66, -29.72), label: "Coluna ao Rio Grande do Sul", off: [-12, 22, "end"], labelAt: 0 },
+      { phase: 0, side: "py", ll: [[-55.87, -27.33], [-55.95, -28.0], [-56.0, -28.62]], then: uruguaiBetween(-28.66, -29.72), label: "Coluna ao Rio Grande do Sul", off: [14, 18, "start"], labelAt: -1 },
       { phase: 1, side: "py", ll: [[-58.83, -27.47], [-58.72, -27.36], [-58.6, -27.28]], label: "Retirada (fim de 1865)", off: [-14, -12, "end"] },
       { phase: 2, side: "al", ll: [[-58.83, -27.47], [-58.66, -27.35], [-58.53, -27.30], [-58.47, -27.26], [-58.42, -27.24]], label: "Invasão aliada", off: [10, 26, "start"] },
       { phase: 2, side: "al", ll: [[-58.42, -27.24], [-58.36, -27.16], [-58.40, -27.08], [-58.52, -27.06]] },
@@ -226,6 +235,16 @@
     for (var i = 0; i < 5; i++) {
       phases.push({ base: GP.svg("g", { "class": "m-phase", "data-phase": i }, mv.extra), over: [] });
     }
+    // Regiões atingidas pela ofensiva paraguaia (limites atuais, só como referência)
+    ["matoGrossoDoSul", "corrientes", "rioGrandeDoSul"].forEach(function (k) {
+      GP.svg("path", { d: window.GP_GEO.regions[k], "class": "m-region rg-war" }, phases[0].base);
+    });
+    [["Sul de Mato Grosso", -54.6, -20.6, 0], ["Corrientes", -58.7, -29.3, 0], ["Rio Grande do Sul", -53.4, -30.7, 0], ["Sistema fortificado de Humaitá", -58.15, -26.95, 2], ["Região da Cordilheira", -56.75, -25.75, 4], ["Chaco", -60.2, -24.8, 3]].forEach(function (r) {
+      var a = mv.anchor(r[1], r[2], "m-phase m-region-tag");
+      a.g.setAttribute("data-phase", r[3]);
+      text(a.g, r[0], { "class": "m-region-name", "text-anchor": "middle" });
+      phases[r[3]].over.push(a);
+    });
     // Zona fortificada de Humaitá
     var zc = P(-58.5, -27.12);
     var z = GP.svg("ellipse", { cx: zc[0], cy: zc[1], rx: 16, ry: 13, "class": "m-zone" }, phases[2].base);
@@ -251,7 +270,7 @@
       tip.g.setAttribute("data-phase", r.phase);
       phases[r.phase].over.push(tip);
       if (r.label) {
-        var la = mv.anchorXY(pts[r.labelAt !== undefined ? r.labelAt : Math.floor(pts.length / 2)], "m-phase m-route-tag");
+        var la = mv.anchorXY(pts[r.labelAt === -1 ? pts.length - 1 : r.labelAt !== undefined ? r.labelAt : Math.floor(pts.length / 2)], "m-phase m-route-tag");
         la.g.setAttribute("data-phase", r.phase);
         text(la.g, r.label, { "class": "m-route-text " + r.side, x: r.off[0], y: r.off[1], "text-anchor": r.off[2] });
         phases[r.phase].over.push(la);
@@ -337,8 +356,34 @@
       t.classList.toggle("is-past", i < n);
     });
     this.cards.forEach(function (c, i) { c.classList.toggle("is-now", i === n); });
+    this.slide.querySelectorAll(".map-legend [data-from]").forEach(function (li) {
+      li.classList.toggle("is-on", Number(li.dataset.from) <= n);
+    });
+    this.stamp(n, animate !== false && this.phase !== -1);
     mv.camera(PHASE_CAMS[n], animate !== false && this.phase !== -1);
     this.phase = n;
+  };
+  // Carimbo de datas da fase, com contagem dos anos
+  Campaign.prototype.stamp = function (n, animate) {
+    var el = this.slide.querySelector(".phase-stamp");
+    if (!el) return;
+    var card = this.cards[n];
+    var years = (card.dataset.years || "").split("-").map(Number);
+    var a = el.querySelector(".ps-a"), b = el.querySelector(".ps-b"), lab = el.querySelector(".ps-label");
+    lab.textContent = card.querySelector("h3").textContent;
+    el.classList.toggle("single", years[0] === years[1]);
+    var fromA = Number(a.textContent) || years[0], fromB = Number(b.textContent) || years[1];
+    cancelAnimationFrame(this.stampRaf);
+    el.classList.remove("is-swap"); void el.offsetWidth; el.classList.add("is-swap");
+    if (!animate || GP.reduced()) { a.textContent = years[0]; b.textContent = years[1]; return; }
+    var t0 = performance.now(), self = this;
+    var tick = function (now) {
+      var t = Math.min(1, (now - t0) / 1100), e = 1 - Math.pow(1 - t, 3);
+      a.textContent = Math.round(fromA + (years[0] - fromA) * e);
+      b.textContent = Math.round(fromB + (years[1] - fromB) * e);
+      if (t < 1) self.stampRaf = requestAnimationFrame(tick);
+    };
+    this.stampRaf = requestAnimationFrame(tick);
   };
   Campaign.prototype.open = function (m) {
     var host = this.slide.querySelector(".campaign-map");
@@ -361,6 +406,254 @@
     this.mv.markers.forEach(function (o) { o.g.classList.remove("is-open"); });
   };
 
+  /* ---------- Cenas em etapas (início do conflito, Tríplice Aliança) ---------- */
+  function regionPath(key, useDetail) {
+    var G = window.GP_GEO;
+    return (G.regions && G.regions[key]) || (useDetail && G.detail && G.detail[key]) || G.countries[key];
+  }
+  function Scene(mount, opts) {
+    this.opts = opts;
+    this.mv = new MapView(mount, { detail: !!opts.detail, grid: opts.grid || 5, pad: opts.pad || .03, drawRivers: false });
+    mount.parentNode.classList.add(opts.style === "paper" ? "map-paper" : "map-dark", "scene-map");
+    this.items = [];
+    this.markers = [];
+    this.layer = GP.svg("g", { "class": "sc-layer" }, this.mv.extra);
+    this.step = -1;
+  }
+  Scene.prototype.track = function (el, from, persist) {
+    el.classList.add("sc-item");
+    this.items.push({ el: el, from: from, persist: !!persist });
+    return el;
+  };
+  Scene.prototype.region = function (key, from, cls, persist) {
+    return this.track(GP.svg("path", { d: regionPath(key, this.opts.detail), "class": "m-region " + cls }, this.layer), from, persist);
+  };
+  Scene.prototype.arrow = function (pts, from, side, label) {
+    var g = this.track(GP.svg("g", null, this.layer), from);
+    GP.svg("path", { d: toD(pts), "class": "m-arrow-glow sc-draw " + side, pathLength: 1 }, g);
+    GP.svg("path", { d: toD(pts), "class": "m-arrow sc-draw " + side, pathLength: 1 }, g);
+    var tip = this.mv.anchorXY(pts[pts.length - 1], "sc-tip");
+    tip.prev = pts[Math.max(0, pts.length - 4)];
+    GP.svg("path", { d: "M0 0L-13 -6L-10 0L-13 6Z", "class": "m-arrow-head " + side }, tip.g);
+    this.track(tip.g, from);
+    if (label) {
+      var la = this.mv.anchorXY(pts[label.at !== undefined ? label.at : Math.floor(pts.length / 2)], "sc-tag");
+      text(la.g, label.text, { "class": "m-route-text " + side, x: label.off[0], y: label.off[1], "text-anchor": label.off[2] });
+      this.track(la.g, from);
+    }
+    var mv = this.mv;
+    mv.onSet = function () {
+      mv.anchors.forEach(function (a) {
+        if (!a.prev) return;
+        var q = mv.toScreen(a.p), r = mv.toScreen(a.prev);
+        a.g.firstChild && a.g.firstChild.setAttribute("transform", "rotate(" + (Math.atan2(q[1] - r[1], q[0] - r[0]) * 180 / Math.PI).toFixed(1) + ")");
+      });
+    };
+  };
+  Scene.prototype.riverGlow = function (pts, from) {
+    var g = this.track(GP.svg("g", null, this.layer), from, true);
+    GP.svg("path", { d: toD(pts), "class": "m-river-glow sc-draw", pathLength: 1 }, g);
+  };
+  Scene.prototype.label = function (lon, lat, str, from, cls, persist, rotate) {
+    var a = this.mv.anchor(lon, lat, "sc-label");
+    var attrs = { "class": cls || "m-region-name", "text-anchor": "middle" };
+    if (rotate) attrs.transform = "rotate(" + rotate + ")";
+    text(a.g, str, attrs);
+    this.track(a.g, from, persist);
+    return a;
+  };
+  Scene.prototype.fixed = function (lon, lat, str, cls, rotate) {
+    var a = this.mv.anchor(lon, lat, "m-static");
+    var attrs = { "class": cls, "text-anchor": "middle" };
+    if (rotate) attrs.transform = "rotate(" + rotate + ")";
+    text(a.g, str, attrs);
+  };
+  Scene.prototype.marker = function (m, from, persist) {
+    var a = addMarker(this.mv, m);
+    a.g.classList.add("sc-marker");
+    this.track(a.g, from, persist);
+    this.markers.push(a);
+    return a;
+  };
+  Scene.prototype.set = function (step, animate) {
+    this.items.forEach(function (it) {
+      var c = it.el.classList;
+      c.toggle("is-now", step === it.from || (it.persist && step > it.from));
+      c.toggle("is-past", step > it.from && !it.persist);
+    });
+    var cams = this.opts.cams;
+    var cam = cams[Math.min(step, cams.length - 1)];
+    this.mv.camera(cam, animate !== false && this.step !== -1);
+    this.step = step;
+  };
+
+  // marcador reutilizável (camada em pixels)
+  function addMarker(mv, m) {
+    var a = mv.anchor(m.lon, m.lat, "m-marker " + (m.kind || "battle"));
+    a.g.setAttribute("tabindex", "0");
+    a.g.setAttribute("role", "button");
+    a.g.setAttribute("aria-label", m.name + ", " + m.date);
+    var off = m.off || [16, 4, "start"];
+    if (Math.abs(off[1]) > 8 || Math.abs(off[0]) > 18) GP.svg("line", { x1: 0, y1: 0, x2: off[0] * .8, y2: off[1] - 4, "class": "m-leader" }, a.g);
+    GP.svg("circle", { r: 16, "class": "mk-hit" }, a.g);
+    GP.svg("circle", { r: 7, "class": "mk-pulse" }, a.g);
+    if (m.kind === "capital") GP.svg("rect", { x: -6, y: -6, width: 12, height: 12, "class": "mk-core", transform: "rotate(45)" }, a.g);
+    else GP.svg("circle", { r: m.kind === "city" ? 5 : 6, "class": "mk-core" }, a.g);
+    text(a.g, m.name, { "class": "m-marker-label", x: off[0], y: off[1], "text-anchor": off[2] });
+    if (m.date) text(a.g, m.date, { "class": "m-marker-date", x: off[0], y: off[1] + 14, "text-anchor": off[2] });
+    a.data = { name: m.name, date: m.date || "", text: m.info || "" };
+    return a;
+  }
+
+  // ficha de marcador (popover) genérica
+  function Pop(slide, host, mv, markers) {
+    this.slide = slide; this.host = host; this.mv = mv;
+    this.el = slide.querySelector(".map-pop");
+    var self = this;
+    markers.forEach(function (m) {
+      var open = function (e) { e.stopPropagation(); self.open(m, markers); };
+      m.g.addEventListener("click", open);
+      m.g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(e); } });
+    });
+    this.el.querySelector(".map-pop-close").addEventListener("click", function () { self.close(markers); });
+    host.addEventListener("click", function () { self.close(markers); });
+    slide.addEventListener("gp:leave", function () { self.close(markers); });
+    slide.addEventListener("gp:step", function () { self.close(markers); });
+  }
+  Pop.prototype.open = function (m, markers) {
+    var pop = this.el, box = { width: this.host.clientWidth, height: this.host.clientHeight };
+    pop.querySelector(".map-pop-date").textContent = m.data.date;
+    pop.querySelector("h4").textContent = m.data.name;
+    pop.querySelector(".map-pop-text").textContent = m.data.text;
+    pop.hidden = false;
+    var q = this.mv.toScreen(m.p);
+    var pw = pop.offsetWidth, ph = pop.offsetHeight;
+    var x = q[0] + 20, y = q[1] - ph / 2;
+    if (x + pw > box.width - 10) x = q[0] - pw - 20;
+    x = Math.max(10, x);
+    y = Math.max(10, Math.min(box.height - ph - 10, y));
+    pop.style.left = x + "px";
+    pop.style.top = y + "px";
+    markers.forEach(function (o) { o.g.classList.toggle("is-open", o === m); });
+  };
+  Pop.prototype.close = function (markers) {
+    this.el.hidden = true;
+    markers.forEach(function (o) { o.g.classList.remove("is-open"); });
+  };
+
+  /* Cena: início do conflito (1864–1865) */
+  function buildInicio(slide) {
+    var mount = slide.querySelector(".map-mount");
+    var sc = new Scene(mount, {
+      style: "dark", detail: true, grid: 2, pad: .05,
+      cams: [[-62.5, -19, -51.5, -35.5], [-59.6, -29.8, -52.8, -35.3], [-60.4, -21.6, -54.6, -27.6], [-61.2, -17.4, -53.6, -26.2], [-61.9, -25.4, -55.9, -30.4]]
+    });
+    ["Paraguai|-57.2|-23.4", "Argentina|-61.2|-29.6", "Brasil|-52.8|-21.0", "Uruguai|-55.9|-32.9", "Bolívia|-61.2|-18.6"].forEach(function (c) {
+      var p = c.split("|");
+      sc.fixed(Number(p[1]), Number(p[2]), p[0], "m-country-name");
+    });
+    sc.fixed(-58.45, -21.6, "Rio Paraguai", "m-river-name", -80);
+    // 0 · protesto paraguaio
+    sc.region("URY", 0, "rg-crisis", true);
+    sc.region("PRY", 0, "rg-py", true);
+    sc.marker({ lon: -56.19, lat: -34.9, kind: "capital", name: "Montevidéu", date: "1864", off: [16, 4, "start"], info: "Sede do governo blanco de Atanasio Aguirre, pressionado por um ultimato do Império do Brasil em agosto de 1864." }, 0);
+    sc.marker({ lon: -57.64, lat: -25.28, kind: "capital", name: "Assunção", date: "30 ago. 1864", off: [-16, -8, "end"], info: "O governo paraguaio protesta: a ocupação do território uruguaio seria vista como atentado ao equilíbrio do Prata." }, 0);
+    // 1 · intervenção no Uruguai
+    sc.marker({ lon: -58.08, lat: -32.32, kind: "battle", name: "Paysandu", date: "dez. 1864 – jan. 1865", off: [-16, 4, "end"], info: "Cercada por tropas brasileiras e colorados de Venancio Flores, a cidade cai em janeiro de 1865." }, 1);
+    sc.label(-55.6, -33.6, "Intervenção brasileira", 1, "m-region-name");
+    // 2 · Marquês de Olinda
+    sc.riverGlow(paraguaiBetween(-25.28, -22.4), 2);
+    sc.label(-56.4, -23.9, "Apreensão do Marquês de Olinda", 2, "m-region-name");
+    // 3 · Mato Grosso
+    sc.region("matoGrossoDoSul", 3, "rg-war");
+    sc.arrow(paraguaiBetween(-25.28, -19.0), 3, "py", { text: "Ofensiva paraguaia", off: [16, 0, "start"] });
+    sc.marker({ lon: -57.79, lat: -19.92, kind: "battle", name: "Forte de Coimbra", date: "dez. 1864", off: [16, 4, "start"], info: "Atacado no fim de dezembro de 1864: início da invasão do sul da província de Mato Grosso." }, 3);
+    sc.label(-54.6, -20.6, "Sul de Mato Grosso", 3, "m-region-name");
+    // 4 · Corrientes
+    sc.region("corrientes", 4, "rg-war");
+    sc.arrow([P(-58.52, -27.06), P(-58.57, -27.24), P(-58.7, -27.36), P(-58.83, -27.47)], 4, "py", null);
+    sc.marker({ lon: -58.83, lat: -27.47, kind: "city", name: "Corrientes", date: "abr. 1865", off: [-16, -6, "end"], info: "Depois que a Argentina negou passagem às tropas paraguaias, o Paraguai ataca Corrientes. A agressão leva à Tríplice Aliança." }, 4);
+    sc.label(-57.9, -28.9, "Província de Corrientes", 4, "m-region-name");
+    var pop = new Pop(slide, slide.querySelector(".scene-map"), sc.mv, sc.markers);
+    var list = Array.prototype.slice.call(slide.querySelectorAll(".beat"));
+    slide.addEventListener("gp:step", function (e) {
+      sc.set(e.detail.step, e.detail.animate);
+      list.forEach(function (li, i) {
+        li.classList.toggle("is-now", i === e.detail.step);
+        li.classList.toggle("is-past", i < e.detail.step);
+      });
+    });
+    return sc;
+  }
+
+  /* Cena: Tríplice Aliança */
+  function buildAlianca(slide) {
+    var mount = slide.querySelector(".map-mount");
+    var sc = new Scene(mount, { style: "paper", detail: false, grid: 5, pad: .02, cams: [[-68, -12.5, -40, -37.5]] });
+    ["Paraguai|-58.3|-23.3", "Argentina|-64.2|-31.5", "Brasil|-49.5|-15.5", "Uruguai|-55.9|-32.9", "Bolívia|-64.5|-16.8"].forEach(function (c) {
+      var p = c.split("|");
+      sc.fixed(Number(p[1]), Number(p[2]), p[0], "m-country-name");
+    });
+    sc.region("PRY", 0, "rg-py", true);
+    sc.region("BRA", 1, "rg-al", true);
+    sc.region("ARG", 2, "rg-al", true);
+    sc.region("URY", 3, "rg-al", true);
+    // triângulo entre as capitais aliadas
+    var rio = P(-43.17, -22.91), ba = P(-58.38, -34.6), mvd = P(-56.19, -34.9);
+    var tri = GP.svg("path", { d: toD([rio, ba, mvd, rio]), "class": "m-triangle sc-draw", pathLength: 1 }, sc.layer);
+    sc.track(tri, 4, true);
+    sc.marker({ lon: -43.17, lat: -22.91, kind: "capital", name: "Rio de Janeiro", date: "Império do Brasil", off: [-16, -10, "end"], info: "Capital do Império. O Brasil forneceu a maior parte das tropas aliadas e a esquadra." }, 1, true);
+    sc.marker({ lon: -58.38, lat: -34.6, kind: "capital", name: "Buenos Aires", date: "1º maio 1865", off: [-16, 4, "end"], info: "Local da assinatura do Tratado da Tríplice Aliança, em 1º de maio de 1865." }, 2, true);
+    sc.marker({ lon: -56.19, lat: -34.9, kind: "capital", name: "Montevidéu", date: "governo Flores", off: [16, 14, "start"], info: "Com apoio brasileiro, o colorado Venancio Flores assumiu o governo uruguaio em fevereiro de 1865." }, 3, true);
+    sc.marker({ lon: -57.64, lat: -25.28, kind: "capital", name: "Assunção", date: "Solano López", off: [16, 4, "start"], info: "Capital do Paraguai, governado por Francisco Solano López desde 1862." }, 0, true);
+    var pop = new Pop(slide, slide.querySelector(".scene-map"), sc.mv, sc.markers);
+    var cards = Array.prototype.slice.call(slide.querySelectorAll(".ally"));
+    slide.addEventListener("gp:step", function (e) {
+      sc.set(e.detail.step, e.detail.animate);
+      cards.forEach(function (c) {
+        var from = Number(c.dataset.from);
+        c.classList.toggle("is-now", from === e.detail.step);
+        c.classList.toggle("is-past", from < e.detail.step);
+      });
+      slide.classList.toggle("treaty-on", e.detail.step >= 4);
+    });
+    return sc;
+  }
+
+  /* Localizador das batalhas (mini-mapa) */
+  var BATTLES = [
+    { lon: -58.78, lat: -27.62, name: "Riachuelo", where: "Rio Paraná, perto de Corrientes", kind: "naval" },
+    { lon: -58.42, lat: -27.24, name: "Tuiuti", where: "Sul do Paraguai", kind: "battle" },
+    { lon: -58.60, lat: -27.15, name: "Curupaiti", where: "Margem do rio Paraguai", kind: "battle" },
+    { lon: -58.52, lat: -27.06, name: "Humaitá", where: "Rio Paraguai", kind: "naval" },
+    { lon: -57.53, lat: -25.50, name: "Avaí", where: "Região de Villeta", kind: "battle" }
+  ];
+  function buildLocator(slide) {
+    var mount = slide.querySelector(".locator-mount");
+    if (!mount) return;
+    var mv = new MapView(mount, { detail: true, grid: 1, pad: 0 });
+    mount.parentNode.classList.add("map-dark");
+    text(mv.anchor(-57.6, -26.3, "m-static").g, "Paraguai", { "class": "m-country-name small", "text-anchor": "middle" });
+    text(mv.anchor(-59.4, -28.0, "m-static").g, "Argentina", { "class": "m-country-name small", "text-anchor": "middle" });
+    var marks = BATTLES.map(function (b) {
+      var a = mv.anchor(b.lon, b.lat, "m-marker loc-mark " + b.kind);
+      GP.svg("circle", { r: 9, "class": "mk-pulse" }, a.g);
+      GP.svg("circle", { r: 5, "class": "mk-core" }, a.g);
+      text(a.g, b.name, { "class": "m-marker-label", x: 10, y: -8, "text-anchor": "start" });
+      return a;
+    });
+    var cap = slide.querySelector(".locator figcaption");
+    var show = function (i, animate) {
+      var b = BATTLES[i];
+      marks.forEach(function (m, k) { m.g.classList.toggle("is-now", k === i); });
+      mv.camera([b.lon - 1.35, b.lat + .95, b.lon + 1.35, b.lat - .95], animate);
+      if (cap) cap.textContent = b.where;
+    };
+    show(0, false);
+    slide.addEventListener("gp:step", function (e) { show(e.detail.step, e.detail.animate); });
+  }
+
+  /* ---------- Slide 4: contornos dos países ---------- */
   /* ---------- Slide 4: contornos dos países ---------- */
   function shape(el) {
     var d = window.GP_GEO.countries[el.dataset.shape];
@@ -381,6 +674,12 @@
     if (prata) GP.prataMap = buildPrata(prata);
     var mapSlide = deck.querySelector(".slide-map");
     if (mapSlide) GP.campaign = new Campaign(mapSlide);
+    var inicio = deck.querySelector(".slide-inicio");
+    if (inicio) GP.inicioScene = buildInicio(inicio);
+    var alianca = deck.querySelector(".slide-alianca");
+    if (alianca) GP.aliancaScene = buildAlianca(alianca);
+    var battles = deck.querySelector(".slide-battles");
+    if (battles) buildLocator(battles);
     deck.querySelectorAll("[data-shape]").forEach(shape);
   };
 })();

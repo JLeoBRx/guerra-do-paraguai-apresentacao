@@ -151,6 +151,21 @@
       var delay = reduced ? 0 : start + tt * dur;
       self.timers.push(setTimeout(function () { ev.li.classList.add("is-on"); }, delay));
     });
+    // ano de fundo avança de 1864 a 1870 enquanto a linha é desenhada
+    var big = this.root.querySelector(".tl-bigyear span");
+    if (big && !reduced) {
+      big.textContent = "1864";
+      this.timers.push(setTimeout(function () {
+        var t0 = performance.now();
+        var tick = function (now) {
+          var t = Math.min(1, (now - t0) / dur);
+          var e = t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+          big.textContent = Math.round(1864 + 6 * e);
+          if (t < 1 && self.slide.classList.contains("is-current")) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, start));
+    }
     var startIdx = this.events.findIndex(function (e) { return e.mark === "start"; });
     this.timers.push(setTimeout(function () { self.select(Math.max(0, startIdx), true); }, reduced ? 0 : start + dur + 200));
   };
@@ -184,6 +199,8 @@
       delete fig.dataset.lightbox;
     }
     copy.querySelector("time").textContent = ev.time;
+    var big = this.root.querySelector(".tl-bigyear span");
+    if (big && GP.countTo) GP.countTo(big, new Date(ev.t).getUTCFullYear(), animate);
     copy.querySelector("h3").innerHTML = ev.title;
     copy.querySelector("p").innerHTML = ev.text;
     if (animate && !GP.reduced()) {

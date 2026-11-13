@@ -65,7 +65,7 @@
   .opening-art { position: absolute !important; inset: 0 !important; width: auto !important; }
   .opening-art-frame { -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .9) 35%, rgba(0, 0, 0, .25) 70%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, rgba(0, 0, 0, .9) 35%, rgba(0, 0, 0, .25) 70%, transparent 100%); opacity: .55; }
   .opening-art figcaption { top: 66px; bottom: auto; left: var(--pad-x); right: var(--pad-x); max-width: none; text-align: right; font-size: 9px; }
-  .compass { position: absolute !important; left: auto; right: -40px; top: 70px; width: 170px; height: 170px; opacity: .45; }
+  .compass { position: absolute !important; left: auto; right: 6px; top: 70px; width: 150px; height: 150px; opacity: .4; }
   .opening-copy { position: relative !important; left: auto; top: auto; width: auto; margin-top: auto; padding-top: 12vh; }
   .ot-accent { padding-left: 0; }
   .opening-dates { font-size: 18px; margin-top: 18px; }
@@ -109,13 +109,7 @@
   .nation-back { padding: 18px; }
   .nation-shape { min-height: 70px; }
 
-  /* 05 · Aliança */
-  .alliance-bg { left: 0; opacity: .16; }
-  .escalation { width: auto; margin-top: 18px; }
-  .escalation::before { left: 92px; }
-  .escalation li { grid-template-columns: 80px 1fr; gap: 24px; }
-  .escalation li::before { left: 92px; top: 14px; width: 9px; height: 9px; }
-  .escalation strong { font-size: 18px; }
+  /* Tratado */
   .treaty { position: relative !important; right: auto; top: auto; width: auto; margin: 30px 6px 10px; }
   .treaty h3 { font-size: 30px; }
   .treaty-signers li { grid-template-columns: 90px 1fr; font-size: 16px; }

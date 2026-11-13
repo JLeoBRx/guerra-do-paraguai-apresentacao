@@ -5,6 +5,7 @@
 //   ne_50m_admin_0_countries.geojson
 //   ne_10m_admin_0_countries.geojson
 //   ne_10m_rivers_lake_centerlines.geojson
+//   ne_10m_admin_1_states_provinces.geojson (regiões: limites ATUAIS, só como referência)
 // Fonte: https://github.com/nvkelso/natural-earth-vector (Natural Earth, domínio público).
 // As fronteiras do Natural Earth são ATUAIS; a apresentação as usa apenas como referência.
 import fs from "node:fs";
@@ -169,7 +170,18 @@ const riverPaths = {
   salado: toPath(byName("Salado", 6).flatMap(parts), { tolerance: 0.8 }),
 };
 
-const data = { proj: PROJ, countries: countryPaths, detail: detailPaths, detailBox: DETAIL_BOX, rivers: riverPaths };
+// Regiões (províncias/estados atuais) usadas como referência para áreas históricas
+const admin1 = read("ne_10m_admin_1_states_provinces.geojson");
+const REGIONS = { corrientes: ["Corrientes", "ARG"], rioGrandeDoSul: ["Rio Grande do Sul", "BRA"], matoGrossoDoSul: ["Mato Grosso do Sul", "BRA"] };
+const regionPaths = {};
+for (const [key, [name, a3]] of Object.entries(REGIONS)) {
+  const feature = admin1.features.find((f) => f.properties.name === name && f.properties.adm0_a3 === a3);
+  if (!feature) throw new Error("Região não encontrada: " + name);
+  const polys = feature.geometry.type === "Polygon" ? [feature.geometry.coordinates] : feature.geometry.coordinates;
+  regionPaths[key] = toPath(polys.flatMap((poly) => poly), { closed: true, tolerance: 0.5, minExtent: 6 });
+}
+
+const data = { proj: PROJ, countries: countryPaths, detail: detailPaths, detailBox: DETAIL_BOX, rivers: riverPaths, regions: regionPaths };
 const banner =
   "/* Gerado por scripts/build-map.mjs a partir do Natural Earth (domínio público).\n" +
   "   Fronteiras atuais, usadas apenas como referência geográfica. */\n";
@@ -179,3 +191,4 @@ console.log("js/map-data.js gerado:", (out.length / 1024).toFixed(1), "KB");
 for (const [k, v] of Object.entries(riverPaths)) console.log("  rio", k, v.length);
 for (const [k, v] of Object.entries(countryPaths)) console.log("  país", k, v.length);
 for (const [k, v] of Object.entries(detailPaths)) console.log("  detalhe", k, v.length);
+for (const [k, v] of Object.entries(regionPaths)) console.log("  região", k, v.length);

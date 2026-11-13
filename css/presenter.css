@@ -1,0 +1,64 @@
+/* Modo apresentador (janela separada; não aparece na projeção) */
+body.pv { overflow: auto; min-height: 100vh; background: #070c15; color: var(--ivory); font-size: 16px; }
+.pv-top {
+  position: sticky; top: 0; z-index: 5;
+  display: flex; align-items: center; gap: 18px;
+  padding: 12px 22px;
+  background: rgba(5, 9, 16, .96);
+  border-bottom: 1px solid rgba(201, 163, 92, .25);
+}
+.pv-brand strong { display: block; font-family: var(--font-display); font-size: 22px; font-weight: 600; }
+.pv-brand span { font-family: var(--font-mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.pv-link { display: flex; align-items: center; gap: 8px; margin-left: auto; font-size: 13px; color: rgba(239, 230, 209, .75); }
+.pv-link i { width: 9px; height: 9px; border-radius: 50%; background: #c2783c; box-shadow: 0 0 8px #c2783c; }
+.pv-link[data-state="on"] i { background: #6fbf7d; box-shadow: 0 0 8px #6fbf7d; }
+.pv-open, .pv-timer-btns button, .pv-nav button, .pv-nav select {
+  min-height: 40px; padding: 0 14px; font: inherit; font-size: 14px; color: var(--ivory);
+  background: rgba(255, 255, 255, .04); border: 1px solid rgba(201, 163, 92, .4); cursor: pointer;
+}
+.pv-open:hover, .pv-timer-btns button:hover, .pv-nav button:hover { background: rgba(201, 163, 92, .18); }
+.pv-clock { font-family: var(--font-mono); font-size: 22px; color: var(--gold-2); }
+
+.pv-main { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(320px, 1fr); gap: 20px; padding: 14px 20px 18px; }
+.pv-now { padding-bottom: 12px; border-bottom: 1px solid rgba(201, 163, 92, .25); }
+.pv-num { font-family: var(--font-mono); font-size: 13px; letter-spacing: .18em; color: var(--gold); }
+.pv-now h1 { margin-top: 4px; font-family: var(--font-display); font-size: 34px; font-weight: 600; line-height: 1.05; }
+.pv-step { display: inline-block; margin-top: 8px; padding: 4px 10px; font-family: var(--font-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-1); background: var(--gold-2); }
+.pv-block { margin-top: 12px; }
+.pv-block h2 { font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.pv-block p { margin-top: 5px; font-size: 15.5px; line-height: 1.55; color: rgba(239, 230, 209, .86); }
+.pv-fala p { font-size: 19px; line-height: 1.5; color: var(--ivory); }
+.pv-etapa { padding: 14px 16px; border-left: 3px solid var(--gold-2); background: rgba(201, 163, 92, .1); }
+.pv-etapa p { font-size: 19px; color: #fff; }
+.pv-trans p { font-style: italic; color: var(--gold-2); }
+
+.pv-side { display: flex; flex-direction: column; gap: 10px; }
+.pv-pair { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; align-items: start; }
+.pv-frame figcaption { margin-bottom: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); }
+.pv-screen { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #000; border: 1px solid rgba(201, 163, 92, .35); }
+.pv-screen iframe { position: absolute; left: 0; top: 0; width: 1600px; height: 900px; border: 0; transform-origin: 0 0; pointer-events: none; }
+.pv-frame-next .pv-screen { opacity: .9; }
+.pv-timers { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 10px 12px; border: 1px solid rgba(201, 163, 92, .25); background: rgba(255, 255, 255, .02); }
+.pv-timer span { display: block; font-family: var(--font-mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+.pv-timer strong { display: block; font-family: var(--font-mono); font-size: 26px; font-weight: 500; }
+.pv-timer small { font-size: 12.5px; color: rgba(239, 230, 209, .65); }
+.pv-meter { height: 4px; margin-top: 6px; background: rgba(239, 230, 209, .12); }
+.pv-meter i { display: block; height: 100%; width: 0; background: #6fbf7d; transition: width .5s, background .5s; }
+.pv-meter i.is-late { background: #d9715f; }
+.pv-timer-btns { grid-column: 1 / -1; display: flex; gap: 8px; }
+.pv-timer-btns button { flex: 1; }
+.pv-timer-btns button[aria-pressed="true"] { background: var(--gold); color: var(--ink-1); }
+.pv-pace { grid-column: 1 / -1; font-size: 13px; color: rgba(239, 230, 209, .75); }
+.pv-nav { display: flex; gap: 8px; }
+.pv-nav button { flex: 1; font-size: 16px; }
+.pv-nav .pv-primary { background: var(--gold); color: var(--ink-1); border-color: var(--gold); font-weight: 600; }
+.pv-nav select { flex: 1.2; }
+.pv-nav select option { background: #0b1626; }
+.pv-help { font-size: 12.5px; line-height: 1.6; color: rgba(239, 230, 209, .6); }
+
+@media (max-width: 900px) {
+  .pv-main { grid-template-columns: 1fr; }
+  .pv-side { order: -1; }
+  .pv-now h1 { font-size: 30px; }
+  .pv-fala p, .pv-etapa p { font-size: 18px; }
+}
