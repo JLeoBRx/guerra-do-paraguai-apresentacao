@@ -104,6 +104,7 @@ assets/fonts/           Cormorant Garamond e IBM Plex (licença OFL)
 scripts/validate-site.mjs  validação estática
 scripts/build-map.mjs      gera js/map-data.js
 scripts/build-roteiro.mjs  gera ROTEIRO.md
+scripts/stamp-version.mjs  versiona as referências de CSS/JS antes de publicar
 ```
 
 Não há etapa de build. Para rodar localmente:
@@ -147,6 +148,8 @@ Arquivos necessários na pasta:
 - `ne_10m_admin_1_states_provinces.geojson`
 
 ## Publicação
+
+Antes de cada publicação, rode `node scripts/stamp-version.mjs`. Ele atualiza o `?v=` das referências de CSS e JS, para que o navegador e a CDN não misturem arquivos novos e antigos logo depois do deploy.
 
 O Render publica o site estático automaticamente a partir da branch `main`. O endereço é https://guerra-do-paraguai-museu-digital.onrender.com.
 

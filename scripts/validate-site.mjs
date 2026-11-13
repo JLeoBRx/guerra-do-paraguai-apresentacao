@@ -76,7 +76,7 @@ check(refs.length >= 13, `Lista com ${refs.length} referências.`, "A lista de r
 check(missingRefs.length === 0, "Todas as citações têm referência correspondente.", "Citações sem referência: " + missingRefs.join(", "));
 
 // Arquivos locais referenciados
-const localRefs = [...html.matchAll(/\b(?:src|href)="((?:assets|css|js)\/[^"#?]+)"/g)].map((m) => m[1]);
+const localRefs = [...(html + read("presenter.html")).matchAll(/\b(?:src|href)="((?:assets|css|js)\/[^"#?]+)(?:\?[^"]*)?"/g)].map((m) => m[1]);
 const imgKeys = [...html.matchAll(/data-(?:lightbox|img)="([a-z0-9-]+)"/g)].map((m) => `assets/img/${m[1]}.jpg`);
 const registry = [...read("js/app.js").matchAll(/^\s+"([a-z0-9-]+)": \["/gm)].map((m) => `assets/img/${m[1]}.jpg`);
 const missingFiles = [...new Set([...localRefs, ...imgKeys, ...registry])].filter((f) => !fs.existsSync(f));
