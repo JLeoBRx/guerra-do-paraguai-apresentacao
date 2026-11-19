@@ -6,13 +6,20 @@ Apresentação interativa, em formato de exposição de museu e documentário, s
 
 Site publicado: https://guerra-do-paraguai-museu-digital.onrender.com
 
-Ao abrir o endereço, a apresentação começa direto na abertura cinematográfica. Não há página de artigo nem botão para revelar os slides.
+Ao abrir o endereço, a apresentação começa direto na abertura. Não há página de artigo nem botão para revelar os slides.
+
+## Visual: feito para projeção
+
+- **Fundo claro e texto quase preto** em todos os slides, com contraste alto (texto principal acima de 15:1). Um único acento vermelho marca números, datas e destaques; nos mapas, a água e o lado aliado aparecem em azul, e o Paraguai em vermelho.
+- **Letras grandes:** corpo de texto com cerca de 1,6% da largura do slide (por volta de 26 px em 1600 px, 31 px em tela Full HD), títulos com 4,2%. Os textos de cada slide foram enxugados para caber nesse tamanho; o detalhe completo continua no roteiro do apresentador.
+- **Fontes:** Source Serif 4 nos títulos e IBM Plex Sans no texto (licença OFL, salvas em `assets/fonts`).
+- **Imagens com as cores originais**, sem filtros, com legendas em caixas brancas legíveis.
 
 ## Roteiro (15 slides)
 
 | # | Slide | Cena e transição |
 |---|-------|------------------|
-| 1 | Abertura | Plano geral da América do Sul com o Paraguai destacado, aproximação até a Bacia do Prata, barras de cinema que se abrem, título letra a letra e pintura de Victor Meirelles · *revelação cinematográfica* |
+| 1 | Abertura | Título letra a letra, datas em contagem e a pintura de Victor Meirelles revelada como um obturador · *revelação suave* |
 | 2 | Contexto histórico | Mapa que aproxima do continente até a Bacia do Prata; rios desenhados e rota fluvial até o Atlântico · *aproximação sobre o mapa* |
 | 3 | Pindorama e os povos indígenas | Mapa em que as fronteiras atuais aparecem e se apagam, deixando os rios e os nomes de povos indígenas (cores por família linguística); “Pindorama”, o guarani no Paraguai e a participação indígena na guerra · *luz que atravessa a copa das árvores* |
 | 4 | Causas | Fatores de longo prazo × gatilhos de 1864–1865, ligados por linhas · *documentos colocados sobre a mesa* |
@@ -25,7 +32,7 @@ Ao abrir o endereço, a apresentação começa direto na abertura cinematográfi
 | 11 | Consequências humanas | Ritmo mais lento, fotografia de 1867 e debate sobre os números · *desaceleração sóbria* |
 | 12 | Consequências políticas e econômicas | Quadro por país, fotografia e charge de Agostini · *folha de documento* |
 | 13 | Interpretações históricas | Correntes historiográficas e critério adotado · *dissolução* |
-| 14 | Conclusão | Retorno ao mapa do início, com o Paraguai destacado, e a resposta ao problema de pesquisa · *encerramento* |
+| 14 | Conclusão | Mapa da América do Sul com o Paraguai destacado e a resposta ao problema de pesquisa · *encerramento* |
 | 15 | Referências | 20 referências, método e créditos das imagens · *folha de documento* |
 
 ## Modo apresentador e roteiro de fala
@@ -35,7 +42,7 @@ Ao abrir o endereço, a apresentação começa direto na abertura cinematográfi
   - a fala do slide, a explicação complementar, o contexto e a transição para o próximo;
   - nas cenas, o texto da etapa atual;
   - a prévia do que está na projeção e do próximo slide ou etapa;
-  - o tempo estimado, o cronômetro total e o do slide, e o ritmo em relação ao plano de 19 minutos;
+  - o tempo estimado, o cronômetro total e o do slide, e o ritmo em relação ao plano de 20 minutos;
   - botões e setas que controlam a projeção à distância.
 - **Roteiro impresso:** `ROTEIRO.md` traz o mesmo texto, com sugestão de divisão entre os integrantes. Ele é gerado de `js/notes.js` com `node scripts/build-roteiro.mjs`.
 
@@ -51,8 +58,8 @@ Ao abrir o endereço, a apresentação começa direto na abertura cinematográfi
 
 ## Linguagem de movimento
 
-- **Transições entre slides:** cada slide tem a sua, ligada à narrativa — revelação a partir do escuro (abertura), aproximação sobre o mapa (contexto), luz que atravessa a copa das árvores (Pindorama), documento colocado sobre a mesa (causas), meridiano que varre a cena (países), íris (aliança), passagem do tempo (cronologia), mergulho no mapa (campanhas), corte dramático com clarão contido (batalhas), desaceleração sóbria (consequências) e dissolução no mapa (conclusão). Cada uma tem duração própria e versão de volta.
-- **Atlas persistente:** uma camada cartográfica (rios, costas e meridianos) muda de enquadramento entre as cenas. Ela abre com o plano geral do continente e o Paraguai destacado, e volta a esse plano na conclusão.
+- **Transições entre slides:** cada slide tem a sua, ligada à narrativa — revelação suave (abertura), aproximação sobre o mapa (contexto), luz que atravessa a copa das árvores (Pindorama), documento colocado sobre a mesa (causas), meridiano que varre a cena (países), íris (aliança), passagem do tempo (cronologia), mergulho no mapa (campanhas), corte dramático com clarão contido (batalhas), desaceleração sóbria (consequências) e dissolução no mapa (conclusão). Cada uma tem duração própria e versão de volta.
+- **Atlas persistente:** uma camada cartográfica discreta (rios, costas e meridianos) muda de enquadramento entre as cenas e aparece por inteiro na conclusão, com o Paraguai destacado.
 - **Entradas internas:**
   - títulos palavra por palavra ou letra por letra;
   - imagens reveladas por máscara ou “reveladas” como fotografia;
@@ -60,8 +67,7 @@ Ao abrir o endereço, a apresentação começa direto na abertura cinematográfi
   - datas em contagem;
   - documento que se desdobra e selo carimbado;
   - zoom lento (Ken Burns) e parallax pelo mouse.
-- **Efeitos contínuos:** poeira em canvas (pausada quando não usada), fumaça, grão de filme e bússola girando.
-- **`prefers-reduced-motion`:** quem desativa animações recebe trocas rápidas por esmaecimento, sem partículas, zoom ou deslocamentos.
+- **`prefers-reduced-motion`:** quem desativa animações recebe trocas rápidas por esmaecimento, sem zoom nem deslocamentos.
 
 ## Precisão histórica e fontes
 
@@ -84,7 +90,7 @@ Todas as imagens estão salvas no próprio projeto (`assets/img`), em domínio p
 index.html              apresentação (15 slides)
 presenter.html          modo apresentador (notas, prévias, cronômetro)
 ROTEIRO.md              roteiro de fala completo (gerado de js/notes.js)
-css/base.css            fontes, paleta e texturas
+css/base.css            fontes e paleta clara de alto contraste
 css/deck.css            palco 16:9, camadas, controles, índice, ajuda, visualizador
 css/motion.css          transições e animações (+ movimento reduzido)
 css/slides.css          layout de cada slide
@@ -92,7 +98,7 @@ css/responsive.css      celular, tablet e paisagem baixa
 css/scenes.css          cenas, regiões, áudio, transições personalizadas, prévia
 css/presenter.css       janela do apresentador
 js/map-data.js          contornos e rios (gerado do Natural Earth)
-js/fx.js                tipografia cinética, contadores, poeira, parallax, atlas
+js/fx.js                tipografia cinética, contadores, parallax, atlas
 js/map.js               mapas, cenas em etapas, campanhas e localizador
 js/timeline.js          linha do tempo
 js/app.js               navegação, etapas, transições, sincronização com o apresentador
@@ -102,7 +108,7 @@ js/audio.js             narração por slide e painel de áudio
 js/score.js             trilha instrumental sintetizada (Web Audio)
 assets/audio/narracao/  manifesto e instruções para as gravações
 assets/img/             imagens históricas otimizadas
-assets/fonts/           Cormorant Garamond e IBM Plex (licença OFL)
+assets/fonts/           Source Serif 4 e IBM Plex (licença OFL)
 scripts/validate-site.mjs  validação estática
 scripts/build-map.mjs      gera js/map-data.js
 scripts/build-roteiro.mjs  gera ROTEIRO.md

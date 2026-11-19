@@ -23,7 +23,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 ## 01 · Abertura — 0:45
 
-**Fala.** Boa tarde. Nosso trabalho é sobre a Guerra do Paraguai, que aconteceu entre 1864 e 1870. Foi o maior conflito armado internacional da América do Sul no século XIX: de um lado, o Paraguai; do outro, a Tríplice Aliança, formada pelo Império do Brasil, pela Argentina e pelo Uruguai. No mapa da abertura, o Paraguai aparece destacado no centro do continente, sem saída para o mar e ligado ao oceano apenas pelos rios. Esses rios vão aparecer o tempo todo. Nos próximos minutos, vamos explicar o contexto da região e os povos que já viviam nela, as causas, os países envolvidos, as campanhas e batalhas, as consequências e as diferentes interpretações dos historiadores.
+**Fala.** Boa tarde. Nosso trabalho é sobre a Guerra do Paraguai, que aconteceu entre 1864 e 1870. Foi o maior conflito armado internacional da América do Sul no século XIX: de um lado, o Paraguai; do outro, a Tríplice Aliança, formada pelo Império do Brasil, pela Argentina e pelo Uruguai. Um ponto vai aparecer o tempo todo: o Paraguai não tinha saída para o mar e dependia dos rios para chegar ao oceano. Nos próximos minutos, vamos explicar o contexto da região e os povos que já viviam nela, as causas, os países envolvidos, as campanhas e batalhas, as consequências e as diferentes interpretações dos historiadores.
 
 **Explicação complementar.** A pintura é um estudo de Victor Meirelles para a Batalha Naval do Riachuelo (1865), feito entre 1868 e 1873. É uma representação artística, não uma fotografia do combate. O nome também varia: no Brasil se diz Guerra do Paraguai; em outros países é comum Guerra da Tríplice Aliança; na memória paraguaia, Guerra Grande.
 
@@ -37,7 +37,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Explicação complementar.** Carlos Antonio López governou o Paraguai até morrer, em 1862; seu filho, Francisco Solano López, assumiu em seguida. O Estado paraguaio era centralizado e investiu em ferrovia, telégrafo, arsenal e estaleiro, com técnicos estrangeiros. O Brasil também dependia dos rios: subir o rio Paraguai era o caminho mais prático para chegar à província de Mato Grosso.
 
-**Contexto.** O mapa usa fronteiras atuais só como referência. Em 1864, vários limites estavam em disputa, entre o Paraguai e o Brasil e entre o Paraguai e a Argentina.
+**Contexto.** O mapa usa fronteiras atuais só como referência. Em 1864, vários limites estavam em disputa, entre o Paraguai e o Brasil e entre o Paraguai e a Argentina. A geografia ajuda a entender a guerra, mas não a explica sozinha.
 
 **Transição.** _Mas, antes de falar das causas, vale lembrar quem já vivia nessa terra muito antes desses Estados existirem._
 
@@ -185,7 +185,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 ## 14 · Conclusão — 1:00
 
-**Fala.** Nossa pergunta era: como as disputas políticas e estratégicas no Prata contribuíram para a guerra, e como o conflito transformou os países envolvidos? A resposta: a guerra resultou de uma crise regional em que se combinaram interesses dos Estados, a navegação dos rios, a intervenção no Uruguai e as escolhas militares dos governos. Seus efeitos foram profundos e desiguais, sobretudo para o Paraguai. Voltamos ao mapa do início para lembrar que tudo partiu desta região e destes rios. Compreender a guerra exige confrontar documentos, interpretações e memórias, reconhecendo os custos humanos de decisões tomadas em nome da soberania e do poder.
+**Fala.** Nossa pergunta era: como as disputas políticas e estratégicas no Prata contribuíram para a guerra, e como o conflito transformou os países envolvidos? A resposta: a guerra resultou de uma crise regional em que se combinaram interesses dos Estados, a navegação dos rios, a intervenção no Uruguai e as escolhas militares dos governos. Seus efeitos foram profundos e desiguais, sobretudo para o Paraguai. O mapa ao lado lembra que tudo partiu desta região e destes rios. Compreender a guerra exige confrontar documentos, interpretações e memórias, reconhecendo os custos humanos de decisões tomadas em nome da soberania e do poder.
 
 **Explicação complementar.** Se houver tempo, vale reforçar que o trabalho evitou explicações de causa única e tratou as imagens como fontes históricas, com autoria e data.
 

@@ -40,7 +40,8 @@
       btn.type = "button";
       if (data.mark === "start") btn.dataset.flag = "Início";
       if (data.mark === "end") btn.dataset.flag = "Fim";
-      btn.innerHTML = "<time>" + data.time + "</time><strong>" + data.title + "</strong>";
+      // rótulo curto opcional (data-short) para caber na linha; o título completo vai para o detalhe
+      btn.innerHTML = "<time>" + data.time + "</time><strong>" + (li.dataset.short || data.title) + "</strong>";
       btn.setAttribute("aria-label", data.time + ": " + btn.textContent.replace(data.time, "").trim());
       btn.addEventListener("click", function () { self.select(i, true); });
       return data;
@@ -50,6 +51,8 @@
     this.slide.addEventListener("gp:enter", function () { self.reveal(); });
     this.slide.addEventListener("gp:leave", function () { self.reset(); });
     new ResizeObserver(function () { self.layout(); }).observe(this.stage);
+    // refaz a distribuição quando as fontes terminam de carregar (alturas dos rótulos mudam)
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { self.layout(); });
   }
 
   Timeline.prototype.pos = function (t) {
@@ -77,12 +80,14 @@
     var W = this.stage.clientWidth, H = this.stage.clientHeight;
     if (!W) return;
     var cq = this.slide.clientWidth / 100;
-    var labelW = 9.9 * cq, gap = .6 * cq;
+    var labelW = 10.2 * cq, gap = .45 * cq;
     var labelH = 0;
     this.events.forEach(function (ev) { labelH = Math.max(labelH, ev.li.querySelector(".tl-label").offsetHeight); });
     if (!labelH) labelH = 4.2 * cq;
-    var half = (H - 2.2 * cq) / 2;
-    var near = Math.max(.45 * cq, Math.min(1.6 * cq, half - 2 * labelH - .9 * cq));
+    var half = H / 2;
+    // reserva no alto para os nomes das fases; a haste mais curta sai da faixa dos anos
+    var top = 1.9 * cq;
+    var near = Math.max(1.15 * cq, Math.min(1.8 * cq, half - top - 2 * labelH - .9 * cq));
     var far = near + labelH + .5 * cq;
     var lanes = [
       { side: "up", stem: near, right: -1e9 }, { side: "down", stem: near, right: -1e9 },
@@ -91,7 +96,7 @@
     var mobile = W < 520;
     this.events.forEach(function (ev, i) {
       var x = self.pos(ev.t) * W;
-      var w = ev.mark ? 12.4 * cq : labelW;
+      var w = labelW;
       var flip = x + w > W - 4;
       var left = flip ? x - w : x;
       var lane = null;
@@ -123,9 +128,14 @@
       var yr = GP.el("span", "tl-year", years);
       yr.style.left = (yx * 100).toFixed(2) + "%";
       GP.el("span", "", yr).textContent = y;
-      // se um marcador estiver logo à direita, o ano vai para a esquerda do traço
-      var crowded = this.events.some(function (e) { return e.x - yx > -.004 && e.x - yx < 2.8 * cq / W; });
-      yr.classList.toggle("is-left", crowded);
+      // o ano fica do lado do traço com espaço livre; sem espaço dos dois lados, fica só o traço
+      var room = 3.7 * cq / W, dl = 1, dr = 1;
+      this.events.forEach(function (e) {
+        var d = e.x - yx;
+        if (d >= 0) dr = Math.min(dr, d); else dl = Math.min(dl, -d);
+      });
+      yr.classList.toggle("is-left", dr < room && dl >= room);
+      yr.classList.toggle("is-hidden", dr < room && dl < room);
     }
     // fases
     var phases = this.root.querySelector(".tl-phases");

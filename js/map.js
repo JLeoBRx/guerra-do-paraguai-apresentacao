@@ -708,13 +708,13 @@
       GP.svg("circle", { r: 4, "class": "m-povo-dot" }, a.g);
       text(a.g, p[0], { "class": "m-povo-name", x: p[6] * 10, y: 6, "text-anchor": p[6] > 0 ? "start" : "end" });
     });
-    var CAM = [-64.5, -15.5, -39.5, -35.5];
+    var CAM = [-64.5, -19, -39.5, -39.5];
     mv.camera(CAM);
     // aproximação lenta a cada entrada no slide
     var slide = mount.closest(".slide");
     if (slide) slide.addEventListener("gp:enter", function () {
       if (GP.reduced()) return mv.camera(CAM);
-      mv.camera([-67, -12.5, -37, -38.5]);
+      mv.camera([-67, -15.5, -37, -42.5]);
       setTimeout(function () { mv.camera(CAM, true, 5200); }, 60);
     });
     return mv;
