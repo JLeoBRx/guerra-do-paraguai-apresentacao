@@ -73,8 +73,8 @@
     var nb = $("#btnNext");
     var moreSteps = total && state.step < total;
     nb.classList.toggle("is-step", !!moreSteps);
-    nb.setAttribute("aria-label", moreSteps ? "Próxima etapa da cena" : "Próximo slide");
-    nb.title = moreSteps ? "Próxima etapa (" + (state.step + 2) + " de " + (total + 1) + ")" : "Próximo slide";
+    nb.setAttribute("aria-label", moreSteps ? "Próximo tópico" : "Próximo slide");
+    nb.title = moreSteps ? "Próximo tópico (" + (state.step + 2) + " de " + (total + 1) + ")" : "Próximo slide";
     broadcast();
     document.dispatchEvent(new CustomEvent("gp:change", { detail: { index: state.index, step: state.step, slide: s } }));
     document.title = (state.index === 0 ? "" : s.dataset.title + " · ") + "Guerra do Paraguai — 1864–1870";
@@ -82,6 +82,12 @@
 
   function applyStep(slide, step, animate, prevStep) {
     slide.dataset.step = step;
+    // tópicos revelados um por clique: data-at = etapa em que o item aparece
+    $$("[data-at]", slide).forEach(function (el) {
+      var at = Number(el.dataset.at);
+      el.classList.toggle("is-shown", at <= step);
+      el.classList.toggle("is-now", at === step);
+    });
     $$("[data-goto-step]", slide).forEach(function (b) {
       var on = Number(b.dataset.gotoStep) === step;
       b.setAttribute("aria-current", on ? "true" : "false");

@@ -36,6 +36,13 @@
   .kicker::after { width: 36px; }
   .footnote { position: relative !important; left: auto !important; right: auto !important; bottom: auto !important; width: auto !important; margin-top: 22px; text-align: left !important; }
   .hint { display: block; margin: 8px 0 0; white-space: normal; }
+  /* no celular todos os tópicos ficam visíveis; o clique só destaca o atual */
+  .js .slide [data-at] { opacity: 1; transform: none; }
+  .js .slide .topics > li.is-shown:not(.is-now), .js .slide .ledger-row.is-shown:not(.is-now), .js .slide .lens.is-shown:not(.is-now) { opacity: 1; }
+  .topics strong { font-size: 21px; }
+  .topics div > span { font-size: 16px; }
+  .tp-n { width: 40px; height: 40px; font-size: 21px; }
+  .topics > li { grid-template-columns: 40px 1fr auto; gap: 12px; padding: 12px 14px 12px 12px; }
   .atlas .a-city, .atlas .a-city-label { display: none; }
   .map-paper .m-country-name, .map-dark .m-country-name { font-size: 14px; }
   .map-paper .m-river-name, .map-dark .m-river-name { font-size: 14px; }
@@ -47,7 +54,7 @@
   .m-route-text { font-size: 11px; }
 
   /* Controles: barra inferior centralizada */
-  .topbar { padding: 10px 12px; background: linear-gradient(rgba(251, 250, 247, .96), rgba(251, 250, 247, 0)); }
+  .topbar { padding: 10px 12px; background: linear-gradient(rgba(5, 10, 29, .92), rgba(5, 10, 29, 0)); }
   .brand small { display: none; }
   .brand strong { font-size: 17px; }
   .icon-btn { width: 40px; height: 40px; }
@@ -62,57 +69,54 @@
   /* 01 · Abertura */
   .slide-opening { padding: var(--pad-t) var(--pad-x) var(--pad-b); display: flex; flex-direction: column; }
   .slide-opening > * { flex-shrink: 0; }
-  .opening-art { position: relative !important; inset: auto !important; order: -1; width: auto !important; height: 34vh; margin: -6px calc(var(--pad-x) * -1) 0; }
-  .opening-art figcaption { top: auto; bottom: 8px; left: 8px; right: 8px; max-width: none; font-size: 11px; }
-  .opening-copy { position: relative !important; left: auto; top: auto; width: auto; margin-top: 20px; }
-  .opening-title { font-size: clamp(50px, 15vw, 110px); }
-  .opening-dates { font-size: 24px; margin-top: 16px; }
+  .opening-art { position: absolute !important; inset: 0 !important; }
+  .opening-art-frame::after { background: linear-gradient(180deg, rgba(5, 10, 29, .35) 0%, rgba(5, 10, 29, .88) 42%, rgba(5, 10, 29, .97) 100%); }
+  .opening-art figcaption { top: auto; bottom: 108px; left: var(--pad-x); right: var(--pad-x); max-width: none; text-align: left; font-size: 11px; }
+  .opening-copy { position: relative !important; left: auto; top: auto; width: auto; margin-top: 26vh; }
+  .opening-title { font-size: clamp(52px, 15vw, 110px); }
+  .opening-dates { font-size: 26px; margin-top: 16px; }
   .opening-dates i { width: 60px; }
-  .opening-sub { max-width: none; margin-top: 14px; }
+  .opening-sub { max-width: none; margin-top: 14px; font-size: 20px; }
   .opening-roster { max-width: none; margin-top: 20px; }
   .opening-roster p { font-size: 17px; }
-  .begin { position: relative !important; left: auto; bottom: auto; align-self: flex-start; margin-top: 22px; padding: 10px 16px 10px 12px; gap: 12px; }
+  .begin { position: relative !important; right: auto; bottom: auto; align-self: flex-start; margin-top: 22px; padding: 10px 16px 10px 12px; gap: 12px; }
   .begin-ring { width: 32px; height: 32px; }
   .begin-text { font-size: 21px; }
   .begin-keys { display: none; }
 
-  /* 02 · Contexto */
-  .slide-context { display: block; }
-  .context-map { position: relative !important; width: auto; margin: 22px calc(var(--pad-x) * -1) 0; height: min(110vw, 560px); border-left: 0; }
-  .context-map figcaption { position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 12px; }
-  .context-facts { margin-top: 18px; }
-  .context-facts article { grid-template-columns: 34px 1fr; }
-  .fact-num { font-size: 26px; }
+  /* 02 e 03 · Contexto e Pindorama */
+  .slide-context .slide-head, .slide-context .topics { width: auto; }
+  .context-map { position: relative !important; width: auto; margin: 22px calc(var(--pad-x) * -1) 0; height: min(110vw, 560px); -webkit-mask-image: none; mask-image: none; }
+  .context-map figcaption { left: 10px; bottom: 10px; font-size: 12px; }
 
   /* 04 · Causas */
-  .causes-board { display: block; }
-  .causes-fuse { display: none; }
-  .causes-col + .causes-col { margin-top: 22px; }
-  .causes-col li { grid-template-columns: 30px 1fr auto; padding: 10px 12px; }
-  .causes-col li > b { font-size: 24px; }
-  .causes-col strong { font-size: 20px; }
+  .causes-board { grid-template-columns: 1fr; gap: 14px; }
+  .cause-card h3 { font-size: 24px; }
+  .cause-card li { font-size: 18px; }
+  .cause-card .dated li { grid-template-columns: 86px 1fr auto; font-size: 17px; }
+  .cause-card .dated b { font-size: 12px; }
   .doc-thumb { width: 64px; height: 44px; }
-  .caution { margin-top: 20px; }
-  .caution-mark { font-size: 32px; }
+  .caution p { font-size: 17px; }
 
   /* 05 · Países */
   .nations { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 22px; }
   .alliance-brace, .versus { display: none; }
-  .nation-card { min-height: 0; height: 270px; }
+  .nation-card { min-height: 0; height: 250px; }
   .nation-front { display: grid; grid-template-columns: 38% 1fr; grid-template-rows: auto auto auto 1fr; column-gap: 14px; padding: 10px; }
   .nation-photo { grid-row: 1 / 5; height: 100%; }
   .nation-code { margin-top: 4px; }
   .nation-name { font-size: 24px; }
   .nation-leader { font-size: 14px; }
-  .nation-text { font-size: 16px; }
+  .nation-text { font-size: 17px; }
   .nation-back { padding: 18px; }
-  .nation-back .nation-text { font-size: 16px; }
+  .nation-back .nation-text { font-size: 17px; }
   .nation-shape { min-height: 70px; }
 
   /* Tratado */
   .treaty { position: relative !important; right: auto; top: auto; width: auto; margin: 30px 6px 10px; }
   .treaty h3 { font-size: 30px; }
   .treaty-signers li { grid-template-columns: 96px 1fr; font-size: 18px; }
+  .treaty-clause { font-size: 18px; }
   .treaty-seal { width: 76px; height: 76px; right: -6px; }
 
   /* 08 · Cronologia (vertical) */
@@ -120,31 +124,31 @@
   .slide-timeline .slide-head { display: block; }
   .slide-timeline .lead { max-width: none; margin-top: 10px; font-size: var(--fs-lead); }
   .timeline { display: flex; flex-direction: column; margin-top: 12px; }
-  .tl-detail { order: -1; position: sticky; top: -78px; z-index: 5; display: grid; grid-template-columns: 36% 1fr; gap: 12px; height: auto; margin: 0 calc(var(--pad-x) * -1) 10px; padding: 12px var(--pad-x); background: var(--bg); border-bottom: 2px solid var(--ink); border-top: 0; box-shadow: 0 10px 20px -12px rgba(0, 0, 0, .25); }
+  .tl-detail { order: -1; top: -78px; z-index: 5; display: grid; grid-template-columns: 36% 1fr; gap: 12px; height: auto; margin: 0 calc(var(--pad-x) * -1) 10px; padding: 12px var(--pad-x); background: #0b1540; border-bottom: 2px solid var(--gold); border-top: 0; box-shadow: 0 10px 20px -12px rgba(0, 0, 0, .6); }
   .tl-detail-img { min-height: 110px; }
   .tl-detail-copy h3 { font-size: 22px; }
-  .tl-detail-copy p { font-size: 15px; }
+  .tl-detail-copy p { font-size: 16px; }
   .tl-stage { min-height: 0; padding-left: 22px; }
   .tl-track { display: none; }
   .tl-events { position: relative; inset: auto; display: grid; gap: 8px; }
-  .tl-events::before { content: ""; position: absolute; left: -15px; top: 6px; bottom: 6px; width: 3px; background: var(--ink); }
+  .tl-events::before { content: ""; position: absolute; left: -15px; top: 6px; bottom: 6px; width: 3px; background: rgba(255, 255, 255, .8); }
   .tl-event { position: relative; left: auto !important; top: auto; width: auto; height: auto; }
-  .tl-dot { left: -14px; top: 18px; width: 13px; height: 13px; }
+  .tl-dot { left: -14px; top: 18px; width: 14px; height: 14px; }
   .tl-stem { display: none; }
-  .tl-label, .tl-event.is-up .tl-label, .tl-event.is-down .tl-label, .tl-event.is-flip .tl-label { position: relative; inset: auto; width: 100%; padding: 8px 12px; text-align: left; border-left: 3px solid var(--ink); border-right: 0; transform: translateX(10px); }
+  .tl-label, .tl-event.is-up .tl-label, .tl-event.is-down .tl-label, .tl-event.is-flip .tl-label { position: relative; inset: auto; width: 100%; padding: 8px 12px; text-align: left; border-left: 3px solid var(--gold); border-right: 0; border-radius: 0 6px 6px 0; transform: translateX(10px); }
   .tl-label time { font-size: 12px; }
   .tl-label strong { font-size: 19px; }
   .tl-event.is-start .tl-label::before, .tl-event.is-end .tl-label::before { position: static; display: inline-block; margin: 0 8px 4px 0; font-size: 10.5px; }
 
   /* 09 · Mapa */
   .slide-map { padding: var(--pad-t) 0 var(--pad-b); }
-  .campaign-map { position: relative !important; width: auto; height: min(105vw, 62vh); top: auto; bottom: auto; border-right: 0; }
+  .campaign-map { position: relative !important; width: auto; height: min(105vw, 62vh); top: auto; bottom: auto; -webkit-mask-image: none; mask-image: none; }
   .map-panel { position: relative !important; right: auto; top: auto; bottom: auto; width: auto; padding: 18px var(--pad-x) 0; order: -1; }
   .map-panel h2 { font-size: var(--fs-h1); }
   .phase-tabs button { height: 42px; font-size: 15px; }
-  .phase-stack { min-height: 210px; }
+  .phase-stack { min-height: 170px; }
   .phase h3 { font-size: 25px; }
-  .phase p { font-size: 17px; }
+  .phase p { font-size: 18px; }
   .map-legend { margin-top: 14px; font-size: 14px; }
   .map-pop { width: min(300px, 80vw); }
   .map-pop h4 { font-size: 21px; }
@@ -153,58 +157,58 @@
 
   /* 10 · Batalhas */
   .reel { position: relative !important; left: auto; top: auto; width: auto; height: 58vw; max-height: 380px; margin-top: 16px; }
+  .reel-tabs { position: relative !important; left: auto; top: auto; width: auto; margin-top: 10px; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+  .reel-tabs button { padding: 8px 4px; font-size: 14px; text-align: center; align-items: center; }
   .reel-info { position: relative !important; right: auto; top: auto; bottom: auto; width: auto; height: auto; margin-top: 16px; }
   .reel-text { position: relative; display: none; transform: none; }
   .reel-text.is-now { display: block; }
   .reel-text h3 { font-size: 34px; }
-  .reel-tabs { position: relative !important; left: auto; top: auto; width: auto; margin-top: 10px; grid-template-columns: repeat(5, 1fr); gap: 4px; }
-  .reel-tabs button { padding: 8px 4px; font-size: 14px; text-align: center; align-items: center; }
   .reel-item figcaption { font-size: 12px; }
   .badge { display: block; width: max-content; margin-bottom: 4px; }
 
   /* 11 · Consequências humanas */
   .slide-human { padding: var(--pad-t) var(--pad-x) var(--pad-b); display: flex; flex-direction: column; }
   .slide-human > * { flex-shrink: 0; }
-  .human-photo { position: relative !important; width: auto; height: 64vw; max-height: 400px; margin: 0 calc(var(--pad-x) * -1); border-right: 0; }
+  .human-photo { position: relative !important; width: auto; height: 64vw; max-height: 400px; margin: 0 calc(var(--pad-x) * -1); }
   .human-media { height: 100%; }
-  .human-photo figcaption { top: auto; bottom: 8px; left: 8px; right: 8px; font-size: 12px; }
+  .human-photo figcaption { top: auto; bottom: 8px; left: 8px; font-size: 12px; }
   .human-copy { position: relative !important; left: auto; right: auto; top: auto; margin-top: 18px; }
   .human-copy h2 { font-size: var(--fs-h1); }
-  .human-list { grid-template-columns: 1fr; }
-  .human-list strong { font-size: 21px; }
-  .estimate { grid-template-columns: 50px 1fr; }
+  .estimate { grid-template-columns: 44px 1fr; }
+  .estimate p { font-size: 17px; }
   .human-docs { position: relative !important; left: auto; top: auto; width: auto; margin-top: 18px; order: 5; }
   .human-docs img { height: 84px; }
   .human-docs span { font-size: 12px; }
 
   /* 12 · Consequências políticas */
   .ledger { width: auto; }
-  .ledger-head { display: none; }
-  .ledger-row { grid-template-columns: 1fr; gap: 6px; padding: 14px 0; }
+  .ledger-row { grid-template-columns: 1fr; gap: 4px; padding: 12px 14px; }
   .ledger-row strong { font-size: 24px; }
+  .ledger-row span { font-size: 18px; }
   .ledger-docs { position: relative !important; right: auto; top: auto; width: auto; margin-top: 22px; grid-template-columns: 1fr; }
   .ledger-docs img { height: 46vw; max-height: 260px; }
   .ledger-docs .doc-cartoon { grid-template-columns: 34% 1fr; }
   .ledger-docs .doc-cartoon img { height: 40vw; max-height: 240px; }
-  .ledger-docs figcaption { font-size: 13px; }
+  .ledger-docs figcaption { font-size: 14px; }
 
   /* 13 · Interpretações */
   .lenses { width: auto; grid-template-columns: 1fr; }
-  .lens h3 { font-size: 23px; }
+  .lens h3 { font-size: 24px; }
+  .lens .lens-limit { font-size: 17px; }
   .lenses-art { position: relative !important; right: auto; top: auto; width: auto; margin-top: 18px; display: grid; grid-template-columns: 40% 1fr; gap: 14px; align-items: end; }
   .lenses-art button { height: 56vw; max-height: 320px; }
   .lenses-art figcaption { font-size: 13px; }
-  .criterion { position: relative !important; right: auto; top: auto; width: auto; margin-top: 18px; }
+  .criterion { position: relative !important; left: auto; top: auto; width: auto; margin-top: 18px; flex-direction: column; align-items: flex-start; gap: 6px; }
+  .criterion strong { font-size: 22px; }
+  .criterion p { font-size: 17px; }
 
   /* 14 · Conclusão */
   .finale-copy { max-width: none; margin-top: 0; }
   .finale-title { font-size: clamp(34px, 10vw, 60px); }
-  .finale-qa { grid-template-columns: 1fr; gap: 16px; }
-  .finale-thesis { max-width: none; font-size: 21px; }
 
   /* 15 · Referências */
   .slide-refs { display: block; }
-  .refs-scroll { display: block; overflow: visible; padding-right: 0; padding-bottom: 0; }
+  .refs-scroll { display: block; overflow: visible; padding: 14px; }
   .refs { columns: 1; }
   .refs li { font-size: 15px; padding-left: 34px; }
   .refs-side { margin-top: 24px; }
@@ -228,4 +232,5 @@
   .deck { width: 100%; height: auto; container-type: inline-size; overflow: visible; box-shadow: none; }
   .topbar, .controls, .progress, .key-hint, .atlas, .dust { display: none !important; }
   .slide { position: relative !important; visibility: visible !important; break-after: page; min-height: 56.25vw; }
+  .js .slide [data-at] { opacity: 1 !important; transform: none !important; }
 }

@@ -85,20 +85,42 @@
     $("#pvTitle").textContent = state.title;
     var stepEl = $("#pvStep");
     stepEl.hidden = !state.steps;
-    stepEl.textContent = "Etapa " + (state.step + 1) + " de " + (state.steps + 1) + " · → avança a etapa";
+    stepEl.textContent = "Tópico " + (state.step + 1) + " de " + (state.steps + 1) + " · → mostra o próximo";
+    var ano = $("#pvAno");
+    ano.hidden = !n.ano;
+    ano.textContent = n.ano ? "Onde estamos no tempo: " + n.ano : "";
+    // lista de tópicos: mostra onde o grupo está ("você está aqui")
+    var tl = $("#pvTopics");
+    var topicos = n.topicos || [];
+    tl.hidden = !topicos.length;
+    tl.innerHTML = "";
+    topicos.forEach(function (txt, i) {
+      var li = document.createElement("li");
+      li.textContent = txt;
+      if (state.steps) {
+        if (i < state.step) li.className = "is-done";
+        else if (i === state.step) li.className = "is-now";
+      }
+      tl.appendChild(li);
+    });
     var etapa = n.etapas && n.etapas[state.step];
     $("#pvEtapaBox").hidden = !etapa;
+    $("#pvEtapaLabel").textContent = "Agora · " + (topicos[state.step] || ("tópico " + (state.step + 1)));
     $("#pvEtapa").textContent = etapa || "";
     $("#pvFala").textContent = n.fala || "Sem roteiro para este slide.";
+    // depois do primeiro tópico, a abertura já foi dita: fica em segundo plano
+    $("#pvFalaBox").classList.toggle("is-said", !!state.steps && state.step > 0);
+    $("#pvHoje").textContent = n.hoje || "";
+    $("#pvHojeBox").hidden = !n.hoje;
     $("#pvComp").textContent = n.complemento || "";
-    $("#pvCtx").textContent = n.contexto || "";
+    $("#pvComp").parentNode.hidden = !n.complemento;
     $("#pvTrans").textContent = n.transicao || "";
     $("#pvEstimate").textContent = "Estimado: " + mmss((n.tempo || 0) * 1000);
     $("#pvPlan").textContent = "Plano: " + mmss(planTotal());
     show("cur", { type: "gp-show", index: state.index, step: state.step });
     var label = $("#pvNextLabel");
     if (state.step < state.steps) {
-      label.textContent = "A seguir: etapa " + (state.step + 2) + " de " + (state.steps + 1);
+      label.textContent = "A seguir: tópico " + (state.step + 2) + " de " + (state.steps + 1);
       show("next", { type: "gp-show", index: state.index, step: state.step + 1 });
     } else if (state.index < state.total - 1) {
       var nx = list[state.index + 1];

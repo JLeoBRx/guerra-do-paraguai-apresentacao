@@ -4,6 +4,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
+import vm from "node:vm";
 
 const fail = [];
 const pass = [];
@@ -48,6 +49,24 @@ check(missingNotes.length === 0, "Roteiro com notas para todos os slides.", "Sli
 check(!html.includes("js/notes.js") && !html.includes("GP_NOTES"), "As notas não são carregadas na projeção.", "As notas do apresentador estão na página da projeção.");
 check(presenter.includes("js/notes.js") && presenter.includes('id="pvNext"') && presenter.includes('id="pvElapsed"'), "Modo apresentador com notas, próximo slide e cronômetro.", "Modo apresentador incompleto.");
 check(fs.existsSync("ROTEIRO.md"), "ROTEIRO.md presente.", "ROTEIRO.md ausente (rode node scripts/build-roteiro.mjs).");
+
+// Tópicos revelados por clique: cada etapa tem texto no roteiro e nenhum item aparece depois da última etapa
+const sandbox = { window: {} };
+try { vm.runInNewContext(notesSrc, sandbox); } catch (e) { fail.push("js/notes.js não pôde ser lido: " + e.message); }
+const NOTES = sandbox.window.GP_NOTES || {};
+const stepIssues = [];
+const starts = [...html.matchAll(/<section class="slide [^"]*" id="([^"]+)"([^>]*)>/g)];
+starts.forEach((m, i) => {
+  const id = m[1];
+  const steps = Number((m[2].match(/data-steps="(\d+)"/) || [])[1] || 0);
+  const body = html.slice(m.index, i + 1 < starts.length ? starts[i + 1].index : html.length);
+  const ats = [...body.matchAll(/data-at="(\d+)"/g)].map((a) => Number(a[1]));
+  if (ats.some((a) => a > steps)) stepIssues.push(`${id}: item em etapa maior que data-steps`);
+  if (steps && (NOTES[id]?.etapas || []).length !== steps + 1) stepIssues.push(`${id}: ${steps + 1} etapas, ${(NOTES[id]?.etapas || []).length} textos no roteiro`);
+  if (steps && (NOTES[id]?.topicos || []).length !== steps + 1) stepIssues.push(`${id}: faltam lembretes de tópicos no roteiro`);
+  if (steps && !ats.length && !/class="(beat|ally|phase|reel-item)/.test(body)) stepIssues.push(`${id}: tem etapas, mas nada é revelado por clique`);
+});
+check(stepIssues.length === 0, "Tópicos por clique coerentes com o roteiro.", "Tópicos incoerentes: " + stepIssues.join("; "));
 
 // Áudio: nada automático e nenhuma gravação inexistente anunciada
 const manifest = JSON.parse(read("assets/audio/narracao/manifest.json") || "{}");

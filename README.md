@@ -8,40 +8,41 @@ Site publicado: https://guerra-do-paraguai-museu-digital.onrender.com
 
 Ao abrir o endereço, a apresentação começa direto na abertura. Não há página de artigo nem botão para revelar os slides.
 
-## Visual: feito para projeção
+## Visual: feito para projetor fraco
 
-- **Fundo claro e texto quase preto** em todos os slides, com contraste alto (texto principal acima de 15:1). Um único acento vermelho marca números, datas e destaques; nos mapas, a água e o lado aliado aparecem em azul, e o Paraguai em vermelho.
-- **Letras grandes:** corpo de texto com cerca de 1,6% da largura do slide (por volta de 26 px em 1600 px, 31 px em tela Full HD), títulos com 4,2%. Os textos de cada slide foram enxugados para caber nesse tamanho; o detalhe completo continua no roteiro do apresentador.
+- **Fundo escuro com degradê forte** (azul-noite → roxo → vinho) e **texto branco grande**, com destaque dourado. Pensado para projetores opacos, em que fundos claros ficam lavados.
+- **Textos em tópicos curtos e grandes**, que aparecem **um por clique** (seta **→**). O tópico atual fica destacado em dourado; os anteriores continuam na tela, para o grupo se reencontrar se esquecer a fala.
 - **Fontes:** Source Serif 4 nos títulos e IBM Plex Sans no texto (licença OFL, salvas em `assets/fonts`).
-- **Imagens com as cores originais**, sem filtros, com legendas em caixas brancas legíveis.
+- **Mapas escuros** com rios em azul-claro, o Paraguai em vermelho e o lado aliado em azul; imagens com as cores originais.
 
 ## Roteiro (15 slides)
 
 | # | Slide | Cena e transição |
 |---|-------|------------------|
 | 1 | Abertura | Título letra a letra, datas em contagem e a pintura de Victor Meirelles revelada como um obturador · *revelação suave* |
-| 2 | Contexto histórico | Mapa que aproxima do continente até a Bacia do Prata; rios desenhados e rota fluvial até o Atlântico · *aproximação sobre o mapa* |
-| 3 | Pindorama e os povos indígenas | Mapa em que as fronteiras atuais aparecem e se apagam, deixando os rios e os nomes de povos indígenas (cores por família linguística); “Pindorama”, o guarani no Paraguai e a participação indígena na guerra · *luz que atravessa a copa das árvores* |
-| 4 | Causas | Fatores de longo prazo × gatilhos de 1864–1865, ligados por linhas · *documentos colocados sobre a mesa* |
-| 5 | Países envolvidos | Retratos de época e cartões que viram · *meridiano que varre a cena* |
+| 2 | Contexto histórico | 3 tópicos (rios, Paraguai sem mar, países jovens) e mapa que aproxima do continente até a Bacia do Prata, com a rota fluvial até o Atlântico · *aproximação sobre o mapa* |
+| 3 | Pindorama e os povos indígenas | 3 tópicos (“terra das palmeiras”, o guarani, indígenas na guerra) e mapa em que as fronteiras atuais se apagam e surgem os povos, por família linguística · *luz que atravessa a copa das árvores* |
+| 4 | Causas | 3 tópicos: tensões antigas, o estopim de 1864–1865 e o alerta contra explicações simplistas · *documentos colocados sobre a mesa* |
+| 5 | Países envolvidos | Os quatro países aparecem um por clique, com retratos de época e cartões que viram · *meridiano que varre a cena* |
 | 6 | Início do conflito | Cena em 5 etapas: protesto paraguaio, intervenção no Uruguai, *Marquês de Olinda*, Mato Grosso e Corrientes, com regiões e rotas no mapa · *dissolução* |
 | 7 | Tríplice Aliança | Cena em 5 etapas: Paraguai isolado; Brasil, Argentina e Uruguai entram no mapa; tratado carimbado e triângulo entre as capitais · *íris* |
 | 8 | Cronologia | Linha do tempo com 14 acontecimentos clicáveis e o ano de fundo avançando de 1864 a 1870 · *passagem do tempo* |
 | 9 | Mapa das campanhas | 5 fases com zoom, regiões destacadas, rotas desenhadas, carimbo de datas, legenda progressiva e marcadores clicáveis · *mergulho no mapa* |
 | 10 | Campanhas e batalhas | 5 batalhas com mini-mapa localizador, ano animado e sequência antes · combate · resultado · *corte dramático* |
-| 11 | Consequências humanas | Ritmo mais lento, fotografia de 1867 e debate sobre os números · *desaceleração sóbria* |
-| 12 | Consequências políticas e econômicas | Quadro por país, fotografia e charge de Agostini · *folha de documento* |
-| 13 | Interpretações históricas | Correntes historiográficas e critério adotado · *dissolução* |
-| 14 | Conclusão | Mapa da América do Sul com o Paraguai destacado e a resposta ao problema de pesquisa · *encerramento* |
+| 11 | Consequências humanas | Fotografia de 1867 e 4 tópicos, mais a pergunta “quantos morreram?” · *desaceleração sóbria* |
+| 12 | Consequências políticas e econômicas | Um país por clique (Paraguai, Brasil, Argentina, Uruguai), com fotografia e charge de Agostini · *folha de documento* |
+| 13 | Interpretações históricas | Três correntes historiográficas, uma por clique, e o critério adotado · *dissolução* |
+| 14 | Conclusão | Mapa da América do Sul com o Paraguai destacado; pergunta, resposta e lição, uma por clique · *encerramento* |
 | 15 | Referências | 20 referências, método e créditos das imagens · *folha de documento* |
 
 ## Modo apresentador e roteiro de fala
 
 - **Como abrir:** botão de tela no canto superior direito ou tecla **P**. Ele abre `presenter.html` em outra janela, que deve ser arrastada para a tela do notebook enquanto a projeção fica no projetor. A projeção nunca mostra as notas.
-- **O que mostra:**
-  - a fala do slide, a explicação complementar, o contexto e a transição para o próximo;
-  - nas cenas, o texto da etapa atual;
-  - a prévia do que está na projeção e do próximo slide ou etapa;
+- **Roteiro em forma de viagem no tempo:** cada slide começa num momento da história (“Onde estamos no tempo”, por exemplo 1500 → 1864 em Pindorama). A fala de **Para começar** leva a turma até aquele ano; depois, a cada clique, a seção **Agora** mostra o que dizer sobre o tópico que acabou de aparecer; por fim, **Com os olhos de hoje** liga o passado ao presente (Itaipu, Mercosul, o guarani como língua oficial, ruas com nomes de batalhas…).
+- **O que mais mostra:**
+  - a lista de tópicos do slide, com os já falados marcados e o atual em destaque;
+  - **Se perguntarem** (explicação extra) e **Para passar ao próximo slide** (frase de transição);
+  - a prévia do que está na projeção e do próximo tópico ou slide;
   - o tempo estimado, o cronômetro total e o do slide, e o ritmo em relação ao plano de 20 minutos;
   - botões e setas que controlam a projeção à distância.
 - **Roteiro impresso:** `ROTEIRO.md` traz o mesmo texto, com sugestão de divisão entre os integrantes. Ele é gerado de `js/notes.js` com `node scripts/build-roteiro.mjs`.

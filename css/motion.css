@@ -85,7 +85,7 @@
   width: 30%;
   z-index: 15;
   pointer-events: none;
-  background: linear-gradient(100deg, transparent, rgba(17, 17, 17, .03) 45%, rgba(17, 17, 17, .06) 50%, rgba(17, 17, 17, .03) 55%, transparent);
+  background: linear-gradient(100deg, transparent, rgba(255, 201, 77, .05) 45%, rgba(255, 240, 210, .16) 50%, rgba(255, 201, 77, .05) 55%, transparent);
   opacity: 0;
 }
 .deck.is-transitioning::before { animation: streak 1.15s var(--ease-cine); }
@@ -222,4 +222,5 @@
   [data-depth] { translate: none !important; }
   .atlas.is-drawn .a-river, .atlas.is-drawn .a-grat line { transition: none !important; }
   .slide.in .m-fade, .slide.in .m-draw { transition-delay: 0s !important; transition-duration: .3s !important; }
+  .js .slide [data-at] { transform: none !important; transition: opacity .3s !important; }
 }

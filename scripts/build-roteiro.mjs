@@ -16,9 +16,9 @@ const mmss = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 const total = slides.reduce((sum, s) => sum + (NOTES[s.id]?.tempo || 0), 0);
 
 const groups = [
-  ["Pedro Henrique", ["abertura", "contexto", "pindorama", "causas"]],
-  ["Clara Maria", ["paises", "inicio"]],
-  ["Anthony Marcos", ["alianca", "cronologia"]],
+  ["Pedro Henrique", ["abertura", "contexto", "pindorama"]],
+  ["Clara Maria", ["causas", "paises"]],
+  ["Anthony Marcos", ["inicio", "alianca", "cronologia"]],
   ["Gabriel Willian", ["mapa", "batalhas"]],
   ["Leandro Farias", ["humanas", "politicas"]],
   ["Lohan David", ["interpretacoes", "conclusao", "referencias"]],
@@ -26,11 +26,15 @@ const groups = [
 
 let out = `# Roteiro do apresentador — Guerra do Paraguai (1864–1870)
 
-Texto de apoio para quem apresenta. **Não aparece na projeção.** O mesmo conteúdo está no modo apresentador: botão de tela no canto superior direito ou tecla **P**, que abre uma janela separada com as notas, o próximo slide e o cronômetro.
+Texto de apoio para quem apresenta. **Não aparece na projeção.** O mesmo conteúdo está no modo apresentador: botão de tela no canto superior direito ou tecla **P**, que abre uma janela separada com o roteiro, a lista de tópicos (com o atual destacado), o próximo slide e o cronômetro.
 
-- **Tempo total estimado:** ${mmss(total)} (${slides.length} slides). Para uma versão de cerca de 12 minutos, leiam só a **Fala** e pulem a explicação complementar.
-- **Cenas com etapas** (início do conflito, Tríplice Aliança, mapa das campanhas e batalhas): a seta **→** avança uma etapa de cada vez antes de trocar de slide. O texto de cada etapa está em “Etapas”.
-- **Narração gravada:** a **Fala** de cada slide é o texto a ser gravado. Veja \`assets/audio/narracao/LEIA-ME.md\`.
+## Como usar
+
+- **Viagem no tempo:** cada slide começa num momento da história (“Onde estamos no tempo”). Comece pela frase de **Para começar**, que leva a turma até aquele ano.
+- **Um tópico por clique:** os textos aparecem na tela um de cada vez. A cada clique (seta **→**), diga o texto de **Agora** daquele tópico. Se alguém se perder, olhe a lista de tópicos: o atual está destacado na tela e no modo apresentador.
+- **Com os olhos de hoje:** antes de passar ao próximo slide, faça a conexão com o presente.
+- **Tempo total estimado:** ${mmss(total)} (${slides.length} slides).
+- **Narração gravada:** o texto de **Para começar** e de cada tópico é o que deve ser gravado. Veja \`assets/audio/narracao/LEIA-ME.md\`.
 
 ## Sugestão de divisão entre os integrantes
 
@@ -49,15 +53,20 @@ out += "\n---\n";
 slides.forEach((s, i) => {
   const n = NOTES[s.id] || {};
   out += `\n## ${String(i + 1).padStart(2, "0")} · ${s.title} — ${mmss(n.tempo || 0)}\n\n`;
-  out += `**Fala.** ${n.fala || ""}\n\n`;
+  if (n.ano) out += `**Onde estamos no tempo:** ${n.ano}\n\n`;
+  if (n.topicos?.length && !n.etapas?.length) out += `**Na tela:** ${n.topicos.join(" · ")}\n\n`;
+  out += `**Para começar.** ${n.fala || ""}\n\n`;
   if (n.etapas?.length) {
-    out += `**Etapas** (avance com →):\n\n`;
-    n.etapas.forEach((e, k) => { out += `${k + 1}. ${e}\n`; });
+    out += `**Tópico por tópico** (avance com →):\n\n`;
+    n.etapas.forEach((e, k) => {
+      const label = n.topicos?.[k] ? `**${n.topicos[k]}** — ` : "";
+      out += `${k + 1}. ${label}${e}\n`;
+    });
     out += "\n";
   }
-  if (n.complemento) out += `**Explicação complementar.** ${n.complemento}\n\n`;
-  if (n.contexto) out += `**Contexto.** ${n.contexto}\n\n`;
-  if (n.transicao) out += `**Transição.** _${n.transicao}_\n`;
+  if (n.hoje) out += `**Com os olhos de hoje.** ${n.hoje}\n\n`;
+  if (n.complemento) out += `**Se perguntarem.** ${n.complemento}\n\n`;
+  if (n.transicao) out += `**Para passar ao próximo.** _${n.transicao}_\n`;
 });
 
 out += `
@@ -76,7 +85,9 @@ _Arquivo gerado por \`node scripts/build-roteiro.mjs\` a partir de \`js/notes.js
 fs.writeFileSync("ROTEIRO.md", out);
 const missing = slides.filter((s) => !NOTES[s.id]);
 const stepGaps = slides.filter((s) => s.steps && (NOTES[s.id]?.etapas || []).length !== s.steps + 1);
+const topicGaps = slides.filter((s) => s.steps && (NOTES[s.id]?.topicos || []).length !== s.steps + 1);
 console.log(`ROTEIRO.md gerado: ${slides.length} slides, ${mmss(total)} no total.`);
 if (missing.length) console.log("Sem notas:", missing.map((s) => s.id).join(", "));
-if (stepGaps.length) console.log("Etapas incompletas:", stepGaps.map((s) => s.id).join(", "));
-process.exit(missing.length || stepGaps.length ? 1 : 0);
+if (stepGaps.length) console.log("Etapas sem texto correspondente:", stepGaps.map((s) => s.id).join(", "));
+if (topicGaps.length) console.log("Tópicos sem lembrete correspondente:", topicGaps.map((s) => s.id).join(", "));
+if (missing.length || stepGaps.length || topicGaps.length) process.exit(1);
