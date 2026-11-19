@@ -16,7 +16,7 @@ const mmss = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 const total = slides.reduce((sum, s) => sum + (NOTES[s.id]?.tempo || 0), 0);
 
 const groups = [
-  ["Pedro Henrique", ["abertura", "contexto", "causas"]],
+  ["Pedro Henrique", ["abertura", "contexto", "pindorama", "causas"]],
   ["Clara Maria", ["paises", "inicio"]],
   ["Anthony Marcos", ["alianca", "cronologia"]],
   ["Gabriel Willian", ["mapa", "batalhas"]],

@@ -26,7 +26,7 @@ check(html.includes('<html lang="pt-BR">'), "HTML declara português brasileiro.
 
 // Slides na ordem prevista
 const expected = [
-  "abertura", "contexto", "causas", "paises", "inicio", "alianca", "cronologia", "mapa",
+  "abertura", "contexto", "pindorama", "causas", "paises", "inicio", "alianca", "cronologia", "mapa",
   "batalhas", "humanas", "politicas", "interpretacoes", "conclusao", "referencias",
 ];
 const slides = [...html.matchAll(/<section class="slide [^"]*" id="([^"]+)"([^>]*)>/g)].map((m) => ({ id: m[1], attrs: m[2] }));
@@ -72,7 +72,7 @@ check(broken.length === 0, "Todos os links internos têm destino.", "Links inter
 const refs = [...html.matchAll(/<li id="ref(\d+)"/g)].map((m) => Number(m[1]));
 const cites = [...html.matchAll(/data-ref="(\d+)"/g)].map((m) => Number(m[1]));
 const missingRefs = [...new Set(cites.filter((n) => !refs.includes(n)))];
-check(refs.length >= 13, `Lista com ${refs.length} referências.`, "A lista de referências está incompleta.");
+check(refs.length >= 20, `Lista com ${refs.length} referências.`, "A lista de referências está incompleta.");
 check(missingRefs.length === 0, "Todas as citações têm referência correspondente.", "Citações sem referência: " + missingRefs.join(", "));
 
 // Arquivos locais referenciados

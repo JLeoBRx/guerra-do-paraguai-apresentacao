@@ -2,7 +2,7 @@
 
 Texto de apoio para quem apresenta. **Não aparece na projeção.** O mesmo conteúdo está no modo apresentador: botão de tela no canto superior direito ou tecla **P**, que abre uma janela separada com as notas, o próximo slide e o cronômetro.
 
-- **Tempo total estimado:** 19:00 (14 slides). Para uma versão de cerca de 12 minutos, leiam só a **Fala** e pulem a explicação complementar.
+- **Tempo total estimado:** 20:00 (15 slides). Para uma versão de cerca de 12 minutos, leiam só a **Fala** e pulem a explicação complementar.
 - **Cenas com etapas** (início do conflito, Tríplice Aliança, mapa das campanhas e batalhas): a seta **→** avança uma etapa de cada vez antes de trocar de slide. O texto de cada etapa está em “Etapas”.
 - **Narração gravada:** a **Fala** de cada slide é o texto a ser gravado. Veja `assets/audio/narracao/LEIA-ME.md`.
 
@@ -12,18 +12,18 @@ Apenas uma sugestão; ajustem como preferirem.
 
 | Integrante | Slides | Tempo |
 |---|---|---|
-| Pedro Henrique | 1, 2, 3 | 3:30 |
-| Clara Maria | 4, 5 | 2:45 |
-| Anthony Marcos | 6, 7 | 2:45 |
-| Gabriel Willian | 8, 9 | 4:15 |
-| Leandro Farias | 10, 11 | 2:45 |
-| Lohan David | 12, 13, 14 | 3:00 |
+| Pedro Henrique | 1, 2, 3, 4 | 4:30 |
+| Clara Maria | 5, 6 | 2:45 |
+| Anthony Marcos | 7, 8 | 2:45 |
+| Gabriel Willian | 9, 10 | 4:15 |
+| Leandro Farias | 11, 12 | 2:45 |
+| Lohan David | 13, 14, 15 | 3:00 |
 
 ---
 
 ## 01 · Abertura — 0:45
 
-**Fala.** Boa tarde. Nosso trabalho é sobre a Guerra do Paraguai, que aconteceu entre 1864 e 1870. Foi o maior conflito armado internacional da América do Sul no século XIX: de um lado, o Paraguai; do outro, a Tríplice Aliança, formada pelo Império do Brasil, pela Argentina e pelo Uruguai. No mapa da abertura, o Paraguai aparece destacado no centro do continente, sem saída para o mar e ligado ao oceano apenas pelos rios. Esses rios vão aparecer o tempo todo. Nos próximos minutos, vamos explicar o contexto da região, as causas, os países envolvidos, as campanhas e batalhas, as consequências e as diferentes interpretações dos historiadores.
+**Fala.** Boa tarde. Nosso trabalho é sobre a Guerra do Paraguai, que aconteceu entre 1864 e 1870. Foi o maior conflito armado internacional da América do Sul no século XIX: de um lado, o Paraguai; do outro, a Tríplice Aliança, formada pelo Império do Brasil, pela Argentina e pelo Uruguai. No mapa da abertura, o Paraguai aparece destacado no centro do continente, sem saída para o mar e ligado ao oceano apenas pelos rios. Esses rios vão aparecer o tempo todo. Nos próximos minutos, vamos explicar o contexto da região e os povos que já viviam nela, as causas, os países envolvidos, as campanhas e batalhas, as consequências e as diferentes interpretações dos historiadores.
 
 **Explicação complementar.** A pintura é um estudo de Victor Meirelles para a Batalha Naval do Riachuelo (1865), feito entre 1868 e 1873. É uma representação artística, não uma fotografia do combate. O nome também varia: no Brasil se diz Guerra do Paraguai; em outros países é comum Guerra da Tríplice Aliança; na memória paraguaia, Guerra Grande.
 
@@ -39,9 +39,19 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Contexto.** O mapa usa fronteiras atuais só como referência. Em 1864, vários limites estavam em disputa, entre o Paraguai e o Brasil e entre o Paraguai e a Argentina.
 
-**Transição.** _Com esse cenário, fica mais fácil entender as causas do conflito — e por que elas não se resumem a um único motivo._
+**Transição.** _Mas, antes de falar das causas, vale lembrar quem já vivia nessa terra muito antes desses Estados existirem._
 
-## 03 · Causas — 1:30
+## 03 · Pindorama e os povos indígenas — 1:00
+
+**Fala.** Antes das causas, vamos voltar ainda mais no tempo. Muito antes de existirem Brasil, Paraguai, Argentina e Uruguai, essa região era habitada por muitos povos indígenas. Uma palavra costuma resumir essa ideia: Pindorama. Ela vem do tupi e é geralmente traduzida como 'terra das palmeiras'; ficou conhecida como um nome indígena para a terra que viria a ser o Brasil. No mapa, as fronteiras atuais se apagam e ficam os rios e os povos: Guarani, Tupinambá, Guaicuru, Terena, Qom, Kaingang, Charrua — cada um com sua língua e seu território. Isso também é história da guerra. No Paraguai, a maior parte da população falava guarani, e durante o conflito a língua virou símbolo nacional, usada até em jornais de trincheira, como o Cabichuí. E no sul de Mato Grosso, Guaicuru e Terena combateram as tropas paraguaias ao lado do Império.
+
+**Explicação complementar.** Pindó é o nome tupi de uma palmeira, e a palavra também existe em guarani. No século XX, Pindorama virou símbolo cultural: o Manifesto Antropófago, de Oswald de Andrade (1928), fala no 'matriarcado de Pindorama'. As cores do mapa indicam famílias de línguas: Guarani e Tupinambá falavam línguas tupi-guarani; Guaicuru (Mbayá) e Qom, línguas da família guaicuru; Terena, uma língua aruak; Kaingang, uma língua jê. O Cabichuí, cuja primeira página aparece na miniatura, circulou a partir de maio de 1867 e misturava espanhol e guarani; o Cacique Lambaré, do mesmo ano, era todo em guarani. A outra miniatura é uma cavalaria guaicuru pintada por Debret por volta de 1822: os Guaicuru eram conhecidos como 'índios cavaleiros'.
+
+**Contexto.** A participação indígena na guerra tem sido estudada mais recentemente. Em 1865, o capitão terena José Pedro de Souza publicou no Diário de São Paulo uma petição ao Estado brasileiro; segundo a historiadora Soraia Dornelles, ela mostra a participação voluntária indígena e as expectativas dos Terena em relação ao governo. Para os Kadiwéu, descendentes dos Guaicuru, a guerra 'jamais foi encerrada': ela continua lembrada em narrativas e rituais. Nas décadas seguintes, muitas comunidades da região perderam terras para fazendas. As áreas do mapa são aproximadas: os territórios mudaram muito entre os séculos XVI e XIX.
+
+**Transição.** _Com esse cenário — rios, Estados em formação e povos que já viviam ali —, fica mais fácil entender as causas do conflito, que não se resumem a um único motivo._
+
+## 04 · Causas — 1:30
 
 **Fala.** Os historiadores costumam separar dois tipos de causa. À esquerda estão as de longo prazo: fronteiras indefinidas, a disputa pela navegação dos rios, a concorrência entre Brasil e Argentina por influência na região — especialmente no Uruguai — e Estados ainda em formação, com muitos conflitos internos. À direita estão os gatilhos, os fatos de 1864 e 1865 que transformaram essas tensões em guerra: a guerra civil no Uruguai e a intervenção do Império do Brasil; a reação do governo de Solano López, que via nisso uma ameaça; a apreensão do Marquês de Olinda e a invasão de Mato Grosso; e o ataque paraguaio a Corrientes, na Argentina. As linhas mostram como os fatores antigos alimentaram os acontecimentos imediatos.
 
@@ -51,7 +61,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Mas quem eram esses países e o que cada um queria? É o que mostramos a seguir._
 
-## 04 · Países envolvidos — 1:15
+## 05 · Países envolvidos — 1:15
 
 **Fala.** Quatro países participaram diretamente da guerra. O Império do Brasil, governado por D. Pedro II, queria garantir a navegação dos rios e manter influência no Uruguai. A Argentina, presidida por Bartolomé Mitre, terminava de se unificar politicamente e tinha divisões internas fortes. O Uruguai, dividido entre blancos e colorados, foi o estopim imediato da crise. E o Paraguai, governado por Francisco Solano López desde 1862, tinha um Estado centralizado e forças militares significativas, mas dependia dos rios. Os três primeiros formariam a Tríplice Aliança, como mostra a chave no alto. Se quiserem, podemos clicar nos cartões para ver o papel de cada país durante a guerra.
 
@@ -61,7 +71,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Agora vamos ver, passo a passo, como essas relações se transformaram em guerra entre 1864 e 1865._
 
-## 05 · Início do conflito — 1:30
+## 06 · Início do conflito — 1:30
 
 **Fala.** Esta cena mostra a escalada da crise. Vou avançar um acontecimento de cada vez; o mapa acompanha cada etapa.
 
@@ -79,7 +89,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _O ataque a Corrientes uniu Brasil, Argentina e Uruguai. Vamos ver como se formou essa aliança._
 
-## 06 · Tríplice Aliança — 1:15
+## 07 · Tríplice Aliança — 1:15
 
 **Fala.** Nesta cena, os países aparecem no mapa conforme entram na aliança.
 
@@ -97,7 +107,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Com a aliança formada, a guerra se estendeu por mais de cinco anos. A linha do tempo resume os principais marcos._
 
-## 07 · Cronologia — 1:30
+## 08 · Cronologia — 1:30
 
 **Fala.** Aqui está a guerra inteira em uma linha do tempo, de outubro de 1864 a março de 1870. As faixas mostram três fases: a ofensiva paraguaia, em 1864 e 1865; a invasão do Paraguai e o longo cerco a Humaitá, de 1866 a 1868; e o avanço final até a morte de Solano López. Em destaque estão o início, com o Marquês de Olinda, e o fim, em Cerro Corá. Podemos clicar em qualquer acontecimento para ver detalhes e uma imagem da época. Reparem que 1865 concentra muitos fatos — invasões, o tratado, Riachuelo e Uruguaiana —, enquanto 1867 quase não tem marcos: foi um ano de guerra de posições, com epidemias e tentativas de cercar as fortificações paraguaias.
 
@@ -107,7 +117,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Para entender onde esses fatos aconteceram, vamos ao mapa das campanhas._
 
-## 08 · Mapa das campanhas — 2:15
+## 09 · Mapa das campanhas — 2:15
 
 **Fala.** Este é o mapa das campanhas, dividido em cinco fases. Vou avançar uma por uma; os pontos podem ser clicados para mais informações.
 
@@ -125,7 +135,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Agora vamos olhar mais de perto algumas dessas batalhas._
 
-## 09 · Campanhas e batalhas — 2:00
+## 10 · Campanhas e batalhas — 2:00
 
 **Fala.** Nesta galeria, vemos cinco momentos marcantes. Para cada um aparecem a localização no mini-mapa, a data e uma sequência: antes, combate e resultado.
 
@@ -143,7 +153,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Mas o custo da guerra foi muito além das batalhas. A partir de agora, a apresentação fica mais lenta e sóbria, porque vamos falar das perdas humanas._
 
-## 10 · Consequências humanas — 1:30
+## 11 · Consequências humanas — 1:30
 
 **Fala.** Grande parte das mortes não aconteceu em combate. Doenças como o cólera, que atingiu os exércitos em 1867, a fome e a falta de abastecimento fizeram muitas vítimas. O recrutamento também foi desigual: além de voluntários, havia recrutamento forçado e, no Brasil, pessoas escravizadas foram enviadas à guerra, em alguns casos com a promessa de liberdade. A população civil sofreu com ocupações, deslocamentos e destruição. E o Paraguai foi devastado, com perdas populacionais enormes. A fotografia de 1867 mostra famílias paraguaias desabrigadas.
 
@@ -153,7 +163,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Além do custo humano, a guerra deixou consequências políticas e econômicas duradouras para os quatro países._
 
-## 11 · Consequências políticas e econômicas — 1:15
+## 12 · Consequências políticas e econômicas — 1:15
 
 **Fala.** Os efeitos foram desiguais. O Paraguai foi ocupado por tropas aliadas — as brasileiras ficaram até 1876 —, perdeu população e capacidade produtiva e teve suas fronteiras fixadas em tratados com o Brasil, em 1872, e com a Argentina, em 1876. O Brasil venceu, mas saiu endividado, e o Exército ganhou prestígio e peso político. A Argentina consolidou o Estado nacional, apesar das disputas internas; uma parte do Chaco foi decidida pela arbitragem do presidente dos Estados Unidos, Rutherford Hayes, em 1878, a favor do Paraguai. E o Uruguai, com participação militar menor, mostra como uma crise interna pode arrastar toda uma região.
 
@@ -163,7 +173,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Diante de consequências tão grandes, os historiadores discutem há mais de um século como explicar essa guerra._
 
-## 12 · Interpretações históricas — 1:30
+## 13 · Interpretações históricas — 1:30
 
 **Fala.** A forma de explicar a guerra mudou com o tempo. A perspectiva tradicional destacava líderes, batalhas e patriotismo; organizou a cronologia, mas costumava mostrar heróis e vilões e deixava de lado soldados comuns, escravizados e civis. Nas décadas de 1960 e 1970, interpretações revisionistas criticaram essa visão e deram peso à economia e ao imperialismo, chegando a atribuir à Inglaterra um papel decisivo — algo que a pesquisa documental posterior não confirmou como causa principal. As abordagens recentes estudam a formação dos Estados do Prata, a diplomacia e a história social, com documentos de vários países. O critério que adotamos está no quadro de baixo: uma explicação é mais convincente quando apresenta evidências, compara fontes e reconhece o que não se sabe.
 
@@ -173,7 +183,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Depois de tudo isso, voltamos à pergunta que guiou o trabalho._
 
-## 13 · Conclusão — 1:00
+## 14 · Conclusão — 1:00
 
 **Fala.** Nossa pergunta era: como as disputas políticas e estratégicas no Prata contribuíram para a guerra, e como o conflito transformou os países envolvidos? A resposta: a guerra resultou de uma crise regional em que se combinaram interesses dos Estados, a navegação dos rios, a intervenção no Uruguai e as escolhas militares dos governos. Seus efeitos foram profundos e desiguais, sobretudo para o Paraguai. Voltamos ao mapa do início para lembrar que tudo partiu desta região e destes rios. Compreender a guerra exige confrontar documentos, interpretações e memórias, reconhecendo os custos humanos de decisões tomadas em nome da soberania e do poder.
 
@@ -183,7 +193,7 @@ Apenas uma sugestão; ajustem como preferirem.
 
 **Transição.** _Para encerrar, mostramos as fontes que utilizamos._
 
-## 14 · Referências — 0:30
+## 15 · Referências — 0:30
 
 **Fala.** Estas são as referências: artigos acadêmicos, teses, documentos do Senado, da Marinha e do Museu Histórico Nacional, além dos acervos de imagens. Todas as imagens têm crédito e estão em domínio público. Obrigado — ficamos à disposição para perguntas.
 

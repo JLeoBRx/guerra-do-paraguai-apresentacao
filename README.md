@@ -8,24 +8,25 @@ Site publicado: https://guerra-do-paraguai-museu-digital.onrender.com
 
 Ao abrir o endereço, a apresentação começa direto na abertura cinematográfica. Não há página de artigo nem botão para revelar os slides.
 
-## Roteiro (14 slides)
+## Roteiro (15 slides)
 
 | # | Slide | Cena e transição |
 |---|-------|------------------|
 | 1 | Abertura | Plano geral da América do Sul com o Paraguai destacado, aproximação até a Bacia do Prata, barras de cinema que se abrem, título letra a letra e pintura de Victor Meirelles · *revelação cinematográfica* |
 | 2 | Contexto histórico | Mapa que aproxima do continente até a Bacia do Prata; rios desenhados e rota fluvial até o Atlântico · *aproximação sobre o mapa* |
-| 3 | Causas | Fatores de longo prazo × gatilhos de 1864–1865, ligados por linhas · *documentos colocados sobre a mesa* |
-| 4 | Países envolvidos | Retratos de época e cartões que viram · *meridiano que varre a cena* |
-| 5 | Início do conflito | Cena em 5 etapas: protesto paraguaio, intervenção no Uruguai, *Marquês de Olinda*, Mato Grosso e Corrientes, com regiões e rotas no mapa · *dissolução* |
-| 6 | Tríplice Aliança | Cena em 5 etapas: Paraguai isolado; Brasil, Argentina e Uruguai entram no mapa; tratado carimbado e triângulo entre as capitais · *íris* |
-| 7 | Cronologia | Linha do tempo com 14 acontecimentos clicáveis e o ano de fundo avançando de 1864 a 1870 · *passagem do tempo* |
-| 8 | Mapa das campanhas | 5 fases com zoom, regiões destacadas, rotas desenhadas, carimbo de datas, legenda progressiva e marcadores clicáveis · *mergulho no mapa* |
-| 9 | Campanhas e batalhas | 5 batalhas com mini-mapa localizador, ano animado e sequência antes · combate · resultado · *corte dramático* |
-| 10 | Consequências humanas | Ritmo mais lento, fotografia de 1867 e debate sobre os números · *desaceleração sóbria* |
-| 11 | Consequências políticas e econômicas | Quadro por país, fotografia e charge de Agostini · *folha de documento* |
-| 12 | Interpretações históricas | Correntes historiográficas e critério adotado · *dissolução* |
-| 13 | Conclusão | Retorno ao mapa do início, com o Paraguai destacado, e a resposta ao problema de pesquisa · *encerramento* |
-| 14 | Referências | 14 referências, método e créditos das imagens · *folha de documento* |
+| 3 | Pindorama e os povos indígenas | Mapa em que as fronteiras atuais aparecem e se apagam, deixando os rios e os nomes de povos indígenas (cores por família linguística); “Pindorama”, o guarani no Paraguai e a participação indígena na guerra · *luz que atravessa a copa das árvores* |
+| 4 | Causas | Fatores de longo prazo × gatilhos de 1864–1865, ligados por linhas · *documentos colocados sobre a mesa* |
+| 5 | Países envolvidos | Retratos de época e cartões que viram · *meridiano que varre a cena* |
+| 6 | Início do conflito | Cena em 5 etapas: protesto paraguaio, intervenção no Uruguai, *Marquês de Olinda*, Mato Grosso e Corrientes, com regiões e rotas no mapa · *dissolução* |
+| 7 | Tríplice Aliança | Cena em 5 etapas: Paraguai isolado; Brasil, Argentina e Uruguai entram no mapa; tratado carimbado e triângulo entre as capitais · *íris* |
+| 8 | Cronologia | Linha do tempo com 14 acontecimentos clicáveis e o ano de fundo avançando de 1864 a 1870 · *passagem do tempo* |
+| 9 | Mapa das campanhas | 5 fases com zoom, regiões destacadas, rotas desenhadas, carimbo de datas, legenda progressiva e marcadores clicáveis · *mergulho no mapa* |
+| 10 | Campanhas e batalhas | 5 batalhas com mini-mapa localizador, ano animado e sequência antes · combate · resultado · *corte dramático* |
+| 11 | Consequências humanas | Ritmo mais lento, fotografia de 1867 e debate sobre os números · *desaceleração sóbria* |
+| 12 | Consequências políticas e econômicas | Quadro por país, fotografia e charge de Agostini · *folha de documento* |
+| 13 | Interpretações históricas | Correntes historiográficas e critério adotado · *dissolução* |
+| 14 | Conclusão | Retorno ao mapa do início, com o Paraguai destacado, e a resposta ao problema de pesquisa · *encerramento* |
+| 15 | Referências | 20 referências, método e créditos das imagens · *folha de documento* |
 
 ## Modo apresentador e roteiro de fala
 
@@ -50,7 +51,7 @@ Ao abrir o endereço, a apresentação começa direto na abertura cinematográfi
 
 ## Linguagem de movimento
 
-- **Transições entre slides:** cada slide tem a sua, ligada à narrativa — revelação a partir do escuro (abertura), aproximação sobre o mapa (contexto), documento colocado sobre a mesa (causas), meridiano que varre a cena (países), íris (aliança), passagem do tempo (cronologia), mergulho no mapa (campanhas), corte dramático com clarão contido (batalhas), desaceleração sóbria (consequências) e dissolução no mapa (conclusão). Cada uma tem duração própria e versão de volta.
+- **Transições entre slides:** cada slide tem a sua, ligada à narrativa — revelação a partir do escuro (abertura), aproximação sobre o mapa (contexto), luz que atravessa a copa das árvores (Pindorama), documento colocado sobre a mesa (causas), meridiano que varre a cena (países), íris (aliança), passagem do tempo (cronologia), mergulho no mapa (campanhas), corte dramático com clarão contido (batalhas), desaceleração sóbria (consequências) e dissolução no mapa (conclusão). Cada uma tem duração própria e versão de volta.
 - **Atlas persistente:** uma camada cartográfica (rios, costas e meridianos) muda de enquadramento entre as cenas. Ela abre com o plano geral do continente e o Paraguai destacado, e volta a esse plano na conclusão.
 - **Entradas internas:**
   - títulos palavra por palavra ou letra por letra;
@@ -69,6 +70,7 @@ O conteúdo vem do trabalho original (resumo, capítulos, conclusão e referênc
 - **Datas checadas:** 12 nov. 1864, *Marquês de Olinda*; 1º maio 1865, Tratado; 11 jun. 1865, Riachuelo; 18 set. 1865, Uruguaiana; 24 maio 1866, Tuiuti; 22 set. 1866, Curupaiti; 19 fev. 1868, passagem de Humaitá; dez. 1868, Dezembrada; jan. 1869, Assunção; 12 e 16 ago. 1869, Piribebuy e Acosta Ñu; 1º mar. 1870, Cerro Corá.
 - **Números de mortos:** os números demográficos do Paraguai seguem apresentados como debate, sem cifra isolada. O roteiro cita as posições de Whigham & Potthast (1999) e Reber (1988).
 - **Regiões destacadas:** sul de Mato Grosso, Corrientes e Rio Grande do Sul usam os limites atuais (Natural Earth, nível 1), avisados como referência. O sul de Mato Grosso corresponde aproximadamente ao atual Mato Grosso do Sul.
+- **Povos indígenas (slide 3):** as áreas são aproximadas (séculos XVI–XIX), sem limites fixos, e as famílias linguísticas seguem a classificação usual (tupi-guarani, guaicuru, aruak, jê, charrua). A participação de Guaicuru (Kadiwéu) e Terena na guerra e o uso do guarani nos jornais de trincheira vêm de artigos conferidos na Crossref (Silva 2018; Esselin & Vargas 2015; Dornelles 2021; Pic-Gillard 2008).
 - **Rotas no mapa:** são esquemáticas, traçadas pela sequência de locais e datas, e as localizações são aproximadas. As fronteiras são atuais (Natural Earth), usadas só como referência.
 - **Referências corrigidas com dados da Crossref:**
   - Whigham & Potthast: *Latin American Research Review*, v. 34, n. 1, 1999 (publicado on-line em 2022);
@@ -79,7 +81,7 @@ Todas as imagens estão salvas no próprio projeto (`assets/img`), em domínio p
 ## Estrutura
 
 ```
-index.html              apresentação (14 slides)
+index.html              apresentação (15 slides)
 presenter.html          modo apresentador (notas, prévias, cronômetro)
 ROTEIRO.md              roteiro de fala completo (gerado de js/notes.js)
 css/base.css            fontes, paleta e texturas

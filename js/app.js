@@ -27,6 +27,8 @@
     "cerro-cora-methfessel": ["Adolf Methfessel, Morte de López no rio Aquidabán (Cerro Corá). Representação artística.", "Muerte_de_López_en_Río_Aquidabán..jpg", "Adolf Methfessel, Morte de López no Aquidabán"],
     "familias-desabrigadas": ["Famílias paraguaias desabrigadas durante a guerra, 1867. Fotografia; fundo documental Polidoro da Fonseca Quintanilha Jordão.", "Fotografia_de_famílias_paraguaias_desabrigadas_durante_a_Guerra_do_Paraguai_edit.png", "Famílias paraguaias desabrigadas (1867)"],
     "refugiados-san-pedro": ["Refugiados paraguaios da cidade de San Pedro, c. fim de maio de 1869. Fotografia de autoria desconhecida.", "Paraguayan_refugees_from_the_town_of_San_Pedro.jpg", "Refugiados de San Pedro (1869)"],
+    "guaicuru-debret": ["Jean-Baptiste Debret, Carga de cavalaria guaicuru, c. 1822. Visão de um artista europeu sobre os Guaicuru, conhecidos como “índios cavaleiros”, décadas antes da guerra.", "Debret_-_Carga_de_cavalaria_guaicuru.jpg", "J.-B. Debret, Carga de cavalaria guaicuru (c. 1822)"],
+    "cabichui-1867": ["Primeira página do Cabichuí, jornal de trincheira do exército paraguaio impresso em Paso Pucú (n. 1, 13 de maio de 1867). Publicava sátiras e versos em espanhol e em guarani.", "Cabichui_1.png", "Cabichuí, n. 1 (13 de maio de 1867)"],
     "colera-1867": ["Charge do jornal Cabrião (12 de maio de 1867): o cólera zomba de Caxias e de Solano López. A doença matou muitos combatentes.", "Colera-Morbus.jpg", "Cabrião, charge sobre o cólera (1867)"],
     "exercito-1869": ["Exército brasileiro no Paraguai durante revista do conde d’Eu, c. 1869. Fotografia de autoria desconhecida.", "Brazilian_army_in_Paraguay.jpg", "Exército brasileiro no Paraguai (c. 1869)"],
     "palacio-lopez": ["Palácio dos López, em Assunção, após bombardeio. Fotografia, c. 1870–1875; fundo Polidoro da Fonseca Quintanilha Jordão.", "Palácio_de_Los_Lopez_após_bombardeio_durante_a_Guerra_do_Paraguai.tif", "Palácio dos López após bombardeio (c. 1870–1875)"],
@@ -47,7 +49,7 @@
   var TR = {
     dissolve: [1150, 140], page: [1150, 140], iris: [1350, 160], zoom: [1150, 140], slide: [1150, 140],
     reveal: [1500, 320], dive: [1500, 260], stack: [1200, 220], carto: [1300, 260], timepass: [1150, 140],
-    dramatic: [1500, 680], sober: [2300, 1150], finale: [2700, 1300]
+    dramatic: [1500, 680], sober: [2300, 1150], finale: [2700, 1300], canopy: [1450, 300]
   };
   var bc = !PREVIEW && "BroadcastChannel" in window ? new BroadcastChannel("gp-apresentacao") : null;
 
@@ -336,7 +338,7 @@
       ul.appendChild(li);
     });
     var tail = document.createElement("li");
-    tail.textContent = "Reproduções digitais: Wikimedia Commons (consulta em 12 nov. 2026). Mapas ilustrativos: Natural Earth, domínio público.";
+    tail.textContent = "Reproduções digitais: Wikimedia Commons (consultas em 12 e 19 nov. 2026). Mapas ilustrativos: Natural Earth, domínio público.";
     ul.appendChild(tail);
   }
 

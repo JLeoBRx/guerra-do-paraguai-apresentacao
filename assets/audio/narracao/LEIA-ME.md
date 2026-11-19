@@ -20,18 +20,19 @@ Dicas:
 |---|---|---|
 | 1 | abertura | `01-abertura.mp3` |
 | 2 | contexto | `02-contexto.mp3` |
-| 3 | causas | `03-causas.mp3` |
-| 4 | paises | `04-paises.mp3` |
-| 5 | inicio | `05-inicio.mp3` (5 etapas) |
-| 6 | alianca | `06-alianca.mp3` (5 etapas) |
-| 7 | cronologia | `07-cronologia.mp3` |
-| 8 | mapa | `08-mapa.mp3` (5 fases) |
-| 9 | batalhas | `09-batalhas.mp3` (5 batalhas) |
-| 10 | humanas | `10-humanas.mp3` |
-| 11 | politicas | `11-politicas.mp3` |
-| 12 | interpretacoes | `12-interpretacoes.mp3` |
-| 13 | conclusao | `13-conclusao.mp3` |
-| 14 | referencias | `14-referencias.mp3` |
+| 3 | pindorama | `03-pindorama.mp3` |
+| 4 | causas | `04-causas.mp3` |
+| 5 | paises | `05-paises.mp3` |
+| 6 | inicio | `06-inicio.mp3` (5 etapas) |
+| 7 | alianca | `07-alianca.mp3` (5 etapas) |
+| 8 | cronologia | `08-cronologia.mp3` |
+| 9 | mapa | `09-mapa.mp3` (5 fases) |
+| 10 | batalhas | `10-batalhas.mp3` (5 batalhas) |
+| 11 | humanas | `11-humanas.mp3` |
+| 12 | politicas | `12-politicas.mp3` |
+| 13 | interpretacoes | `13-interpretacoes.mp3` |
+| 14 | conclusao | `14-conclusao.mp3` |
+| 15 | referencias | `15-referencias.mp3` |
 
 ## 3. Registrar no `manifest.json`
 
@@ -41,8 +42,8 @@ Liste apenas as gravações que existem de verdade:
 {
   "slides": {
     "abertura": { "arquivo": "01-abertura.mp3" },
-    "inicio":   { "arquivo": "05-inicio.mp3", "etapas": [14, 29, 41, 55] },
-    "mapa":     { "arquivo": "08-mapa.mp3",   "etapas": [22, 47, 70, 92] }
+    "inicio":   { "arquivo": "06-inicio.mp3", "etapas": [14, 29, 41, 55] },
+    "mapa":     { "arquivo": "09-mapa.mp3",   "etapas": [22, 47, 70, 92] }
   }
 }
 ```

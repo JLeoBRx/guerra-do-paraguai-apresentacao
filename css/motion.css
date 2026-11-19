@@ -221,4 +221,5 @@
   .deck .slide.is-leaving { animation-name: none !important; opacity: 0; }
   [data-depth] { translate: none !important; }
   .atlas.is-drawn .a-river, .atlas.is-drawn .a-grat line { transition: none !important; }
+  .slide.in .m-fade, .slide.in .m-draw { transition-delay: 0s !important; transition-duration: .3s !important; }
 }

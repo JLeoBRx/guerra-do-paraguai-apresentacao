@@ -157,7 +157,7 @@
     return t;
   }
 
-  /* ---------- Slide 2: Bacia do Prata (papel) ---------- */
+  /* ---------- Contexto: Bacia do Prata (papel) ---------- */
   function buildPrata(mount) {
     var mv = new MapView(mount, { drawRivers: true, pad: .02 });
     mount.parentNode.classList.add("map-paper");
@@ -207,7 +207,7 @@
     return mv;
   }
 
-  /* ---------- Slide 7: campanhas por fase ---------- */
+  /* ---------- Mapa das campanhas: fases ---------- */
   var PHASE_CAMS = [
     [-63, -17.6, -52.6, -31],
     [-61.2, -25.6, -54.6, -30.9],
@@ -653,8 +653,7 @@
     slide.addEventListener("gp:step", function (e) { show(e.detail.step, e.detail.animate); });
   }
 
-  /* ---------- Slide 4: contornos dos países ---------- */
-  /* ---------- Slide 4: contornos dos países ---------- */
+  /* ---------- Países envolvidos: contornos dos países ---------- */
   function shape(el) {
     var d = window.GP_GEO.countries[el.dataset.shape];
     if (!d) return;
@@ -669,9 +668,63 @@
     GP.svg("path", { d: d }, svg);
   }
 
+  /* ---------- Pindorama: povos antes das fronteiras ---------- */
+  // Áreas aproximadas (séculos XVI–XIX), sem limites fixos: [nome, lon, lat, família, raio lon, raio lat, lado do rótulo]
+  var POVOS = [
+    ["Guarani", -55.2, -25.9, "tg", 4.2, 4.4, 1],
+    ["Tupinambá", -42.4, -21.4, "tg", 1.6, 3.2, -1],
+    ["Guaicuru", -57.9, -20.6, "gk", 1.5, 1.9, -1],
+    ["Terena", -55.6, -20.3, "ak", 1.2, 1.3, 1],
+    ["Qom", -60.7, -24.9, "gk", 2.4, 2.3, -1],
+    ["Kaingang", -51.4, -27.4, "je", 2.3, 2.1, 1],
+    ["Charrua", -56.6, -32.3, "ch", 2.2, 1.7, 1]
+  ];
+  function buildPovos(mount) {
+    var mv = new MapView(mount, { drawRivers: true, pad: 0 });
+    // Fronteiras atuais: aparecem como referência e se apagam
+    var borders = GP.svg("g", { "class": "m-modern m-borders" }, mv.extra);
+    ["BRA", "ARG", "URY", "PRY", "BOL", "CHL"].forEach(function (code) {
+      GP.svg("path", { d: window.GP_GEO.countries[code], "class": "m-border" }, borders);
+    });
+    [["Brasil", -49, -18.6], ["Paraguai", -58.4, -23.2], ["Argentina", -62.2, -29.6], ["Uruguai", -55.9, -32.9], ["Bolívia", -62.4, -17.2]].forEach(function (c) {
+      var a = mv.anchor(c[1], c[2], "m-modern");
+      text(a.g, c[0], { "class": "m-country-name", "text-anchor": "middle" });
+    });
+    // Áreas difusas por povo (gradiente radial) e rótulos
+    var blobs = GP.svg("g", { "class": "m-povos" }, mv.extra);
+    ["tg", "gk", "ak", "je", "ch"].forEach(function (f) {
+      var g = GP.svg("radialGradient", { id: "povo-" + f }, mv.defs);
+      GP.svg("stop", { offset: "0", "class": "pv-stop pv-" + f, "stop-opacity": ".42" }, g);
+      GP.svg("stop", { offset: ".6", "class": "pv-stop pv-" + f, "stop-opacity": ".16" }, g);
+      GP.svg("stop", { offset: "1", "class": "pv-stop pv-" + f, "stop-opacity": "0" }, g);
+    });
+    POVOS.forEach(function (p, i) {
+      var c = P(p[1], p[2]);
+      var rx = P(p[1] + p[4], p[2])[0] - c[0], ry = P(p[1], p[2] - p[5])[1] - c[1];
+      var e = GP.svg("ellipse", { cx: c[0], cy: c[1], rx: rx, ry: ry, fill: "url(#povo-" + p[3] + ")", "class": "m-fade" }, blobs);
+      e.style.setProperty("--delay", (2.5 + i * .22) + "s");
+      var a = mv.anchor(p[1], p[2], "m-fade m-povo fam-" + p[3] + (i === 0 ? " is-major" : ""));
+      a.g.style.setProperty("--delay", (2.8 + i * .22) + "s");
+      GP.svg("circle", { r: 4, "class": "m-povo-dot" }, a.g);
+      text(a.g, p[0], { "class": "m-povo-name", x: p[6] * 10, y: 6, "text-anchor": p[6] > 0 ? "start" : "end" });
+    });
+    var CAM = [-64.5, -15.5, -39.5, -35.5];
+    mv.camera(CAM);
+    // aproximação lenta a cada entrada no slide
+    var slide = mount.closest(".slide");
+    if (slide) slide.addEventListener("gp:enter", function () {
+      if (GP.reduced()) return mv.camera(CAM);
+      mv.camera([-67, -12.5, -37, -38.5]);
+      setTimeout(function () { mv.camera(CAM, true, 5200); }, 60);
+    });
+    return mv;
+  }
+
   GP.initMaps = function (deck) {
     var prata = deck.querySelector('[data-map="prata"]');
     if (prata) GP.prataMap = buildPrata(prata);
+    var povos = deck.querySelector('[data-map="povos"]');
+    if (povos) GP.povosMap = buildPovos(povos);
     var mapSlide = deck.querySelector(".slide-map");
     if (mapSlide) GP.campaign = new Campaign(mapSlide);
     var inicio = deck.querySelector(".slide-inicio");

@@ -283,6 +283,83 @@
 @keyframes finale-in { 0%, 42% { opacity: 0; transform: translate3d(0, 1.6%, 0); } 100% { opacity: 1; transform: none; } }
 .deck[data-tr="finale"].is-transitioning::before { animation: none; }
 
+/* Pindorama: luz que atravessa a copa das árvores */
+.deck[data-tr="canopy"][data-dir="fwd"] .is-entering { animation-name: canopy-in; }
+.deck[data-tr="canopy"][data-dir="fwd"] .is-leaving { animation-name: canopy-out; }
+.deck[data-tr="canopy"][data-dir="back"] .is-leaving { animation-name: canopy-close; z-index: 5; }
+.deck[data-tr="canopy"][data-dir="back"] .is-entering { animation-name: canopy-back-in; }
+@keyframes canopy-in { from { clip-path: ellipse(0% 0% at 72% 100%); } to { clip-path: ellipse(160% 150% at 72% 100%); } }
+@keyframes canopy-close { from { clip-path: ellipse(160% 150% at 72% 100%); } to { clip-path: ellipse(0% 0% at 72% 100%); } }
+@keyframes canopy-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translate3d(0, -3%, 0); } }
+@keyframes canopy-back-in { from { opacity: 0; transform: translate3d(0, -3%, 0); } to { opacity: 1; transform: none; } }
+.deck[data-tr="canopy"].is-transitioning::before { left: 0; width: 100%; background: radial-gradient(ellipse 60% 70% at 72% 100%, rgba(156, 199, 154, .3), transparent 70%); animation: canopy-glow var(--tr-dur, 1.4s) ease-out; }
+@keyframes canopy-glow { 0% { opacity: 0; } 35% { opacity: 1; } 100% { opacity: 0; } }
+
+/* ---------- Pindorama e os povos indígenas ---------- */
+.slide-pindorama {
+  --fam-tg: #e8c879;
+  --fam-gk: #e5976a;
+  --fam-ak: #a3cf98;
+  --fam-je: #8fbfdc;
+  --fam-ch: #dc95a8;
+  display: grid;
+  grid-template-columns: calc(46 * var(--k)) 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: calc(4 * var(--k));
+}
+.theme-forest {
+  background:
+    radial-gradient(ellipse 70% 80% at 78% 60%, rgba(52, 96, 70, .22), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 10% 0%, rgba(201, 163, 92, .08), transparent 70%),
+    radial-gradient(ellipse 140% 100% at 50% 50%, rgba(5, 12, 14, .5) 30%, rgba(2, 6, 7, .92) 100%);
+}
+.slide-pindorama .slide-head { grid-column: 1; grid-row: 1; }
+.slide-pindorama .lead { max-width: none; }
+.pin-facts { grid-column: 1; grid-row: 2; align-self: start; margin-top: calc(1.6 * var(--k)); display: grid; gap: calc(1.1 * var(--k)); }
+.pin-facts article { display: grid; grid-template-columns: calc(3.6 * var(--k)) 1fr auto; column-gap: calc(1.2 * var(--k)); align-items: start; padding-top: calc(1 * var(--k)); border-top: 1px solid var(--line); }
+.pin-facts .fact-num { font-size: calc(2.3 * var(--k)); }
+.pin-facts h3 { font-family: var(--font-display); font-size: calc(1.6 * var(--k)); font-weight: 700; line-height: 1.1; }
+.pin-facts p { margin-top: calc(.3 * var(--k)); font-size: var(--fs-small); line-height: 1.45; color: var(--fg-2); }
+.pin-facts i[lang] { font-style: italic; color: var(--fam-tg); }
+.pin-thumb { width: calc(6.2 * var(--k)); height: calc(7 * var(--k)); margin-top: calc(.3 * var(--k)); }
+.pin-thumb img { object-position: 50% 20%; }
+.pin-map { position: absolute !important; top: 0; right: 0; bottom: 0; width: calc(50 * var(--k)); margin: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 16%); mask-image: linear-gradient(90deg, transparent, #000 16%); }
+.pin-map .map-mount { position: absolute; inset: 0; overflow: hidden; }
+.pin-map.map-dark .m-sea { fill: #03090f; }
+.pin-map.map-dark .m-land, .pin-map.map-dark .m-land.is-key, .pin-map.map-dark .m-land.is-py { fill: #10211d; stroke: #10211d; stroke-width: calc(.8px * var(--sw, 1)); }
+.pin-map.map-dark .m-river { stroke: rgba(126, 178, 196, .55); }
+.pin-map.map-dark .m-river.is-main { stroke: rgba(150, 200, 214, .9); }
+.pin-map .m-border { fill: none; stroke: rgba(239, 230, 209, .55); stroke-width: calc(1.2px * var(--sw, 1)); stroke-dasharray: calc(5px * var(--sw, 1)) calc(4px * var(--sw, 1)); }
+.pin-map .m-country-name { fill: rgba(239, 230, 209, .55); font-size: 17px; }
+.pin-map .m-modern { opacity: 0; }
+.slide-pindorama.in .pin-map .m-modern { animation: pin-modern 3.6s var(--ease-in-out) .3s both; }
+@keyframes pin-modern { 0% { opacity: 0; } 20% { opacity: 1; } 52% { opacity: 1; } 100% { opacity: 0; } }
+.pv-stop.pv-tg { stop-color: var(--fam-tg); }
+.pv-stop.pv-gk { stop-color: var(--fam-gk); }
+.pv-stop.pv-ak { stop-color: var(--fam-ak); }
+.pv-stop.pv-je { stop-color: var(--fam-je); }
+.pv-stop.pv-ch { stop-color: var(--fam-ch); }
+.m-povo { --c: var(--fam-tg); }
+.m-povo.fam-gk { --c: var(--fam-gk); }
+.m-povo.fam-ak { --c: var(--fam-ak); }
+.m-povo.fam-je { --c: var(--fam-je); }
+.m-povo.fam-ch { --c: var(--fam-ch); }
+.m-povo-dot { fill: var(--c); stroke: rgba(3, 9, 15, .85); stroke-width: 2px; }
+.m-povo-name { font: italic 600 19px var(--font-display); letter-spacing: .06em; fill: var(--c); stroke: rgba(3, 9, 15, .8); stroke-width: 4px; paint-order: stroke; }
+.m-povo.is-major .m-povo-name { font-size: 27px; letter-spacing: .14em; }
+.pin-legend { display: flex; flex-wrap: wrap; gap: calc(.4 * var(--k)) calc(1.4 * var(--k)); margin-bottom: calc(.6 * var(--k)); font-size: var(--fs-label); letter-spacing: .08em; text-transform: uppercase; color: var(--fg-2); }
+.pin-legend li { display: flex; align-items: center; gap: calc(.5 * var(--k)); }
+.pin-legend li::before { content: ""; width: calc(.8 * var(--k)); height: calc(.8 * var(--k)); border-radius: 50%; background: var(--c); }
+.pin-legend .fam-tg { --c: var(--fam-tg); }
+.pin-legend .fam-gk { --c: var(--fam-gk); }
+.pin-legend .fam-ak { --c: var(--fam-ak); }
+.pin-legend .fam-je { --c: var(--fam-je); }
+.pin-legend .fam-ch { --c: var(--fam-ch); }
+.pin-map figcaption { position: absolute; left: calc(13 * var(--k)); right: calc(3 * var(--k)); bottom: max(calc(6 * var(--k)), 86px); font-family: var(--font-mono); font-size: var(--fs-label); letter-spacing: .04em; line-height: 1.5; color: var(--fg-3); }
+@media (prefers-reduced-motion: reduce) {
+  .slide-pindorama.in .pin-map .m-modern { animation: none; opacity: 0; }
+}
+
 /* ---------- Modo prévia (janelas do apresentador) ---------- */
 .is-preview .topbar, .is-preview .controls, .is-preview .progress, .is-preview .key-hint, .is-preview .toast, .is-preview .audio-panel, .is-preview .skip-link { display: none !important; }
 .is-preview .deck { box-shadow: none; }
@@ -314,4 +391,17 @@
   .slide-finale .finale-copy, .slide-finale .finale-thesis { max-width: none; }
   .audio-panel { top: 58px; right: 12px; }
   #btnPresenter { display: none; }
+  .slide-pindorama { display: block; }
+  .pin-facts { margin-top: 18px; gap: 14px; }
+  .pin-facts article { grid-template-columns: 34px 1fr auto; column-gap: 12px; padding-top: 12px; }
+  .pin-facts h3 { font-size: 19px; }
+  .pin-thumb { width: 58px; height: 64px; }
+  .pin-map { position: relative !important; width: auto; height: auto; margin: 22px calc(var(--pad-x) * -1) 0; -webkit-mask-image: none; mask-image: none; }
+  .pin-map .map-mount { position: relative; height: min(105vw, 520px); }
+  .pin-legend { gap: 6px 14px; font-size: 10px; }
+  .pin-legend li::before { width: 9px; height: 9px; }
+  .pin-map figcaption { position: static; padding: 10px var(--pad-x) 0; font-size: 10.5px; }
+  .m-povo-name { font-size: 15px; }
+  .m-povo.is-major .m-povo-name { font-size: 20px; }
+  .pin-map .m-country-name { font-size: 13px; }
 }
