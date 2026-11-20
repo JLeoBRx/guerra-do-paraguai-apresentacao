@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#04120c">
+<title>A Crise do Segundo Reinado — 1840–1889</title>
+<meta name="description" content="Apresentação digital sobre a crise do Segundo Reinado (1840–1889): o Império de D. Pedro II, a Guerra do Paraguai, as questões religiosa, militar e abolicionista, o republicanismo e a Proclamação da República.">
+<meta property="og:title" content="A Crise do Segundo Reinado — 1840–1889">
+<meta property="og:description" content="Os conflitos e as rupturas que levaram ao fim da monarquia brasileira.">
+<meta property="og:image" content="assets/img/pedro-ii-1876.jpg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/source-serif-4-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/pedro-ii-1876.jpg" as="image">
+<link rel="stylesheet" href="css/base.css?v=202611201109">
+<link rel="stylesheet" href="css/deck.css?v=202611201109">
+<link rel="stylesheet" href="css/motion.css?v=202611201109">
+<link rel="stylesheet" href="css/slides.css?v=202611201109">
+<link rel="stylesheet" href="css/reinado.css?v=202611201109">
+<link rel="stylesheet" href="css/responsive.css?v=202611201109">
+<link rel="stylesheet" href="css/scenes.css?v=202611201109">
+<script>document.documentElement.classList.add("js");</script>
+<script src="js/map-data.js?v=202611201109" defer></script>
+<script src="js/images.js?v=202611201109" defer></script>
+<script src="js/fx.js?v=202611201109" defer></script>
+<script src="js/mapa.js?v=202611201109" defer></script>
+<script src="js/score.js?v=202611201109" defer></script>
+<script src="js/audio.js?v=202611201109" defer></script>
+<script src="js/app.js?v=202611201109" defer></script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="4.5" width="7" height="5.5"/><rect x="13.5" y="4.5" width="7" height="5.5"/><rect x="3.5" y="14" width="7" height="5.5"/><rect x="13.5" y="14" width="7" height="5.5"/></g></symbol>
+  <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
+  <symbol id="i-full-exit" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
+  <symbol id="i-keys" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="6" width="19" height="12" rx="1.5"/><path d="M6 10h1M9.5 10h1M13 10h1M16.5 10h1M7.5 14h9"/></g></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-zoom" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M10.5 8v5M8 10.5h5"/></g></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></symbol>
+  <symbol id="i-replay" viewBox="0 0 24 24"><path d="M5 12a7 7 0 1 0 2.1-5M5 4v4h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-audio" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" stroke-linecap="round"/></g></symbol>
+  <symbol id="i-presenter" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="12" rx="1"/><path d="M7 20h10M12 16v4M7 9h6M7 12h4"/><circle cx="17" cy="9.5" r="1.6"/></g></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M4 5.5C6.5 4.3 9.5 4.3 12 6c2.5-1.7 5.5-1.7 8-.5v13c-2.5-1.2-5.5-1.2-8 .5-2.5-1.7-5.5-1.7-8-.5z"/><path d="M12 6v13.5"/></g></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="gi-church" viewBox="0 0 512 512"><path fill="currentColor" d="M163.5 22.754l-68.178 170.16h136.356L163.5 22.754zm-73.328 186.16v280.332H131.5v-72c20.034-22.093 41.16-25.61 64 0v72h40V208.914H90.172zm33.328 16.332h16v32h-16v-32zm32 0h16v32h-16v-32zm32 0h16v32h-16v-32zm64 47.715v216.286h48V324.264c-2.595-2.982-13.49-15.47-26.64-29.56-7.4-7.93-15.062-15.85-21.22-21.622-.055-.052-.084-.07-.14-.12zm-177.328 1.267c-5.95 5.658-13.084 13.03-20.033 20.476-13.15 14.09-24.045 26.58-26.64 29.56v164.983h46.672v-215.02zm89.328 7.35c30.933 0 56.186 24.12 56.186 53.67 0 29.547-25.253 53.67-56.186 53.67s-56.186-24.123-56.186-53.67c0-29.55 25.253-53.67 56.186-53.67zm-9 16.614c-4.782 1.046-9.23 2.898-13.172 5.415l13.172 12.957v-18.37zm18 0v19.847l15.14-13.088c-4.407-3.203-9.544-5.536-15.14-6.76zm-42.61 16.605c-2.68 4.026-4.588 8.57-5.53 13.45h19.2l-13.67-13.45zm68.485 2.025l-13.217 11.426h17.48c-.785-4.078-2.24-7.923-4.263-11.426zM315.5 330.246v30h156.27l-30-30H315.5zm-190.135 16c.993 3.174 2.404 6.17 4.176 8.932l10.33-8.932h-14.505zm59.31 0l11.278 11.096c2.486-3.335 4.422-7.07 5.682-11.096h-16.96zM154.5 354.75l-13.662 11.813c4.064 2.68 8.68 4.65 13.662 5.738v-17.55zm18 1.965V372.3c4.084-.892 7.924-2.373 11.414-4.357L172.5 356.715zm143 21.53v110h169v-110h-169zm25 23h18v32h-18v-32zm32 0h18v32h-18v-32zm32 0h18v32h-18v-32zm32 0h18v32h-18v-32z"></path></symbol>
+  <symbol id="gi-sabres" viewBox="0 0 512 512"><path fill="currentColor" d="M27.084 18.248C-17.903 146.478 143.15 277.92 314.496 381.074c-4.645 13.767-5.585 27.628-3.394 40.635 4.44 26.355 20.974 48.997 42.86 62.425 21.884 13.428 49.776 17.57 75.645 5.765 25.87-11.804 48.69-38.923 62.737-84.654l-17.865-5.488c-13 42.318-32.806 64.094-52.63 73.14-19.825 9.047-40.69 5.998-58.116-4.693-17.425-10.69-30.75-29.095-34.205-49.6-3.455-20.507 2.232-43.318 24.677-65.218 20.743-20.24 32.068-41.615 30.434-61.24l-18.622 1.552c.74 8.89-4.35 22.76-16.684 37.486C222.057 230.8 73.838 128.622 27.084 18.248zm458.05 0C451.34 98.03 364.527 173.53 270.93 247.166c19.492 15.878 39.56 31.622 59.195 45.012 110.756-84.836 187.878-180.243 155.01-273.93zM127.58 292.146c-1.634 19.626 9.69 41 30.434 61.24 22.445 21.9 28.132 44.712 24.677 65.218-3.455 20.506-16.78 38.91-34.206 49.6-17.425 10.692-38.29 13.74-58.115 4.694-19.825-9.046-39.632-30.822-52.63-73.14l-17.865 5.488c14.046 45.73 36.867 72.85 62.736 84.654 25.87 11.805 53.763 7.663 75.648-5.765 21.885-13.428 38.42-36.07 42.86-62.426 2.19-13.005 1.25-26.863-3.393-40.628 13.986-8.42 27.905-17.022 41.648-25.803l-56.967-39.387c-6.55 5.103-13.063 10.2-19.52 15.293C150.55 316.46 145.46 302.59 146.2 293.7l-18.622-1.554zm18.1 73.614c-26.1 8.6-62.087 36.255-77.104 60.324 4.948 8.63 10.393 15.223 16.05 20.14 25.846-8.953 59.85-37.406 74.733-60.257-3.007-6.6-7.454-13.386-13.68-20.207zm220.863 0c-6.225 6.822-10.67 13.61-13.68 20.21 14.886 22.85 48.89 51.3 74.736 60.255 5.656-4.918 11.1-11.51 16.05-20.14-15.018-24.07-51.004-51.724-77.105-60.325z"></path></symbol>
+  <symbol id="gi-coffee" viewBox="0 0 512 512"><path fill="currentColor" d="M203.043 26.648c-8.893.062-17.672 1.326-26.193 3.873-8.454 2.53-16.242 6.197-23.31 10.867 7.722 19.622 27.435 44.53 50.27 65.793 23.842 22.202 51.18 41.065 68.835 49.572l.207.1.203.103c16.224 8.335 27.71 21.453 34.34 35.924 4.27 9.318 6.757 19.078 8.207 29 13-10.14 26.704-18.26 40.636-24.153-1.06-18.31-5.088-37.51-12.424-56.735-15.386-40.32-42.26-72.78-72.695-92.576-21.875-14.228-45.35-21.926-68.077-21.768zm-76.408 42.305c-5.113 7.934-9.306 16.78-12.492 26.387-10.64 32.074-9.777 72.308 5.61 112.63 9.312 24.403 22.837 45.92 38.81 63.5 15.736 4.708 31.3 11.982 45.92 21.852 11.296 7.627 21.362 16.357 30.085 25.852 2.847.692 5.695 1.282 8.54 1.746 5.42-14.138 12.455-28.204 21.124-41.85 5.353-8.424 11.116-16.354 17.21-23.757.072-5.192.03-10.223-.217-15.026-.67-12.99-2.75-24.1-6.56-32.414-3.808-8.314-8.77-14.122-18.06-18.894l.41.202c-22.878-11.025-51.447-31.172-77.74-55.655-20.9-19.46-40.288-41.258-52.64-64.574zm279.752 135.725c-13.507.11-27.796 3.247-42.252 9.248-30.84 12.802-61.806 38.75-84.71 74.797-11.717 18.442-20.137 37.67-25.372 56.523 20.55 34.478 25.597 74.082 10.793 107.342 2.417 3.444 5.08 6.657 7.986 9.613 21.644-18.674 46.588-34.143 64.316-50.028 9.69-8.68 17.027-17.275 21.104-25.46 4.077-8.187 5.48-15.697 3.36-25.923l-.124-.595-.082-.6c-8.053-58.294 6.075-92.552 26.664-113.51 16.556-16.85 33.036-25.725 44.405-37.442-8.214-2.73-16.972-4.04-26.088-3.965zm56.746 23.953c-16.63 20.67-37.133 30.217-49.383 42.686-14.076 14.328-23.793 31.575-16.715 83.104 3.408 17.52.413 34.346-6.558 48.342-7.097 14.247-17.71 25.832-29.305 36.222-17.613 15.782-37.93 29.296-54.926 42.48 19.275 5.007 41.22 2.584 63.565-6.693 30.84-12.8 61.808-38.75 84.71-74.797 22.905-36.048 33.24-75.107 31.728-108.463-1.156-25.51-9.035-47.368-23.115-62.88zm-66.098 125.79c-.06-.315-.108-.628-.174-.943l.208 1.193c-.01-.085-.02-.165-.033-.25zm-280.223-71.424c-18.383-.166-35.7 3.865-50.275 11.807.1.003.187.01.287.013 8.63.305 19.464-.713 31.938.99 12.473 1.704 27.085 7.368 38.154 19.893 11.07 12.524 18.66 30.28 23.947 55.78l.125.594.082.602c2.453 17.792 13.786 28.085 33.434 37.722 16.764 8.223 38.287 14.095 58.717 20.073 9.15-41-12.56-91.006-58.81-122.23-24.938-16.836-52.274-25.015-77.597-25.244zm-81.078 41.447c-25.27 43.53-5.004 107.405 50.106 144.612 54.225 36.61 119.786 32.276 151.34-5.7-18.436-5.254-39.336-11.22-58.53-20.634-24.75-12.14-48.34-32.54-53.1-64.222-4.533-21.7-10.59-33.28-15.61-38.96-5.04-5.707-8.97-7.095-16.05-8.06-7.08-.968-16.81-.277-28.333-.683-8.98-.316-19.516-1.605-29.823-6.352zm89.817 54.055c.022.1.044.192.065.293l-.207-1.196c.042.304.097.6.143.904z"></path></symbol>
+</svg>
+
+<a class="skip-link" href="#deck">Ir para a apresentação</a>
+
+<div class="app" id="app">
+  <div class="stage" id="stage">
+    <main class="deck" id="deck" aria-roledescription="apresentação" aria-label="A Crise do Segundo Reinado, 1840–1889">
+      <div class="atlas" id="atlas" aria-hidden="true"></div>
+      <canvas class="dust" id="dust" aria-hidden="true"></canvas>
+
+      <!-- 01 · ABERTURA -->
+      <section class="slide theme-dark slide-opening" id="abertura" data-title="Abertura" data-kicker="Segundo Reinado" data-transition="reveal" data-atlas="brasil" data-atlas-level="off" data-thumb="assets/img/pedro-ii-1876.jpg">
+        <figure class="opening-art" data-depth="14">
+          <div class="opening-art-frame" data-anim="shutter" style="--d:14">
+            <img class="kb" src="assets/img/pedro-ii-1876.jpg" alt="Fotografia de D. Pedro II em 1876, idoso, de barba branca e paletó escuro">
+          </div>
+          <figcaption data-anim="fade" style="--d:22">Estúdio de Mathew Brady · <em>D. Pedro II</em>, 1876 · Library of Congress</figcaption>
+        </figure>
+        <div class="opening-copy">
+          <p class="kicker" data-anim="tracking" style="--d:8">Trabalho de História · Professora Rita</p>
+          <h1 class="opening-title" aria-label="A crise do Segundo Reinado">
+            <span class="ot-pre" data-anim="words" style="--d:10">A crise do</span>
+            <span class="ot-line ot-accent" data-anim="chars" style="--d:12">Segundo</span>
+            <span class="ot-line ot-accent" data-anim="chars" style="--d:15">Reinado</span>
+          </h1>
+          <div class="opening-dates" aria-label="1840 a 1889">
+            <span data-anim="rise" style="--d:19">1840</span>
+            <i data-anim="line" style="--d:20"></i>
+            <span data-anim="count" data-from="1840" data-to="1889" style="--d:21">1889</span>
+          </div>
+          <p class="opening-sub" data-anim="words" style="--d:23">Os conflitos e as rupturas que levaram ao fim da monarquia brasileira</p>
+          <div class="opening-roster" data-anim="rise" style="--d:28">
+            <span class="label">Integrantes</span>
+            <p>Davi Matheus&nbsp;· Juan Bento&nbsp;· Lucas Godoy&nbsp;· Kaique</p>
+          </div>
+        </div>
+        <button class="begin" type="button" data-action="next" data-anim="fade" style="--d:32">
+          <span class="begin-ring" aria-hidden="true"><svg><use href="#i-next"/></svg></span>
+          <span class="begin-text">Avançar</span>
+          <span class="begin-keys" aria-hidden="true"><kbd>→</kbd><kbd>Espaço</kbd></span>
+        </button>
+      </section>
+
+      <!-- 02 · O BRASIL IMPERIAL -->
+      <section class="slide theme-dark slide-imperio" id="imperio" data-title="O Brasil Imperial" data-kicker="O contexto" data-transition="dive" data-atlas="brasil" data-atlas-level="full" data-atlas-br data-steps="3">
+        <header class="slide-head">
+          <p class="kicker" data-anim="tracking"><b>02</b> O contexto do Segundo Reinado · 1840</p>
+          <h2 data-anim="words" style="--d:1">O Brasil Imperial</h2>
+        </header>
+        <ol class="topics topics-compact" data-anim="fade" style="--d:4">
+          <li data-at="0"><span class="tp-n">1</span><div><strong>Golpe da Maioridade</strong><span>Em 1840, D. Pedro II assume o trono aos 14 anos <a class="cite" href="#ref7" data-ref="7">[7]</a></span></div><button class="doc-thumb" type="button" data-lightbox="pedro-ii-1840" aria-label="Ampliar retrato de D. Pedro II em 1840"><img src="assets/img/pedro-ii-1840.jpg" alt="" loading="lazy"></button></li>
+          <li data-at="1"><span class="tp-n">2</span><div><strong>Poder centralizado</strong><span>Decisões no Rio de Janeiro, a Corte; presidentes de província nomeados pelo governo</span></div></li>
+          <li data-at="2"><span class="tp-n">3</span><div><strong>Constituição de 1824</strong><span>Quatro poderes, Senado vitalício e voto restrito pela renda <a class="cite" href="#ref2" data-ref="2">[2]</a></span></div><button class="doc-thumb" type="button" data-lightbox="constituicao-1824" aria-label="Ampliar capa da Constituição de 1824"><img src="assets/img/constituicao-1824.jpg" alt="" loading="lazy"></button></li>
+          <li data-at="3"><span class="tp-n">4</span><div><strong>Sociedade agrária e escravista</strong><span>9,9 milhões de habitantes, 1,5 milhão escravizados (Censo de 1872) <a class="cite" href="#ref12" data-ref="12">[12]</a></span></div></li>
+        </ol>
+        <p class="map-ref" data-anim="fade" style="--d:8">Fronteiras atuais, só como referência</p>
+      </section>
+
+      <!-- 03 · ESTABILIDADE E CONTRADIÇÕES -->
+      <section class="slide theme-dark slide-fachada" id="estabilidade" data-title="Estabilidade e contradições" data-kicker="A fachada e os bastidores" data-transition="carto" data-steps="5">
+        <header class="slide-head">
+          <p class="kicker" data-anim="tracking"><b>03</b> Estabilidade e contradições · 1840–1880</p>
+          <h2 data-anim="words" style="--d:1">Um Império aparentemente estável</h2>
+        </header>
+        <div class="facade">
+          <figure class="facade-img" data-anim="develop" style="--d:3">
+            <button type="button" data-lightbox="fala-do-trono" aria-label="Ampliar: Fala do Trono, de Pedro Américo"><img src="assets/img/fala-do-trono.jpg" alt="Pintura de Pedro Américo: D. Pedro II de coroa e manto imperial na abertura da Assembleia Geral" loading="lazy"></button>
+            <figcaption>Pedro Américo, <em>Fala do Trono</em>, 1872</figcaption>
+          </figure>
+          <section class="facade-col" aria-labelledby="fachadaT">
+            <h3 id="fachadaT"><span>A fachada</span><small>a política</small></h3>
+            <ol class="topics topics-compact">
+              <li data-at="0"><span class="tp-n">1</span><div><strong>Dois partidos no poder</strong><span>Liberais e conservadores se revezavam no governo</span></div></li>
+              <li data-at="1"><span class="tp-n">2</span><div><strong>Parlamentarismo às avessas</strong><span>O imperador escolhia o chefe do gabinete <a class="cite" href="#ref6" data-ref="6">[6]</a></span></div></li>
+              <li data-at="2"><span class="tp-n">3</span><div><strong>Poder Moderador</strong><span>Dissolvia a Câmara e nomeava senadores <a class="cite" href="#ref2" data-ref="2">[2]</a></span></div></li>
+            </ol>
+          </section>
+          <section class="facade-col is-back" aria-labelledby="bastidoresT">
+            <h3 id="bastidoresT"><span>Os bastidores</span><small>a sociedade</small></h3>
+            <ol class="topics topics-compact">
+              <li data-at="3"><span class="tp-n">4</span><div><strong>O café sustentava tudo</strong><span>61,5% das exportações na década de 1880</span></div></li>
+              <li data-at="4"><span class="tp-n">5</span><div><strong>A escravidão continuava</strong><span>Base do trabalho no campo e nas cidades</span></div></li>
+              <li data-at="5"><span class="tp-n">6</span><div><strong>Quase ninguém votava</strong><span>Menos de 1% da população em 1886 <a class="cite" href="#ref6" data-ref="6">[6]</a></span></div></li>
+            </ol>
+          </section>
+          <figure class="facade-img is-back" data-at="3">
+            <button type="button" data-lightbox="colheita-cafe-1883" aria-label="Ampliar fotografia de Marc Ferrez: colheita de café, 1883"><img src="assets/img/colheita-cafe-1883.jpg" alt="Fotografia de Marc Ferrez: pessoas escravizadas colhendo café num morro coberto de cafezais" loading="lazy"></button>
+            <figcaption>Marc Ferrez, colheita de café, 1883</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- 04 · AS TRANSFORMAÇÕES DO BRASIL -->
+      <section class="slide theme-dark slide-cafe" id="transformacoes" data-title="As transformações do Brasil" data-kicker="Café, ferrovias e cidades" data-transition="zoom" data-atlas="sudeste" data-steps="3">
+        <header class="slide-head">
+          <p class="kicker" data-anim="tracking"><b>04</b> As transformações do Brasil · 1850–1889</p>
+          <h2 data-anim="words" style="--d:1">Um país em transformação</h2>
+        </header>
+        <ol class="topics topics-compact" data-anim="fade" style="--d:4">
+          <li data-at="0"><span class="tp-n">1</span><div><strong>O café avança</strong><span>Do Vale do Paraíba para o Oeste Paulista <a class="cite" href="#ref11" data-ref="11">[11]</a></span></div></li>
+          <li data-at="1"><span class="tp-n">2</span><div><strong>Ferrovias</strong><span>De 14,5 km (1854) a cerca de 9.500 km (1889)</span></div><button class="doc-thumb" type="button" data-lightbox="ferrovia-santos-1870" aria-label="Ampliar fotografia da Estrada de Ferro Santos–São Paulo, 1870"><img src="assets/img/ferrovia-santos-1870.jpg" alt="" loading="lazy"></button></li>
+          <li data-at="2"><span class="tp-n">3</span><div><strong>Portos e cidades crescem</strong><span>Santos e Rio; gás, bondes, telégrafo e cabo submarino (1874)</span></div><button class="doc-thumb" type="button" data-lightbox="porto-santos-1880" aria-label="Ampliar fotografia do porto de Santos, c. 1880"><img src="assets/img/porto-santos-1880.jpg" alt="" loading="lazy"></button></li>
+          <li data-at="3"><span class="tp-n">4</span><div><strong>Novos grupos, novas pressões</strong><span>Imigrantes, jornalistas e militares pedem reformas <a class="cite" href="#ref9" data-ref="9">[9]</a></span></div><button class="doc-thumb" type="button" data-lightbox="rua-do-ouvidor" aria-label="Ampliar fotografia da Rua do Ouvidor, Rio de Janeiro"><img src="assets/img/rua-do-ouvidor.jpg" alt="" loading="lazy"></button></li>
+        </ol>
+        <figure class="cafe-map map-dark">
+          <div class="map-mount" data-map="cafe" role="img" aria-label="Mapa esquemático do Sudeste do Brasil. Primeiro aparece o Vale do Paraíba, ao longo do rio Paraíba do Sul, entre São Paulo e o Rio de Janeiro; depois, uma seta mostra o café avançando para o Oeste Paulista, em torno de Campinas e Ribeirão Preto; em seguida surgem as ferrovias ligando as fazendas aos portos de Santos e do Rio; por fim, as cidades que cresciam."></div>
+          <figcaption><span class="map-legend"><i class="lg-vale"></i>Vale do Paraíba <i class="lg-oeste"></i>Oeste Paulista <i class="lg-rail"></i>Ferrovias</span>Traçado esquemático · fronteiras atuais · base Natural Earth <a class="cite" href="#ref17" data-ref="17">[17]</a></figcaption>
+        </figure>
+      </section>
+
+      <!-- 05 · A GUERRA DO PARAGUAI -->
+      <section class="slide theme-ember slide-guerra" id="guerra" data-title="A Guerra do Paraguai" data-kicker="1864–1870" data-transition="dramatic" data-steps="3" data-fx="dust" data-thumb="assets/img/batalha-avai.jpg">
+        <div class="layer guerra-art" data-anim="fade" style="--d:0"><img class="kb-slow" src="assets/img/batalha-avai.jpg" alt=""></div>
+        <div class="guerra-copy">
+          <p class="kicker" data-anim="tracking"><b>05</b> A Guerra do Paraguai · 1864–1870</p>
+          <h2 class="big-title" data-anim="words" style="--d:1">O conflito que fortaleceu o Exército</h2>
+          <ol class="topics topics-compact" data-anim="fade" style="--d:4">
+            <li data-at="0"><span class="tp-n">1</span><div><strong>A Tríplice Aliança</strong><span>Brasil, Argentina e Uruguai contra o Paraguai <a class="cite" href="#ref10" data-ref="10">[10]</a></span></div></li>
+            <li data-at="1"><span class="tp-n">2</span><div><strong>Um Exército muito maior</strong><span>Voluntários, recrutas à força e escravizados libertos para lutar</span></div><button class="doc-thumb" type="button" data-lightbox="voluntario-1865" aria-label="Ampliar fotografia de um Voluntário da Pátria, 1865"><img src="assets/img/voluntario-1865.jpg" alt="" loading="lazy"></button></li>
+            <li data-at="2"><span class="tp-n">3</span><div><strong>Prestígio militar</strong><span>Os oficiais voltam como heróis, com identidade própria <a class="cite" href="#ref8" data-ref="8">[8]</a></span></div></li>
+            <li data-at="3"><span class="tp-n">4</span><div><strong>Tensão no pós-guerra</strong><span>Soldos baixos e desprezo pelos políticos civis, os “casacas”</span></div><button class="doc-thumb" type="button" data-lightbox="de-volta-agostini" aria-label="Ampliar charge De volta do Paraguai, de Angelo Agostini"><img src="assets/img/de-volta-agostini.jpg" alt="" loading="lazy"></button></li>
+          </ol>
+        </div>
+        <div class="guerra-stats" data-anim="rise" style="--d:8">
+          <p><strong>≈ 139 mil</strong><span>brasileiros mobilizados</span></p>
+          <p><strong>≈ 50 mil</strong><span>brasileiros mortos</span></p>
+          <small>Estimativas mais citadas; os números variam conforme a fonte</small>
+        </div>
+        <button class="art-credit" type="button" data-lightbox="batalha-avai" data-anim="fade" style="--d:10"><span>Pedro Américo · <em>Batalha do Avaí</em>, 1872–1877</span><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </section>
+
+      <!-- 06 · AS TRÊS GRANDES QUESTÕES -->
+      <section class="slide theme-dark slide-questoes" id="questoes" data-title="As três grandes questões" data-kicker="O início do enfraquecimento" data-transition="stack" data-steps="2">
+        <header class="slide-head">
+          <p class="kicker" data-anim="tracking"><b>06</b> As três grandes questões · 1872–1888</p>
+          <h2 data-anim="words" style="--d:1">O início do enfraquecimento imperial</h2>
+        </header>
+        <p class="lead" data-anim="fade" style="--d:4">Três conflitos afastaram do trono quem o sustentava. Nenhum, sozinho, derrubou o Império.</p>
+        <div class="triptych">
+          <article class="q-panel" data-at="0">
+            <button class="q-media" type="button" data-lightbox="macedo-costa-pintura" aria-label="Ampliar retrato de D. Macedo Costa"><img src="assets/img/macedo-costa-pintura.jpg" alt="Retrato a óleo de D. Antônio de Macedo Costa, bispo do Pará, de batina" loading="lazy"></button>
+            <div class="q-text"><span class="q-num">I</span><h3>Questão Religiosa</h3><p class="q-meta">1872–1875 · Igreja × Estado</p><p>Bispos desafiam o controle do imperador sobre a Igreja e acabam presos.</p></div>
+          </article>
+          <article class="q-panel" data-at="1">
+            <button class="q-media" type="button" data-lightbox="sena-madureira" aria-label="Ampliar retrato de Sena Madureira"><img src="assets/img/sena-madureira.jpg" alt="Fotografia do tenente-coronel Sena Madureira, de farda com medalhas" loading="lazy"></button>
+            <div class="q-text"><span class="q-num">II</span><h3>Questão Militar</h3><p class="q-meta">1883–1887 · Exército × governo</p><p>Oficiais punidos por falar na imprensa enfrentam os políticos civis.</p></div>
+          </article>
+          <article class="q-panel" data-at="2">
+            <button class="q-media" type="button" data-lightbox="fazenda-cafe-1885" aria-label="Ampliar fotografia de Marc Ferrez: escravizados em fazenda de café"><img src="assets/img/fazenda-cafe-1885.jpg" alt="Fotografia de Marc Ferrez: pessoas escravizadas enfileiradas diante de um galpão de fazenda de café" loading="lazy"></button>
+            <div class="q-text"><span class="q-num">III</span><h3>Questão Abolicionista</h3><p class="q-meta">Anos 1880 · abolição × escravistas</p><p>A luta pelo fim da escravidão divide o país e afasta os senhores de escravizados.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 07 · A QUESTÃO RELIGIOSA -->
+      <section class="slide theme-dark slide-religiosa" id="religiosa" data-title="A Questão Religiosa" data-kicker="Igreja e Estado" data-transition="page" data-steps="3">
+        <figure class="const-doc" data-anim="unfold" style="--d:3">
+          <button type="button" data-lightbox="constituicao-1824" aria-label="Ampliar capa da Constituição de 1824"><img src="assets/img/constituicao-1824.jpg" alt="Capa verde com brasão imperial dourado da Constituição Política do Império do Brasil, de 1824" loading="lazy"></button>
+          <figcaption>Constituição Política do Império do Brasil, 1824 · Arquivo Nacional</figcaption>
+        </figure>
+        <div class="religiosa-copy">
+          <header class="slide-head">
+            <p class="kicker" data-anim="tracking"><b>07</b> A Questão Religiosa · 1824–1872</p>
+            <h2 data-anim="words" style="--d:1">A Igreja e o Estado entraram em conflito</h2>
+          </header>
+          <div class="tug" data-anim="rise" style="--d:5" aria-label="Os bispos ficaram entre o papa e o imperador">
+            <button class="tug-side" type="button" data-lightbox="pio-ix" aria-label="Ampliar fotografia do papa Pio IX"><span class="cameo"><img src="assets/img/pio-ix.jpg" alt="" loading="lazy"></span><span><strong>Papa Pio IX</strong><small>Roma · ultramontanismo</small></span></button>
+            <span class="tug-arrow" aria-hidden="true">→</span>
+            <span class="tug-mid"><strong>Bispos</strong><small>entre duas autoridades</small></span>
+            <span class="tug-arrow" aria-hidden="true">←</span>
+            <button class="tug-side is-right" type="button" data-lightbox="pedro-ii-1876" aria-label="Ampliar fotografia de D. Pedro II"><span><strong>D. Pedro II</strong><small>o Estado · padroado</small></span><span class="cameo"><img src="assets/img/pedro-ii-1876.jpg" alt="" loading="lazy"></span></button>
+          </div>
+          <ol class="cards-2x2">
+            <li data-at="0"><strong>Religião oficial</strong><span>O catolicismo era a religião do Império (art. 5º) <a class="cite" href="#ref2" data-ref="2">[2]</a></span></li>
+            <li data-at="1"><strong>Padroado</strong><span>O imperador indicava os bispos e o Estado pagava o clero</span></li>
+            <li data-at="2"><strong>Beneplácito</strong><span>Ordens do papa só valiam no Brasil com aprovação do imperador</span></li>
+            <li data-at="3"><strong>Ultramontanismo</strong><span>Pio IX reforçou a autoridade de Roma (<em>Syllabus</em>, 1864) <a class="cite" href="#ref11" data-ref="11">[11]</a></span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 08 · O CONFLITO COM OS BISPOS -->
+      <section class="slide theme-dark slide-bispos" id="bispos" data-title="O conflito com os bispos" data-kicker="1872–1875" data-transition="timepass" data-steps="5">
+        <header class="slide-head">
+          <p class="kicker" data-anim="tracking"><b>08</b> O conflito com os bispos · 1872–1875</p>
+          <h2 data-anim="words" style="--d:1">A ruptura entre a Igreja e a monarquia</h2>
+        </header>
+        <div class="cast" data-anim="rise" style="--d:4">
+          <button class="cast-p" type="button" data-lightbox="dom-vital" aria-label="Ampliar fotografia de Frei Vital"><span class="cameo"><img src="assets/img/dom-vital.jpg" alt="" loading="lazy"></span><strong>D. Vital</strong><small>bispo de Olinda</small></button>
+          <button class="cast-p" type="button" data-lightbox="macedo-costa" aria-label="Ampliar fotografia de D. Macedo Costa"><span class="cameo"><img src="assets/img/macedo-costa.jpg" alt="" loading="lazy"></span><strong>D. Macedo Costa</strong><small>bispo do Pará</small></button>
+          <span class="cast-vs" aria-hidden="true">×</span>
+          <button class="cast-p" type="button" data-lightbox="rio-branco" aria-label="Ampliar fotografia do visconde do Rio Branco"><span class="cameo"><img src="assets/img/rio-branco.jpg" alt="" loading="lazy"></span><strong>Visconde do Rio Branco</strong><small>chefe do governo e grão-mestre maçom</small></button>
+        </div>
+        <figure class="cartoon" data-anim="develop" style="--d:6">
+          <button type="button" data-lightbox="caricatura-1876" aria-label="Ampliar caricatura de Angelo Agostini, 1876"><img src="assets/img/caricatura-1876.jpg" alt="Caricatura de Angelo Agostini: o bispo de Olinda, no altar, expulsa um padre que cai diante dos noivos" loading="lazy"></button>
+          <figcaption>Angelo Agostini, <em>Revista Illustrada</em>, 1876: o bispo de Olinda suspende um padre que casou um maçom</figcaption>
+        </figure>
+        <ol class="tl-h" aria-label="Linha do tempo da Questão Religiosa">
+          <li data-at="0"><time>1872</time><p>No Rio, o bispo suspende um padre que discursou em loja maçônica</p></li>
+          <li data-at="1"><time>1872–73</time><p>D. Vital e D. Macedo Costa interditam irmandades que não expulsam maçons</p></li>
+          <li data-at="2"><time>1873</time><p>O governo manda suspender as punições; os bispos se recusam</p></li>
+          <li data-at="3" class="is-red"><time>1874</time><p>Presos e condenados a 4 anos de prisão com trabalhos forçados</p></li>
+          <li data-at="4"><time>1875</time><p>Anistia dada pelo gabinete do Duque de Caxias <a class="cite" href="#ref11" data-ref="11">[11]</a></p></li>
+        </ol>
+        <aside class="verdict" data-at="5"><strong>Consequência</strong><p>Parte do clero e dos católicos se afastou do trono. A Igreja não virou republicana, mas deixou de defender a monarquia. <a class="cite" href="#ref9" data-ref="9">[9]</a></p></aside>
+      </section>
+
+      <!-- 09 · A QUESTÃO MILITAR -->
+      <section class="slide theme-dark slide-militar" id="militar" data-title="A Questão Militar" data-kicker="1883–1887" data-transition="carto" data-steps="3">
+        <figure class="deodoro" data-anim="develop" style="--d:2">
+          <button type="button" data-lightbox="deodoro-1889" aria-label="Ampliar retrato de Deodoro da Fonseca"><img class="kb-slow" src="assets/img/deodoro-1889.jpg" alt="Retrato do marechal Deodoro da Fonseca, de barba e farda com condecorações" loading="lazy"></button>
+          <figcaption>Marechal Deodoro da Fonseca, 1889</figcaption>
+        </figure>
+        <div class="militar-copy">
+          <header class="slide-head">
+            <p class="kicker" data-anim="tracking"><b>09</b> A Questão Militar · 1883–1887</p>
+            <h2 data-anim="words" style="--d:1">O Exército começou a desafiar o Império</h2>
+          </header>
+          <ul class="chips" data-anim="fade" style="--d:4" aria-label="Insatisfações dos militares">
+            <li>Prestígio após a guerra</li>
+            <li>Soldos baixos</li>
+            <li>Promoções lentas</li>
+            <li>Censura na imprensa</li>
+          </ul>
+          <ol class="tl-v">
+            <li data-at="0"><time>1883–84</time><div><p>Sena Madureira contesta a reforma do montepio e homenageia o jangadeiro abolicionista Francisco do Nascimento; é punido</p></div><button class="doc-thumb" type="button" data-lightbox="sena-madureira" aria-label="Ampliar retrato de Sena Madureira"><img src="assets/img/sena-madureira.jpg" alt="" loading="lazy"></button></li>
+            <li data-at="1"><time>1886</time><div><p>Caso Cunha Matos: coronel é preso por responder a um deputado pela imprensa; Sena Madureira é punido de novo</p></div></li>
+            <li data-at="2"><time>1886–87</time><div><p>Deodoro defende os oficiais e é afastado do comando no Rio Grande do Sul; o governo recua <a class="cite" href="#ref8" data-ref="8">[8]</a></p></div></li>
+            <li data-at="3" class="is-red"><time>1887</time><div><p>Nasce o Clube Militar, presidido por Deodoro; ele pede que o Exército não capture escravizados fugidos <a class="cite" href="#ref9" data-ref="9">[9]</a></p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- 10 · O POSITIVISMO E OS MILITARES -->
+      <section class="slide theme-dark slide-positivismo" id="positivismo" data-title="O positivismo e os militares" data-kicker="Ordem e progresso" data-transition="dissolve" data-steps="4">
+        <header class="slide-head">
+          <p class="kicker" data-anim="tracking"><b>10</b> O positivismo e os militares</p>
+          <h2 data-anim="words" style="--d:1">Novas ideias para o futuro do Brasil</h2>
+        </header>
+        <blockquote class="motto" data-anim="fade" style="--d:4"><p>“O amor por princípio e a ordem por base; o progresso por fim.”</p><cite>Auguste Comte, fórmula do positivismo</cite></blockquote>
+        <ol class="chain">
+          <li data-at="0">
+            <button class="ch-media is-oval" type="button" data-lightbox="comte" aria-label="Ampliar daguerreótipo de Auguste Comte"><img src="assets/img/comte.jpg" alt="Daguerreótipo de Auguste Comte" loading="lazy"></button>
+            <h3>Auguste Comte</h3><p class="ch-meta">França · 1798–1857</p><p>A sociedade deve ser guiada pela ciência, com ordem e progresso</p>
+          </li>
+          <li data-at="1">
+            <button class="ch-media" type="button" data-lightbox="escola-militar" aria-label="Ampliar fotografia da Escola Militar da Praia Vermelha"><img src="assets/img/escola-militar.jpg" alt="Fotografia da Escola Militar da Praia Vermelha, com o Pão de Açúcar ao fundo" loading="lazy"></button>
+            <h3>Escola Militar</h3><p class="ch-meta">Praia Vermelha · Rio</p><p>Jovens oficiais estudam matemática, ciências e filosofia</p>
+          </li>
+          <li data-at="2">
+            <button class="ch-media is-oval" type="button" data-lightbox="benjamin-constant" aria-label="Ampliar fotografia de Benjamin Constant"><img src="assets/img/benjamin-constant.jpg" alt="Fotografia de Benjamin Constant de farda e pincenê" loading="lazy"></button>
+            <h3>Benjamin Constant</h3><p class="ch-meta">Professor · 1836–1891</p><p>Aproxima os alunos da causa republicana <a class="cite" href="#ref8" data-ref="8">[8]</a></p>
+          </li>
+          <li data-at="3">
+            <button class="ch-media is-flag" type="button" data-lightbox="bandeira-1889" aria-label="Ampliar bandeira republicana de 1889"><img src="assets/img/bandeira-1889.png" alt="Bandeira republicana de 1889, com o lema Ordem e Progresso" loading="lazy"></button>
+            <h3>“Ordem e Progresso”</h3><p class="ch-meta">19 nov. 1889</p><p>O lema positivista vai para a nova bandeira <a class="cite" href="#ref5" data-ref="5">[5]</a></p>
+          </li>
+        </ol>
+        <aside class="caution" data-at="4"><span class="caution-mark" aria-hidden="true">!</span><p><strong>O Exército não era homogêneo.</strong> Havia oficiais monarquistas e republicanos, “científicos” e “tarimbeiros”. Deodoro, monarquista, só aderiu à República na crise de 1889.</p></aside>
+      </section>
+
+      <!-- 11 · O PROCESSO ABOLICIONISTA -->
+      <section class="slide theme-forest slide-abolicao" id="abolicao" data-title="O processo abolicionista" data-kicker="1850–1888" data-transition="timepass" data-steps="4">
+        <header class="slide-head">
+          <p class="kicker" data-anim="tracking"><b>11</b> O processo abolicionista · 1850–1888</p>
+          <h2 data-anim="words" style="--d:1">O caminho até o fim da escravidão</h2>
+        </header>
+        <ol class="laws">
+          <li data-at="0"><time>1850</time><h3>Lei Eusébio de Queirós</h3><p class="law-n">Lei nº 581</p><p>Proíbe o tráfico de africanos escravizados, sob pressão britânica</p><p class="law-limit">Limite: a escravidão continua e cresce o tráfico interno</p></li>
+          <li data-at="1"><time>1871</time><h3>Lei do Ventre Livre</h3><p class="law-n">Lei nº 2.040</p><p>Filhos de mulheres escravizadas nascidos a partir da lei seriam livres</p><p class="law-limit">Limite: podiam servir ao senhor até os 21 anos</p></li>
+          <li data-at="2"><time>1885</time><h3>Lei dos Sexagenários</h3><p class="law-n">Lei nº 3.270</p><p>Liberta os escravizados com 60 anos ou mais</p><p class="law-limit">Limite: mais 3 anos de trabalho; poucos chegavam a essa idade</p></li>
+          <li data-at="3" class="is-gold"><time>1888</time><h3>Lei Áurea</h3><p class="law-n">Lei nº 3.353</p><p>Extingue a escravidão, sem indenização aos proprietários <a class="cite" href="#ref3" data-ref="3">[3]</a></p><p class="law-limit">Limite: nada previsto para integrar os libertos</p></li>
+        </ol>
+        <aside class="resist" data-at="4">
+          <div class="resist-text">
+            <strong>A abolição também foi conquistada</strong>
+            <p>Fugas em massa, quilombos (como o Jabaquara, em Santos), ações na Justiça e a recusa dos jangadeiros do Ceará em levar escravizados (1881). Ceará e Amazonas aboliram em 1884. <a class="cite" href="#ref1" data-ref="1">[1]</a></p>
+          </div>
+          <ul class="resist-people">
+            <li><button type="button" data-lightbox="luiz-gama"><span class="cameo"><img src="assets/img/luiz-gama.jpg" alt="" loading="lazy"></span>Luiz Gama</button></li>
+            <li><button type="button" data-lightbox="jose-do-patrocinio"><span class="cameo"><img src="assets/img/jose-do-patrocinio.jpg" alt="" loading="lazy"></span>José do Patrocínio</button></li>
+            <li><button type="button" data-lightbox="andre-reboucas"><span class="cameo"><img src="assets/img/andre-reboucas.jpg" alt="" loading="lazy"></span>André Rebouças</button></li>
+            <li><button type="button" data-lightbox="joaquim-nabuco"><span class="cameo"><img src="assets/img/joaquim-nabuco.jpg" alt="" loading="lazy"></span>Joaquim Nabuco</button></li>
+            <li><button type="button" data-lightbox="dragao-do-mar"><span class="cameo is-drawing"><img src="assets/img/dragao-do-mar.jpg" alt="" loading="lazy"></span>Dragão do Mar</button></li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- 12 · A LEI ÁUREA -->
+      <section class="slide theme-ember slide-aurea" id="lei-aurea" data-title="A Lei Áurea" data-kicker="13 de maio de 1888" data-transition="sober" data-steps="1" data-thumb="assets/img/multidao-13-maio.jpg">
+        <figure class="aurea-photo" data-anim="develop" style="--d:0">
+          <button type="button" data-lightbox="multidao-13-maio" aria-label="Ampliar fotografia da multidão em 13 de maio de 1888"><img class="kb-slow" src="assets/img/multidao-13-maio.jpg" alt="Fotografia de Marc Ferrez: enorme multidão diante de sobrados no centro do Rio de Janeiro em 13 de maio de 1888" loading="lazy"></button>
+          <figcaption>Marc Ferrez · multidão no Rio de Janeiro, 13 de maio de 1888 · Getty Research Institute</figcaption>
+        </figure>
+        <header class="aurea-head">
+          <p class="kicker" data-anim="tracking" style="--d:4"><b>12</b> A Lei Áurea</p>
+          <h2 data-anim="words" style="--d:5">13 de maio de 1888</h2>
+          <p class="aurea-sub" data-anim="fade" style="--d:8">O fim legal da escravidão</p>
+        </header>
+        <blockquote class="aurea-law" data-anim="ink" style="--d:10"><p>“É declarada extincta desde a data desta lei a escravidão no Brazil.”</p><cite>Lei nº 3.353, art. 1º · grafia original <a class="cite" href="#ref3" data-ref="3">[3]</a></cite></blockquote>
+        <div class="aurea-cols">
+          <section data-at="0"><h3>O que a lei fez</h3><ul><li>Libertou cerca de 700 mil pessoas</li><li>Foi assinada pela princesa Isabel, regente do Império</li><li>Veio depois de anos de luta abolicionista e de fugas em massa</li></ul></section>
+          <section data-at="1" class="is-red"><h3>O que ficou de fora</h3><ul><li>Nenhuma garantia de terra, escola ou trabalho</li><li>Fazendeiros e governo preferiram imigrantes europeus</li><li>O racismo e a exclusão continuaram <a class="cite" href="#ref14" data-ref="14">[14]</a></li></ul></section>
+        </div>
+      </section>
+
+      <!-- 13 · A RUPTURA COM OS CAFEICULTORES -->
+      <section class="slide theme-forest slide-cafeicultores" id="cafeicultores" data-title="A ruptura com os cafeicultores" data-kicker="1888–1889" data-transition="page" data-steps="2">
+        <figure class="side-photo" data-anim="develop" style="--d:2">
+          <button type="button" data-lightbox="terreiro-cafe-1882" aria-label="Ampliar fotografia de Marc Ferrez: terreiro de café"><img class="kb-slow" src="assets/img/terreiro-cafe-1882.jpg" alt="Fotografia de Marc Ferrez: pessoas escravizadas trabalhando num terreiro de secagem de café, com morros ao fundo" loading="lazy"></button>
+          <figcaption>Marc Ferrez, terreiro de café no Vale do Paraíba, c. 1882</figcaption>
+        </figure>
+        <div class="cafe-copy">
+          <header class="slide-head">
+            <p class="kicker" data-anim="tracking"><b>13</b> A ruptura com os cafeicultores · 1888</p>
+            <h2 data-anim="words" style="--d:1">A monarquia perdeu parte de sua base</h2>
+          </header>
+          <div class="versus">
+            <article data-at="0" class="is-red"><h3>Vale do Paraíba</h3><p class="vs-tag">a base tradicional do trono</p><ul><li>Fazendas antigas e endividadas</li><li>Dependiam do trabalho escravizado</li><li>Queriam indenização pela abolição</li></ul></article>
+            <article data-at="1"><h3>Oeste Paulista</h3><p class="vs-tag">o café em expansão</p><ul><li>Ferrovias e imigrantes europeus</li><li>Queriam autonomia para a província</li><li>Muitos já eram republicanos (1873)</li></ul></article>
+          </div>
+          <aside class="lastminute" data-at="2"><strong>“Republicanos de última hora”</strong><p>Ex-senhores de escravizados que, revoltados com a abolição sem indenização, passaram a apoiar a República depois de 13 de maio de 1888 — mais por ressentimento contra a Coroa do que por convicção. <a class="cite" href="#ref9" data-ref="9">[9]</a></p></aside>
+        </div>
+      </section>
+
+      <!-- 14 · O CRESCIMENTO DO REPUBLICANISMO -->
+      <section class="slide theme-dark slide-republica" id="republicanismo" data-title="O crescimento do republicanismo" data-kicker="1870–1889" data-transition="stack" data-steps="3">
+        <figure class="paper-doc" data-anim="unfold" style="--d:3">
+          <button type="button" data-lightbox="a-republica-1870" aria-label="Ampliar a primeira página do jornal A República, 1870"><img src="assets/img/a-republica-1870.jpg" alt="Primeira página do jornal A República, de 3 de dezembro de 1870, com o Manifesto Republicano" loading="lazy"></button>
+          <figcaption><em>A República</em>, n. 1, 3 dez. 1870 — o jornal do Manifesto Republicano</figcaption>
+        </figure>
+        <div class="republica-copy">
+          <header class="slide-head">
+            <p class="kicker" data-anim="tracking"><b>14</b> O crescimento do republicanismo · 1870–1889</p>
+            <h2 data-anim="words" style="--d:1">A República começou a ganhar força</h2>
+          </header>
+          <blockquote class="manifesto" data-anim="fade" style="--d:4"><p>“Somos da América e queremos ser americanos.”</p><cite>Manifesto Republicano, 1870 <a class="cite" href="#ref15" data-ref="15">[15]</a></cite></blockquote>
+          <ol class="tl-mini">
+            <li data-at="0"><time>1870</time><p>Manifesto Republicano, no Rio de Janeiro</p></li>
+            <li data-at="1"><time>1873</time><p>Convenção de Itu funda o Partido Republicano Paulista</p></li>
+            <li data-at="2"><time>Anos 1880</time><p>Clubes, jornais e comícios se multiplicam</p></li>
+          </ol>
+          <div class="repub-cols" data-at="3">
+            <section><h3>O que defendiam</h3><ul><li>Federalismo: autonomia das províncias</li><li>Fim do Poder Moderador e do Senado vitalício</li><li>Chefe de Estado eleito</li></ul></section>
+            <section><h3>Quem apoiava</h3><ul><li>Cafeicultores do Oeste Paulista</li><li>Jornalistas, advogados, professores</li><li>Militares positivistas</li><li>Ex-escravistas, depois de 1888</li></ul></section>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15 · O IMPÉRIO FICOU ISOLADO -->
+      <section class="slide theme-dark slide-isolado" id="isolamento" data-title="O Império ficou isolado" data-kicker="1889" data-transition="dissolve" data-steps="4">
+        <div class="layer baile"><img class="kb-slow" src="assets/img/baile-ilha-fiscal.jpg" alt=""></div>
+        <header class="slide-head">
+          <p class="kicker" data-anim="tracking"><b>15</b> O Império ficou isolado · 1889</p>
+          <h2 data-anim="words" style="--d:1">As bases de sustentação desapareceram</h2>
+        </header>
+        <div class="temple" data-anim="rise" style="--d:4" aria-label="Diagrama: a monarquia como um templo sustentado por três colunas">
+          <div class="pediment"><span>Monarquia</span></div>
+          <div class="architrave"></div>
+          <div class="columns">
+            <div class="column">
+              <span class="col-icon" aria-hidden="true"><svg><use href="#gi-church"/></svg></span><h3>Igreja</h3><p>Afastada pela Questão Religiosa</p>
+              <span class="stamp" data-at="1">Ruptura · 1874</span>
+            </div>
+            <div class="column">
+              <span class="col-icon" aria-hidden="true"><svg><use href="#gi-sabres"/></svg></span><h3>Exército</h3><p>Insatisfeito e atraído pela República</p>
+              <span class="stamp" data-at="2">Ruptura · 1887</span>
+            </div>
+            <div class="column">
+              <span class="col-icon" aria-hidden="true"><svg><use href="#gi-coffee"/></svg></span><h3>Elites agrárias</h3><p>Escravistas rompem após a abolição</p>
+              <span class="stamp" data-at="3">Ruptura · 1888</span>
+            </div>
+          </div>
+          <div class="stylobate"><span>Sustentação política do Império</span></div>
+        </div>
+        <p class="temple-note is-left" data-at="0">Três grupos sustentavam o trono. Cada clique mostra uma ruptura.</p>
+        <aside class="temple-note is-right" data-at="4"><strong>E o futuro?</strong> D. Pedro II, aos 63 anos, estava doente. A herdeira, Isabel, e o marido francês, o conde d’Eu, despertavam desconfiança: um “Terceiro Reinado” parecia incerto. <a class="cite" href="#ref7" data-ref="7">[7]</a></aside>
+        <button class="art-credit is-bottom" type="button" data-lightbox="baile-ilha-fiscal"><span>Ao fundo: Aurélio de Figueiredo, <em>O último baile da Ilha Fiscal</em> (9 nov. 1889), pintado em 1905</span><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </section>
+
+      <!-- 16 · 15 DE NOVEMBRO DE 1889 -->
+      <section class="slide theme-dark slide-proclamacao" id="proclamacao" data-title="15 de novembro de 1889" data-kicker="A Proclamação da República" data-transition="dramatic" data-steps="3" data-thumb="assets/img/proclamacao-calixto.jpg">
+        <div class="layer procl-art" data-anim="fade" style="--d:0"><img class="kb-slow" src="assets/img/proclamacao-calixto.jpg" alt=""></div>
+        <header class="procl-head">
+          <p class="kicker" data-anim="tracking"><b>16</b> 15 de novembro de 1889</p>
+          <h2 class="big-title" data-anim="words" style="--d:1">A Proclamação da República</h2>
+          <p class="procl-sub" data-anim="fade" style="--d:5">Véspera: boatos de que o governo prenderia Deodoro e Benjamin Constant aceleram o levante.</p>
+        </header>
+        <ol class="day">
+          <li data-at="0"><time>Madrugada</time><p>Tropas de São Cristóvão, articuladas por oficiais republicanos e Benjamin Constant, marcham ao Campo de Santana</p></li>
+          <li data-at="1"><time>Manhã</time><p>Deodoro assume o comando e entra no Quartel-General: o gabinete do visconde de Ouro Preto é deposto <a class="cite" href="#ref4" data-ref="4">[4]</a></p><button class="doc-thumb" type="button" data-lightbox="ouro-preto" aria-label="Ampliar retrato do visconde de Ouro Preto"><img src="assets/img/ouro-preto.jpg" alt="" loading="lazy"></button></li>
+          <li data-at="2"><time>Tarde</time><p>Na Câmara Municipal do Rio, José do Patrocínio e outros vereadores declaram a República</p></li>
+          <li data-at="3"><time>Noite</time><p>Forma-se o Governo Provisório, chefiado por Deodoro; o Decreto nº 1 adota a República Federativa <a class="cite" href="#ref8" data-ref="8">[8]</a></p></li>
+        </ol>
+        <button class="art-credit" type="button" data-lightbox="proclamacao-calixto" data-anim="fade" style="--d:8"><span>Benedito Calixto · <em>Proclamação da República</em>, 1893 · representação posterior</span><svg aria-hidden="true"><use href="#i-zoom"/></svg></button>
+      </section>
+
+      <!-- 17 · O FIM DA MONARQUIA -->
+      <section class="slide theme-ember slide-exilio" id="exilio" data-title="O fim da monarquia" data-kicker="O exílio" data-transition="sober" data-steps="4">
+        <figure class="family" data-anim="develop" style="--d:2">
+          <button type="button" data-lightbox="familia-imperial-1889" aria-label="Ampliar fotografia da família imperial em 1889"><img src="assets/img/familia-imperial-1889.jpg" alt="Fotografia de Otto Hees: a família imperial reunida na escada de uma casa, com D. Pedro II ao centro, em 1889" loading="lazy"></button>
+          <figcaption>Otto Hees, a família imperial, 1889</figcaption>
+        </figure>
+        <div class="exilio-copy">
+          <header class="slide-head">
+            <p class="kicker" data-anim="tracking"><b>17</b> O fim da monarquia · 1889</p>
+            <h2 data-anim="words" style="--d:1">O exílio da família imperial</h2>
+          </header>
+          <div class="years" data-anim="rise" style="--d:4">
+            <p><strong data-anim="count" data-from="0" data-to="67">67</strong> <span>anos de Império<br>(1822–1889)</span></p>
+            <p><strong data-anim="count" data-from="0" data-to="49">49</strong> <span>anos de Segundo Reinado<br>(1840–1889)</span></p>
+          </div>
+          <ol class="exile">
+            <li data-at="0"><time>16 nov. 1889</time><p>O Governo Provisório ordena que a família imperial deixe o país</p></li>
+            <li data-at="1"><time>17 nov. 1889</time><p>De madrugada, D. Pedro II e a família embarcam rumo à Europa</p></li>
+            <li data-at="2"><time>7 dez. 1889</time><p>Chegada a Lisboa; a imperatriz Teresa Cristina morre no Porto semanas depois</p></li>
+            <li data-at="3"><time>5 dez. 1891</time><p>D. Pedro II morre em Paris, no exílio <a class="cite" href="#ref13" data-ref="13">[13]</a></p></li>
+          </ol>
+          <blockquote class="lobo" data-at="4">
+            <button class="cameo" type="button" data-lightbox="aristides-lobo" aria-label="Ampliar gravura de Aristides Lobo"><img src="assets/img/aristides-lobo.jpg" alt="" loading="lazy"></button>
+            <div><p>“O povo assistiu àquilo bestializado, atônito, surpreso, sem conhecer o que significava.”</p><cite>Aristides Lobo, <em>Diário Popular</em>, 18 nov. 1889 <a class="cite" href="#ref16" data-ref="16">[16]</a> · imagem discutida por José Murilo de Carvalho <a class="cite" href="#ref4" data-ref="4">[4]</a></cite></div>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- 18 · CONCLUSÃO -->
+      <section class="slide theme-dark slide-finale" id="conclusao" data-title="Conclusão" data-kicker="Por que a monarquia caiu?" data-transition="finale" data-atlas="finale" data-atlas-level="full" data-atlas-br data-steps="6">
+        <div class="finale-copy">
+          <p class="kicker" data-anim="tracking"><b>18</b> Conclusão</p>
+          <h2 class="finale-title" data-anim="words" style="--d:1">Por que a monarquia caiu?</h2>
+          <ol class="factors">
+            <li data-at="0"><span class="tp-n">1</span><div><strong>Crise religiosa</strong><span>1872–1875</span></div></li>
+            <li data-at="1"><span class="tp-n">2</span><div><strong>Questão Militar</strong><span>1883–1887</span></div></li>
+            <li data-at="2"><span class="tp-n">3</span><div><strong>Abolição da escravidão</strong><span>1888</span></div></li>
+            <li data-at="3"><span class="tp-n">4</span><div><strong>Perda dos cafeicultores escravistas</strong><span>1888–1889</span></div></li>
+            <li data-at="4"><span class="tp-n">5</span><div><strong>Avanço republicano</strong><span>1870–1889</span></div></li>
+            <li data-at="5"><span class="tp-n">6</span><div><strong>Isolamento político</strong><span>1889</span></div></li>
+          </ol>
+          <p class="finale-phrase" data-at="6">A monarquia não caiu por uma única crise. <em>Caiu quando perdeu o apoio dos principais grupos que sustentavam seu poder.</em></p>
+          <div class="finale-actions" data-at="6">
+            <button class="ghost-btn" type="button" data-open-refs><svg aria-hidden="true"><use href="#i-book"/></svg>Referências e créditos</button>
+            <a class="ghost-btn" href="A-Crise-do-Segundo-Reinado.pdf" download><svg aria-hidden="true"><use href="#i-download"/></svg>PDF</a>
+            <a class="ghost-btn" href="A-Crise-do-Segundo-Reinado.pptx" download><svg aria-hidden="true"><use href="#i-download"/></svg>PowerPoint</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Controles da apresentação -->
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#abertura" data-goto="0" aria-label="Voltar à abertura">
+      <svg class="brand-mark" viewBox="-20 -20 40 40" aria-hidden="true"><circle r="17"/><path d="M-9 5h18l2-10-6 4-5-7-5 7-6-4z"/><path d="M-9 8h18" stroke-width="2"/></svg>
+      <span><strong>Segundo Reinado</strong><small>1840 — 1889</small></span>
+    </a>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="btnPresenter" type="button" aria-label="Abrir modo apresentador em outra janela" title="Modo apresentador (P)"><svg><use href="#i-presenter"/></svg></button>
+      <button class="icon-btn" id="btnAudio" type="button" aria-label="Áudio: narração e trilha" aria-controls="audioPanel" aria-expanded="false" title="Áudio (A)"><svg><use href="#i-audio"/></svg><span class="audio-dot" aria-hidden="true"></span></button>
+      <button class="icon-btn" id="btnRefs" type="button" aria-label="Referências e créditos" aria-controls="refs" aria-expanded="false" title="Referências (R)"><svg><use href="#i-book"/></svg></button>
+      <button class="icon-btn" id="btnIndex" type="button" aria-label="Índice de slides" aria-controls="overview" aria-expanded="false" title="Índice (I)"><svg><use href="#i-grid"/></svg></button>
+      <button class="icon-btn" id="btnHelp" type="button" aria-label="Atalhos de teclado" aria-controls="help" aria-expanded="false" title="Atalhos (?)"><svg><use href="#i-keys"/></svg></button>
+      <button class="icon-btn" id="btnFull" type="button" aria-label="Tela cheia" title="Tela cheia (F)"><svg><use href="#i-full"/></svg></button>
+    </div>
+  </header>
+
+  <footer class="controls" id="controls">
+    <button class="nav-btn" id="btnPrev" type="button" aria-label="Slide anterior"><svg><use href="#i-prev"/></svg></button>
+    <div class="nav-meta">
+      <p class="nav-count"><span id="navNum">01</span><i>/</i><span id="navTotal">18</span></p>
+      <p class="nav-title" id="navTitle">Abertura</p>
+      <p class="nav-steps" id="navSteps" aria-hidden="true"></p>
+    </div>
+    <button class="nav-btn nav-next" id="btnNext" type="button" aria-label="Próximo slide"><svg><use href="#i-next"/></svg></button>
+  </footer>
+  <div class="progress" aria-hidden="true"><div class="progress-ticks" id="progressTicks"></div><span class="progress-fill" id="progressFill"></span></div>
+  <p class="key-hint" id="keyHint" aria-hidden="true"><svg><use href="#i-keys"/></svg> Use <kbd>←</kbd> <kbd>→</kbd> ou deslize para navegar</p>
+  <div class="sr-only" id="announcer" aria-live="polite"></div>
+
+  <!-- Índice / miniaturas -->
+  <div class="overview" id="overview" hidden>
+    <div class="overview-head"><p class="kicker">Índice da apresentação</p><button class="icon-btn" type="button" data-close aria-label="Fechar índice"><svg><use href="#i-close"/></svg></button></div>
+    <ol class="overview-grid" id="overviewGrid"></ol>
+  </div>
+
+  <!-- Referências e créditos -->
+  <div class="refs-panel" id="refs" hidden>
+    <div class="refs-card" role="dialog" aria-modal="true" aria-labelledby="refsTitle">
+      <button class="icon-btn refs-close" type="button" data-close aria-label="Fechar referências"><svg><use href="#i-close"/></svg></button>
+      <p class="kicker">Fontes do trabalho</p>
+      <h2 id="refsTitle">Referências e créditos</h2>
+      <div class="refs-scroll" tabindex="0" aria-label="Lista de referências">
+        <ol class="refs">
+          <li id="ref1"><strong>ALONSO, Angela.</strong> <em>Flores, votos e balas:</em> o movimento abolicionista brasileiro (1868-88). São Paulo: Companhia das Letras, 2015.</li>
+          <li id="ref2"><strong>BRASIL.</strong> <em>Constituição Política do Império do Brasil</em>, de 25 de março de 1824 (arts. 5º, 98, 101 e 102).</li>
+          <li id="ref3"><strong>BRASIL.</strong> <em>Lei nº 3.353, de 13 de maio de 1888</em> (Lei Áurea). Declara extinta a escravidão no Brasil.</li>
+          <li id="ref4"><strong>CARVALHO, José Murilo de.</strong> <em>Os bestializados:</em> o Rio de Janeiro e a República que não foi. São Paulo: Companhia das Letras, 1987.</li>
+          <li id="ref5"><strong>CARVALHO, José Murilo de.</strong> <em>A formação das almas:</em> o imaginário da República no Brasil. São Paulo: Companhia das Letras, 1990.</li>
+          <li id="ref6"><strong>CARVALHO, José Murilo de.</strong> <em>Cidadania no Brasil:</em> o longo caminho. Rio de Janeiro: Civilização Brasileira, 2001.</li>
+          <li id="ref7"><strong>CARVALHO, José Murilo de.</strong> <em>D. Pedro II:</em> ser ou não ser. São Paulo: Companhia das Letras, 2007.</li>
+          <li id="ref8"><strong>CASTRO, Celso.</strong> <em>Os militares e a República:</em> um estudo sobre cultura e ação política. Rio de Janeiro: Jorge Zahar, 1995.</li>
+          <li id="ref9"><strong>COSTA, Emília Viotti da.</strong> <em>Da Monarquia à República:</em> momentos decisivos. 7. ed. São Paulo: Editora Unesp, 1999.</li>
+          <li id="ref10"><strong>DORATIOTO, Francisco.</strong> <em>Maldita guerra:</em> nova história da Guerra do Paraguai. São Paulo: Companhia das Letras, 2002.</li>
+          <li id="ref11"><strong>FAUSTO, Boris.</strong> <em>História do Brasil.</em> São Paulo: Edusp, 1994.</li>
+          <li id="ref12"><strong>IBGE.</strong> <em>Recenseamento Geral do Império de 1872.</em> Rio de Janeiro: Directoria Geral de Estatística. População: 9.930.478 habitantes, dos quais 1.510.806 escravizados.</li>
+          <li id="ref13"><strong>SCHWARCZ, Lilia Moritz.</strong> <em>As barbas do imperador:</em> D. Pedro II, um monarca nos trópicos. São Paulo: Companhia das Letras, 1998.</li>
+          <li id="ref14"><strong>SCHWARCZ, Lilia Moritz; STARLING, Heloisa Murgel.</strong> <em>Brasil: uma biografia.</em> São Paulo: Companhia das Letras, 2015.</li>
+          <li id="ref15"><strong>MANIFESTO REPUBLICANO.</strong> <em>A República</em>, Rio de Janeiro, n. 1, 3 dez. 1870. Fac-símile: <a href="https://commons.wikimedia.org/wiki/File:A_Rep%C3%BAblica_(Rio_de_Janeiro),_n._1,_3_de_dezembro_de_1870.pdf" target="_blank" rel="noreferrer">Wikimedia Commons</a>.</li>
+          <li id="ref16"><strong>LOBO, Aristides.</strong> Carta publicada no <em>Diário Popular</em>, São Paulo, 18 nov. 1889. Citada em CARVALHO, <em>Os bestializados</em> (1987).</li>
+          <li id="ref17"><strong>NATURAL EARTH.</strong> <em>Admin 0 – Countries</em> e <em>Rivers + lake centerlines</em>. Dados cartográficos em domínio público, usados nos mapas. Disponível em: <a href="https://www.naturalearthdata.com/" target="_blank" rel="noreferrer">naturalearthdata.com</a>.</li>
+        </ol>
+        <div class="refs-side">
+          <section>
+            <h3>Imagens</h3>
+            <ul class="credits" id="credits"></ul>
+            <p class="refs-note">Ícones do slide 15: <a href="https://game-icons.net" target="_blank" rel="noreferrer">Game Icons</a> (autores do projeto game-icons.net, CC BY 3.0). Mapas: base cartográfica Natural Earth, traçados esquemáticos.</p>
+          </section>
+          <section>
+            <h3>Baixar a apresentação</h3>
+            <p><a href="A-Crise-do-Segundo-Reinado.pdf" download>PDF (18 slides)</a> · <a href="A-Crise-do-Segundo-Reinado.pptx" download>PowerPoint editável</a></p>
+          </section>
+          <section class="refs-team">
+            <h3>Integrantes · Professora Rita</h3>
+            <p>Davi Matheus · Juan Bento · Lucas Godoy · Kaique</p>
+            <p class="refs-note">Trabalho escolar em formato digital. As pinturas posteriores aos fatos aparecem como representações artísticas, e os números como estimativas quando é o caso.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ajuda -->
+  <div class="help" id="help" hidden>
+    <div class="help-card" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+      <button class="icon-btn" type="button" data-close aria-label="Fechar ajuda"><svg><use href="#i-close"/></svg></button>
+      <p class="kicker">Navegação</p>
+      <h2 id="helpTitle">Atalhos de teclado</h2>
+      <dl>
+        <div><dt><kbd>→</kbd> <kbd>Espaço</kbd> <kbd>PgDn</kbd></dt><dd>Avançar (um tópico por vez)</dd></div>
+        <div><dt><kbd>←</kbd> <kbd>PgUp</kbd></dt><dd>Voltar</dd></div>
+        <div><dt><kbd>Home</kbd> <kbd>End</kbd></dt><dd>Primeiro e último slide</dd></div>
+        <div><dt><kbd>F</kbd></dt><dd>Tela cheia</dd></div>
+        <div><dt><kbd>I</kbd></dt><dd>Índice com miniaturas</dd></div>
+        <div><dt><kbd>R</kbd></dt><dd>Referências e créditos</dd></div>
+        <div><dt><kbd>P</kbd></dt><dd>Modo apresentador (outra janela)</dd></div>
+        <div><dt><kbd>A</kbd> <kbd>N</kbd> <kbd>M</kbd></dt><dd>Painel de áudio · narração · silenciar</dd></div>
+        <div><dt><kbd>Esc</kbd></dt><dd>Fechar janelas</dd></div>
+      </dl>
+      <p class="help-touch">No celular ou tablet: deslize para os lados para mudar de slide. Toque nas imagens para ampliar.</p>
+    </div>
+  </div>
+
+  <!-- Áudio: narração opcional e trilha instrumental -->
+  <div class="audio-panel" id="audioPanel" hidden role="dialog" aria-labelledby="audioTitle">
+    <div class="ap-head"><p class="kicker" id="audioTitle">Áudio</p><button class="icon-btn" type="button" data-close aria-label="Fechar painel de áudio"><svg><use href="#i-close"/></svg></button></div>
+    <section class="ap-block">
+      <h3>Narração do slide</h3>
+      <p class="ap-status" id="narrStatus">Verificando gravações…</p>
+      <div class="ap-row">
+        <button class="ap-btn" id="narrPlay" type="button" disabled><svg aria-hidden="true"><use href="#i-play"/></svg><span>Iniciar</span></button>
+        <button class="ap-btn" id="narrReplay" type="button" disabled aria-label="Reproduzir novamente"><svg aria-hidden="true"><use href="#i-replay"/></svg></button>
+        <button class="ap-btn" id="narrNext" type="button" aria-label="Próximo slide"><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+      </div>
+      <div class="ap-progress" aria-hidden="true"><span id="narrBar"></span></div>
+      <label class="ap-check"><input type="checkbox" id="narrAuto"> Avançar sozinho quando a narração terminar</label>
+      <label class="ap-check"><input type="checkbox" id="narrSync" checked> Sincronizar os tópicos com a narração</label>
+    </section>
+    <section class="ap-block">
+      <h3>Trilha instrumental</h3>
+      <p class="ap-status">Trilha ambiente discreta, sintetizada no próprio navegador (não é uma gravação). Opcional.</p>
+      <button class="ap-btn ap-wide" id="scoreToggle" type="button" aria-pressed="false"><svg aria-hidden="true"><use href="#i-play"/></svg><span>Ligar trilha</span></button>
+    </section>
+    <section class="ap-block">
+      <label class="ap-range">Volume geral <input type="range" id="volMaster" min="0" max="100" value="80"></label>
+      <label class="ap-range">Volume da trilha <input type="range" id="volScore" min="0" max="100" value="45"></label>
+      <button class="ap-btn ap-wide" id="muteAll" type="button" aria-pressed="false"><span>Silenciar tudo</span></button>
+    </section>
+  </div>
+  <p class="toast" id="toast" role="status" hidden></p>
+
+  <!-- Visualizador de imagens -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox-inner" role="dialog" aria-modal="true" aria-label="Imagem ampliada">
+      <button class="icon-btn lightbox-close" type="button" data-close aria-label="Fechar imagem"><svg><use href="#i-close"/></svg></button>
+      <figure>
+        <div class="lightbox-img"><img id="lightboxImg" alt=""></div>
+        <figcaption><p id="lightboxCaption"></p><a id="lightboxSource" href="#" target="_blank" rel="noreferrer">Ficha e licença <svg aria-hidden="true"><use href="#i-ext"/></svg></a></figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<noscript><p class="noscript">Esta apresentação usa JavaScript para a navegação entre slides. Sem ele, os slides aparecem em sequência abaixo.</p></noscript>
+</body>
+</html>
