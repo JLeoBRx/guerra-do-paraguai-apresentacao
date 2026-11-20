@@ -1,16 +1,78 @@
 # A Crise do Segundo Reinado (1840–1889)
 
-Apresentação de História sobre os conflitos e as rupturas que levaram ao fim da monarquia brasileira. É uma reconstrução completa do PDF original do grupo, com 18 slides em 16:9, imagens de época e notas do apresentador.
+Apresentação de História sobre os conflitos e as rupturas que levaram ao fim da monarquia brasileira. São 18 slides em dois formatos: um **site de apresentação** no mesmo formato do site da Guerra do Paraguai (pasta raiz do repositório) e um **PowerPoint editável com PDF**. Os dois seguem a mesma narrativa e as mesmas fontes.
 
 **História · Professora Rita** · Davi Matheus, Juan Bento, Lucas Godoy e Kaique
 
-## Arquivos
+## O site
+
+Depois de publicado: https://guerra-do-paraguai-museu-digital.onrender.com/segundo-reinado/
+
+Para abrir no computador, sirva a **raiz do repositório** (o site usa caminhos relativos e precisa de um servidor, não abre direto com dois cliques):
+
+```bash
+python3 -m http.server 8000
+```
+
+Depois, abra http://localhost:8000/segundo-reinado/.
+
+### Como apresentar
+
+| Tecla | Ação |
+|---|---|
+| `→`, `Espaço`, `PgDn` | Avançar, um tópico por vez |
+| `←`, `PgUp` | Voltar |
+| `Home` / `End` | Primeiro e último slide |
+| `F` | Tela cheia |
+| `I` | Índice com miniaturas |
+| `R` | Referências e créditos das imagens |
+| `P` | Modo apresentador (abre em outra janela) |
+| `A` / `N` / `M` | Painel de áudio · narração · silenciar |
+| `Esc` | Fechar janelas |
+
+No celular, deslize para os lados. Clique em qualquer imagem para ampliá-la com legenda, autor, acervo e licença. Os números entre colchetes, como **[6]**, abrem a referência correspondente.
+
+**Modo apresentador** (`P` ou o primeiro botão da barra): mostra o slide atual e o próximo, o cronômetro, o tempo previsto de cada slide e o roteiro em formato “viagem no tempo”. Para cada slide há o ano em que a cena se passa, os lembretes de cada tópico, a fala, o texto de cada clique, o que aquilo tem a ver com hoje, um complemento e a frase de transição. As duas janelas ficam sincronizadas: avançar em qualquer uma avança a outra. O mesmo roteiro está em `ROTEIRO.md`, dividido entre os quatro integrantes, com tempo total estimado de 22:40.
+
+**O que tem em cada slide:** tópicos revelados por clique, uma transição escolhida para o momento da narrativa (11 tipos, como mergulho no mapa, passagem do tempo, virada de página e o fechamento), mapa do Império no contexto e na conclusão, mapa do café no slide 04 (Vale do Paraíba → Oeste Paulista, ferrovias e portos, uma camada por clique), linhas do tempo, retratos, documentos e pinturas de época. Com “reduzir movimento” ativado no sistema, as animações são desligadas. Em telas estreitas, cada slide vira uma página rolável.
+
+**Áudio:** nada toca sozinho. O painel tem trilha ambiente sintetizada no navegador e aceita narrações gravadas pelo grupo (veja `assets/audio/narracao/LEIA-ME.md`).
+
+### Estrutura do site
+
+| Caminho | O que é |
+|---|---|
+| `index.html` | Os 18 slides, o painel de referências e os créditos |
+| `presenter.html` | Janela do modo apresentador |
+| `css/` | Base, motor de slides, animações, composição de cada slide (`reinado.css`), celular e cenas |
+| `js/app.js` | Navegação, etapas, transições, lightbox, índice, referências |
+| `js/notes.js` | Roteiro do apresentador (fonte do `ROTEIRO.md`) |
+| `js/fx.js`, `js/map-data.js`, `js/mapa.js` | Mapa do Império e mapa do café (base cartográfica Natural Earth) |
+| `js/images.js` | Legenda, ficha no Wikimedia Commons, crédito e licença de cada imagem (gerado) |
+| `assets/img/` | 37 imagens históricas, redimensionadas para a web |
+| `scripts/imagens.py` | Prepara as imagens e gera `js/images.js` |
+| `scripts/roteiro.mjs` | Gera o `ROTEIRO.md` a partir de `js/notes.js` |
+| `scripts/validate.mjs` | Validação automática (também roda no GitHub Actions) |
+
+Para conferir o site depois de editar:
+
+```bash
+node segundo-reinado/scripts/validate.mjs
+```
+
+Ele confere os 18 slides e a ordem deles, as transições, o alinhamento entre cliques e roteiro, as citações e referências, os créditos das imagens, os arquivos locais, os textos alternativos, a ausência de autoplay e a sintaxe do JavaScript. Antes de publicar uma versão nova, rode `node scripts/stamp-version.mjs` na raiz para atualizar o `?v=` dos arquivos.
+
+Ícones das três colunas do slide 15 (Igreja, Exército e café): [Game Icons](https://game-icons.net) (CC BY 3.0). Os créditos completos das imagens ficam no próprio site (tecla `R`).
+
+## O PowerPoint e o PDF
+
+### Arquivos
 
 | Arquivo | O que é |
 |---|---|
 | `A-Crise-do-Segundo-Reinado.pptx` | Apresentação editável (PowerPoint), com roteiro nas notas de cada slide |
 | `A-Crise-do-Segundo-Reinado.pdf` | Versão final em PDF (18 páginas) |
-| `ROTEIRO.md` | As notas do apresentador em texto corrido, para imprimir ou dividir as falas |
+| `ROTEIRO.md` | Roteiro completo do site, para imprimir ou dividir as falas (as notas do PPTX são uma versão resumida) |
 | `fonte/` | Scripts que geram a apresentação (imagens, texturas e slides) |
 
 ## Estrutura (18 slides)
@@ -98,7 +160,7 @@ Todas vêm do Wikimedia Commons, em domínio público, salvo indicação.
 
 Ícones: [Game Icons](https://game-icons.net) (CC BY 3.0), via `react-icons`.
 
-## Como gerar de novo
+## Como gerar o PowerPoint de novo
 
 Requer Python 3 com Pillow e NumPy, Node.js e acesso a `upload.wikimedia.org`.
 

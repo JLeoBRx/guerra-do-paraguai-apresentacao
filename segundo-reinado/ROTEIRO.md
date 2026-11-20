@@ -1,275 +1,374 @@
-# Roteiro do apresentador — A Crise do Segundo Reinado
+# Roteiro do apresentador — A Crise do Segundo Reinado (1840–1889)
 
-Texto das notas de cada slide (o mesmo que aparece no modo apresentador do PowerPoint). Tempo sugerido: cerca de 1 minuto por slide, 18 a 20 minutos no total.
+Texto de apoio para quem apresenta o site (`index.html`). **Não aparece na projeção.** O mesmo conteúdo está no modo apresentador: botão de tela no canto superior direito ou tecla **P**, que abre uma janela separada com o roteiro, a lista de tópicos (com o atual destacado), o próximo slide e o cronômetro. O PowerPoint traz, nas notas de cada slide, uma versão resumida deste roteiro.
 
-## Slide 01 — Abertura
+## Como usar
 
-ABERTURA (cerca de 40 s)
+- **Viagem no tempo:** cada slide começa num momento da história (“Onde estamos no tempo”). Comece pela frase de **Para começar**, que leva a turma até aquele ano.
+- **Um tópico por clique:** os textos aparecem na tela um de cada vez. A cada clique (seta **→**), diga o texto de **Agora** daquele tópico. Se alguém se perder, olhe a lista de tópicos: o atual está destacado na tela e no modo apresentador.
+- **Com os olhos de hoje:** antes de passar ao próximo slide, faça a conexão com o presente.
+- **Tempo total estimado:** 22:40 (18 slides).
+- **Narração gravada:** o texto de **Para começar** e de cada tópico é o que deve ser gravado. Veja `assets/audio/narracao/LEIA-ME.md`.
 
-Entre 1840 e 1889, o Brasil foi governado por D. Pedro II. O Império parecia estável, mas acumulou conflitos políticos, sociais, religiosos e militares que, somados, levaram à Proclamação da República em 15 de novembro de 1889.
+## Sugestão de divisão entre os integrantes
 
-Pergunta-guia para a turma: como um governo que durou quase meio século perdeu, em poucos anos, o apoio dos grupos que o sustentavam?
+Apenas uma sugestão; ajustem como preferirem.
 
-Imagem: D. Pedro II fotografado em 1876, durante sua viagem aos Estados Unidos (estúdio de Mathew Brady; Brady-Handy Collection, Library of Congress). Domínio público.
+| Integrante | Slides | Tempo |
+|---|---|---|
+| Davi Matheus | 1, 2, 3, 4, 5 | 6:20 |
+| Juan Bento | 6, 7, 8, 9, 10 | 6:05 |
+| Lucas Godoy | 11, 12, 13, 14 | 5:05 |
+| Kaique | 15, 16, 17, 18 | 5:10 |
 
-## Slide 02 — O Brasil Imperial
+---
 
-O BRASIL IMPERIAL — O CONTEXTO
-- Em julho de 1840, o Golpe da Maioridade antecipou a maioridade de D. Pedro II, então com 14 anos. A ideia era pôr fim ao período regencial (1831–1840), marcado por revoltas como a Cabanagem, a Sabinada, a Balaiada e a Farroupilha. Ele foi coroado em 1841.
-- Centralização: a Interpretação do Ato Adicional (1840) e a reforma do Código de Processo Criminal (1841) devolveram ao governo central o controle da polícia e da Justiça. Os presidentes de província eram nomeados pelo governo do Rio de Janeiro.
-- Estado imperial: a Constituição de 1824 previa quatro poderes (Executivo, Legislativo, Judiciário e Moderador), Senado vitalício, Conselho de Estado e voto censitário (por renda).
-- Sociedade: o primeiro censo do país (1872) contou 9.930.478 habitantes, dos quais 1.510.806 eram escravizados (cerca de 15%). A economia era agroexportadora e a maioria da população vivia no campo.
+## 01 · Abertura — 0:45
 
-Fontes: IBGE, Recenseamento Geral do Império (1872); Fausto (1994); Carvalho (2007).
+**Onde estamos no tempo:** 1840 → 1889
 
-Imagem: Claude Joseph Barandier, retrato de D. Pedro II (óleo sobre tela, 1840), com o portal do Paço de São Cristóvão ao fundo. Domínio público.
+**Para começar.** Boa tarde. Hoje vamos voltar ao Brasil do século XIX, quando o país era uma monarquia governada por um imperador: D. Pedro II, o homem da fotografia. Ele reinou de 1840 a 1889 — quase meio século. O Império parecia estável, mas em poucos anos perdeu os apoios que o sustentavam e caiu sem quase nenhuma resistência. É essa crise que vamos contar.
 
-## Slide 03 — Estabilidade e contradições
+**Com os olhos de hoje.** Muita gente ainda conhece D. Pedro II pelas notas, selos e retratos. Em Petrópolis, o antigo palácio de verão da família imperial virou o Museu Imperial, onde está a coroa do imperador.
 
-ESTABILIDADE E CONTRADIÇÕES
+**Se perguntarem.** A foto é de 1876, do estúdio do fotógrafo Mathew Brady, feita quando D. Pedro II visitou os Estados Unidos. Ela está na Biblioteca do Congresso norte-americano.
 
-A FACHADA (política)
-- Liberais (“luzias”) e conservadores (“saquaremas”) se revezavam no poder. Os dois partidos tinham bases sociais parecidas: proprietários rurais, comerciantes e bacharéis.
-- Em 1847 foi criado o cargo de presidente do Conselho de Ministros. No parlamentarismo inglês, o gabinete nasce da maioria da Câmara. No Brasil acontecia o contrário: o imperador escolhia o chefe do gabinete e, se a Câmara fosse hostil, podia dissolvê-la e convocar eleições, que o governo quase sempre vencia. Daí a expressão “parlamentarismo às avessas”.
-- Poder Moderador: a Constituição o definia como “a chave de toda a organização política”, exclusivo do imperador. Com ele, D. Pedro II nomeava ministros e senadores e dissolvia a Câmara, funcionando como árbitro.
+**Para passar ao próximo.** _Para entender a queda, primeiro precisamos conhecer o Império no auge. Vamos voltar a 1840._
 
-OS BASTIDORES (sociedade)
-- O café respondia por cerca de 61,5% do valor das exportações na década de 1880.
-- A escravidão continuava a ser a base do trabalho nas fazendas e em muitas atividades urbanas.
-- Participação política mínima: depois da Lei Saraiva (1881), que exigiu renda comprovada e alfabetização dos novos eleitores, menos de 1% da população votou nas eleições de 1886.
+## 02 · O Brasil Imperial — 1:20
 
-Fontes: Carvalho (2001); Fausto (1994).
+**Onde estamos no tempo:** 1840
 
-Imagens: Pedro Américo, “D. Pedro II na abertura da Assembleia Geral” (Fala do Trono), 1872, Museu Imperial; Marc Ferrez, escravizados colhendo café no Vale do Paraíba, 1883. Domínio público.
+**Para começar.** Estamos em julho de 1840. O Brasil é independente há menos de vinte anos e vive um período agitado, com revoltas em várias províncias. Olhem o mapa: um território enorme, com a capital no Rio de Janeiro, chamada de Corte.
 
-## Slide 04 — As transformações do Brasil
+**Tópico por tópico** (avance com →):
 
-AS TRANSFORMAÇÕES DO BRASIL
+1. **Golpe da Maioridade** — Para acalmar o país, os políticos anteciparam a maioridade do herdeiro: D. Pedro II assumiu o trono com apenas 14 anos. Foi o chamado Golpe da Maioridade, que encerrou o período regencial. Ele foi coroado no ano seguinte, em 1841.
+2. **Poder centralizado** — O governo passou a concentrar o poder no Rio de Janeiro. Os presidentes de cada província não eram eleitos: eram nomeados pelo governo central, e a polícia e a Justiça também ficaram sob controle da Corte.
+3. **Constituição de 1824** — As regras vinham da Constituição de 1824, a primeira do país. Ela criou quatro poderes — Executivo, Legislativo, Judiciário e o Poder Moderador, só do imperador —, um Senado vitalício e o voto censitário, ou seja, só votava quem tinha certa renda.
+4. **Sociedade agrária e escravista** — E a sociedade? Era agrária e escravista. O primeiro censo do país, de 1872, contou 9,9 milhões de habitantes. Desses, 1,5 milhão eram pessoas escravizadas, cerca de 15% da população.
 
-Na segunda metade do século XIX o país mudou mais rápido que suas instituições.
-- Café: a produção se expandiu do Vale do Paraíba (RJ/SP) para o Oeste Paulista, onde fazendeiros investiram em ferrovias e, nos anos 1880, em trabalhadores imigrantes.
-- Ferrovias: a primeira, de Mauá (1854), tinha 14,5 km; em 1889 havia cerca de 9.500 km de trilhos, a maioria ligando zonas cafeeiras aos portos.
-- Cidades: Rio de Janeiro, São Paulo, Santos e Recife ganharam iluminação a gás, bondes e telégrafo. Em 1874, o cabo submarino passou a ligar o Brasil à Europa.
-- Comércio: cresceram os portos, os bancos, as casas comerciais e a imprensa.
-- Novos grupos: profissionais liberais, jornalistas, funcionários públicos, militares e imigrantes formavam camadas urbanas com pouca voz no sistema político.
-- Pressões: esses grupos passaram a cobrar abolição, mais autonomia para as províncias (federalismo) e reformas eleitorais.
+**Com os olhos de hoje.** Ainda temos Senado e Constituição, mas as regras mudaram: hoje os senadores têm mandato de oito anos, e não vitalício, e o voto não depende de renda.
 
-Ideia central: a economia e a sociedade mudavam, mas a estrutura política continuava centralizada e restrita.
+**Se perguntarem.** O período regencial (1831–1840) teve revoltas como a Cabanagem (Pará), a Sabinada (Bahia), a Balaiada (Maranhão) e a Farroupilha (Rio Grande do Sul). A centralização foi uma resposta a elas.
 
-Fontes: Fausto (1994); Costa (1999).
+**Para passar ao próximo.** _Por fora, esse Império parecia firme. Mas o que havia por trás da fachada?_
 
-Imagens: Marc Ferrez — Estrada de Ferro Santos–São Paulo (1870, Biblioteca Mário de Andrade), embarque de café no porto de Santos (c. 1880) e Rua do Ouvidor, Rio de Janeiro (sem data, Instituto Moreira Salles). Domínio público.
+## 03 · Estabilidade e contradições — 1:30
 
-## Slide 05 — A Guerra do Paraguai
+**Onde estamos no tempo:** 1847–1886
 
-A GUERRA DO PARAGUAI (1864–1870)
-- A guerra opôs a Tríplice Aliança (Brasil, Argentina e Uruguai) ao Paraguai de Francisco Solano López. Foi o maior conflito externo da história brasileira.
-- O Exército, pequeno antes da guerra, precisou recrutar em massa: Voluntários da Pátria, Guarda Nacional, recrutamento forçado e escravizados libertados para lutar.
-- Estimativas: o general e historiador Augusto Tasso Fragoso calculou que o Império mobilizou cerca de 139 mil homens; para as mortes brasileiras, a estimativa mais citada é de cerca de 50 mil, muitas delas causadas por doenças. Os números variam conforme a fonte.
-- A vitória deu prestígio aos militares e criou uma identidade própria da corporação.
-- No pós-guerra, os oficiais se queixavam de soldos baixos, promoções lentas, cortes no orçamento e pouca influência política. Muitos desprezavam os “casacas”, os políticos civis, quase sempre bacharéis em Direito.
-- Para comentar: na charge “De volta do Paraguay” (A Vida Fluminense, 1870), Angelo Agostini mostra um soldado negro que volta da guerra e encontra a mãe amarrada ao tronco. A guerra também tornou mais visível a contradição da escravidão.
+**Para começar.** Vamos olhar o Império de dois jeitos. À esquerda, a fachada: a política, como na pintura em que D. Pedro II abre a Assembleia Geral. À direita, os bastidores: a sociedade que sustentava tudo isso.
 
-Fontes: Doratioto (2002); Castro (1995); Schwarcz e Starling (2015).
+**Tópico por tópico** (avance com →):
 
-Imagens: Pedro Américo, “Batalha do Avaí”, 1872–1877, Museu Nacional de Belas Artes (representação artística); furriel Luiz Antonio de Vargas, do 1º Batalhão de Voluntários da Pátria, fotografia de 1865 (publicada em Salles, Guerra do Paraguai: memórias & imagens, Biblioteca Nacional, 2003). Domínio público.
+1. **Dois partidos no poder** — Na política, dois partidos se revezavam no governo: o Liberal e o Conservador. Os dois representavam basicamente os mesmos grupos: grandes proprietários, comerciantes e advogados.
+2. **Parlamentarismo às avessas** — Em 1847 foi criado o cargo de presidente do Conselho de Ministros, uma espécie de primeiro-ministro. Mas era o imperador quem escolhia esse chefe do gabinete — e não a maioria da Câmara, como na Inglaterra. Por isso os historiadores falam em parlamentarismo às avessas.
+3. **Poder Moderador** — Tudo isso funcionava graças ao Poder Moderador, que a Constituição chamava de 'a chave de toda a organização política'. Com ele, o imperador podia dissolver a Câmara, convocar novas eleições e escolher os senadores.
+4. **O café sustentava tudo** — Agora os bastidores. Quem pagava a conta era o café: na década de 1880, ele respondia por 61,5% do valor das exportações do Brasil.
+5. **A escravidão continuava** — E quem colhia o café? Em grande parte, pessoas escravizadas, como as da fotografia de Marc Ferrez, de 1883. A escravidão era a base do trabalho no campo e também nas cidades.
+6. **Quase ninguém votava** — Por fim, quase ninguém participava da política. Depois da Lei Saraiva, de 1881, que exigiu renda comprovada e saber ler, menos de 1% da população votou nas eleições de 1886.
 
-## Slide 06 — As três grandes questões
+**Com os olhos de hoje.** Hoje o voto é obrigatório para quem sabe ler, dos 18 aos 70 anos, e as pessoas analfabetas podem votar desde 1985. É uma diferença enorme em relação ao Império.
 
-AS TRÊS GRANDES QUESTÕES — TRANSIÇÃO
+**Se perguntarem.** Os liberais eram chamados de 'luzias' e os conservadores de 'saquaremas'. Uma frase famosa, atribuída a um político da época, dizia que nada se parecia mais com um saquarema do que um luzia no poder. A autoria e a redação exatas da frase são incertas.
 
-A partir dos anos 1870, três conflitos, chamados nos livros de “questões”, desgastaram a relação entre o governo imperial e grupos que apoiavam a monarquia:
+**Para passar ao próximo.** _Enquanto a política parecia parada, o país estava mudando depressa. Vamos ver como._
 
-I. Questão Religiosa (1872–1875): Igreja contra Estado.
+## 04 · As transformações do Brasil — 1:25
 
-II. Questão Militar (1883–1887): Exército contra o governo civil.
+**Onde estamos no tempo:** 1850 → 1889
 
-III. Questão Abolicionista (anos 1880): a luta pelo fim da escravidão, que dividiu o país e terminou afastando os senhores de escravizados.
+**Para começar.** Agora estamos na segunda metade do século XIX. Olhem o mapa do Sudeste: ele vai mostrando, a cada clique, como o café, os trilhos e as cidades transformaram o Brasil.
 
-Nenhum desses conflitos, sozinho, derrubou o Império. O que pesa é o efeito acumulado: a cada crise, a monarquia perdeu aliados. Os próximos slides tratam de cada questão.
+**Tópico por tópico** (avance com →):
 
-Imagens: retrato a óleo de D. Antônio de Macedo Costa, bispo do Pará (autor desconhecido, década de 1870, Catedral de Belém); tenente-coronel Antônio de Sena Madureira (década de 1880); Marc Ferrez, escravizados em fazenda de café, c. 1885. Domínio público.
+1. **O café avança** — Primeiro, o café se espalhou pelo Vale do Paraíba, ao longo do rio Paraíba do Sul, entre o Rio de Janeiro e São Paulo. Depois, com as terras do Vale cansadas, ele avançou para o Oeste Paulista — a região de Campinas e, mais tarde, de Ribeirão Preto. É a seta vermelha: a chamada marcha do café.
+2. **Ferrovias** — Para levar o café até os portos, vieram as ferrovias. A primeira, inaugurada em 1854 perto do Rio, tinha só 14,5 quilômetros. Em 1889, o país já tinha cerca de 9.500 quilômetros de trilhos. Olhem as linhas douradas ligando as fazendas a Santos e ao Rio.
+3. **Portos e cidades crescem** — Os portos de Santos e do Rio cresceram, e as cidades ganharam iluminação a gás, bondes e telégrafo. Em 1874, um cabo submarino passou a ligar o Brasil à Europa: as notícias chegavam em horas, e não em semanas.
+4. **Novos grupos, novas pressões** — Com as cidades, cresceram grupos novos: imigrantes, jornalistas, professores, advogados, engenheiros e militares. Eles tinham pouca voz no sistema político e começaram a pedir mudanças: o fim da escravidão, mais autonomia para as províncias e eleições mais abertas.
 
-## Slide 07 — A Questão Religiosa
+**Com os olhos de hoje.** O porto de Santos é hoje o maior da América Latina, e muitas cidades do interior paulista nasceram em volta das estações de trem do café.
 
-A QUESTÃO RELIGIOSA — IGREJA E ESTADO
-- Religião oficial: a Constituição de 1824 manteve o catolicismo como religião do Império (art. 5º). Outras religiões eram toleradas apenas no culto doméstico.
-- Padroado: herdado da Coroa portuguesa, dava ao imperador o direito de indicar bispos e outros cargos da Igreja; o Estado pagava o clero. Na prática, a Igreja funcionava como parte da administração.
-- Beneplácito (art. 102): bulas e outros documentos do papa só tinham validade no Brasil com a aprovação do imperador.
-- Ultramontanismo (de “além dos montes”, ou seja, Roma): o papa Pio IX liderou uma reação contra o liberalismo e a maçonaria. A encíclica Quanta Cura e o Syllabus (1864) condenaram várias ideias modernas, e o Concílio Vaticano I (1869–1870) proclamou a infalibilidade papal.
-- O choque era institucional: bispos formados nessa linha passaram a seguir Roma mesmo sem o beneplácito do imperador. A pergunta de fundo era: quem manda na Igreja do Brasil, o papa ou o imperador?
+**Se perguntarem.** Os traçados das ferrovias no mapa são esquemáticos: ligam as cidades principais na ordem certa, mas não seguem cada curva dos trilhos. A Mogiana, por exemplo, chegou a Ribeirão Preto em 1883.
 
-Fontes: Constituição Política do Império do Brasil (1824); Fausto (1994); Costa (1999).
+**Para passar ao próximo.** _Enquanto a economia mudava, o Brasil entrou na maior guerra da sua história. E ela mudou o Exército._
 
-Imagens: capa da Constituição Política do Império do Brasil, 1824 (Arquivo Nacional); Pio IX fotografado por Adolphe Braun, 1875; D. Pedro II, 1876 (Brady-Handy, Library of Congress). Domínio público.
+## 05 · A Guerra do Paraguai — 1:20
 
-## Slide 08 — O conflito com os bispos
+**Onde estamos no tempo:** 1864 → 1870
 
-O CONFLITO COM OS BISPOS
-- 1872: no Rio de Janeiro, o padre Almeida Martins discursou numa loja maçônica em homenagem ao Visconde do Rio Branco, presidente do Conselho de Ministros e grão-mestre da maçonaria, pela Lei do Ventre Livre. O bispo do Rio o suspendeu.
-- 1872–1873: D. Vital, bispo de Olinda, e D. Antônio de Macedo Costa, bispo do Pará, ordenaram que as irmandades religiosas expulsassem seus membros maçons. As que se recusaram foram interditadas.
-- As irmandades recorreram ao governo. Com base no padroado e no beneplácito, o governo mandou suspender as punições, já que as condenações papais à maçonaria não tinham sido aprovadas no Brasil. Os bispos se recusaram a obedecer.
-- 1874: presos, julgados e condenados a quatro anos de prisão com trabalhos forçados. O imperador comutou a pena para prisão simples.
-- Setembro de 1875: o novo gabinete, chefiado pelo Duque de Caxias, concedeu anistia aos bispos.
+**Para começar.** Vamos a 1864. Na região do rio da Prata começa a Guerra do Paraguai, que vai durar até 1870. A pintura de Pedro Américo mostra a Batalha do Avaí, de 1868. Ela é importante para nós por um motivo: foi ali que o Exército brasileiro mudou.
 
-Consequências: parte do clero e dos católicos mais fiéis se afastou do trono. A Igreja não se tornou republicana (a República separou Igreja e Estado em 1890), mas deixou de ser uma defensora firme da monarquia.
+**Tópico por tópico** (avance com →):
 
-Fontes: Fausto (1994); Costa (1999); Carvalho (2007).
+1. **A Tríplice Aliança** — Brasil, Argentina e Uruguai formaram a Tríplice Aliança contra o Paraguai, governado por Francisco Solano López. Foi o maior conflito externo da história do Brasil.
+2. **Um Exército muito maior** — O Exército, que era pequeno, precisou crescer muito depressa. Vieram os Voluntários da Pátria, como o soldado da foto, homens recrutados à força e também escravizados libertados para lutar. Estima-se que cerca de 139 mil brasileiros tenham sido mobilizados e cerca de 50 mil tenham morrido — os números variam conforme a fonte.
+3. **Prestígio militar** — Com a vitória, os militares voltaram como heróis. Ganharam prestígio e passaram a se ver como um grupo com identidade própria, que tinha defendido a nação.
+4. **Tensão no pós-guerra** — Mas, depois da guerra, os oficiais se sentiram esquecidos: soldos baixos, promoções lentas e pouco espaço na política. Muitos passaram a desprezar os políticos civis, que chamavam de 'casacas'. A charge de Angelo Agostini, de 1870, mostra outro efeito: um soldado negro volta da guerra e encontra a mãe castigada no tronco. A guerra deixou mais visível a contradição da escravidão.
 
-Imagens: Frei Vital, bispo de Olinda, fotografado por Militão Augusto de Azevedo em 1879 (Museu Paulista da USP); D. Antônio de Macedo Costa (Arquivo Nacional); Visconde do Rio Branco, por Alberto Henschel, 1879; Angelo Agostini, caricatura na Revista Illustrada, 1º dez. 1876, sobre o bispo de Olinda suspendendo o monsenhor Pinto de Campos por celebrar o casamento de um maçom. Domínio público.
+**Com os olhos de hoje.** Muitas cidades têm ruas e praças com nomes ligados à guerra, como Riachuelo, Tuiuti, Humaitá e Voluntários da Pátria.
 
-## Slide 09 — A Questão Militar
+**Se perguntarem.** O general e historiador Augusto Tasso Fragoso calculou em cerca de 139 mil o número de mobilizados pelo Império. Grande parte das mortes foi causada por doenças, como o cólera, e não pelos combates.
 
-A QUESTÃO MILITAR (1883–1887)
+**Para passar ao próximo.** _Esse Exército fortalecido e insatisfeito é uma das peças da crise. Mas não a única: vamos ver as três grandes questões._
 
-Depois da Guerra do Paraguai, os oficiais esperavam reconhecimento. Encontraram soldos baixos, promoções lentas e um governo civil que desconfiava do Exército.
-- 1883: a Escola de Tiro de Campo Grande (RJ), comandada pelo tenente-coronel Sena Madureira, contestou um projeto de reforma do montepio (fundo de pensões) militar.
-- 1884: Sena Madureira recebeu com honras o jangadeiro Francisco José do Nascimento, herói da abolição no Ceará. Interpelado pelo ministro da Guerra, foi repreendido e transferido para o Rio Grande do Sul. Um aviso ministerial de 26 de dezembro de 1884 restringiu as manifestações de militares na imprensa.
-- 1886: o coronel Cunha Matos respondeu pela imprensa às acusações de um deputado e ficou preso por dois dias. No mesmo ano, Sena Madureira publicou artigo no jornal republicano A Federação, de Porto Alegre, e foi punido de novo.
-- 1886–1887: o marechal Deodoro da Fonseca, que comandava as armas no Rio Grande do Sul, defendeu os oficiais e foi afastado. Em 1887, pressionado, o governo cancelou as punições.
-- 1887: os oficiais fundaram o Clube Militar, presidido por Deodoro. Em outubro, o Clube pediu à princesa regente que o Exército não fosse usado para capturar escravizados fugidos.
+## 06 · As três grandes questões — 0:55
 
-Ideia central: os militares passaram a se ver como defensores da “honra” da corporação e da nação, acima dos políticos civis.
+**Onde estamos no tempo:** 1872 → 1888
 
-Fontes: Castro (1995); Costa (1999); Carvalho (2007).
+**Para começar.** A partir dos anos 1870, três conflitos — que os livros chamam de questões — desgastaram a relação entre o governo e grupos que sempre tinham apoiado o trono. Vamos apresentá-las agora e detalhar cada uma nos próximos slides.
 
-Imagem: marechal Deodoro da Fonseca, retrato oficial de 1889 (Galeria dos Presidentes). Domínio público.
+**Tópico por tópico** (avance com →):
 
-## Slide 10 — O positivismo e os militares
+1. **Questão Religiosa** — Primeira: a Questão Religiosa, entre 1872 e 1875. A Igreja Católica entrou em choque com o Estado, e dois bispos acabaram presos.
+2. **Questão Militar** — Segunda: a Questão Militar, entre 1883 e 1887. Oficiais do Exército foram punidos por se manifestar na imprensa e enfrentaram o governo civil.
+3. **Questão Abolicionista** — Terceira: a Questão Abolicionista, que ganhou força nos anos 1880. A luta contra a escravidão dividiu o país e, no fim, afastou os senhores de escravizados da monarquia. Lembrem: nenhuma dessas questões, sozinha, derrubou o Império. O que pesou foi a soma.
 
-O POSITIVISMO E OS MILITARES
-- O positivismo foi criado pelo filósofo francês Auguste Comte (1798–1857). Defendia que a sociedade fosse organizada pela ciência, com ordem e progresso, e via a república como forma de governo mais avançada que a monarquia.
-- No Brasil, essas ideias circularam entre engenheiros, médicos e, sobretudo, alunos da Escola Militar da Praia Vermelha, no Rio de Janeiro, onde se estudava muita matemática e ciência.
-- O professor Benjamin Constant Botelho de Magalhães tornou-se referência para a “mocidade militar”. Ele ajudou a aproximar esses jovens oficiais do movimento republicano e participou da articulação de novembro de 1889.
-- O lema “Ordem e Progresso” se inspira na fórmula de Comte “O amor por princípio e a ordem por base; o progresso por fim”. Foi inscrito na bandeira republicana, adotada em 19 de novembro de 1889.
-- Atenção: o Exército não era homogêneo. Havia oficiais monarquistas, liberais, positivistas e republicanos de vários tipos. Celso Castro (1995) distingue os oficiais “científicos”, formados na Escola, dos “tarimbeiros”, formados na tropa. Deodoro, monarquista, só aderiu à derrubada do Império nos dias finais da crise.
+**Com os olhos de hoje.** Hoje o Brasil é um Estado laico, os militares da ativa não podem se filiar a partidos e reduzir alguém à condição análoga à de escravo é crime. As três questões ajudam a entender por que essas regras existem.
 
-Fontes: Castro (1995); Carvalho (1990).
+**Se perguntarem.** O retrato da Questão Religiosa é de D. Antônio de Macedo Costa, bispo do Pará; o da Questão Militar, do tenente-coronel Sena Madureira; e a foto de Marc Ferrez mostra pessoas escravizadas numa fazenda de café, por volta de 1885.
 
-Imagens: Auguste Comte (daguerreótipo, 1849); Escola Militar da Praia Vermelha, c. 1885–1895 (Instituto Moreira Salles); Benjamin Constant, 1889 (Arquivo Nacional); bandeira republicana de 1889, desenhada por Raimundo Teixeira Mendes. Domínio público.
+**Para passar ao próximo.** _Vamos começar pela Igreja. Para entender o conflito, precisamos voltar à Constituição de 1824._
 
-## Slide 11 — O processo abolicionista
+## 07 · A Questão Religiosa — 1:15
 
-O PROCESSO ABOLICIONISTA
-- 1850 — Lei Eusébio de Queirós (Lei nº 581): proibiu o tráfico de africanos escravizados, sob pressão da Inglaterra (Bill Aberdeen, 1845). A escravidão continuou e cresceu o tráfico interno, do Nordeste para as fazendas de café do Sudeste.
-- 1871 — Lei do Ventre Livre (Lei nº 2.040, ou Lei Rio Branco): filhos de mulheres escravizadas nascidos a partir da lei seriam livres. O senhor, porém, podia usar o trabalho deles até os 21 anos ou entregá-los ao Estado aos 8 anos, mediante indenização.
-- 1885 — Lei dos Sexagenários (Lei nº 3.270, ou Lei Saraiva-Cotegipe): libertou os escravizados com 60 anos ou mais, mas eles deviam trabalhar mais três anos (ou até os 65) como “indenização” ao senhor. Poucos chegavam a essa idade.
-- 1888 — Lei Áurea (Lei nº 3.353): extinguiu a escravidão, sem indenização aos proprietários.
+**Onde estamos no tempo:** 1824 → 1872
 
-Resistência e movimento abolicionista:
-- As pessoas escravizadas resistiram com fugas, quilombos (como o Jabaquara, em Santos), revoltas e ações na Justiça. Nos anos 1887–1888, as fugas em massa desorganizaram fazendas em São Paulo.
-- Em 1881, jangadeiros de Fortaleza, entre eles Francisco José do Nascimento (o “Dragão do Mar”), recusaram-se a transportar escravizados. O Ceará e o Amazonas aboliram a escravidão em 1884.
-- Abolicionistas: Luiz Gama (ex-escravizado e advogado, libertou centenas de pessoas na Justiça; morreu em 1882), José do Patrocínio (jornalista), André Rebouças (engenheiro) e Joaquim Nabuco (deputado, autor de O Abolicionismo, 1883).
+**Para começar.** Este livro de capa verde é a Constituição de 1824. Ela dizia como a Igreja e o Estado se relacionavam. No diagrama, vejam os bispos no meio: de um lado, o papa, em Roma; do outro, o imperador. Eles ficaram presos entre duas autoridades.
 
-Fontes: Alonso (2015); Fausto (1994); Schwarcz e Starling (2015).
+**Tópico por tópico** (avance com →):
 
-Imagens: Luiz Gama (Arquivo Nacional); José do Patrocínio (Alberto Henschel, antes de 1882); André Rebouças (1871); Joaquim Nabuco (Alfredo Ducasble, c. 1886); Francisco José do Nascimento, o Dragão do Mar, em desenho de Angelo Agostini (Revista Illustrada, 1884). Domínio público.
+1. **Religião oficial** — Pela Constituição, o catolicismo era a religião oficial do Império. As outras religiões eram toleradas, mas só em culto doméstico, sem templo com forma exterior de igreja.
+2. **Padroado** — Pelo padroado, herdado de Portugal, o imperador indicava os bispos e o Estado pagava os padres. Na prática, a Igreja funcionava quase como um setor do governo.
+3. **Beneplácito** — Pelo beneplácito, bulas e ordens do papa só valiam no Brasil se o imperador aprovasse. Ou seja: o papa falava, mas era o imperador quem decidia se valia aqui.
+4. **Ultramontanismo** — Só que, nessa época, o papa Pio IX liderava um movimento chamado ultramontanismo, que reforçava a autoridade de Roma sobre as igrejas de cada país. Em 1864, o Syllabus condenou várias ideias modernas, entre elas a maçonaria. Bispos formados nessa linha passaram a obedecer ao papa mesmo sem a aprovação do imperador. O choque estava armado.
 
-## Slide 12 — A Lei Áurea
+**Com os olhos de hoje.** A Constituição de 1988 garante a liberdade de crença e proíbe o Estado de financiar cultos ou igrejas (art. 19). O padroado e o beneplácito deixaram de existir com a República.
 
-A LEI ÁUREA — 13 DE MAIO DE 1888
-- A princesa Isabel, regente do Império enquanto D. Pedro II se tratava na Europa, assinou a Lei nº 3.353, aprovada às pressas pela Câmara e pelo Senado depois de proposta do gabinete conservador de João Alfredo.
-- A lei tem apenas dois artigos: o primeiro declara extinta a escravidão; o segundo revoga as disposições em contrário.
-- Libertou cerca de 700 mil pessoas que ainda estavam escravizadas.
-- A lei foi resultado de décadas de pressão: a campanha abolicionista, a resistência e as fugas em massa das pessoas escravizadas e a recusa de setores do Exército em persegui-las.
-- A foto de Marc Ferrez mostra a multidão reunida no centro do Rio de Janeiro em 13 de maio de 1888, dia da assinatura da lei. Nos dias seguintes houve festas e uma missa campal em ação de graças (17 de maio).
-- O que ficou de fora: a lei não previu terra, educação, trabalho nem qualquer reparação aos libertos. Muitos fazendeiros e o governo preferiram imigrantes europeus, e a população negra enfrentou exclusão e racismo cujas marcas chegam até hoje.
+**Se perguntarem.** 'Ultramontano' quer dizer 'além dos montes', ou seja, além dos Alpes, onde fica Roma. O Concílio Vaticano I (1869–1870) proclamou a infalibilidade do papa em matéria de fé.
 
-Fontes: Lei nº 3.353, de 13 de maio de 1888; Alonso (2015); Schwarcz e Starling (2015).
+**Para passar ao próximo.** _Na década de 1870, esse choque deixou de ser teórico. Vamos ver o que aconteceu com os bispos._
 
-Imagem: Marc Ferrez, multidão no Rio de Janeiro em 13 de maio de 1888 (Coleção Gilberto Ferrez, Getty Research Institute). Domínio público.
+## 08 · O conflito com os bispos — 1:20
 
-## Slide 13 — A ruptura com os cafeicultores
+**Onde estamos no tempo:** 1872 → 1875
 
-A RUPTURA COM OS CAFEICULTORES
-- Os grandes fazendeiros escravistas, sobretudo os do Vale do Paraíba fluminense e paulista, eram uma das principais bases da monarquia. Suas fazendas, mais antigas, tinham terras desgastadas, dependiam do trabalho escravizado e estavam endividadas.
-- A Lei Áurea não previu indenização aos antigos proprietários. Muitos se sentiram traídos pela Coroa e passaram a apoiar a República.
-- Por isso foram chamados de “republicanos de última hora” ou “republicanos de 14 de maio”: aderiram mais por ressentimento contra a monarquia do que por convicção republicana.
-- Já os cafeicultores do Oeste Paulista, ligados às ferrovias e à mão de obra imigrante, defendiam a República e o federalismo desde os anos 1870 (Partido Republicano Paulista, 1873), para controlar os impostos e a política de sua província.
-- Resultado: depois de 1888, a monarquia perdeu parte importante de sua base econômica e política.
+**Para começar.** Conheçam os personagens: à esquerda, D. Vital, bispo de Olinda, e D. Antônio de Macedo Costa, bispo do Pará. À direita, o visconde do Rio Branco, chefe do governo e, ao mesmo tempo, grão-mestre da maçonaria. A linha do tempo mostra o conflito passo a passo.
 
-Para debater: historiadores discutem o peso desse fator. A adesão dos ex-escravistas engrossou a oposição, mas o golpe de 1889 foi militar. Uma frase atribuída pela tradição ao barão de Cotegipe (“a senhora acaba de redimir uma raça e perder o trono”) costuma ser citada, mas não há registro documental seguro dela.
+**Tópico por tópico** (avance com →):
 
-Fontes: Costa (1999); Fausto (1994).
+1. **1872** — Começa em 1872, no Rio de Janeiro. Um padre faz um discurso numa loja maçônica para homenagear o visconde do Rio Branco pela Lei do Ventre Livre, e o bispo do Rio o suspende.
+2. **1872–73** — Logo depois, D. Vital e D. Macedo Costa mandam as irmandades religiosas expulsarem seus membros maçons. As que se recusam são interditadas — ficam proibidas de realizar suas atividades religiosas.
+3. **1873** — Em 1873, as irmandades recorrem ao governo. Como as condenações do papa à maçonaria nunca tinham recebido o beneplácito, o governo manda suspender as punições. Os bispos se recusam a obedecer.
+4. **1874** — Em 1874, os dois bispos são presos, julgados e condenados a quatro anos de prisão com trabalhos forçados. O imperador troca a pena por prisão simples, mas o estrago já estava feito.
+5. **1875** — Em setembro de 1875, um novo gabinete, chefiado pelo duque de Caxias, dá anistia aos bispos. A caricatura de Angelo Agostini, de 1876, mostra que o assunto continuou rendendo: o bispo de Olinda suspende um padre que casou um maçom.
+6. **Consequência** — A consequência: parte do clero e dos católicos mais fiéis se afastou do trono. A Igreja não virou republicana, mas deixou de defender a monarquia. Foi a primeira coluna a balançar.
 
-Imagem: Marc Ferrez, escravizados em terreiro de café no Vale do Paraíba, c. 1882. Domínio público.
+**Com os olhos de hoje.** A separação entre Igreja e Estado veio logo no começo da República, com um decreto de janeiro de 1890. Desde então o Brasil é oficialmente laico.
 
-## Slide 14 — O crescimento do republicanismo
+**Se perguntarem.** Irmandades eram associações de fiéis leigos que cuidavam de igrejas, festas e enterros. Muitas tinham membros maçons, o que era comum na elite da época.
 
-O CRESCIMENTO DO REPUBLICANISMO
-- 1870: o Manifesto Republicano foi publicado no primeiro número do jornal A República, do Clube Republicano do Rio de Janeiro, em 3 de dezembro de 1870. Sua redação é atribuída sobretudo a Quintino Bocaiúva. Defendia a federação e criticava a centralização e o Poder Moderador. A frase “Somos da América e queremos ser americanos” marcava a ideia de que o Brasil era a única monarquia num continente de repúblicas.
-- 1873: a Convenção de Itu fundou o Partido Republicano Paulista (PRP), apoiado por cafeicultores do Oeste Paulista que queriam autonomia para a província.
-- Anos 1880: clubes, jornais e comícios republicanos se espalharam; a campanha abolicionista e a Questão Militar ampliaram as críticas ao Império. Os republicanos ainda eram minoria no Parlamento.
-- Por que grupos diferentes queriam a República? Cafeicultores paulistas: federalismo e controle dos impostos. Camadas urbanas (jornalistas, advogados, professores): participação política e modernização. Militares positivistas: ordem, progresso e governo técnico. Ex-escravistas: ressentimento com a abolição sem indenização.
+**Para passar ao próximo.** _A Igreja se afastou. Agora vamos ao segundo grupo: o Exército._
 
-Fontes: Costa (1999); Carvalho (1990); Fausto (1994).
+## 09 · A Questão Militar — 1:20
 
-Imagem: primeira página do jornal A República, Rio de Janeiro, n. 1, 3 dez. 1870, que publicou o Manifesto Republicano. Domínio público.
+**Onde estamos no tempo:** 1883 → 1887
 
-## Slide 15 — O Império ficou isolado
+**Para começar.** Lembram do Exército que voltou fortalecido da Guerra do Paraguai? Nos anos 1880, ele entrou em choque direto com o governo. Na foto, o marechal Deodoro da Fonseca, que vai ser personagem central até o fim da nossa história.
 
-O IMPÉRIO FICOU ISOLADO
+**Tópico por tópico** (avance com →):
 
-Pense no Império como um templo sustentado por colunas:
-- IGREJA: afastada pela Questão Religiosa e pela prisão dos bispos (1874).
-- EXÉRCITO: insatisfeito desde o pós-guerra, enfrentou o governo na Questão Militar e, em parte, aderiu às ideias republicanas e positivistas (Clube Militar, 1887).
-- ELITES AGRÁRIAS: os escravistas romperam com a Coroa depois da Lei Áurea (1888), aprovada sem indenização.
+1. **1883–84** — Em 1883, o tenente-coronel Sena Madureira contesta uma reforma no fundo de pensões dos militares. Em 1884, recebe com honras o jangadeiro Francisco do Nascimento, herói da abolição no Ceará. É punido e transferido, e um aviso do governo restringe as manifestações de militares na imprensa.
+2. **1886** — Em 1886, o coronel Cunha Matos responde, pela imprensa, às acusações de um deputado e fica preso por dois dias. No mesmo ano, Sena Madureira escreve no jornal republicano A Federação, de Porto Alegre, e é punido de novo.
+3. **1886–87** — Deodoro, que comandava as armas no Rio Grande do Sul, fica do lado dos oficiais e é afastado. Mas a pressão cresce, e em 1887 o governo recua e cancela as punições.
+4. **1887** — Em 1887, os oficiais fundam o Clube Militar, presidido por Deodoro. Em outubro, o Clube pede à princesa regente que o Exército não seja usado para capturar escravizados fugidos. Os militares já se viam como uma força política.
 
-Somam-se outros fatores: D. Pedro II, aos 63 anos e doente (tinha diabetes), governava cada vez menos; a herdeira, a princesa Isabel, muito católica, e seu marido francês, o conde d’Eu, despertavam desconfiança. Muitos políticos não queriam um “Terceiro Reinado”.
+**Com os olhos de hoje.** O Clube Militar existe até hoje, no Rio de Janeiro. E a Constituição atual proíbe militares da ativa de se filiarem a partidos políticos.
 
-Ao fundo: a pintura de Aurélio de Figueiredo (1905) retrata o baile da Ilha Fiscal, oferecido pelo governo em 9 de novembro de 1889 — seis dias antes do golpe. O título “A ilusão do Terceiro Reinado” é uma interpretação do pintor sobre uma monarquia que não percebia a própria crise.
+**Se perguntarem.** Os militares falavam muito em 'honra': para eles, ser punido por responder a uma acusação na imprensa era uma humilhação para toda a corporação.
 
-Fontes: Carvalho (2007); Costa (1999); Schwarcz (1998).
+**Para passar ao próximo.** _Mas não foi só insatisfação: uma nova ideia circulava entre os jovens oficiais. Vamos conhecer o positivismo._
 
-Imagem: Aurélio de Figueiredo, “A ilusão do Terceiro Reinado” (O último baile da Ilha Fiscal), 1905, Museu Histórico Nacional (foto da obra: Jonas de Carvalho, CC BY-SA 2.0). Ícones: Game Icons (CC BY 3.0).
+## 10 · O positivismo e os militares — 1:15
 
-## Slide 16 — 15 de novembro de 1889
+**Onde estamos no tempo:** 1850 → 1889
 
-15 DE NOVEMBRO DE 1889 — A PROCLAMAÇÃO DA REPÚBLICA
-- Articulação: oficiais republicanos ligados a Benjamin Constant e políticos civis como Quintino Bocaiúva e Aristides Lobo procuraram Deodoro. Em 14 de novembro, espalharam-se boatos de que o governo prenderia Deodoro e Benjamin Constant, o que precipitou o movimento.
-- Madrugada e manhã do dia 15: tropas aquarteladas em São Cristóvão marcharam para o Campo de Santana (então Praça da Aclamação). Deodoro, doente, assumiu o comando e entrou no Quartel-General do Exército, onde estavam o Visconde de Ouro Preto e seus ministros. O gabinete foi deposto e Ouro Preto, preso.
-- Há debate entre historiadores sobre o que Deodoro pretendia naquela manhã: derrubar só o gabinete ou a própria monarquia.
-- Tarde: na Câmara Municipal do Rio, vereadores liderados por José do Patrocínio declararam a República.
-- Noite: formou-se o Governo Provisório, chefiado por Deodoro, com Benjamin Constant (Guerra), Quintino Bocaiúva (Relações Exteriores), Rui Barbosa (Fazenda), Aristides Lobo (Interior), Campos Sales (Justiça), Eduardo Wandenkolk (Marinha) e Demétrio Ribeiro (Agricultura). O Decreto nº 1 proclamou provisoriamente a República Federativa.
-- A população não foi chamada a participar das decisões.
+**Para começar.** Este slide mostra o caminho de uma ideia: ela nasce na França, chega a uma escola militar no Rio e termina na nossa bandeira.
 
-Fontes: Carvalho (1987); Castro (1995); Costa (1999).
+**Tópico por tópico** (avance com →):
 
-Imagem: Benedito Calixto, “Proclamação da República”, 1893, Pinacoteca do Estado de São Paulo. É uma representação artística pintada quatro anos depois. Domínio público.
+1. **Auguste Comte** — O filósofo francês Auguste Comte criou o positivismo. Para ele, a sociedade deveria ser organizada pela ciência, com ordem e progresso. A frase no alto é a fórmula dele: o amor por princípio, a ordem por base e o progresso por fim.
+2. **Escola Militar** — No Brasil, essas ideias se espalharam entre engenheiros, médicos e, principalmente, alunos da Escola Militar da Praia Vermelha, no Rio de Janeiro, onde se estudava muita matemática e ciência.
+3. **Benjamin Constant** — O professor Benjamin Constant Botelho de Magalhães virou referência para esses jovens oficiais. Ele ajudou a aproximá-los da ideia de república e participou da articulação do golpe de 1889.
+4. **Ordem e Progresso** — O resultado mais visível está na bandeira: o lema 'Ordem e Progresso', inspirado em Comte, foi colocado na bandeira republicana, adotada em 19 de novembro de 1889, quatro dias depois da Proclamação.
+5. **O Exército não era homogêneo** — Mas atenção: o Exército não pensava todo igual. Havia monarquistas e republicanos, os 'científicos', formados na escola, e os 'tarimbeiros', formados na tropa. O próprio Deodoro era monarquista e só aderiu à República nos últimos dias da crise.
 
-## Slide 17 — O fim da monarquia
+**Com os olhos de hoje.** O lema continua na bandeira. E no Rio de Janeiro ainda existe o Templo da Humanidade, da Igreja Positivista do Brasil, no bairro da Glória.
 
-O FIM DA MONARQUIA — O EXÍLIO
-- Em 16 de novembro de 1889, o Governo Provisório comunicou a D. Pedro II que a família imperial deveria deixar o país.
-- Na madrugada de 17 de novembro, a família embarcou, primeiro no cruzador Parnaíba e depois no navio Alagoas, rumo a Lisboa, onde chegou em 7 de dezembro. A imperatriz Teresa Cristina morreu no Porto, em 28 de dezembro de 1889. D. Pedro II morreu em Paris em 5 de dezembro de 1891.
-- Fim de 67 anos de Império (1822–1889) e de 49 anos de Segundo Reinado (1840–1889).
-- Participação popular: Aristides Lobo, republicano e ministro do Interior do Governo Provisório, escreveu no Diário Popular (São Paulo), em 18 de novembro de 1889, que “o povo assistiu àquilo bestializado, atônito, surpreso, sem conhecer o que significava”. A frase mostra que a mudança foi conduzida por militares e políticos.
-- Interpretação: o historiador José Murilo de Carvalho, em Os bestializados (1987), discute essa imagem. A população do Rio não era apática — participava de festas, associações e revoltas —, mas estava excluída da política formal, que era restrita a poucos eleitores.
+**Se perguntarem.** Para muitos positivistas, a república ideal seria uma 'ditadura republicana': um governo forte e técnico, e não necessariamente uma democracia com muitos eleitores.
 
-Fontes: Carvalho (1987); Schwarcz (1998).
+**Para passar ao próximo.** _Igreja afastada, Exército insatisfeito. Agora vamos à questão que mais mexeu com a sociedade: a escravidão._
 
-Imagens: Otto Hees, D. Pedro II e a família imperial, 1889 (álbum do Museu Imperial) — da esquerda para a direita, a imperatriz Teresa Cristina, D. Antônio, a princesa Isabel, o imperador, D. Pedro Augusto, D. Luís, o conde d’Eu e D. Pedro de Alcântara; Aristides Lobo, gravura em A Pátria Brazileira. Domínio público.
+## 11 · O processo abolicionista — 1:30
 
-## Slide 18 — Conclusão
+**Onde estamos no tempo:** 1850 → 1888
 
-CONCLUSÃO — POR QUE A MONARQUIA CAIU?
+**Para começar.** O fim da escravidão no Brasil não aconteceu de uma vez. Foi um caminho de quase quarenta anos, com quatro leis principais. Reparem que cada uma traz também o seu limite.
 
-Retome a pergunta da abertura. A queda do Império resultou de uma combinação de fatores, e não de uma causa isolada:
+**Tópico por tópico** (avance com →):
 
-1. Crise religiosa (1872–1875): afastou parte da Igreja.
+1. **1850** — 1850: a Lei Eusébio de Queirós proíbe o tráfico de africanos escravizados para o Brasil, sob forte pressão da Inglaterra. Mas a escravidão continua, e cresce o tráfico interno, do Nordeste para as fazendas de café do Sudeste.
+2. **1871** — 1871: a Lei do Ventre Livre declara livres os filhos de mulheres escravizadas nascidos a partir dela. O limite: o senhor podia usar o trabalho dessas crianças até os 21 anos.
+3. **1885** — 1885: a Lei dos Sexagenários liberta quem tinha 60 anos ou mais. Mas eles ainda deviam trabalhar até mais três anos, como 'indenização' — e poucos chegavam a essa idade.
+4. **1888** — 1888: a Lei Áurea extingue a escravidão, sem indenização aos proprietários. O limite aqui é o maior de todos: nada foi previsto para integrar as pessoas libertadas.
+5. **A abolição também foi conquistada** — E um ponto essencial: a abolição não foi um presente. Foi conquistada. As pessoas escravizadas fugiram em massa, formaram quilombos como o do Jabaquara, em Santos, e lutaram na Justiça. Os jangadeiros do Ceará, liderados por Francisco do Nascimento, o Dragão do Mar, se recusaram a transportar escravizados em 1881, e o Ceará e o Amazonas aboliram a escravidão em 1884. Abolicionistas como Luiz Gama, José do Patrocínio, André Rebouças e Joaquim Nabuco levaram a campanha à imprensa, aos tribunais e ao Parlamento.
 
-2. Questão Militar (1883–1887): o Exército passou a desafiar o governo civil.
+**Com os olhos de hoje.** Muito do debate atual sobre a memória da escravidão passa pelo 20 de novembro, Dia Nacional de Zumbi e da Consciência Negra, que se tornou feriado nacional a partir de 2024.
 
-3. Abolição (1888): a escravidão acabou sem indenização.
+**Se perguntarem.** Luiz Gama nasceu livre, foi vendido como escravo pelo próprio pai e, depois de conquistar a liberdade, virou advogado e libertou centenas de pessoas nos tribunais. Ele morreu em 1882, antes da Lei Áurea.
 
-4. Perda do apoio dos cafeicultores escravistas (1888–1889): os “republicanos de última hora”.
+**Para passar ao próximo.** _Vamos agora ao dia em que a última dessas leis foi assinada: 13 de maio de 1888._
 
-5. Avanço republicano (1870–1889): manifesto, PRP, imprensa, positivismo.
+## 12 · A Lei Áurea — 1:10
 
-6. Isolamento político (1889): sem Igreja, sem Exército e sem parte das elites, a monarquia caiu por um golpe militar, quase sem resistência.
+**Onde estamos no tempo:** 13 de maio de 1888
 
-Frase final (ler devagar): “A monarquia não caiu por uma única crise. Caiu quando perdeu o apoio dos principais grupos que sustentavam seu poder.”
+**Para começar.** Esta fotografia de Marc Ferrez mostra a multidão no centro do Rio de Janeiro em 13 de maio de 1888, o dia em que a princesa Isabel assinou a Lei Áurea. A lei tem só dois artigos. O primeiro está aqui, na grafia da época: 'É declarada extincta desde a data desta lei a escravidão no Brazil.'
 
-Para a turma pensar: a República de 1889 ampliou a participação popular? (Ponte para o estudo da Primeira República.)
+**Tópico por tópico** (avance com →):
 
-Referências na faixa inferior do slide. Imagens: todas históricas, do Wikimedia Commons (domínio público, salvo indicação); autor, data e acervo estão nas legendas de cada slide, nas notas e no README que acompanha a apresentação.
+1. **O que a lei fez** — A lei libertou cerca de 700 mil pessoas que ainda eram escravizadas. Foi assinada pela princesa Isabel, que governava como regente porque D. Pedro II estava na Europa, tratando da saúde. E veio depois de anos de pressão: campanha abolicionista, fugas em massa e a recusa de parte do Exército em perseguir quem fugia.
+2. **O que ficou de fora** — Mas o que ficou de fora é tão importante quanto o que a lei fez. Não houve terra, escola nem trabalho garantido para os libertos. Muitos fazendeiros e o próprio governo preferiram contratar imigrantes europeus. O fim da escravidão não significou o fim da desigualdade: o racismo e a exclusão continuaram e deixaram marcas que existem até hoje.
+
+**Com os olhos de hoje.** Desde 2012, a Lei de Cotas reserva vagas nas universidades federais para estudantes de escolas públicas, pretos, pardos e indígenas — uma das políticas criadas para enfrentar desigualdades que vêm desse passado.
+
+**Se perguntarem.** A lei foi aprovada muito rápido pela Câmara e pelo Senado, depois da proposta do gabinete conservador de João Alfredo. Nos dias seguintes houve festas no Rio, incluindo uma missa campal em 17 de maio.
+
+**Para passar ao próximo.** _A abolição foi comemorada nas ruas. Mas um grupo poderoso ficou furioso: os grandes fazendeiros escravistas._
+
+## 13 · A ruptura com os cafeicultores — 1:10
+
+**Onde estamos no tempo:** 1888 → 1889
+
+**Para começar.** Nem todos os fazendeiros de café eram iguais. Vamos comparar duas regiões que reagiram de jeitos muito diferentes à abolição.
+
+**Tópico por tópico** (avance com →):
+
+1. **Vale do Paraíba** — No Vale do Paraíba ficavam as fazendas mais antigas, como a da fotografia. As terras estavam cansadas, os fazendeiros estavam endividados e dependiam do trabalho escravizado. Eles eram a base tradicional do trono — e queriam indenização pela abolição.
+2. **Oeste Paulista** — No Oeste Paulista, o café estava em expansão. Os fazendeiros investiam em ferrovias e já usavam trabalhadores imigrantes. Queriam mais autonomia para a província e muitos já eram republicanos desde 1873.
+3. **Republicanos de última hora** — Quando a Lei Áurea saiu sem indenização, muitos ex-senhores do Vale se sentiram traídos pela Coroa e passaram a apoiar a República. Por isso ganharam o apelido de 'republicanos de última hora', ou 'republicanos do 14 de maio': aderiram mais por raiva da monarquia do que por convicção. A monarquia perdia, assim, a terceira coluna.
+
+**Com os olhos de hoje.** Várias fazendas do Vale do Paraíba hoje são patrimônio histórico e roteiro turístico. Algumas já contam também a história das pessoas escravizadas que trabalharam nelas.
+
+**Se perguntarem.** Uma frase atribuída ao barão de Cotegipe — 'a senhora acaba de redimir uma raça e perder o trono' — costuma ser citada, mas não há registro documental seguro de que ele a tenha dito. Os historiadores também lembram que a adesão desses fazendeiros engrossou a oposição, mas quem derrubou o governo, em 1889, foram militares.
+
+**Para passar ao próximo.** _Com tanta gente insatisfeita, uma ideia que existia havia quase vinte anos ganhou força: a República._
+
+## 14 · O crescimento do republicanismo — 1:15
+
+**Onde estamos no tempo:** 1870 → 1889
+
+**Para começar.** Este jornal se chama A República, e seu primeiro número, de 3 de dezembro de 1870, trouxe o Manifesto Republicano. A frase em destaque é do manifesto: 'Somos da América e queremos ser americanos.' A ideia era que o Brasil era a única monarquia num continente de repúblicas.
+
+**Tópico por tópico** (avance com →):
+
+1. **1870** — 1870: o Manifesto Republicano é publicado no Rio de Janeiro. Ele defendia a federação e criticava a centralização e o Poder Moderador.
+2. **1873** — 1873: na Convenção de Itu, em São Paulo, nasce o Partido Republicano Paulista, apoiado por cafeicultores do Oeste Paulista.
+3. **Anos 1880** — Nos anos 1880, clubes, jornais e comícios republicanos se espalham. A campanha abolicionista e a Questão Militar dão ainda mais força às críticas ao Império. Mesmo assim, os republicanos ainda eram minoria no Parlamento.
+4. **O que defendiam e quem apoiava** — O que eles defendiam? Federalismo, ou seja, autonomia para as províncias; o fim do Poder Moderador e do Senado vitalício; e um chefe de Estado eleito. Quem apoiava? Cafeicultores paulistas, jornalistas, advogados e professores das cidades, militares positivistas e, depois de 1888, ex-escravistas. Grupos diferentes, com motivos diferentes, mas com o mesmo alvo.
+
+**Com os olhos de hoje.** O federalismo defendido em 1870 está na Constituição de hoje: cada estado tem governador eleito, assembleia e leis próprias.
+
+**Se perguntarem.** A redação do Manifesto Republicano é atribuída principalmente ao jornalista Quintino Bocaiúva, que depois foi ministro do Governo Provisório.
+
+**Para passar ao próximo.** _Agora podemos juntar todas as peças. Como ficou o Império em 1889?_
+
+## 15 · O Império ficou isolado — 1:10
+
+**Onde estamos no tempo:** 1889
+
+**Para começar.** Pensem no Império como um templo sustentado por colunas. Ao fundo, a pintura do último grande baile da monarquia, na Ilha Fiscal, em 9 de novembro de 1889 — seis dias antes do fim.
+
+**Tópico por tópico** (avance com →):
+
+1. **Três colunas** — Três grupos sustentavam o trono: a Igreja, o Exército e as elites agrárias. A cada clique, vamos ver uma coluna romper.
+2. **Igreja** — A Igreja se afastou com a Questão Religiosa e a prisão dos bispos, em 1874.
+3. **Exército** — O Exército, insatisfeito desde a guerra, enfrentou o governo na Questão Militar e se aproximou da República. O Clube Militar nasceu em 1887.
+4. **Elites agrárias** — As elites agrárias escravistas romperam com a Coroa depois da Lei Áurea, em 1888, porque não houve indenização.
+5. **E o futuro?** — E havia ainda a dúvida sobre o futuro. D. Pedro II, com 63 anos, estava doente. A herdeira, a princesa Isabel, e o marido dela, o francês conde d'Eu, despertavam desconfiança. Muitos políticos não queriam um 'Terceiro Reinado'. Sem as colunas, o templo estava pronto para cair.
+
+**Com os olhos de hoje.** A Ilha Fiscal, onde foi o último baile, hoje pode ser visitada: faz parte do espaço cultural da Marinha no Rio de Janeiro.
+
+**Se perguntarem.** A pintura de Aurélio de Figueiredo é de 1905 e se chama 'A ilusão do Terceiro Reinado'. O título já é uma interpretação: a de uma monarquia que dançava sem perceber a própria crise.
+
+**Para passar ao próximo.** _Seis dias depois do baile, a madrugada de 15 de novembro mudou o Brasil._
+
+## 16 · 15 de novembro de 1889 — 1:25
+
+**Onde estamos no tempo:** 15 de novembro de 1889
+
+**Para começar.** Estamos no Rio de Janeiro, em 15 de novembro de 1889. Na véspera, oficiais republicanos espalharam o boato de que o governo ia prender Deodoro e Benjamin Constant, e isso acelerou tudo. A pintura de Benedito Calixto, feita em 1893, mostra as tropas no Campo de Santana. Vamos acompanhar o dia hora a hora.
+
+**Tópico por tópico** (avance com →):
+
+1. **Madrugada** — De madrugada, tropas que estavam em São Cristóvão, articuladas por oficiais republicanos e por Benjamin Constant, marcham para o Campo de Santana, no centro do Rio.
+2. **Manhã** — De manhã, Deodoro — que estava doente — assume o comando e entra no Quartel-General do Exército, onde estavam o visconde de Ouro Preto e seus ministros. O gabinete é deposto e Ouro Preto é preso. Até hoje os historiadores discutem se, naquela manhã, Deodoro queria derrubar só o gabinete ou a própria monarquia.
+3. **Tarde** — À tarde, na Câmara Municipal do Rio, vereadores liderados por José do Patrocínio declaram a República.
+4. **Noite** — À noite, forma-se o Governo Provisório, chefiado por Deodoro, com nomes como Benjamin Constant, Rui Barbosa, Quintino Bocaiúva e Aristides Lobo. O Decreto nº 1 adota a República Federativa. E a população? Não foi chamada a participar das decisões.
+
+**Com os olhos de hoje.** O 15 de novembro é feriado nacional. E o Campo de Santana, onde tudo aconteceu, fica hoje na Praça da República, no centro do Rio de Janeiro.
+
+**Se perguntarem.** O Governo Provisório tinha Deodoro como chefe; Benjamin Constant na Guerra; Quintino Bocaiúva nas Relações Exteriores; Rui Barbosa na Fazenda; Aristides Lobo no Interior; Campos Sales na Justiça; Eduardo Wandenkolk na Marinha; e Demétrio Ribeiro na Agricultura.
+
+**Para passar ao próximo.** _E o imperador? Vamos ver o que aconteceu com D. Pedro II e a família imperial._
+
+## 17 · O fim da monarquia — 1:20
+
+**Onde estamos no tempo:** 1889 → 1891
+
+**Para começar.** Esta é uma das últimas fotos da família imperial no Brasil, de 1889. Ao centro, D. Pedro II. Com a República, terminavam 67 anos de Império e 49 anos de Segundo Reinado.
+
+**Tópico por tópico** (avance com →):
+
+1. **16 nov. 1889** — Em 16 de novembro, o Governo Provisório comunica ao imperador que a família deve deixar o país.
+2. **17 nov. 1889** — Na madrugada de 17 de novembro, D. Pedro II e a família embarcam rumo à Europa, primeiro no cruzador Parnaíba e depois no navio Alagoas.
+3. **7 dez. 1889** — Em 7 de dezembro, chegam a Lisboa. A imperatriz Teresa Cristina morre poucas semanas depois, no Porto, em 28 de dezembro de 1889.
+4. **5 dez. 1891** — D. Pedro II morre em Paris, no exílio, em 5 de dezembro de 1891.
+5. **Aristides Lobo** — E o povo? Aristides Lobo, republicano e ministro do Governo Provisório, escreveu que 'o povo assistiu àquilo bestializado, atônito, surpreso, sem conhecer o que significava'. A frase mostra que a mudança foi feita por militares e políticos. Mas o historiador José Murilo de Carvalho, no livro Os bestializados, lembra que a população do Rio não era apática: participava de festas, associações e revoltas. O problema é que estava fora da política oficial, reservada a poucos eleitores.
+
+**Com os olhos de hoje.** Os restos mortais de D. Pedro II e da imperatriz voltaram ao Brasil em 1921 e estão, desde 1939, na Catedral de Petrópolis.
+
+**Se perguntarem.** Lobo publicou o texto no Diário Popular, de São Paulo, em 18 de novembro de 1889. Ele também escreveu que muitos acreditaram estar vendo apenas uma parada militar.
+
+**Para passar ao próximo.** _Agora podemos responder à pergunta do começo: por que a monarquia caiu?_
+
+## 18 · Conclusão — 1:15
+
+**Onde estamos no tempo:** 1889 → hoje
+
+**Para começar.** Vamos voltar à pergunta da abertura. A resposta não está em uma causa só, mas na soma de seis fatores.
+
+**Tópico por tópico** (avance com →):
+
+1. **Crise religiosa** — Primeiro, a crise religiosa, de 1872 a 1875, afastou parte da Igreja.
+2. **Questão Militar** — Segundo, a Questão Militar, de 1883 a 1887, colocou o Exército contra o governo civil.
+3. **Abolição da escravidão** — Terceiro, a abolição da escravidão, em 1888, sem nenhuma indenização.
+4. **Perda dos cafeicultores escravistas** — Quarto, a perda dos cafeicultores escravistas, os 'republicanos de última hora'.
+5. **Avanço republicano** — Quinto, o avanço republicano, desde o manifesto de 1870 até os clubes e jornais dos anos 1880.
+6. **Isolamento político** — Sexto, o isolamento político: em 1889, sem Igreja, sem Exército e sem parte das elites, a monarquia caiu por um golpe militar, quase sem resistência.
+7. **Frase final** — Por isso, a nossa frase final: a monarquia não caiu por uma única crise. Caiu quando perdeu o apoio dos principais grupos que sustentavam seu poder. As referências e os créditos das imagens estão no botão abaixo. Obrigado!
+
+**Com os olhos de hoje.** A frase de Aristides Lobo deixa uma pergunta para hoje: quem participa das grandes decisões do país? Em 1889, quase ninguém votava. Hoje, mais de 150 milhões de pessoas podem votar.
+
+**Se perguntarem.** Se perguntarem sobre o que veio depois: a República de 1889 começou com governos militares (Deodoro e Floriano) e manteve a participação popular limitada. Esse é o tema da Primeira República.
+
+**Para passar ao próximo.** _Encerramento. Abrir para perguntas._
+
+---
+
+## Referências
+
+As referências completas estão no botão **Referências** (tecla **R**) da apresentação e no README.
+
+_Arquivo gerado por `node scripts/roteiro.mjs` a partir de `js/notes.js`._
