@@ -1,0 +1,15 @@
+{
+  "name": "crise-do-segundo-reinado",
+  "private": true,
+  "description": "Gera a apresentação A Crise do Segundo Reinado (PPTX) a partir das imagens preparadas.",
+  "scripts": {
+    "build": "node build.js ../preparadas ../texturas ../A-Crise-do-Segundo-Reinado.pptx"
+  },
+  "dependencies": {
+    "pptxgenjs": "4.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-icons": "^5.0.0",
+    "sharp": "^0.34.0"
+  }
+}
