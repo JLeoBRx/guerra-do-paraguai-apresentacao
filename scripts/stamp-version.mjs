@@ -2,14 +2,14 @@
 // Carimba as referências de CSS e JS com ?v=<data-hora> para que, a cada publicação,
 // o navegador e a CDN busquem os arquivos novos junto com o HTML novo.
 // Uso (antes do commit de uma publicação): node scripts/stamp-version.mjs
-// Sem argumentos, carimba os dois sites; com argumentos, só os arquivos indicados.
+// Sem argumentos, carimba os três sites; com argumentos, só os arquivos indicados.
 import fs from "node:fs";
 
 const now = new Date();
 const pad = (n) => String(n).padStart(2, "0");
 const version = `${now.getUTCFullYear()}${pad(now.getUTCMonth() + 1)}${pad(now.getUTCDate())}${pad(now.getUTCHours())}${pad(now.getUTCMinutes())}`;
 
-const all = ["index.html", "presenter.html", "segundo-reinado/index.html", "segundo-reinado/presenter.html"];
+const all = ["index.html", "presenter.html", "segundo-reinado/index.html", "segundo-reinado/presenter.html", "o-segundo-reinado/index.html", "o-segundo-reinado/presenter.html"];
 for (const file of process.argv.length > 2 ? process.argv.slice(2) : all) {
   const src = fs.readFileSync(file, "utf8");
   const out = src.replace(/((?:href|src)="(?:css|js)\/[^"?]+\.(?:css|js))(?:\?v=[^"]*)?"/g, `$1?v=${version}"`);

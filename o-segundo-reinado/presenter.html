@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Modo apresentador — O Segundo Reinado</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/base.css?v=202611201648">
+<link rel="stylesheet" href="css/presenter.css?v=202611201648">
+<script src="js/notes.js?v=202611201648" defer></script>
+<script src="js/presenter.js?v=202611201648" defer></script>
+</head>
+<body class="pv">
+<header class="pv-top">
+  <div class="pv-brand"><strong>Modo apresentador</strong><span>O Segundo Reinado · 1840–1889</span></div>
+  <p class="pv-link" id="pvLink" data-state="wait"><i></i><span>Procurando a apresentação…</span></p>
+  <button class="pv-open" id="pvOpen" type="button" hidden>Abrir a apresentação</button>
+  <p class="pv-clock" id="pvClock">--:--</p>
+</header>
+
+<main class="pv-main">
+  <section class="pv-notes" aria-live="polite">
+    <div class="pv-now">
+      <div class="pv-now-line">
+        <p class="pv-num"><span id="pvNum">--</span> / <span id="pvTotal">--</span></p>
+        <p class="pv-when" id="pvAno" hidden></p>
+      </div>
+      <h1 id="pvTitle">Aguardando…</h1>
+      <p class="pv-step" id="pvStep" hidden></p>
+    </div>
+    <ol class="pv-topics" id="pvTopics" aria-label="Tópicos deste slide" hidden></ol>
+    <article class="pv-block pv-fala" id="pvFalaBox">
+      <h2>Para começar · viagem no tempo</h2>
+      <p id="pvFala">Abra a apresentação (index.html) em outra janela ou aba. Esta tela se conecta sozinha e mostra o roteiro do slide atual.</p>
+    </article>
+    <article class="pv-block pv-etapa" id="pvEtapaBox" hidden>
+      <h2 id="pvEtapaLabel">Agora</h2>
+      <p id="pvEtapa"></p>
+    </article>
+    <article class="pv-block pv-hoje" id="pvHojeBox"><h2>Com os olhos de hoje</h2><p id="pvHoje"></p></article>
+    <article class="pv-block"><h2>Se perguntarem</h2><p id="pvComp"></p></article>
+    <article class="pv-block pv-trans"><h2>Para passar ao próximo slide</h2><p id="pvTrans"></p></article>
+  </section>
+
+  <aside class="pv-side">
+    <figure class="pv-frame">
+      <figcaption>Agora na projeção</figcaption>
+      <div class="pv-screen" id="pvCurWrap"><iframe id="pvCur" title="Prévia do slide atual" src="index.html?preview=1" tabindex="-1"></iframe></div>
+    </figure>
+    <div class="pv-pair">
+    <figure class="pv-frame pv-frame-next">
+      <figcaption id="pvNextLabel">A seguir</figcaption>
+      <div class="pv-screen" id="pvNextWrap"><iframe id="pvNext" title="Prévia do próximo slide ou etapa" src="index.html?preview=1" tabindex="-1"></iframe></div>
+    </figure>
+
+    <section class="pv-timers">
+      <div class="pv-timer">
+        <span>Tempo total</span>
+        <strong id="pvElapsed">00:00</strong>
+        <small id="pvPlan">Plano: --:--</small>
+      </div>
+      <div class="pv-timer">
+        <span>Neste slide</span>
+        <strong id="pvSlideTime">00:00</strong>
+        <small id="pvEstimate">Estimado: --:--</small>
+        <div class="pv-meter"><i id="pvMeter"></i></div>
+      </div>
+      <div class="pv-timer-btns">
+        <button type="button" id="pvStart">Iniciar cronômetro</button>
+        <button type="button" id="pvReset">Zerar</button>
+      </div>
+      <p class="pv-pace" id="pvPace"></p>
+    </section>
+    </div>
+
+    <nav class="pv-nav" aria-label="Controle da apresentação">
+      <button type="button" id="pvPrev" aria-label="Voltar">← Voltar</button>
+      <button type="button" id="pvNextBtn" class="pv-primary" aria-label="Avançar">Avançar →</button>
+      <select id="pvGoto" aria-label="Ir para o slide"></select>
+    </nav>
+    <p class="pv-help">Atalhos nesta janela: <kbd>→</kbd>/<kbd>Espaço</kbd> avançar · <kbd>←</kbd> voltar · <kbd>T</kbd> iniciar/pausar cronômetro · <kbd>R</kbd> zerar. As notas não aparecem na projeção.</p>
+  </aside>
+</main>
+</body>
+</html>
