@@ -1,0 +1,214 @@
+/* =========================================================
+   Telas pequenas e em retrato: cada slide vira uma página
+   vertical com rolagem própria; os controles continuam.
+   ========================================================= */
+
+@media (max-width: 760px), (max-aspect-ratio: 4/5), (max-height: 500px) {
+  .deck {
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    box-shadow: none;
+    --k: clamp(9.6px, calc(6px + 1.15vw), 14px);
+    --pad-x: clamp(18px, 5vw, 40px);
+    --pad-t: 78px;
+    --pad-b: 124px;
+    --fs-display: clamp(56px, 17vw, 120px);
+    --fs-h1: clamp(32px, 8.8vw, 56px);
+    --fs-h2: 26px;
+    --fs-h3: 21px;
+    --fs-lead: clamp(18px, 2.6vw, 23px);
+    --fs-body: clamp(17px, 2.1vw, 19px);
+    --fs-small: clamp(16px, 1.95vw, 18px);
+    --fs-label: 12.5px;
+  }
+  .slide {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .slide::-webkit-scrollbar { display: none; }
+  .slide > *:not(.layer):not(.smoke) { max-width: 100%; }
+  .slide-head { max-width: none !important; }
+  .lead { max-width: none; }
+  .kicker::after { width: 36px; }
+  .footnote { position: relative !important; left: auto !important; right: auto !important; bottom: auto !important; width: auto !important; margin-top: 22px; text-align: left !important; }
+  .hint { display: block; margin: 8px 0 0; white-space: normal; }
+  /* no celular todos os tópicos ficam visíveis; o clique só destaca o atual */
+  .js .slide [data-at] { opacity: 1; transform: none; }
+  .js .slide .topics > li.is-shown:not(.is-now), .js .slide .ledger-row.is-shown:not(.is-now), .js .slide .lens.is-shown:not(.is-now) { opacity: 1; }
+  .topics strong { font-size: 21px; }
+  .topics div > span { font-size: 16px; }
+  .tp-n { width: 40px; height: 40px; font-size: 21px; }
+  .topics > li { grid-template-columns: 40px 1fr auto; gap: 12px; padding: 12px 14px 12px 12px; }
+  .atlas .a-city, .atlas .a-city-label { display: none; }
+  .map-paper .m-country-name, .map-dark .m-country-name { font-size: 14px; }
+  .map-paper .m-river-name, .map-dark .m-river-name { font-size: 14px; }
+  .map-paper .m-city-name, .map-dark .m-city-name { font-size: 11.5px; }
+  .map-paper .m-sea-name { font-size: 15px; }
+  .map-paper .m-route-label { display: none; }
+  .m-marker-label { font-size: 13px; }
+  .m-marker-date { font-size: 11px; }
+  .m-route-text { font-size: 11px; }
+
+  /* Controles: barra inferior centralizada */
+  .topbar { padding: 10px 12px; background: linear-gradient(rgba(4, 18, 13, .92), rgba(4, 18, 13, 0)); }
+  .brand small { display: none; }
+  .brand strong { font-size: 17px; }
+  .icon-btn { width: 40px; height: 40px; }
+  .controls { left: 12px; right: 12px; bottom: 12px; justify-content: space-between; }
+  .nav-meta { flex: 1; min-width: 0; text-align: center; }
+  .nav-count { justify-content: center; }
+  .nav-title { max-width: none; }
+  .nav-steps { justify-content: center; }
+  .nav-btn { width: 50px; height: 48px; }
+  .key-hint { bottom: 84px; white-space: nowrap; font-size: 11px; }
+
+  /* 01 · Abertura */
+  .slide-opening { padding: var(--pad-t) var(--pad-x) var(--pad-b); display: flex; flex-direction: column; }
+  .slide-opening > * { flex-shrink: 0; }
+  .opening-art { position: absolute !important; inset: 0 !important; }
+  .opening-art-frame::after { background: linear-gradient(180deg, rgba(4, 18, 13, .35) 0%, rgba(4, 18, 13, .88) 42%, rgba(4, 18, 13, .97) 100%); }
+  .opening-art figcaption { top: auto; bottom: 108px; left: var(--pad-x); right: var(--pad-x); max-width: none; text-align: left; font-size: 11px; }
+  .opening-copy { position: relative !important; left: auto; top: auto; width: auto; margin-top: 26vh; }
+  .opening-title { font-size: clamp(52px, 15vw, 110px); }
+  .opening-dates { font-size: 26px; margin-top: 16px; }
+  .opening-dates i { width: 60px; }
+  .opening-sub { max-width: none; margin-top: 14px; font-size: 20px; }
+  .opening-roster { max-width: none; margin-top: 20px; }
+  .opening-roster p { font-size: 17px; }
+  .begin { position: relative !important; right: auto; bottom: auto; align-self: flex-start; margin-top: 22px; padding: 10px 16px 10px 12px; gap: 12px; }
+  .begin-ring { width: 32px; height: 32px; }
+  .begin-text { font-size: 21px; }
+  .begin-keys { display: none; }
+
+  /* Slides com composição absoluta viram fluxo vertical */
+  .slide-imperio.theme-dark, .slide-finale.theme-dark { background: var(--grad); }
+  .slide-imperio .slide-head, .slide-imperio .topics, .slide-cafe .slide-head, .slide-cafe .topics,
+  .guerra-copy, .militar-copy, .finale-copy { width: auto; max-width: none; }
+  .census, .guerra-stats, .verdict, .caution, .resist, .tl-h, .cartoon, .const-doc, .religiosa-copy, .paper-doc, .republica-copy,
+  .family, .exilio-copy, .side-photo, .cafe-copy, .aurea-head, .aurea-law, .aurea-cols, .day, .temple, .temple-note, .map-ref, .art-credit, .art-credit.is-bottom {
+    position: relative !important; left: auto !important; right: auto !important; top: auto !important; bottom: auto !important; width: auto !important; max-width: none !important; transform: none;
+  }
+  .census, .guerra-stats, .verdict, .caution, .resist, .lastminute, .temple-note.is-right { margin-top: 18px; }
+  .map-ref, .art-credit { display: inline-flex; margin-top: 12px; }
+  .atlas { display: none; }
+  .cafe-map { position: relative !important; width: auto; height: min(115vw, 560px); margin: 18px calc(var(--pad-x) * -1) 0; -webkit-mask-image: none; mask-image: none; }
+  .cafe-map figcaption { left: 10px; right: 10px; bottom: 10px; }
+  .facade { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .facade-col { grid-column: 1 / -1; }
+  .facade-img button { height: 230px; }
+  .facade-img.is-back { order: 1; }
+  .triptych { grid-template-columns: 1fr; height: auto; gap: 14px; }
+  .q-panel { height: 340px; }
+  .q-text h3 { font-size: 24px; }
+  .q-text p:last-child { font-size: 16px; }
+  .const-doc, .paper-doc, .family { max-width: 320px !important; margin: 0 auto 22px; }
+  .const-doc img, .paper-doc img, .family img { height: auto; max-height: 420px; }
+  .tug { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+  .tug-side, .tug-side.is-right { justify-content: center; text-align: center; }
+  .tug-arrow { transform: rotate(90deg); }
+  .cards-2x2, .versus, .repub-cols, .aurea-cols, .factors { grid-template-columns: 1fr; }
+  .cards-2x2 strong { font-size: 22px; }
+  .cards-2x2 span, .versus li, .repub-cols li, .aurea-cols li { font-size: 17px; }
+  .cast { width: auto; flex-wrap: wrap; justify-content: center; }
+  .cast-p { width: 140px; }
+  .cast-p strong { font-size: 18px; }
+  .cast-p small { font-size: 13px; }
+  .cartoon { margin-top: 22px; }
+  .cartoon img { height: auto; }
+  .tl-h { grid-template-columns: 1fr; margin-top: 22px; }
+  .tl-h::before, .tl-h li::before { display: none; }
+  .tl-h time { font-size: 22px; }
+  .tl-h p { margin-top: 2px; font-size: 16px; }
+  .verdict p, .caution p, .lastminute p, .resist-text p { font-size: 16px; }
+  .deodoro { position: relative !important; width: auto; height: 60vh; margin: 0 calc(var(--pad-x) * -1) 18px; }
+  .deodoro button { -webkit-mask-image: none; mask-image: none; }
+  .deodoro figcaption { bottom: 10px; }
+  .chips li { font-size: 14px; }
+  .tl-v li { grid-template-columns: 76px 1fr auto; padding-left: 22px; }
+  .tl-v time { font-size: 18px; }
+  .tl-v p { font-size: 16px; }
+  .motto p { font-size: 20px; }
+  .chain { grid-template-columns: 1fr 1fr; gap: 22px 14px; }
+  .chain li:not(:last-child)::after { display: none; }
+  .chain h3 { font-size: 20px; }
+  .chain li > p:last-child { font-size: 15px; }
+  .ch-media { height: 150px; }
+  .ch-media.is-oval { width: 120px; }
+  .laws { grid-template-columns: 1fr; gap: 18px; }
+  .laws::before, .laws li::before { display: none; }
+  .laws time { font-size: 36px; }
+  .laws h3 { margin-top: 6px; font-size: 20px; }
+  .laws li > p:not(.law-n):not(.law-limit), .law-limit { font-size: 16px; }
+  .resist { grid-template-columns: 1fr; }
+  .resist-people { flex-wrap: wrap; justify-content: center; }
+  .resist-people button { width: 76px; font-size: 12px; }
+  .resist-people .cameo { width: 60px; height: 70px; }
+  .slide-aurea { padding: 0 0 var(--pad-b); }
+  .aurea-photo { position: relative !important; height: 52vh; }
+  .aurea-head { position: absolute !important; left: var(--pad-x) !important; top: var(--pad-t) !important; }
+  .aurea-head h2 { font-size: 40px; }
+  .aurea-law, .aurea-cols { margin: 18px var(--pad-x) 0; }
+  .aurea-law p { font-size: 22px; }
+  .side-photo { position: relative !important; height: 45vh; margin: calc(var(--pad-t) * -1) calc(var(--pad-x) * -1) 18px; }
+  .side-photo button { -webkit-mask-image: none; mask-image: none; }
+  .temple { margin-top: 22px; }
+  .columns { gap: 10px; padding: 0 6px; }
+  .column { height: 230px; }
+  .column h3 { font-size: 13px; }
+  .column p { font-size: 13px; }
+  .stamp { font-size: 11px; }
+  .temple-note.is-left { margin-top: 16px; font-size: 18px; }
+  .procl-art::after { background: linear-gradient(180deg, rgba(4, 12, 9, .9), rgba(4, 12, 9, .7) 50%, rgba(4, 12, 9, .95)); }
+  .procl-head .big-title { font-size: clamp(32px, 9vw, 52px); }
+  .day { grid-template-columns: 1fr; margin-top: 22px; }
+  .day p { font-size: 16px; }
+  .day .doc-thumb { display: none; }
+  .years strong { font-size: 44px; }
+  .years span { font-size: 14px; }
+  .exile li { grid-template-columns: 110px 1fr; }
+  .exile time { font-size: 14px; }
+  .exile p { font-size: 16px; }
+  .lobo { grid-template-columns: 70px 1fr; }
+  .lobo .cameo { width: 70px; height: 82px; }
+  .lobo p { font-size: 19px; }
+  .factors strong { font-size: 18px; }
+  .finale-phrase { font-size: 23px; }
+  .finale-title { font-size: clamp(34px, 10vw, 60px); }
+  .ot-pre { font-size: 30px; }
+  .slide-opening .opening-art { left: 0; }
+  .slide-opening .opening-title .ot-line { font-size: clamp(52px, 14vw, 96px); }
+
+  /* No celular todos os tópicos aparecem juntos: o mapa e os carimbos também */
+  .cm-layer { opacity: 1 !important; }
+  .cm-draw { stroke-dashoffset: 0 !important; }
+  .js .slide .stamp[data-at], .js .slide .stamp[data-at].is-shown { transform: translateX(-50%) rotate(-8deg); }
+  .slide-opening .opening-art-frame { -webkit-mask-image: none; mask-image: none; }
+  .slide-opening .opening-art-frame::after { background: linear-gradient(180deg, rgba(4, 18, 13, .3) 0%, rgba(4, 18, 13, .86) 40%, rgba(4, 18, 13, .97) 100%); }
+  .slide-opening .opening-art img { object-position: 50% 12%; }
+  .slide-opening .opening-art figcaption { top: 64px; bottom: auto; left: auto; right: var(--pad-x); max-width: 70%; text-align: right; }
+  .slide-opening .opening-copy { margin-top: 30vh; }
+
+  /* Transições mais curtas e sem 3D em telas pequenas */
+  .deck[data-tr="page"][data-dir="fwd"] .is-entering { animation-name: slide-in-r; box-shadow: none; }
+}
+
+/* Celulares em paisagem com pouca altura: compacta o cabeçalho */
+@media (max-height: 500px) {
+  .deck { --pad-t: 64px; --pad-b: 90px; }
+  .controls { left: auto; right: 10px; bottom: 8px; }
+  .nav-meta { min-width: 140px; }
+}
+
+@media print {
+  body { overflow: visible; background: #fff; }
+  .app, .stage { position: static; }
+  .deck { width: 100%; height: auto; container-type: inline-size; overflow: visible; box-shadow: none; }
+  .topbar, .controls, .progress, .key-hint, .atlas, .dust { display: none !important; }
+  .slide { position: relative !important; visibility: visible !important; break-after: page; min-height: 56.25vw; }
+  .js .slide [data-at] { opacity: 1 !important; transform: none !important; }
+}
+

@@ -24,3 +24,5 @@ jobs:
         run: node segundo-reinado/scripts/validate.mjs
       - name: Validar o site O Segundo Reinado
         run: node o-segundo-reinado/scripts/validate.mjs
+      - name: Validar o site A Crise do Segundo Reinado (12 slides)
+        run: node crise-do-segundo-reinado/scripts/validate.mjs
