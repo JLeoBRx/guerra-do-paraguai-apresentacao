@@ -89,7 +89,7 @@ check(absent.length === 0, `Manifesto de narração coerente (${listed.length} g
 check(!/autoplay/i.test(html), "Nenhum áudio com reprodução automática.", "Há autoplay na página.");
 
 // Créditos originais
-for (const name of ["Professora Rita", "Davi Matheus", "Juan Bento", "Lucas Godoy", "Kaique"]) {
+for (const name of ["Professora Rita", "Davi Matheus", "Juan Bento", "Lucas Godoy", "Kaique", "Pedro Lucas"]) {
   check(html.includes(name), "Crédito presente: " + name + ".", "Crédito ausente: " + name + ".");
 }
 

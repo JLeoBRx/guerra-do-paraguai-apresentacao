@@ -26,7 +26,7 @@ pres.layout = "LAYOUT_WIDE"; // 13.333 x 7.5 in
 pres.theme = { headFontFace: THEME.headFontFace, bodyFontFace: THEME.bodyFontFace };
 pres.title = "A Crise do Segundo Reinado";
 pres.subject = "História do Brasil — Segundo Reinado (1840–1889)";
-pres.author = "Davi Matheus, Juan Bento, Lucas Godoy e Kaique";
+pres.author = "Davi Matheus, Juan Bento, Lucas Godoy, Kaique e Pedro Lucas";
 const C = pres.SchemeColor;
 const W = 13.333, H = 7.5, MX = 0.6;
 const TOTAL = 18;
@@ -145,7 +145,7 @@ async function build() {
     T(s, "1840 – 1889", { x: 0.85, y: 5.38, w: 5, h: 0.6, fontFace: "Georgia", fontSize: 30, color: C.accent5 });
     T(s, [
       { text: "História  ·  Professora Rita", options: { breakLine: true, bold: true } },
-      { text: "Davi Matheus  ·  Juan Bento  ·  Lucas Godoy  ·  Kaique" },
+      { text: "Davi Matheus · Juan Bento · Lucas Godoy · Kaique · Pedro Lucas" },
     ], { x: 0.85, y: 6.3, w: 5.9, h: 0.6, fontSize: 13, color: C.background2, paraSpaceAfter: 2 });
     caption(s, "D. Pedro II em 1876 · estúdio de Mathew Brady · Library of Congress", W - 6.4, 6.62, 5.9, C.background2, "right");
     s.addNotes(NOTES[1]);

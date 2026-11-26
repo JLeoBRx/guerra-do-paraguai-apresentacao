@@ -16,10 +16,11 @@ const mmss = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 const total = slides.reduce((sum, s) => sum + (NOTES[s.id]?.tempo || 0), 0);
 
 const groups = [
-  ["Davi Matheus", ["abertura", "regencias", "maioridade", "imperador", "governo"]],
-  ["Juan Bento", ["partidos", "eleicoes", "pacificacao", "cafe", "trafico"]],
-  ["Lucas Godoy", ["terras", "maua", "cultura", "prata"]],
-  ["Kaique", ["guerra", "abolicao", "queda", "conclusao"]],
+  ["Davi Matheus", ["abertura", "regencias", "maioridade", "imperador"]],
+  ["Juan Bento", ["governo", "partidos", "eleicoes", "pacificacao"]],
+  ["Lucas Godoy", ["cafe", "trafico", "terras"]],
+  ["Kaique", ["maua", "cultura", "prata", "guerra"]],
+  ["Pedro Lucas", ["abolicao", "queda", "conclusao"]],
 ];
 
 let out = `# Roteiro do apresentador — O Segundo Reinado (1840–1889)

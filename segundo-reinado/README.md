@@ -2,7 +2,7 @@
 
 Apresentação de História sobre os conflitos e as rupturas que levaram ao fim da monarquia brasileira. São 18 slides em dois formatos: um **site de apresentação** no mesmo formato do site da Guerra do Paraguai (pasta raiz do repositório) e um **PowerPoint editável com PDF**. Os dois seguem a mesma narrativa e as mesmas fontes.
 
-**História · Professora Rita** · Davi Matheus, Juan Bento, Lucas Godoy e Kaique
+**História · Professora Rita** · Davi Matheus, Juan Bento, Lucas Godoy, Kaique e Pedro Lucas
 
 ## O site
 
@@ -32,7 +32,7 @@ Depois, abra http://localhost:8000/segundo-reinado/.
 
 No celular, deslize para os lados. Clique em qualquer imagem para ampliá-la com legenda, autor, acervo e licença. Os números entre colchetes, como **[6]**, abrem a referência correspondente.
 
-**Modo apresentador** (`P` ou o primeiro botão da barra): mostra o slide atual e o próximo, o cronômetro, o tempo previsto de cada slide e o roteiro em formato “viagem no tempo”. Para cada slide há o ano em que a cena se passa, os lembretes de cada tópico, a fala, o texto de cada clique, o que aquilo tem a ver com hoje, um complemento e a frase de transição. As duas janelas ficam sincronizadas: avançar em qualquer uma avança a outra. O mesmo roteiro está em `ROTEIRO.md`, dividido entre os quatro integrantes, com tempo total estimado de 22:40.
+**Modo apresentador** (`P` ou o primeiro botão da barra): mostra o slide atual e o próximo, o cronômetro, o tempo previsto de cada slide e o roteiro em formato “viagem no tempo”. Para cada slide há o ano em que a cena se passa, os lembretes de cada tópico, a fala, o texto de cada clique, o que aquilo tem a ver com hoje, um complemento e a frase de transição. As duas janelas ficam sincronizadas: avançar em qualquer uma avança a outra. O mesmo roteiro está em `ROTEIRO.md`, dividido entre os cinco integrantes, com tempo total estimado de 22:40.
 
 **O que tem em cada slide:** tópicos revelados por clique, uma transição escolhida para o momento da narrativa (11 tipos, como mergulho no mapa, passagem do tempo, virada de página e o fechamento), mapa do Império no contexto e na conclusão, mapa do café no slide 04 (Vale do Paraíba → Oeste Paulista, ferrovias e portos, uma camada por clique), linhas do tempo, retratos, documentos e pinturas de época. Com “reduzir movimento” ativado no sistema, as animações são desligadas. Em telas estreitas, cada slide vira uma página rolável.
 

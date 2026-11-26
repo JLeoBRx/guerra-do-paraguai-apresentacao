@@ -2,7 +2,7 @@
 
 Site que é a própria apresentação: 1 capa, 10 slides de conteúdo e 1 slide de referências, no mesmo formato do site da Guerra do Paraguai (raiz do repositório), com identidade visual própria.
 
-**História · Professora Rita** · Davi Matheus, Juan Bento, Lucas Godoy e Kaique
+**História · Professora Rita** · Davi Matheus, Juan Bento, Lucas Godoy, Kaique e Pedro Lucas
 
 Depois de publicado: https://guerra-do-paraguai-museu-digital.onrender.com/crise-do-segundo-reinado/
 
@@ -48,7 +48,7 @@ Frase final: *“A monarquia brasileira não caiu por uma única crise, mas pela
 - **Imagens:** clique em qualquer uma para ampliá-la com legenda, autor, acervo e licença.
 - **Citações:** os números entre colchetes, como **[9]**, abrem um balão com a referência completa, sem sair do slide.
 
-**Modo apresentador** (`P`): mostra o slide atual e o próximo, o cronômetro e o roteiro “viagem no tempo”, sincronizados com a projeção. O mesmo roteiro está em `ROTEIRO.md`, dividido entre os quatro integrantes (tempo total estimado: 17:00).
+**Modo apresentador** (`P`): mostra o slide atual e o próximo, o cronômetro e o roteiro “viagem no tempo”, sincronizados com a projeção. O mesmo roteiro está em `ROTEIRO.md`, dividido entre os cinco integrantes (tempo total estimado: 17:00).
 
 ## Como abrir no computador
 
