@@ -51,6 +51,10 @@
     dramatic: [1500, 680], sober: [2300, 1150], finale: [2700, 1300], canopy: [1450, 300]
   };
   var bc = !PREVIEW && "BroadcastChannel" in window ? new BroadcastChannel("gp-apresentacao") : null;
+  // Celular e tablet em retrato (mesmas condições de css/responsive.css) e telas de toque
+  var FLOW = window.matchMedia("(max-aspect-ratio: 4/5), (max-width: 760px) and (min-height: 501px), (max-width: 760px) and (orientation: portrait)");
+  var COARSE = window.matchMedia("(pointer: coarse)");
+  function onMedia(mq, fn) { if (mq.addEventListener) mq.addEventListener("change", fn); else if (mq.addListener) mq.addListener(fn); }
 
   /* ---------- Navegação ---------- */
   function setChrome() {
@@ -63,6 +67,9 @@
     var stepsEl = $("#navSteps");
     stepsEl.innerHTML = "";
     if (total) for (var i = 0; i <= total; i++) { var b = document.createElement("i"); if (i <= state.step) b.className = "on"; stepsEl.appendChild(b); }
+    var stepText = $("#navStepText");
+    if (stepText) stepText.textContent = total ? "Tópico " + (state.step + 1) + "/" + (total + 1) : "";
+    $("#controls").classList.toggle("has-steps", !!total);
     var frac = total ? state.step / (total + 1) : 0;
     $("#progressFill").style.transform = "scaleX(" + ((state.index + frac) / (n - 1)).toFixed(4) + ")";
     $("#btnPrev").disabled = state.index === 0 && state.step === 0;
@@ -112,6 +119,13 @@
       $$(".reel-text", slide).forEach(function (t, i) { t.classList.toggle("is-now", i === step); });
     }
     slide.dispatchEvent(new CustomEvent("gp:step", { detail: { step: step, animate: animate } }));
+    if (animate && FLOW.matches) requestAnimationFrame(function () { revealInView(slide); });
+  }
+  // No celular em retrato o slide rola: o tópico que acabou de aparecer entra na tela
+  function revealInView(slide) {
+    var target = slide.classList.contains("treaty-on") ? slide.querySelector(".treaty")
+      : slide.querySelector("[data-at].is-now, .beat.is-now, .ally.is-now, .phase.is-now, .reel-text.is-now");
+    if (target && target.scrollIntoView) target.scrollIntoView({ block: "nearest", behavior: GP.reduced() ? "auto" : "smooth" });
   }
 
   function countTo(el, to, animate) {
@@ -226,7 +240,7 @@
     atlasFor(next, instant);
     if (dust) { if ((next.dataset.fx || "").indexOf("dust") > -1) dust.start(); else dust.stop(); }
     setChrome();
-    if (!opts.noHash) history.replaceState(null, "", "#" + next.id);
+    if (!opts.noHash) syncHash();
     $("#announcer").textContent = "Slide " + (n + 1) + " de " + slides.length + ": " + next.dataset.title;
     hideHint();
   }
@@ -247,6 +261,20 @@
     state.step = Math.max(0, Math.min(stepsOf(s), k));
     applyStep(s, state.step, true, before);
     setChrome();
+    syncHash();
+  }
+  // endereço com o slide e o tópico atual (#contexto/2): recarregar ou voltar do apresentador não perde a posição
+  function syncHash() {
+    if (PREVIEW || !slides) return;
+    var id = slides[state.index].id;
+    try { history.replaceState(null, "", "#" + id + (state.step ? "/" + state.step : "")); } catch (e) { /* ignora */ }
+  }
+  function parseHash() {
+    var parts = decodeURIComponent(location.hash.replace("#", "")).split("/");
+    var i = slides.findIndex(function (s) { return s.id === parts[0]; });
+    if (i < 0 && /^\d+$/.test(parts[0])) i = Number(parts[0]) - 1;
+    if (i < 0 || i >= slides.length) return null;
+    return { index: i, step: Math.max(0, Math.min(stepsOf(slides[i]), Number(parts[1]) || 0)) };
   }
   GP.go = go;
   GP.next = next;
@@ -257,9 +285,17 @@
   GP.slides = function () { return slides; };
 
   /* Modo apresentador */
+  var presenterWin = null;
+  function presenterUrl() {
+    var s = slides[state.index];
+    return "presenter.html#" + s.id + (state.step ? "/" + state.step : "");
+  }
   function openPresenter() {
-    var w = window.open("presenter.html", "gp-presenter", "width=1360,height=860");
-    if (!w) toast('O navegador bloqueou a janela. <a href="presenter.html" target="_blank">Abrir o modo apresentador em outra aba</a>.', 9000);
+    // celular e tablet: o roteiro abre nesta mesma aba (modo consulta) e volta para o mesmo slide e tópico
+    if (window.matchMedia("(hover: none) and (pointer: coarse)").matches) { location.href = presenterUrl(); return; }
+    if (presenterWin && !presenterWin.closed) { presenterWin.focus(); return; }
+    presenterWin = window.open(presenterUrl(), "gp-presenter", "width=1360,height=860");
+    if (!presenterWin) toast('O navegador bloqueou a janela. <a href="' + presenterUrl() + '" target="_blank">Abrir o modo apresentador em outra aba</a>.', 9000);
     else toast("Modo apresentador aberto em outra janela. Arraste-a para a tela do notebook.", 5000);
   }
   var toastTimer;
@@ -271,6 +307,13 @@
     toastTimer = setTimeout(function () { t.hidden = true; }, ms || 4000);
   }
   GP.toast = toast;
+  function escapeHtml(x) { return String(x).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function showRef(n) {
+    var li = document.getElementById("ref" + n);
+    var txt = li ? li.textContent.replace(/\s+/g, " ").trim() : "";
+    if (txt.length > 180) txt = txt.slice(0, 177).replace(/\s+\S*$/, "") + "…";
+    toast("<strong>[" + escapeHtml(n) + "]</strong> " + escapeHtml(txt) + ' <a href="#referencias" data-goto-ref="' + escapeHtml(n) + '">Ver nas referências</a>', 8000);
+  }
 
   /* ---------- Sobreposições ---------- */
   var overlayStack = [];
@@ -371,7 +414,10 @@
   var hintTimer;
   function showHint() {
     var h = $("#keyHint");
-    if (!window.matchMedia("(pointer: fine)").matches) h.innerHTML = "Deslize para os lados ou use as setas abaixo";
+    if (!window.matchMedia("(pointer: fine)").matches) {
+      h.innerHTML = "<span>Toque na tela ou no botão amarelo para avançar</span>" +
+        (FLOW.matches && window.matchMedia("(orientation: portrait)").matches ? "<span>Gire o celular para ver em 16:9</span>" : "");
+    }
     h.classList.add("is-shown");
     hintTimer = setTimeout(hideHint, 6500);
   }
@@ -430,19 +476,16 @@
       s.inert = true;
     });
 
-    // ponto de partida pela URL
-    var start = 0, hash = location.hash.replace("#", "");
-    if (hash) {
-      var byId = slides.findIndex(function (s) { return s.id === hash; });
-      if (byId > -1) start = byId;
-      else if (/^\d+$/.test(hash)) start = Number(hash) - 1;
-    }
+    // ponto de partida pela URL (#slide ou #slide/tópico)
+    var at = parseHash() || { index: 0, step: 0 };
+    var start = at.index;
     state.index = start;
+    state.step = at.step;
     var first = slides[start];
     first.classList.add("is-current");
     first.removeAttribute("aria-hidden");
     first.inert = false;
-    if (stepsOf(first)) applyStep(first, 0, false);
+    if (stepsOf(first)) applyStep(first, state.step, false);
     setChrome();
     deck.classList.toggle("atlas-py", first.id === "abertura" || first.id === "conclusao");
     deck.classList.toggle("atlas-label", first.id === "abertura" || first.id === "conclusao");
@@ -479,8 +522,14 @@
       else if (d.type === "cmd") {
         if (d.action === "next") next();
         else if (d.action === "prev") prev();
-        else if (d.action === "goto") go(d.index);
+        else if (d.action === "goto") {
+          var to = Math.max(0, Math.min(slides.length - 1, d.index));
+          var last = typeof d.step === "number" && d.step === stepsOf(slides[to]) && d.step > 0;
+          if (to !== state.index) go(to, { fromPrev: to < state.index && last });
+          if (typeof d.step === "number" && d.step !== state.step) setStep(d.step);
+        }
         else if (d.action === "step") setStep(d.step);
+        else if (d.action === "event" && GP.timeline && slides[state.index].id === "cronologia") GP.timeline.selectLabel(d.label);
       }
     };
     syncFullscreen();
@@ -526,11 +575,15 @@
       var gotoBtn = t.closest("[data-goto]");
       if (gotoBtn) { e.preventDefault(); go(Number(gotoBtn.dataset.goto)); return; }
       var cite = t.closest("a.cite");
+      // no celular, a citação mostra a referência num aviso (um toque errado não tira a pessoa do slide)
+      if (cite && COARSE.matches && slides[state.index].id !== "referencias") { e.preventDefault(); showRef(cite.dataset.ref); return; }
+      var gref = t.closest("[data-goto-ref]");
+      if (gref) { cite = gref; $("#toast").hidden = true; }
       if (cite) {
         e.preventDefault();
         var refs = slides.findIndex(function (s) { return s.id === "referencias"; });
         go(refs);
-        var li = document.getElementById("ref" + cite.dataset.ref);
+        var li = document.getElementById("ref" + (cite.dataset.ref || cite.dataset.gotoRef));
         if (li) setTimeout(function () {
           li.scrollIntoView({ block: "nearest", behavior: GP.reduced() ? "auto" : "smooth" });
           li.classList.remove("is-flash"); void li.offsetWidth; li.classList.add("is-flash");
@@ -568,6 +621,32 @@
       else if (GP.audio && (k === "m" || k === "M")) { GP.audio.toggleMute(); }
     });
 
+    // no retrato, áudio e apresentador ficam na barra de baixo, perto do polegar
+    var placeButtons = function () {
+      var ctr = $("#controls"), nb = $("#btnNext"), acts = $(".topbar-actions");
+      var a = $("#btnAudio"), pr = $("#btnPresenter");
+      if (FLOW.matches) { ctr.insertBefore(a, nb); ctr.insertBefore(pr, nb); }
+      else { acts.insertBefore(a, acts.firstChild); acts.insertBefore(pr, acts.firstChild); }
+    };
+    placeButtons();
+    onMedia(FLOW, function () { placeButtons(); hideHint(); });
+    if (COARSE.matches) $$(".hint").forEach(function (h) { h.textContent = h.textContent.replace(/^Clique em/, "Toque em"); });
+
+    // toque no slide avança (só em telas de toque); botões, links, mapas e referências não avançam
+    var NO_TAP = "a, button, input, select, textarea, label, summary, video, audio, [role='button'], [role='tab'], [tabindex]:not([tabindex='-1']), " +
+      "[data-lightbox], [data-goto], [data-goto-step], [data-action], .map-mount, .context-map, .pin-map, .scene-map, .campaign-map, " +
+      ".locator, .map-pop, .map-legend, .tl-stage, .tl-detail, .refs-scroll, .reel-tabs, .phase-tabs, .nation-card";
+    var lastTap = 0;
+    deck.addEventListener("click", function (e) {
+      if (!COARSE.matches || overlayStack.length || e.defaultPrevented) return;
+      if (e.target.closest && e.target.closest(NO_TAP)) return;
+      if (window.getSelection && String(window.getSelection())) return;
+      var now = Date.now();
+      if (now - lastTap < 450) return;
+      lastTap = now;
+      next(e);
+    });
+
     // gestos de toque
     var sx = 0, sy = 0, st = 0, tracking = false;
     deck.addEventListener("touchstart", function (e) {
@@ -584,9 +663,10 @@
     }, { passive: true });
 
     window.addEventListener("hashchange", function () {
-      var id = location.hash.replace("#", "");
-      var i = slides.findIndex(function (s) { return s.id === id; });
-      if (i > -1 && i !== state.index) go(i, { noHash: true });
+      var at = parseHash();
+      if (!at) return;
+      if (at.index !== state.index) go(at.index, { noHash: true });
+      if (at.step !== state.step) setStep(at.step);
     });
   }
 

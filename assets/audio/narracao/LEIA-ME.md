@@ -6,7 +6,7 @@ Nada aqui usa voz sintética. A narração só funciona com gravações reais fe
 
 ## 1. Gravar
 
-Cada slide tem um texto pronto para ler em `ROTEIRO.md`, também visível no modo apresentador (tecla **P**): primeiro **Para começar**; depois, na ordem, o texto de cada tópico (**Tópico por tópico**); e, se quiserem, **Com os olhos de hoje**.
+Cada slide tem um texto pronto para ler em `ROTEIRO.md`, também visível no modo apresentador (tecla **P**) e no roteiro individual de cada integrante (`FALA_*.md`): leia, na ordem, a **abertura do slide**, a fala de cada **tópico**, **com os olhos de hoje** e o **encerramento**. Quem fala cada trecho está indicado no roteiro. As orientações entre colchetes, como **[APONTAR PARA O MAPA]**, não devem ser gravadas.
 
 Dicas:
 

@@ -323,39 +323,44 @@
 .is-preview .slide [data-anim], .is-preview .slide [data-anim] img, .is-preview .wi, .is-preview .c { opacity: 1 !important; transform: none !important; clip-path: none !important; filter: none !important; stroke-dashoffset: 0 !important; }
 .is-preview [data-anim="stamp"] { transform: rotate(-12deg) !important; }
 
-/* ---------- Telas pequenas ---------- */
-@media (max-width: 760px), (max-aspect-ratio: 4/5), (max-height: 500px) {
+/* ---------- Celular e tablet em retrato (as mesmas condições de responsive.css) ---------- */
+@media (max-aspect-ratio: 4/5), (max-width: 760px) and (min-height: 501px), (max-width: 760px) and (orientation: portrait) {
+  /* 06 e 07 · cenas: título, mapa e a lista logo abaixo */
   .slide-inicio, .slide-alianca { padding: var(--pad-t) 0 var(--pad-b); display: flex; flex-direction: column; }
   .slide-inicio > *, .slide-alianca > * { flex-shrink: 0; }
-  .inicio-copy, .alianca-copy { position: relative !important; left: auto; top: auto; bottom: auto; width: auto; padding: 0 var(--pad-x); order: -1; }
-  .inicio-copy h2 { font-size: inherit; }
-  .inicio-map, .alianca-map { position: relative !important; width: auto; height: min(100vw, 60vh); margin-top: 18px; -webkit-mask-image: none; mask-image: none; }
-  .scene-map .map-note { left: 10px; bottom: 10px; font-size: 11px; }
-  .beat strong, .ally strong { font-size: 21px; }
-  .beat p, .ally p { font-size: 17px; }
+  .inicio-copy, .alianca-copy { display: contents; }
+  .inicio-copy .slide-head, .alianca-copy .slide-head { order: 0; padding: 0 var(--pad-x); }
+  .inicio-copy h2 { font-size: var(--fs-h1); }
+  .inicio-map, .alianca-map { order: 1; position: relative !important; width: auto; height: clamp(220px, 64vw, 380px); margin-top: 12px; -webkit-mask-image: none; mask-image: none; }
+  .beats, .allies { order: 2; margin: 12px var(--pad-x) 0; }
+  .scene-map .map-note { left: 10px; bottom: 8px; font-size: 11px; }
+  .beat strong, .ally strong { font-size: 19px; }
+  .beat p, .ally p { font-size: 16px; }
   .beat.is-now p { max-height: 240px; }
-  .slide-alianca .treaty { position: relative !important; left: auto; top: auto; width: auto; margin: 18px var(--pad-x) 0; display: none; }
+  .slide-alianca .treaty { order: 3; position: relative !important; left: auto; top: auto; width: auto; margin: 16px var(--pad-x) 0; display: none; }
   .slide-alianca.treaty-on .treaty { display: block; }
   .slide-alianca.treaty-on .allies { opacity: .35; }
   .tl-bigyear { display: none; }
   .tl-detail { position: sticky; }
   .phase-stamp { bottom: 10px; left: 10px; }
-  .ps-years { font-size: 32px; }
+  .ps-years { font-size: 30px; }
   .locator { width: 120px; height: 88px; }
   .reel-year { font-size: 30px; }
-  .seq li { grid-template-columns: 92px 1fr; font-size: 17px; }
+  .seq li { grid-template-columns: 92px 1fr; font-size: 16.5px; }
   .slide-finale.theme-dark { background: var(--grad); }
   .slide-finale .finale-copy { max-width: none; }
-  .audio-panel { top: 58px; right: 12px; }
-  #btnPresenter { display: none; }
+  /* 03 · Pindorama: título, mapa dos povos e tópicos */
+  .slide-pindorama { display: flex; flex-direction: column; }
+  .slide-pindorama > * { flex-shrink: 0; }
   .slide-pindorama .slide-head, .slide-pindorama .topics { width: auto; }
-  .pin-thumb { width: 58px; height: 64px; }
-  .pin-map { position: relative !important; width: auto; height: auto; margin: 22px calc(var(--pad-x) * -1) 0; -webkit-mask-image: none; mask-image: none; }
-  .pin-map .map-mount { position: relative; height: min(105vw, 520px); }
+  .slide-pindorama .topics { order: 2; margin-top: 12px; }
+  .pin-thumb { width: 56px; height: 60px; }
+  .pin-map { order: 1; position: relative !important; width: auto; height: auto; margin: 12px calc(var(--pad-x) * -1) 0; -webkit-mask-image: none; mask-image: none; }
+  .pin-map .map-mount { position: relative; height: clamp(220px, 62vw, 380px); }
   .pin-legend { gap: 6px 14px; font-size: 12px; }
   .pin-legend li::before { width: 10px; height: 10px; }
-  .pin-map figcaption { position: static; padding: 10px var(--pad-x) 0; font-size: 13px; background: none; }
-  .m-povo-name { font-size: 16px; }
-  .m-povo.is-major .m-povo-name { font-size: 21px; }
-  .pin-map .m-country-name { font-size: 13px; }
+  .pin-map figcaption { position: static; padding: 8px var(--pad-x) 0; font-size: 12.5px; background: none; }
+  .m-povo-name { font-size: 15px; }
+  .m-povo.is-major .m-povo-name { font-size: 20px; }
+  .pin-map .m-country-name { font-size: 12.5px; }
 }

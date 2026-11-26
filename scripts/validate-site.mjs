@@ -68,6 +68,69 @@ starts.forEach((m, i) => {
 });
 check(stepIssues.length === 0, "Tópicos por clique coerentes com o roteiro.", "Tópicos incoerentes: " + stepIssues.join("; "));
 
+// Roteiro de falas por integrante (js/notes.js é a fonte; ROTEIRO.md e FALA_*.md são gerados dele)
+{
+  const lib = await import("./roteiro-lib.mjs");
+  const EQUIPE = sandbox.window.GP_EQUIPE || [];
+  const roster = (html.match(/<div class="opening-roster"[\s\S]*?<p>([\s\S]*?)<\/p>/) || [])[1] || "";
+  const rosterNames = roster.split(/&nbsp;·|·/).map((s) => s.replace(/&nbsp;/g, " ").trim()).filter(Boolean);
+  check(EQUIPE.length === 6 && EQUIPE.join("|") === rosterNames.join("|"), "Integrantes do roteiro iguais aos da abertura.", "Integrantes do roteiro diferentes da abertura: " + EQUIPE.join(", "));
+  const order = Object.keys(NOTES);
+  check(order.join("|") === slides.map((s) => s.id).join("|"), "Roteiro na mesma ordem dos slides.", "Ordem do roteiro diferente da dos slides.");
+  const issues = [];
+  const info = lib.slidesFromHtml();
+  info.forEach((s, i) => {
+    const n = NOTES[s.id] || {};
+    const resp = n.responsaveis || [];
+    if (n.titulo !== s.title) issues.push(`${s.id}: título diferente do slide`);
+    if (!s.steps && (n.etapas || []).length) issues.push(`${s.id}: falas por tópico num slide sem tópicos`);
+    if (n.pendente ? resp.length : !resp.length) issues.push(`${s.id}: responsáveis incoerentes`);
+    resp.forEach((p) => { if (!EQUIPE.includes(p)) issues.push(`${s.id}: integrante desconhecido ${p}`); });
+    const segs = lib.segments(n);
+    if (!segs.length || !n.hoje || !n.encerramento || !(n.intro || []).length) issues.push(`${s.id}: falta abertura, conexão com o presente ou encerramento`);
+    segs.forEach((g) => {
+      if (n.pendente && g.quem) issues.push(`${s.id}: slide pendente com fala atribuída a ${g.quem}`);
+      if (!n.pendente && resp.length > 1 && !g.quem) issues.push(`${s.id}: trecho sem integrante (${g.rotulo})`);
+      if (g.quem && !resp.includes(g.quem)) issues.push(`${s.id}: ${g.quem} fala, mas não é responsável pelo slide`);
+      if (!lib.words(g.texto)) issues.push(`${s.id}: trecho vazio (${g.rotulo})`);
+      lib.cueList(g.texto).forEach((c) => { if (!lib.CUES.includes(lib.cueKey(c))) issues.push(`${s.id}: orientação desconhecida [${c}]`); });
+      if (/vou falar sobre|agora eu vou/i.test(g.texto)) issues.push(`${s.id}: transição mecânica ("vou falar sobre")`);
+    });
+    resp.forEach((p) => { if (!segs.some((g) => lib.speakerOf(g, n) === p)) issues.push(`${s.id}: ${p} é responsável mas não tem fala`); });
+    // a frase de transição cita quem fala depois quando há troca de integrante
+    const nx = info[i + 1] && NOTES[info[i + 1].id];
+    if (nx) {
+      const next = lib.speakerOf(lib.segments(nx)[0] || {}, nx);
+      const close = n.encerramento ? n.encerramento.texto : "";
+      if (nx.pendente) { if (EQUIPE.some((p) => close.includes(p))) issues.push(`${s.id}: a transição cita um nome, mas o próximo slide está pendente`); }
+      else if (!resp.includes(next) && !close.includes(next)) issues.push(`${s.id}: a transição não cita ${next}, que fala em seguida`);
+    }
+  });
+  check(issues.length === 0, "Falas com responsáveis, orientações e transições coerentes.", "Roteiro incoerente: " + issues.join("; "));
+  EQUIPE.forEach((p) => check(info.some((s) => (NOTES[s.id].responsaveis || []).includes(p)), `${p} tem slides no roteiro.`, `${p} não tem nenhum slide no roteiro.`));
+  const pend = info.filter((s) => NOTES[s.id].pendente).map((s, k) => s.id);
+  check(true, `Slides pendentes de distribuição: ${pend.length ? pend.join(", ") : "nenhum"}.`, "");
+  // tempos: cada slide perto da estimativa pelo tamanho das falas; total perto de 20 minutos
+  const timeIssues = [];
+  let totalTempo = 0;
+  info.forEach((s, i) => {
+    const n = NOTES[s.id];
+    const est = lib.estimate(n, i ? NOTES[info[i - 1].id] : null);
+    totalTempo += n.tempo || 0;
+    if (Math.abs((n.tempo || 0) - est) > Math.max(8, est * 0.1)) timeIssues.push(`${s.id}: ${n.tempo} s previstos, ${Math.round(est)} s pelas falas`);
+  });
+  check(timeIssues.length === 0, "Tempo de cada slide coerente com o tamanho das falas.", "Tempos incoerentes: " + timeIssues.join("; "));
+  check(totalTempo >= 19 * 60 && totalTempo <= 21 * 60, `Tempo total do roteiro: ${lib.mmss(totalTempo)}.`, `Tempo total fora de 19–21 minutos: ${lib.mmss(totalTempo)}.`);
+  // documentos gerados em dia com js/notes.js
+  try {
+    execFileSync(process.execPath, ["scripts/build-roteiro.mjs", "--check"], { stdio: "pipe" });
+    pass.push("ROTEIRO.md e FALA_*.md em dia com js/notes.js.");
+  } catch (e) {
+    fail.push("Documentos do roteiro desatualizados: " + String(e.stderr || e.stdout || e.message).trim());
+  }
+  for (const p of EQUIPE) check(fs.existsSync(`FALA_${lib.slug(p)}.md`), `Roteiro individual de ${p}.`, `Falta FALA_${lib.slug(p)}.md.`);
+}
+
 // Áudio: nada automático e nenhuma gravação inexistente anunciada
 const manifest = JSON.parse(read("assets/audio/narracao/manifest.json") || "{}");
 const listed = Object.values(manifest.slides || {}).map((e) => "assets/audio/narracao/" + (typeof e === "string" ? e : e.arquivo));

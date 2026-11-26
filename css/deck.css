@@ -309,6 +309,8 @@
 .nav-steps i { flex: 0 0 14px; background: rgba(255, 255, 255, .22); border-radius: 2px; transition: background .3s; }
 .nav-steps i.on { background: var(--gold); }
 .nav-steps:empty { display: none; }
+.nav-step-text { display: none; font-family: var(--font-label); font-size: 12px; font-weight: 600; letter-spacing: .03em; color: var(--ink-mute); }
+.nav-step-text:empty { display: none !important; }
 
 .progress { position: fixed; left: 0; right: 0; bottom: 0; z-index: 41; height: 4px; background: rgba(255, 255, 255, .1); }
 .progress-fill {

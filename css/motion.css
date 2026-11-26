@@ -223,4 +223,5 @@
   .atlas.is-drawn .a-river, .atlas.is-drawn .a-grat line { transition: none !important; }
   .slide.in .m-fade, .slide.in .m-draw { transition-delay: 0s !important; transition-duration: .3s !important; }
   .js .slide [data-at] { transform: none !important; transition: opacity .3s !important; }
+  .js .slide [data-at].is-now > * { animation: none !important; }
 }

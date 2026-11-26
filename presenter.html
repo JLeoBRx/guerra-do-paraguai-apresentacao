@@ -1,59 +1,81 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="pv-html">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#050a1d">
 <meta name="robots" content="noindex">
 <title>Modo apresentador — Guerra do Paraguai</title>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="css/base.css?v=202611192230">
-<link rel="stylesheet" href="css/presenter.css?v=202611192230">
-<script src="js/notes.js?v=202611192230" defer></script>
-<script src="js/presenter.js?v=202611192230" defer></script>
+<link rel="stylesheet" href="css/base.css?v=202611260136">
+<link rel="stylesheet" href="css/presenter.css?v=202611260136">
+<script src="js/notes.js?v=202611260136" defer></script>
+<script src="js/presenter.js?v=202611260136" defer></script>
 </head>
 <body class="pv">
-<header class="pv-top">
-  <div class="pv-brand"><strong>Modo apresentador</strong><span>Guerra do Paraguai · 1864–1870</span></div>
-  <p class="pv-link" id="pvLink" data-state="wait"><i></i><span>Procurando a apresentação…</span></p>
-  <button class="pv-open" id="pvOpen" type="button" hidden>Abrir a apresentação</button>
-  <p class="pv-clock" id="pvClock">--:--</p>
-</header>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M14.5 5.5L8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-first" viewBox="0 0 24 24"><path d="M12.5 5l-7 7 7 7M19 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-last" viewBox="0 0 24 24"><path d="M5 5l7 7-7 7M11.5 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
 
-<main class="pv-main">
-  <section class="pv-notes" aria-live="polite">
-    <div class="pv-now">
-      <div class="pv-now-line">
-        <p class="pv-num"><span id="pvNum">--</span> / <span id="pvTotal">--</span></p>
-        <p class="pv-when" id="pvAno" hidden></p>
-      </div>
-      <h1 id="pvTitle">Aguardando…</h1>
-      <p class="pv-step" id="pvStep" hidden></p>
+<header class="pv-top">
+  <div class="pv-bar-line">
+    <button class="pv-back" id="pvBack" type="button"><svg aria-hidden="true"><use href="#i-back"/></svg><span id="pvBackLabel">Voltar à apresentação</span></button>
+    <div class="pv-where">
+      <p class="pv-num"><span id="pvNum">--</span><i>/</i><span id="pvTotal">--</span><span class="pv-est" id="pvEst"></span></p>
+      <h1 id="pvTitle">Carregando o roteiro…</h1>
     </div>
-    <ol class="pv-topics" id="pvTopics" aria-label="Tópicos deste slide" hidden></ol>
-    <article class="pv-block pv-fala" id="pvFalaBox">
-      <h2>Para começar · viagem no tempo</h2>
-      <p id="pvFala">Abra a apresentação (index.html) em outra janela ou aba. Esta tela se conecta sozinha e mostra o roteiro do slide atual.</p>
-    </article>
-    <article class="pv-block pv-etapa" id="pvEtapaBox" hidden>
-      <h2 id="pvEtapaLabel">Agora</h2>
-      <p id="pvEtapa"></p>
-    </article>
-    <article class="pv-block pv-hoje" id="pvHojeBox"><h2>Com os olhos de hoje</h2><p id="pvHoje"></p></article>
-    <article class="pv-block"><h2>Se perguntarem</h2><p id="pvComp"></p></article>
-    <article class="pv-block pv-trans"><h2>Para passar ao próximo slide</h2><p id="pvTrans"></p></article>
+    <p class="pv-link" id="pvLink" data-state="local" title=""><i aria-hidden="true"></i><span>Modo consulta</span></p>
+    <p class="pv-clock" id="pvClock" aria-label="Horário">--:--</p>
+  </div>
+
+  <section class="pv-speaker" id="pvSpeaker" aria-live="polite" aria-atomic="true">
+    <p class="pv-speaker-label">Fala agora</p>
+    <p class="pv-speaker-name" id="pvSpeakerName">—</p>
+    <p class="pv-speaker-what" id="pvSpeakerWhat"></p>
+    <p class="pv-speaker-next" id="pvSpeakerNext"></p>
   </section>
 
-  <aside class="pv-side">
-    <figure class="pv-frame">
-      <figcaption>Agora na projeção</figcaption>
-      <div class="pv-screen" id="pvCurWrap"><iframe id="pvCur" title="Prévia do slide atual" src="index.html?preview=1" tabindex="-1"></iframe></div>
-    </figure>
-    <div class="pv-pair">
-    <figure class="pv-frame pv-frame-next">
-      <figcaption id="pvNextLabel">A seguir</figcaption>
-      <div class="pv-screen" id="pvNextWrap"><iframe id="pvNext" title="Prévia do próximo slide ou etapa" src="index.html?preview=1" tabindex="-1"></iframe></div>
-    </figure>
+  <section class="pv-progress" aria-label="Progresso">
+    <div class="pv-slides" id="pvSlides" aria-hidden="true"></div>
+    <p class="pv-progress-text"><span id="pvStep"></span><span class="pv-progress-next" id="pvStepNext"></span></p>
+  </section>
+</header>
 
+<main class="pv-main" id="pvMain">
+  <p class="pv-mode-note" id="pvModeNote" hidden></p>
+  <ol class="pv-topics" id="pvTopics" aria-label="Tópicos deste slide" hidden></ol>
+  <section class="pv-script" id="pvScript" aria-label="Roteiro de falas deste slide"></section>
+  <section class="pv-handoff" id="pvHandoff" aria-live="polite"></section>
+
+  <details class="pv-more" id="pvQA">
+    <summary>Se perguntarem</summary>
+    <ul class="pv-qa" id="pvPerguntas"></ul>
+  </details>
+</main>
+
+<aside class="pv-side" id="pvSide" aria-label="Prévias, tempo e navegação">
+  <details class="pv-more pv-previews" id="pvPreviewBox">
+    <summary>Prévia da projeção</summary>
+    <div class="pv-pair">
+      <figure class="pv-frame">
+        <figcaption>Agora na tela</figcaption>
+        <div class="pv-screen" id="pvCurWrap"><iframe id="pvCur" title="Prévia do slide atual" tabindex="-1"></iframe></div>
+      </figure>
+      <figure class="pv-frame pv-frame-next">
+        <figcaption id="pvNextLabel">A seguir</figcaption>
+        <div class="pv-screen" id="pvNextWrap"><iframe id="pvNext" title="Prévia do próximo tópico ou slide" tabindex="-1"></iframe></div>
+      </figure>
+    </div>
+  </details>
+
+  <details class="pv-more pv-timers-box" id="pvTimersBox">
+    <summary>Tempo <span class="pv-summary-extra" id="pvElapsedMini">00:00</span></summary>
     <section class="pv-timers">
       <div class="pv-timer">
         <span>Tempo total</span>
@@ -67,20 +89,30 @@
         <div class="pv-meter"><i id="pvMeter"></i></div>
       </div>
       <div class="pv-timer-btns">
-        <button type="button" id="pvStart">Iniciar cronômetro</button>
+        <button type="button" id="pvStart" aria-pressed="false">Iniciar cronômetro</button>
         <button type="button" id="pvReset">Zerar</button>
       </div>
       <p class="pv-pace" id="pvPace"></p>
     </section>
-    </div>
+  </details>
 
-    <nav class="pv-nav" aria-label="Controle da apresentação">
-      <button type="button" id="pvPrev" aria-label="Voltar">← Voltar</button>
-      <button type="button" id="pvNextBtn" class="pv-primary" aria-label="Avançar">Avançar →</button>
-      <select id="pvGoto" aria-label="Ir para o slide"></select>
-    </nav>
-    <p class="pv-help">Atalhos nesta janela: <kbd>→</kbd>/<kbd>Espaço</kbd> avançar · <kbd>←</kbd> voltar · <kbd>T</kbd> iniciar/pausar cronômetro · <kbd>R</kbd> zerar. As notas não aparecem na projeção.</p>
-  </aside>
-</main>
+  <details class="pv-more pv-all-box" id="pvAllBox">
+    <summary>Todos os slides e quem fala</summary>
+    <ol class="pv-all" id="pvAll"></ol>
+    <button type="button" class="pv-clear" id="pvClear">Desmarcar todas as falas apresentadas</button>
+  </details>
+
+  <p class="pv-help" id="pvHelp">Atalhos: <kbd>→</kbd>/<kbd>Espaço</kbd> avançar a projeção · <kbd>←</kbd> voltar · <kbd>↓</kbd>/<kbd>Enter</kbd> próxima fala · <kbd>↑</kbd> fala anterior · <kbd>M</kbd> marcar como apresentada · <kbd>T</kbd> cronômetro · <kbd>R</kbd> zerar. As notas nunca aparecem na projeção.</p>
+</aside>
+
+<nav class="pv-nav" id="pvNav" aria-label="Controle do roteiro e da projeção">
+  <button type="button" id="pvSlidePrev" class="pv-nav-slide"><svg aria-hidden="true"><use href="#i-first"/></svg><span>Slide anterior</span></button>
+  <button type="button" id="pvTopicPrev" class="pv-nav-topic"><svg aria-hidden="true"><use href="#i-prev"/></svg><span>Tópico anterior</span></button>
+  <button type="button" id="pvSpeechNext" class="pv-primary"><span class="pv-primary-text"><b id="pvSpeechNextLabel">Avançar fala</b><small id="pvSpeechNextSub"></small></span><svg aria-hidden="true"><use href="#i-next"/></svg></button>
+  <button type="button" id="pvSlideNext" class="pv-nav-slide"><span>Próximo slide</span><svg aria-hidden="true"><use href="#i-last"/></svg></button>
+  <select id="pvGoto" aria-label="Ir para o slide"></select>
+</nav>
+
+<p class="pv-toast" id="pvToast" role="status" hidden></p>
 </body>
 </html>

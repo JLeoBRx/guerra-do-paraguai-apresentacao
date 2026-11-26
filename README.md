@@ -11,7 +11,7 @@ Ao abrir o endereço, a apresentação começa direto na abertura. Não há pág
 ## Visual: feito para projetor fraco
 
 - **Fundo escuro com degradê forte** (azul-noite → roxo → vinho) e **texto branco grande**, com destaque dourado. Pensado para projetores opacos, em que fundos claros ficam lavados.
-- **Textos em tópicos curtos e grandes**, que aparecem **um por clique** (seta **→**). O tópico atual fica destacado em dourado; os anteriores continuam na tela, para o grupo se reencontrar se esquecer a fala.
+- **Textos em tópicos curtos e grandes**, que aparecem **um por clique** (seta **→**, clique ou toque). O tópico atual fica destacado em dourado; os anteriores continuam na tela, para o grupo se reencontrar se esquecer a fala.
 - **Fontes:** Source Serif 4 nos títulos e IBM Plex Sans no texto (licença OFL, salvas em `assets/fonts`).
 - **Mapas escuros** com rios em azul-claro, o Paraguai em vermelho e o lado aliado em azul; imagens com as cores originais.
 
@@ -35,17 +35,42 @@ Ao abrir o endereço, a apresentação começa direto na abertura. Não há pág
 | 14 | Conclusão | Mapa da América do Sul com o Paraguai destacado; pergunta, resposta e lição, uma por clique · *encerramento* |
 | 15 | Referências | 20 referências, método e créditos das imagens · *folha de documento* |
 
-## Modo apresentador e roteiro de fala
+## Roteiro de falas e divisão do grupo
 
-- **Como abrir:** botão de tela no canto superior direito ou tecla **P**. Ele abre `presenter.html` em outra janela, que deve ser arrastada para a tela do notebook enquanto a projeção fica no projetor. A projeção nunca mostra as notas.
-- **Roteiro em forma de viagem no tempo:** cada slide começa num momento da história (“Onde estamos no tempo”, por exemplo 1500 → 1864 em Pindorama). A fala de **Para começar** leva a turma até aquele ano; depois, a cada clique, a seção **Agora** mostra o que dizer sobre o tópico que acabou de aparecer; por fim, **Com os olhos de hoje** liga o passado ao presente (Itaipu, Mercosul, o guarani como língua oficial, ruas com nomes de batalhas…).
-- **O que mais mostra:**
-  - a lista de tópicos do slide, com os já falados marcados e o atual em destaque;
-  - **Se perguntarem** (explicação extra) e **Para passar ao próximo slide** (frase de transição);
-  - a prévia do que está na projeção e do próximo tópico ou slide;
-  - o tempo estimado, o cronômetro total e o do slide, e o ritmo em relação ao plano de 20 minutos;
-  - botões e setas que controlam a projeção à distância.
-- **Roteiro impresso:** `ROTEIRO.md` traz o mesmo texto, com sugestão de divisão entre os integrantes. Ele é gerado de `js/notes.js` com `node scripts/build-roteiro.mjs`.
+Cada slide tem a fala completa de quem apresenta: abertura, uma fala por tópico revelado, a conexão **com os olhos de hoje**, respostas para **se perguntarem** e a frase de transição, que já cita quem fala em seguida. As orientações entre colchetes (por exemplo **[APONTAR PARA O MAPA]** ou **[FAZER UMA PAUSA]**) não são faladas.
+
+| Integrante | Slides |
+|---|---|
+| Pedro Henrique e Anthony Marcos (em dupla) | 1, 2, 13, 14 e 15 |
+| Lohan David | 3 e 4 |
+| Gabriel Willian | 5 e 6 |
+| Leandro Farias | 7 e 8 |
+| *Pendentes de distribuição* | 9 e 10 |
+| Clara Maria | 11 e 12 |
+
+- **Tempo total estimado:** cerca de 20 minutos (os tempos por pessoa e por slide estão em `ROTEIRO.md`).
+- **Fonte única:** `js/notes.js`. Dele saem o modo apresentador, o `ROTEIRO.md` completo e os seis roteiros individuais `FALA_PEDRO_HENRIQUE.md`, `FALA_ANTHONY_MARCOS.md`, `FALA_LOHAN_DAVID.md`, `FALA_GABRIEL_WILLIAN.md`, `FALA_LEANDRO_FARIAS.md` e `FALA_CLARA_MARIA.md`. Depois de mudar uma fala, rode `node scripts/build-roteiro.mjs`; o validador acusa documentos desatualizados.
+- **Slides 9 e 10:** ainda sem responsável. Para definir, preencha `responsaveis` desses slides em `js/notes.js`, apague `pendente: true`, ponha o nome de quem fala na transição do slide 8 e gere os documentos de novo.
+
+## Modo apresentador
+
+- **No computador (duas janelas):** botão de tela no canto superior direito ou tecla **P**. Abre `presenter.html` em outra janela, que vai para a tela do notebook enquanto a projeção fica no projetor. As duas janelas ficam sincronizadas: o apresentador acompanha o slide e o tópico projetados e controla a projeção. A projeção nunca mostra as notas.
+- **No celular (modo consulta):** o mesmo botão abre o roteiro na própria aba, no slide e tópico em que a apresentação estava; **Voltar à apresentação** retorna ao mesmo ponto. Nesse modo o roteiro avança só no aparelho. Se o celular também estiver projetando, a turma vê a tela do roteiro: ele não é uma tela privada.
+- **O que mostra:**
+  - quem fala agora, em destaque e com uma cor por integrante, e quem fala depois;
+  - o slide, o tópico atual, o próximo e o progresso geral;
+  - o roteiro do slide em cartões: a fala atual destacada, as anteriores esmaecidas e a próxima marcada **A seguir**, com rolagem automática;
+  - as orientações entre colchetes como etiquetas, e a transição (**Passar a palavra: …**) no fim de cada slide;
+  - **Se perguntarem**, a prévia da projeção, os cronômetros e o ritmo em relação ao plano, e a lista de todos os slides com os responsáveis.
+- **Botões grandes:** slide anterior, tópico anterior, **Avançar fala** (que mostra o próximo tópico na projeção quando chega a hora) e próximo slide. Cada cartão tem um botão para marcar a fala como apresentada.
+- **Atalhos no computador:** **→**/Espaço avança a projeção, **←** volta, **↓**/Enter próxima fala, **↑** fala anterior, **M** marca a fala, **T** e **R** controlam o cronômetro.
+
+## No celular
+
+- **Em pé (retrato):** cada slide vira uma página vertical entre duas barras fixas, sem nada cobrindo o conteúdo. Os tópicos aparecem um por toque: os próximos ficam como espaços tracejados, e a tela rola sozinha até o tópico novo. A barra de baixo traz voltar, número do slide e do tópico, áudio, modo apresentador e avançar.
+- **Deitado (paisagem):** o slide aparece no formato 16:9 do projetor, com os controles numa coluna à direita, ao alcance do polegar.
+- **Toque:** tocar no slide avança; botões, links, referências e mapas não avançam por engano. Deslizar para os lados também navega.
+- **Áreas seguras:** as barras respeitam o entalhe e a barra de gestos dos celulares. Uma dica discreta lembra que dá para girar o aparelho, sem bloquear nada.
 
 ## Áudio: narração e trilha
 
@@ -89,21 +114,22 @@ Todas as imagens estão salvas no próprio projeto (`assets/img`), em domínio p
 
 ```
 index.html              apresentação (15 slides)
-presenter.html          modo apresentador (notas, prévias, cronômetro)
-ROTEIRO.md              roteiro de fala completo (gerado de js/notes.js)
-css/base.css            fontes e paleta clara de alto contraste
+presenter.html          modo apresentador (roteiro por integrante, prévias, cronômetro)
+ROTEIRO.md              roteiro de falas completo (gerado de js/notes.js)
+FALA_*.md               roteiro individual de cada integrante (gerado de js/notes.js)
+css/base.css            fontes e paleta escura de alto contraste
 css/deck.css            palco 16:9, camadas, controles, índice, ajuda, visualizador
 css/motion.css          transições e animações (+ movimento reduzido)
 css/slides.css          layout de cada slide
-css/responsive.css      celular, tablet e paisagem baixa
+css/responsive.css      celular em pé (páginas verticais) e deitado (16:9 com coluna de controles)
 css/scenes.css          cenas, regiões, áudio, transições personalizadas, prévia
-css/presenter.css       janela do apresentador
+css/presenter.css       modo apresentador (celular, paisagem e computador)
 js/map-data.js          contornos e rios (gerado do Natural Earth)
 js/fx.js                tipografia cinética, contadores, parallax, atlas
 js/map.js               mapas, cenas em etapas, campanhas e localizador
 js/timeline.js          linha do tempo
 js/app.js               navegação, etapas, transições, sincronização com o apresentador
-js/notes.js             roteiro do apresentador (só carregado em presenter.html)
+js/notes.js             roteiro de falas por integrante, fonte única (só carregado em presenter.html)
 js/presenter.js         modo apresentador
 js/audio.js             narração por slide e painel de áudio
 js/score.js             trilha instrumental sintetizada (Web Audio)
@@ -112,7 +138,8 @@ assets/img/             imagens históricas otimizadas
 assets/fonts/           Source Serif 4 e IBM Plex (licença OFL)
 scripts/validate-site.mjs  validação estática
 scripts/build-map.mjs      gera js/map-data.js
-scripts/build-roteiro.mjs  gera ROTEIRO.md
+scripts/build-roteiro.mjs  gera ROTEIRO.md e FALA_*.md
+scripts/roteiro-lib.mjs    funções do roteiro (trechos de fala e estimativa de tempo)
 scripts/stamp-version.mjs  versiona as referências de CSS/JS antes de publicar
 ```
 
@@ -135,6 +162,8 @@ Depois, abra http://localhost:8000.
 - textos alternativos;
 - controles e transições;
 - notas do roteiro para todos os slides, sem que elas apareçam na projeção;
+- roteiro por integrante: nomes iguais aos da abertura, responsáveis e falas coerentes, slides pendentes sem nome, transições que citam quem fala depois, orientações conhecidas, tempo de cada slide coerente com o tamanho das falas e total perto de 20 minutos;
+- `ROTEIRO.md` e `FALA_*.md` em dia com `js/notes.js`;
 - coerência do manifesto de narração e ausência de reprodução automática;
 - suporte a movimento reduzido;
 - sintaxe do JavaScript.

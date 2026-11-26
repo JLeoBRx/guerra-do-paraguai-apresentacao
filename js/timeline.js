@@ -184,6 +184,14 @@
     this.timers = [];
     this.events.forEach(function (ev) { ev.li.classList.remove("is-on"); });
   };
+  // usado pelo modo apresentador: destaca o acontecimento pelo nome ("Tuiuti", "Cerro Corá"…)
+  Timeline.prototype.selectLabel = function (label) {
+    var norm = function (x) { return String(x || "").replace(/<[^>]+>/g, "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase(); };
+    var q = norm(label);
+    var i = this.events.findIndex(function (e) { return norm(e.title).indexOf(q) > -1 || norm(e.li.dataset.short).indexOf(q) > -1; });
+    if (i > -1) this.select(i, true);
+    return i;
+  };
   Timeline.prototype.select = function (i, animate) {
     var ev = this.events[i];
     this.current = i;
