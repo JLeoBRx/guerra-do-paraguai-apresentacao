@@ -17,9 +17,10 @@ Apenas uma sugestão; ajustem como preferirem.
 | Integrante | Slides | Tempo |
 |---|---|---|
 | Davi Matheus | 1, 2, 3 | 4:10 |
-| Juan Bento | 4, 5, 6 | 4:55 |
-| Lucas Godoy | 7, 8, 9 | 4:25 |
-| Kaique | 10, 11, 12 | 3:30 |
+| Juan Bento | 4, 5 | 3:25 |
+| Lucas Godoy | 6, 7 | 2:55 |
+| Kaique | 8, 9 | 3:00 |
+| Pedro Lucas | 10, 11, 12 | 3:30 |
 
 ---
 

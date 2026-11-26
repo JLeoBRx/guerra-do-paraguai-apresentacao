@@ -2,7 +2,7 @@
 
 Apresentação de História sobre o período inteiro do reinado de D. Pedro II: da maioridade, em 1840, à Proclamação da República, em 1889. São 18 slides no mesmo formato do site da Guerra do Paraguai (raiz do repositório) e do site **A Crise do Segundo Reinado** (`../segundo-reinado/`), que aprofunda os últimos anos do Império.
 
-**História · Professora Rita** · Davi Matheus, Juan Bento, Lucas Godoy e Kaique
+**História · Professora Rita** · Davi Matheus, Juan Bento, Lucas Godoy, Kaique e Pedro Lucas
 
 Depois de publicado: https://guerra-do-paraguai-museu-digital.onrender.com/o-segundo-reinado/
 
@@ -32,7 +32,7 @@ Depois, abra http://localhost:8000/o-segundo-reinado/.
 
 No celular, deslize para os lados; cada slide vira uma página que rola. Clique em qualquer imagem para ampliá-la com legenda, autor, acervo e licença. Os números entre colchetes, como **[9]**, abrem a referência correspondente.
 
-**Modo apresentador** (`P`): mostra o slide atual e o próximo, o cronômetro e o roteiro no formato “viagem no tempo”. Para cada slide há o ano em que a cena se passa, os lembretes de cada tópico, a fala, o texto de cada clique, a ligação com os dias de hoje, um complemento e a frase de transição. O mesmo roteiro está em `ROTEIRO.md`, dividido entre os quatro integrantes (tempo total estimado: 22:35).
+**Modo apresentador** (`P`): mostra o slide atual e o próximo, o cronômetro e o roteiro no formato “viagem no tempo”. Para cada slide há o ano em que a cena se passa, os lembretes de cada tópico, a fala, o texto de cada clique, a ligação com os dias de hoje, um complemento e a frase de transição. O mesmo roteiro está em `ROTEIRO.md`, dividido entre os cinco integrantes (tempo total estimado: 22:35).
 
 **Áudio:** nada toca sozinho. O painel tem uma trilha opcional sintetizada no navegador e aceita narrações gravadas pelo grupo (veja `assets/audio/narracao/LEIA-ME.md`).
 

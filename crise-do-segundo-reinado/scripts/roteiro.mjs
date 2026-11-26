@@ -17,9 +17,10 @@ const total = slides.reduce((sum, s) => sum + (NOTES[s.id]?.tempo || 0), 0);
 
 const groups = [
   ["Davi Matheus", ["capa", "estabilidade", "religiosa"]],
-  ["Juan Bento", ["militar", "abolicao", "lei-aurea"]],
-  ["Lucas Godoy", ["republicanismo", "isolamento", "articulacao"]],
-  ["Kaique", ["proclamacao", "conclusao", "referencias"]],
+  ["Juan Bento", ["militar", "abolicao"]],
+  ["Lucas Godoy", ["lei-aurea", "republicanismo"]],
+  ["Kaique", ["isolamento", "articulacao"]],
+  ["Pedro Lucas", ["proclamacao", "conclusao", "referencias"]],
 ];
 
 let out = `# Roteiro do apresentador — A Crise do Segundo Reinado (1840–1889), versão em 12 slides

@@ -16,10 +16,11 @@ const mmss = (s) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 const total = slides.reduce((sum, s) => sum + (NOTES[s.id]?.tempo || 0), 0);
 
 const groups = [
-  ["Davi Matheus", ["abertura", "imperio", "estabilidade", "transformacoes", "guerra"]],
-  ["Juan Bento", ["questoes", "religiosa", "bispos", "militar", "positivismo"]],
-  ["Lucas Godoy", ["abolicao", "lei-aurea", "cafeicultores", "republicanismo"]],
-  ["Kaique", ["isolamento", "proclamacao", "exilio", "conclusao"]],
+  ["Davi Matheus", ["abertura", "imperio", "estabilidade", "transformacoes"]],
+  ["Juan Bento", ["guerra", "questoes", "religiosa", "bispos"]],
+  ["Lucas Godoy", ["militar", "positivismo", "abolicao"]],
+  ["Kaique", ["lei-aurea", "cafeicultores", "republicanismo", "isolamento"]],
+  ["Pedro Lucas", ["proclamacao", "exilio", "conclusao"]],
 ];
 
 let out = `# Roteiro do apresentador — A Crise do Segundo Reinado (1840–1889)
