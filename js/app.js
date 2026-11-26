@@ -262,6 +262,7 @@
     applyStep(s, state.step, true, before);
     setChrome();
     syncHash();
+    hideHint();
   }
   // endereço com o slide e o tópico atual (#contexto/2): recarregar ou voltar do apresentador não perde a posição
   function syncHash() {

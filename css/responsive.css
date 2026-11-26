@@ -40,6 +40,8 @@
   }
   .slide::-webkit-scrollbar { display: none; }
   .slide > *:not(.layer):not(.smoke) { max-width: 100%; }
+  /* peças de ponta a ponta (margens negativas) passam da largura do texto até as bordas da tela */
+  .slide > .context-map:not(.layer), .slide > .pin-map:not(.layer), .slide > .human-photo:not(.layer), .slide > .tl-detail:not(.layer) { max-width: none; }
   .slide-head { max-width: none !important; }
   .slide-head h2, .map-panel h2, .human-copy h2 { overflow-wrap: break-word; hyphens: manual; }
   .lead { max-width: none; }
@@ -116,8 +118,9 @@
   }
   .nav-count { grid-area: count; gap: 3px; }
   .nav-count span:first-child { font-size: 15.5px; }
-  .nav-title { grid-area: text; max-width: none; margin: 0; font-size: 14.5px; }
+  .nav-title { grid-area: text; max-width: none; margin: 0; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .controls.has-steps .nav-title { display: none; }
+  .controls:not(.has-steps) .nav-title { grid-area: steps; font-size: 14px; }
   .nav-steps { grid-area: steps; margin: 0; }
   .nav-steps i { flex-basis: 12px; }
   .nav-step-text { grid-area: text; display: block; font-size: 12.5px; letter-spacing: 0; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -153,8 +156,10 @@
   .slide-context > * { flex-shrink: 0; }
   .slide-context .slide-head, .slide-context .topics { width: auto; }
   .slide-context .topics { order: 2; margin-top: 14px; }
-  .context-map { order: 1; position: relative !important; width: auto; margin: 14px calc(var(--pad-x) * -1) 0; height: clamp(200px, 58vw, 340px); -webkit-mask-image: none; mask-image: none; }
-  .context-map figcaption { left: 10px; bottom: 8px; font-size: 11.5px; }
+  .context-map { --safe-l: 0; order: 1; position: relative !important; width: auto; margin: 14px calc(var(--pad-x) * -1) 0; height: auto; -webkit-mask-image: none; mask-image: none; }
+  .context-map .map-mount { position: relative; height: clamp(200px, 58vw, 340px); }
+  /* a nota sai de cima do mapa e vira legenda logo abaixo dele */
+  .context-map figcaption { position: static; max-width: none; padding: 6px var(--pad-x) 0; font-size: 12.5px; color: var(--ink-mute); background: none; border-radius: 0; }
 
   /* 04 · Causas */
   .causes-board { grid-template-columns: 1fr; gap: 12px; }
@@ -216,7 +221,7 @@
   .map-panel > * { margin-left: var(--pad-x); margin-right: var(--pad-x); }
   .map-panel .kicker { order: 0; }
   .map-panel h2 { order: 0; font-size: var(--fs-h1); }
-  .campaign-map { order: 1; position: relative !important; width: auto; height: clamp(230px, 66vw, 380px); top: auto; bottom: auto; margin-top: 12px; -webkit-mask-image: none; mask-image: none; }
+  .campaign-map { --safe-r: 0; order: 1; position: relative !important; width: auto; height: clamp(230px, 66vw, 380px); top: auto; bottom: auto; margin-top: 12px; -webkit-mask-image: none; mask-image: none; }
   .phase-stack { order: 2; min-height: 132px; margin-top: 12px; }
   .phase-tabs { order: 3; margin-top: 4px; }
   .phase-tabs button { height: 44px; font-size: 15px; }
@@ -366,23 +371,18 @@
   .key-hint { left: calc((100vw - var(--rail)) / 2); bottom: 14px; flex-direction: column; gap: 2px; text-align: center; }
   .audio-panel { top: calc(env(safe-area-inset-top) + 8px); right: calc(var(--rail) + 8px); max-height: calc(100vh - 24px); }
   .toast { left: calc((100vw - var(--rail)) / 2); top: 12px; }
-  .map-paper .m-country-name, .map-dark .m-country-name { font-size: 12px; letter-spacing: .16em; }
-  .map-paper .m-river-name, .map-dark .m-river-name { font-size: 12px; }
-  .map-paper .m-city-name, .map-dark .m-city-name { font-size: 10px; }
-  .map-paper .m-sea-name, .map-dark .m-sea-name { font-size: 12.5px; }
-  .map-paper .m-route-label, .map-dark .m-route-label { font-size: 9.5px; }
-  .m-marker-label { font-size: 11px; }
-  .m-marker-date { font-size: 9.5px; }
-  .m-route-text { font-size: 9.5px; }
-  .m-region-name { font-size: 12px; }
+  .map-paper .m-country-name, .map-dark .m-country-name { letter-spacing: .16em; }
   .m-country-name, .m-river-name, .m-city-name, .m-sea-name, .m-route-label, .m-marker-label, .m-marker-date, .m-region-name { stroke-width: 3px; }
-  .m-povo-name { font-size: 14px; stroke-width: 4px; }
-  .m-povo.is-major .m-povo-name { font-size: 18px; }
+  .m-povo-name { stroke-width: 4px; }
   .tl-label time { font-size: 8.5px; }
   .tl-label strong { font-size: 10px; line-height: 1.05; }
   .tl-year span { font-size: 9px; }
   .tl-phase span { font-size: 8px; }
   .begin-keys { display: none; }
+  /* os botões ficam na coluna ao lado do palco: a nota do mapa pode ocupar mais largura */
+  .slide .alianca-map .map-note { max-width: calc(34 * var(--k)); }
+  .slide .pin-map figcaption { bottom: calc(1.2 * var(--k)); }
+  .slide .context-map figcaption { max-width: none; }
 }
 @media (orientation: landscape) and (max-height: 360px) {
   .icon-btn { width: 40px; height: 36px; }
@@ -398,6 +398,61 @@
   .m-marker .mk-hit { r: 22px; }
   .toast { line-height: 1.4; }
   .toast a { display: inline-block; margin-left: 4px; padding: 4px 0; text-decoration: underline; }
+}
+
+/* ---------- Palco 16:9 pequeno (celular deitado ou janela baixa): tudo cabe dentro do slide ---------- */
+@container (max-height: 440px) and (min-aspect-ratio: 3/2) {
+  /* palco pequeno: a fase e as datas já estão no painel ao lado; o carimbo cobriria pontos do mapa */
+  .phase-stamp { display: none; }
+  .map-panel { top: calc(4.4 * var(--k)); bottom: calc(2.6 * var(--k)); }
+  .map-panel h2 { font-size: calc(3.1 * var(--k)); }
+  .phase-tabs { margin-top: calc(.9 * var(--k)); }
+  .phase-stack { margin-top: calc(.9 * var(--k)); min-height: calc(15.5 * var(--k)); }
+  .phase h3 { font-size: calc(2.5 * var(--k)); }
+  .phase p { font-size: max(calc(2 * var(--k)), 11px); }
+  .map-legend { gap: calc(.25 * var(--k)) calc(.8 * var(--k)); padding-top: calc(.6 * var(--k)); line-height: 1.2; }
+  .map-note { margin-top: calc(.4 * var(--k)); }
+  .map-panel .ghost-btn { margin-top: calc(.6 * var(--k)); padding: calc(.45 * var(--k)) calc(.9 * var(--k)); }
+  .seq li { grid-template-columns: calc(13 * var(--k)) 1fr; }
+  .seq b { letter-spacing: .03em; }
+}
+@container (max-height: 345px) and (min-aspect-ratio: 3/2) {
+  /* o número do slide já aparece na coluna de controles */
+  .slide:not(.slide-opening) .kicker { display: none; }
+  .map-note, .map-panel .ghost-btn { display: none; }
+  .map-panel h2 { margin-top: 0; }
+  .inicio-copy .slide-head h2 { margin-top: 0; }
+  .opening-copy { top: calc(6.4 * var(--k)); }
+  .opening-title { font-size: calc(7.4 * var(--k)); }
+  .opening-dates { margin-top: calc(1.4 * var(--k)); }
+  .opening-sub { margin-top: calc(1.1 * var(--k)); }
+  .opening-roster { margin-top: calc(1.5 * var(--k)); padding-top: calc(.7 * var(--k)); }
+  .beats { margin-top: calc(1 * var(--k)); gap: calc(.3 * var(--k)); }
+  .beat { padding-top: calc(.35 * var(--k)); padding-bottom: calc(.4 * var(--k)); }
+}
+/* Palco médio (projetor 4:3, notebook pequeno, celular deitado): rótulos da linha do tempo em duas linhas */
+@container (max-width: 1100px) and (min-aspect-ratio: 3/2) {
+  .tl-label time { font-size: max(calc(.92 * var(--k)), 9px); }
+  .tl-label strong { font-size: max(calc(1.22 * var(--k)), 10.5px); }
+}
+/* Palco estreito: a cronologia vira uma lista rolável ao lado do quadro de detalhe */
+@container (max-width: 720px) and (min-aspect-ratio: 3/2) {
+  .timeline { flex-direction: row; gap: calc(2.4 * var(--k)); }
+  .tl-bigyear, .tl-track { display: none; }
+  .tl-detail { order: 1; flex: 0 0 46%; height: auto; margin: 0; padding: 0; border: 0; grid-template-columns: 1fr; grid-template-rows: minmax(0, 1fr) auto; gap: calc(.8 * var(--k)); }
+  .tl-detail-img { min-height: 0; }
+  .tl-detail-copy { align-self: start; max-width: none; }
+  .tl-detail-copy h3 { font-size: calc(2.7 * var(--k)); }
+  .tl-detail-copy p { font-size: max(calc(1.7 * var(--k)), 11px); }
+  .tl-stage { order: 2; flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: calc(.4 * var(--k)) calc(.6 * var(--k)) calc(.4 * var(--k)) calc(2.6 * var(--k)); scrollbar-width: thin; }
+  .tl-events { position: relative; inset: auto; display: grid; gap: calc(.7 * var(--k)); }
+  .tl-events::before { content: ""; position: absolute; left: calc(-1.5 * var(--k)); top: calc(.6 * var(--k)); bottom: calc(.6 * var(--k)); width: 2px; background: rgba(255, 255, 255, .8); }
+  .tl-event { position: relative; left: auto !important; top: auto; width: auto; height: auto; }
+  .tl-dot { left: calc(-1.5 * var(--k)); top: calc(2 * var(--k)); }
+  .tl-stem { display: none; }
+  .tl-label, .tl-event.is-up .tl-label, .tl-event.is-down .tl-label, .tl-event.is-flip .tl-label { position: relative; inset: auto; width: 100%; padding: calc(.5 * var(--k)) calc(.8 * var(--k)); text-align: left; border-left: 3px solid var(--gold); border-right: 0; border-radius: 0 6px 6px 0; transform: none; }
+  .tl-label strong { font-size: max(calc(1.9 * var(--k)), 11.5px); }
+  .tl-event.is-start .tl-label::before, .tl-event.is-end .tl-label::before { position: static; display: inline-block; margin: 0 6px 3px 0; }
 }
 
 @keyframes m-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }

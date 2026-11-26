@@ -38,9 +38,9 @@ body.pv {
 .pv-back svg { width: 22px; height: 22px; }
 .pv-back:hover, .pv-back:focus-visible { background: var(--gold); color: var(--dark); border-color: var(--gold); }
 .pv-where { flex: 1; min-width: 0; }
-.pv-num { display: flex; align-items: baseline; gap: 4px; font-family: var(--font-label); font-size: 13px; font-weight: 600; letter-spacing: .05em; color: var(--gold); }
+.pv-num { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 4px; font-family: var(--font-label); font-size: 13px; font-weight: 600; letter-spacing: .05em; color: var(--gold); }
 .pv-num i { font-style: normal; opacity: .7; }
-.pv-est { margin-left: 8px; font-weight: 500; letter-spacing: .02em; color: var(--ink-mute); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pv-est { margin-left: 8px; font-weight: 500; letter-spacing: .02em; color: var(--ink-mute); }
 .pv-where h1 { font-family: var(--font-display); font-size: 21px; font-weight: 700; line-height: 1.12; overflow-wrap: anywhere; }
 .pv-link { flex: none; display: flex; align-items: center; gap: 7px; padding: 6px 10px; font-family: var(--font-label); font-size: 13px; font-weight: 600; color: var(--ink-soft); background: rgba(255, 255, 255, .06); border-radius: 999px; }
 .pv-link i { width: 10px; height: 10px; border-radius: 50%; background: #ffad5c; box-shadow: 0 0 0 3px rgba(255, 173, 92, .2); }
@@ -74,9 +74,9 @@ body.pv {
 .pv-main { padding: 12px calc(env(safe-area-inset-right) + 14px) 8px calc(env(safe-area-inset-left) + 14px); }
 .pv-mode-note { margin-bottom: 12px; padding: 10px 12px; font-size: 14.5px; line-height: 1.45; color: #ffe2b8; background: rgba(255, 173, 92, .1); border: 1px solid rgba(255, 173, 92, .45); border-radius: 10px; }
 
-.pv-topics { display: flex; gap: 6px; margin: 0 -14px 12px; padding: 0 14px 4px; overflow-x: auto; scrollbar-width: none; counter-reset: tp; }
+.pv-topics { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; padding: 0; counter-reset: tp; }
 .pv-topics::-webkit-scrollbar { display: none; }
-.pv-topics li { counter-increment: tp; flex: none; display: flex; align-items: center; gap: 7px; max-width: 72vw; padding: 5px 11px 5px 5px; font-size: 14px; font-weight: 500; color: var(--ink-soft); background: rgba(255, 255, 255, .06); border: 1.5px solid rgba(255, 255, 255, .16); border-radius: 999px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pv-topics li { counter-increment: tp; flex: none; display: flex; align-items: center; gap: 7px; max-width: 72vw; padding: 5px 11px 5px 5px; font-size: 14px; font-weight: 500; color: var(--ink-soft); background: rgba(255, 255, 255, .06); border: 1.5px solid rgba(255, 255, 255, .16); border-radius: 18px; line-height: 1.25; }
 .pv-topics li::before { content: counter(tp); flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; font-size: 12.5px; font-weight: 700; color: #fff; background: rgba(255, 255, 255, .18); }
 .pv-topics li.is-done { color: var(--ink-mute); }
 .pv-topics li.is-done::before { content: "✓"; background: #2f8a4e; }
@@ -217,18 +217,16 @@ body.pv {
 
 /* Celular e tablet em retrato: cabeçalho compacto para sobrar espaço para a fala */
 @media (max-width: 999px) {
-  .pv-where h1 { font-size: 19px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .pv-where h1 { font-size: 19px; }
   .pv-speaker { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 10px; margin-top: 6px; padding: 6px 10px 6px 12px; }
   .pv-speaker-label { flex: none; letter-spacing: .08em; }
   .pv-speaker-name { flex: 0 1 auto; min-width: 0; font-size: 24px; }
-  .pv-speaker-what, .pv-speaker-next { flex-basis: 100%; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pv-speaker-what, .pv-speaker-next { flex-basis: 100%; margin-top: 1px; line-height: 1.3; }
   .pv-speaker-what { font-size: 13.5px; }
   .pv-speaker-next { font-size: 13px; }
   .pv-progress { margin-top: 6px; }
-  .pv-progress-text { flex-wrap: nowrap; font-size: 12.5px; }
-  .pv-progress-text span { min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .pv-progress-text span:first-child { flex: 0 1 auto; }
-  .pv-progress-next { flex: 1 1 0; }
+  .pv-progress-text { flex-wrap: wrap; font-size: 12.5px; }
+  .pv-progress-text span { min-width: 0; }
 }
 
 /* Telas muito estreitas (320 px) */
@@ -258,7 +256,7 @@ body.pv {
   .pv-back { padding: 0 8px; }
   .pv-link { padding: 8px; }
   .pv-where { display: flex; align-items: baseline; gap: 10px; }
-  .pv-where h1 { font-size: 18px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pv-where h1 { font-size: 17px; line-height: 1.15; }
   .pv-speaker { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 12px; margin-top: 5px; padding: 4px 10px; }
   .pv-speaker-label { font-size: 10.5px; }
   .pv-speaker-name { font-size: 21px; }

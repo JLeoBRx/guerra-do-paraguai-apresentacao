@@ -210,7 +210,7 @@
     paint(sp, cur.quem);
     sp.classList.toggle("is-pending", cur.quem === PEND);
     $("#pvSpeakerName").textContent = cur.quem;
-    $("#pvSpeakerWhat").textContent = shortLabel(cur) + " · ≈ " + Math.max(1, Math.round(segSeconds(cur.texto))) + " s" + (n.pendente ? " · slides " + joinNames(pendSlides.map(String)) + " pendentes de distribuição" : "");
+    $("#pvSpeakerWhat").textContent = shortLabel(cur) + " · ≈ " + Math.max(1, Math.round(segSeconds(cur.texto))) + " s" + (n.pendente ? " · pendente de distribuição" : "");
     var nextSeg = segs[S.cursor + 1], nextTxt;
     if (nextSeg) nextTxt = "Depois: " + nextSeg.quem + " · " + shortLabel(nextSeg);
     else if (i < N - 1) nextTxt = "Depois: " + segsOf(i + 1)[0].quem + " · slide " + (i + 2);

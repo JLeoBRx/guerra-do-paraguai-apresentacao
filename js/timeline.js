@@ -147,6 +147,40 @@
       el.style.width = ((b - a) * 100).toFixed(2) + "%";
       GP.el("span", "", el).textContent = ph.label;
     });
+    this.placePhaseNames();
+  };
+  // Nomes das fases (Ofensiva paraguaia, Invasão e Humaitá, Avanço final) nunca embaixo de um rótulo
+  Timeline.prototype.placePhaseNames = function () {
+    var labs = this.events.map(function (e) { return e.li.querySelector(".tl-label"); });
+    Array.prototype.forEach.call(this.root.querySelectorAll(".tl-phase"), function (band) {
+      var sp = band.querySelector("span");
+      if (!sp || !band.offsetWidth) return;
+      sp.style.left = "";
+      var hits = function () {
+        var r = sp.getBoundingClientRect();
+        return labs.filter(function (l) { var q = l.getBoundingClientRect(); return q.width && q.left < r.right + 4 && q.right > r.left - 4 && q.top < r.bottom + 2 && q.bottom > r.top - 2; });
+      };
+      sp.style.top = ""; sp.style.bottom = ""; sp.style.visibility = "";
+      var h = hits();
+      if (!h.length) return;
+      var b = band.getBoundingClientRect(), sc = b.width / band.offsetWidth || 1, w = sp.getBoundingClientRect().width / sc;
+      var right = (Math.max.apply(null, h.map(function (l) { return l.getBoundingClientRect().right; })) - b.left) / sc + 8;
+      var left = (Math.min.apply(null, h.map(function (l) { return l.getBoundingClientRect().left; })) - b.left) / sc - w - 8;
+      var bw = band.offsetWidth;
+      // posições de reserva: à direita ou à esquerda de quem atrapalha, ou embaixo da faixa
+      var tries = [[right, ""], [left, ""], ["", "low"], [bw - w - 6, "low"]];
+      for (var i = 0; i < tries.length; i++) {
+        var x = tries[i][0];
+        if (x !== "" && (x < 4 || x + w > bw - 4)) continue;
+        sp.style.left = x === "" ? "" : x + "px";
+        sp.style.top = tries[i][1] ? "auto" : "";
+        sp.style.bottom = tries[i][1] ? "2px" : "";
+        if (!hits().length) return;
+      }
+      // sem lugar livre: o nome some em vez de ficar por baixo de um rótulo
+      sp.style.left = ""; sp.style.top = ""; sp.style.bottom = "";
+      sp.style.visibility = "hidden";
+    });
   };
 
   Timeline.prototype.reveal = function () {
@@ -220,6 +254,11 @@
     var big = this.root.querySelector(".tl-bigyear span");
     if (big && GP.countTo) GP.countTo(big, new Date(ev.t).getUTCFullYear(), animate);
     copy.querySelector("h3").innerHTML = ev.title;
+    // lista vertical (palco estreito): o acontecimento escolhido fica à vista
+    if (getComputedStyle(this.stage).overflowY === "auto") {
+      var st = this.stage, d = ev.li.getBoundingClientRect().top - st.getBoundingClientRect().top + st.scrollTop;
+      st.scrollTo({ top: Math.max(0, d - st.clientHeight / 2 + ev.li.offsetHeight / 2), behavior: animate && !GP.reduced() ? "smooth" : "auto" });
+    }
     copy.querySelector("p").innerHTML = ev.text;
     if (animate && !GP.reduced()) {
       [fig, copy].forEach(function (el) {

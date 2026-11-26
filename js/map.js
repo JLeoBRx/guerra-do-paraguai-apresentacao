@@ -96,7 +96,15 @@
     this.vb = null;
     this.ro = new ResizeObserver(function () { self.resize(); });
     this.ro.observe(mount);
+    VIEWS.push(this);
   }
+  // Depois de cada troca de slide (o título nos botões muda de largura), os nomes do mapa visível se reajustam.
+  var VIEWS = [];
+  document.addEventListener("gp:change", function () {
+    requestAnimationFrame(function () {
+      VIEWS.forEach(function (v) { if (!v.moving && v.mount.closest(".slide.is-current")) v.fitLabels(); });
+    });
+  });
   MapView.prototype.anchor = function (lon, lat, cls, phase) {
     var g = GP.svg("g", { "class": cls || "" }, this.over);
     var a = { p: P(lon, lat), g: g, phase: phase };
@@ -119,22 +127,25 @@
   };
   MapView.prototype.resize = function () {
     if (!this.cam) return;
-    this.set(this.fit(this.cam));
+    this.set(this.fit(this.cam), true);
   };
   MapView.prototype.camera = function (bb, animate, duration) {
     this.cam = bb;
     var to = this.fit(bb), from = this.vb, self = this;
     cancelAnimationFrame(this.raf);
-    if (!animate || !from || GP.reduced()) return this.set(to);
+    this.moving = false;
+    if (!animate || !from || GP.reduced()) return this.set(to, true);
     var t0 = performance.now(), dur = duration || 1500;
+    this.moving = true;
     var step = function (now) {
       var t = Math.min(1, (now - t0) / dur), e = ease(t);
-      self.set({ x: from.x + (to.x - from.x) * e, y: from.y + (to.y - from.y) * e, w: from.w + (to.w - from.w) * e, h: from.h + (to.h - from.h) * e });
+      if (t >= 1) self.moving = false;
+      self.set({ x: from.x + (to.x - from.x) * e, y: from.y + (to.y - from.y) * e, w: from.w + (to.w - from.w) * e, h: from.h + (to.h - from.h) * e }, t >= 1);
       if (t < 1) self.raf = requestAnimationFrame(step);
     };
     this.raf = requestAnimationFrame(step);
   };
-  MapView.prototype.set = function (vb) {
+  MapView.prototype.set = function (vb, final) {
     this.vb = vb;
     this.base.setAttribute("viewBox", [vb.x, vb.y, vb.w, vb.h].map(function (n) { return n.toFixed(2); }).join(" "));
     var s = this.size();
@@ -148,6 +159,204 @@
       a.g.setAttribute("transform", "translate(" + q[0].toFixed(1) + " " + q[1].toFixed(1) + ")");
     }, this);
     if (this.onSet) this.onSet();
+    if (final) this.fitLabels();
+  };
+  // Rótulos sempre inteiros e sem encostar uns nos outros.
+  // 1) Pontos (cidades, batalhas, povos): cada nome procura a primeira posição inteira e livre —
+  //    lado original, lado oposto, acima, abaixo, nas diagonais e, por fim, com pequenos deslocamentos;
+  //    se nenhuma couber, entra para dentro da borda.
+  // 2) Contexto, por prioridade (países, rios, regiões, mares, rotas): some se ficaria cortado na borda,
+  //    sob a máscara lateral ou a legenda (--safe-l, --safe-r, --safe-b), ou em cima de outro nome.
+  // Nenhum nome fica embaixo das caixas sobre o mapa (nota, carimbo de datas, legenda) nem dos botões
+  // fixos da apresentação; se o próprio ponto estiver coberto, o nome dele também sai.
+  // Textos inclinados (rios) são tratados pela forma real, não pela caixa retangular.
+  function polyOf(t, q) {
+    var bb;
+    try { bb = t.getBBox(); } catch (e) { return null; }
+    if (!bb || (!bb.width && !bb.height)) return null;
+    var m = /rotate\(\s*(-?[\d.]+)/.exec(t.getAttribute("transform") || ""), a = m ? Number(m[1]) * Math.PI / 180 : 0;
+    var c = Math.cos(a), s = Math.sin(a);
+    return [[bb.x, bb.y], [bb.x + bb.width, bb.y], [bb.x + bb.width, bb.y + bb.height], [bb.x, bb.y + bb.height]].map(function (p) {
+      return [q[0] + p[0] * c - p[1] * s, q[1] + p[0] * s + p[1] * c];
+    });
+  }
+  function polysHit(A, B, gap) {
+    var axes = [A, B];
+    for (var i = 0; i < 2; i++) {
+      var P = axes[i];
+      for (var j = 0; j < P.length; j++) {
+        var p1 = P[j], p2 = P[(j + 1) % P.length], nx = p2[1] - p1[1], ny = p1[0] - p2[0], len = Math.sqrt(nx * nx + ny * ny) || 1;
+        nx /= len; ny /= len;
+        var a0 = Infinity, a1 = -Infinity, b0 = Infinity, b1 = -Infinity;
+        A.forEach(function (p) { var d = p[0] * nx + p[1] * ny; a0 = Math.min(a0, d); a1 = Math.max(a1, d); });
+        B.forEach(function (p) { var d = p[0] * nx + p[1] * ny; b0 = Math.min(b0, d); b1 = Math.max(b1, d); });
+        if (a1 + gap < b0 || b1 + gap < a0) return false;
+      }
+    }
+    return true;
+  }
+  var LABEL_RANK = ["m-country-name", "m-river-name", "m-region-name", "m-sea-name", "m-route-label", "m-route-text"];
+  // Caixas de HTML por cima do mapa (nota, carimbo de datas, legenda): nenhum nome fica embaixo delas.
+  // Medidas pela posição de layout, sem as transformações das animações de entrada.
+  var COVER_SEL = ".map-note, .phase-stamp, figcaption, [data-map-cover]";
+  MapView.prototype.covers = function (s) {
+    var mount = this.mount, host = mount.parentNode, out = [], mr = null;
+    if (!host) return out;
+    Array.prototype.forEach.call(host.children, function (el) {
+      if (el === mount || el.hidden || !el.matches(COVER_SEL)) return;
+      var st = getComputedStyle(el);
+      if (st.display === "none" || st.visibility === "hidden") return;
+      var l, t, w, h;
+      if (el.offsetParent && el.offsetParent === mount.offsetParent) {
+        l = el.offsetLeft - mount.offsetLeft; t = el.offsetTop - mount.offsetTop; w = el.offsetWidth; h = el.offsetHeight;
+      } else {
+        mr = mr || mount.getBoundingClientRect();
+        var r = el.getBoundingClientRect(), kx = mr.width / s.w || 1, ky = mr.height / s.h || 1;
+        l = (r.left - mr.left) / kx; t = (r.top - mr.top) / ky; w = r.width / kx; h = r.height / ky;
+      }
+      if (w < 1 || h < 1 || l + w <= 0 || t + h <= 0 || l >= s.w || t >= s.h) return;
+      out.push([[l - 3, t - 3], [l + w + 3, t - 3], [l + w + 3, t + h + 3], [l - 3, t + h + 3]]);
+    });
+    return out;
+  };
+  // Botões fixos sobre o palco 16:9 (controles no canto, barra do topo): os nomes também desviam deles.
+  // A posição do mapa no palco vem do layout, sem as transformações das transições de slide.
+  var UI_SEL = "#controls, .topbar-actions, .topbar .brand";
+  MapView.prototype.uiCovers = function (s) {
+    var deck = document.getElementById("deck"), out = [], x = 0, y = 0, e = this.mount;
+    if (!deck) return out;
+    while (e && e !== deck) {
+      // conteúdo que rola entre as barras (celular em pé): os botões não ficam parados sobre o mapa
+      if (/(auto|scroll)/.test(getComputedStyle(e).overflowY)) return out;
+      x += e.offsetLeft; y += e.offsetTop;
+      e = e.offsetParent;
+    }
+    if (e !== deck) return out;
+    var dr = deck.getBoundingClientRect();
+    x += dr.left + deck.clientLeft; y += dr.top + deck.clientTop;
+    Array.prototype.forEach.call(document.querySelectorAll(UI_SEL), function (el) {
+      var st = getComputedStyle(el);
+      if (st.display === "none" || st.visibility === "hidden" || el.offsetWidth < 1) return;
+      var r = el.getBoundingClientRect(), l = r.left - x, t = r.top - y, R = r.right - x, B = r.bottom - y;
+      if (R <= 0 || B <= 0 || l >= s.w || t >= s.h) return;
+      out.push([[l - 6, t - 6], [R + 6, t - 6], [R + 6, B + 6], [l - 6, B + 6]]);
+    });
+    return out;
+  };
+  MapView.prototype.fitLabels = function () {
+    var s = this.size();
+    if (!this.toScreen || s.w < 2 || s.h < 2) return;
+    var cs = getComputedStyle(this.mount);
+    var num = function (k) { return parseFloat(cs.getPropertyValue(k)) || 0; };
+    var box = { l: s.w * num("--safe-l"), r: s.w * (1 - num("--safe-r")), t: 0, b: s.h * (1 - num("--safe-b")) };
+    var self = this, placed = [], covers = this.covers(s).concat(this.uiCovers(s));
+    var polys = function (a, texts) {
+      var q = self.toScreen(a.p), out = [];
+      texts.forEach(function (t) { var P = polyOf(t, q); if (P) out.push(P); });
+      return out;
+    };
+    var inBox = function (ps) { return ps.every(function (P) { return P.every(function (p) { return p[0] >= box.l && p[0] <= box.r && p[1] >= box.t && p[1] <= box.b; }); }); };
+    var uncovered = function (ps) { return ps.every(function (P) { return !covers.some(function (Q) { return polysHit(P, Q, 0); }); }); };
+    var inside = function (ps) { return inBox(ps) && uncovered(ps); };
+    // ponto escondido sob uma caixa: o nome também sai, para não apontar para o nada
+    var pointCovered = function (a) {
+      var q = self.toScreen(a.p);
+      return covers.some(function (Q) { return q[0] > Q[0][0] + 3 && q[0] < Q[1][0] - 3 && q[1] > Q[0][1] + 3 && q[1] < Q[2][1] - 3; });
+    };
+    var free = function (ps) { return ps.every(function (P) { return !placed.some(function (Q) { return polysHit(P, Q, 2); }); }); };
+    // visível agora ou no fim da transição (pelas classes, sem interromper animações)
+    var shown = function (g) {
+      var c = g.classList;
+      if (c.contains("m-modern")) return false;
+      if (c.contains("sc-item") || c.contains("m-phase")) return c.contains("is-now") || (c.contains("is-past") && !c.contains("m-route-tag"));
+      return true;
+    };
+    var points = [], context = [];
+    this.anchors.forEach(function (a) {
+      var texts = Array.prototype.slice.call(a.g.querySelectorAll("text"));
+      if (!texts.length) return;
+      a.texts = texts;
+      if (a.g.classList.contains("m-marker") || a.g.classList.contains("m-povo") || a.g.querySelector("circle, rect")) points.push(a);
+      else context.push(a);
+    });
+    // 1) pontos: encaixe em rodadas — na primeira, cada nome pega a primeira posição inteira e livre;
+    //    nas seguintes, quem ainda encosta em alguém tenta de novo, agora vendo todos os outros
+    //    posições: os 8 lados do ponto e, se nenhum servir, os mesmos lados com pequenos deslocamentos
+    var MODES = ["orig", "mirror", "above", "below", "upRight", "upLeft", "downRight", "downLeft"];
+    var CANDS = MODES.map(function (m) { return [m, 0, 0]; });
+    [-10, 10, -20, 20].forEach(function (d) { ["orig", "mirror"].forEach(function (m) { CANDS.push([m, 0, d]); }); });
+    [-16, 16, -32, 32].forEach(function (d) { ["above", "below"].forEach(function (m) { CANDS.push([m, d, 0]); }); });
+    var entries = points.map(function (a) {
+      a.texts.forEach(function (t) {
+        if (!t.dataset.ax) { t.dataset.ax = t.getAttribute("x") || "0"; t.dataset.ay = t.getAttribute("y") || "0"; t.dataset.an = t.getAttribute("text-anchor") || "start"; }
+        t.classList.remove("m-clipped");
+      });
+      return { a: a, vis: shown(a.g), mode: null, dx: 0, dy: 0, ps: [], hidden: false };
+    });
+    var apply = function (e, mode, dx, dy) {
+      var texts = e.a.texts;
+      texts.forEach(function (t, i) {
+        var x = Number(t.dataset.ax), y = Number(t.dataset.ay), an = t.dataset.an;
+        if (mode === "mirror" && an !== "middle") { x = -x; an = an === "start" ? "end" : "start"; }
+        else if (mode === "above") { an = "middle"; x = 0; y = -14 - (texts.length - 1 - i) * 14; }
+        else if (mode === "below") { an = "middle"; x = 0; y = 24 + i * 14; }
+        else if (mode === "upRight" || mode === "upLeft") { an = mode === "upRight" ? "start" : "end"; x = mode === "upRight" ? 12 : -12; y = -8 - (texts.length - 1 - i) * 14; }
+        else if (mode === "downRight" || mode === "downLeft") { an = mode === "downRight" ? "start" : "end"; x = mode === "downRight" ? 12 : -12; y = 18 + i * 14; }
+        t.setAttribute("x", String(x + (dx || 0)));
+        t.setAttribute("y", String(y + (dy || 0)));
+        t.setAttribute("text-anchor", an);
+      });
+      return polys(e.a, texts);
+    };
+    var clear = function (ps, obstacles) { return ps.every(function (P) { return !obstacles.some(function (Q) { return polysHit(P, Q, 2); }); }); };
+    for (var round = 0; round < 4; round++) {
+      var changed = false;
+      entries.forEach(function (e) {
+        var obstacles = [];
+        entries.forEach(function (o) { if (o !== e && o.vis && !o.hidden) Array.prototype.push.apply(obstacles, o.ps); });
+        if (round > 0 && e.mode && clear(e.ps, obstacles)) return;
+        var chosen = null, firstInside = null;
+        for (var i = 0; i < CANDS.length; i++) {
+          var c = CANDS[i], ps = apply(e, c[0], c[1], c[2]);
+          if (!ps.length) return;
+          if (inside(ps)) {
+            if (!firstInside) firstInside = c;
+            if (clear(ps, obstacles)) { chosen = c; break; }
+          }
+        }
+        var pick = chosen || (round === 0 || !e.mode ? firstInside : [e.mode, e.dx, e.dy]);
+        var mode = pick ? pick[0] : null, dx = pick ? pick[1] : 0, dy = pick ? pick[2] : 0;
+        if (!mode) {
+          var b0 = apply(e, "orig"), xs = [], ys = [];
+          b0.forEach(function (P) { P.forEach(function (q) { xs.push(q[0]); ys.push(q[1]); }); });
+          dx = Math.max(box.l - Math.min.apply(null, xs), 0) - Math.max(Math.max.apply(null, xs) - box.r, 0);
+          dy = Math.max(box.t - Math.min.apply(null, ys), 0) - Math.max(Math.max.apply(null, ys) - box.b, 0);
+          mode = "orig";
+        }
+        if (mode !== e.mode || dx !== e.dx || dy !== e.dy) changed = true;
+        e.mode = mode; e.dx = dx; e.dy = dy;
+        e.ps = apply(e, mode, dx, dy);
+        e.hidden = !inside(e.ps) || pointCovered(e.a);
+      });
+      if (!changed) break;
+    }
+    entries.forEach(function (e) {
+      e.a.texts.forEach(function (t) { t.classList.toggle("m-clipped", e.hidden); });
+      if (!e.hidden && e.vis) Array.prototype.push.apply(placed, e.ps);
+    });
+    // 2) contexto, por prioridade
+    var rank = function (a) {
+      for (var i = 0; i < LABEL_RANK.length; i++) if (a.g.querySelector("." + LABEL_RANK[i])) return i;
+      return LABEL_RANK.length;
+    };
+    context.map(function (a, i) { return { a: a, k: rank(a) * 1000 + i }; }).sort(function (x, y) { return x.k - y.k; }).forEach(function (o) {
+      var a = o.a;
+      a.g.classList.remove("m-clipped");
+      var ps = polys(a, a.texts);
+      if (!ps.length) return;
+      if (!inside(ps) || (shown(a.g) && !free(ps))) { a.g.classList.add("m-clipped"); return; }
+      if (shown(a.g)) Array.prototype.push.apply(placed, ps);
+    });
   };
 
   /* Texto e marcadores na camada em pixels */
@@ -170,7 +379,7 @@
     mp.style.setProperty("--dur", "3.2s");
     GP.svg("path", { d: toD(route), "class": "m-route", mask: "url(#" + id + ")" }, mv.extra);
     // Nomes de países e mares
-    [["Brasil", -50.5, -19.5], ["Argentina", -63.2, -30.2], ["Paraguai", -60.5, -22.7], ["Uruguai", -55.4, -33.2], ["Bolívia", -63.5, -17.4]].forEach(function (c, i) {
+    [["Brasil", -50.5, -19.5], ["Argentina", -62.6, -30.4], ["Paraguai", -60.5, -22.7], ["Uruguai", -55.4, -33.2], ["Bolívia", -63.5, -17.4]].forEach(function (c, i) {
       var a = mv.anchor(c[1], c[2], "m-fade");
       a.g.style.setProperty("--delay", (.8 + i * .12) + "s");
       text(a.g, c[0], { "class": "m-country-name", "text-anchor": "middle" });
@@ -646,8 +855,9 @@
     var show = function (i, animate) {
       var b = BATTLES[i];
       marks.forEach(function (m, k) { m.g.classList.toggle("is-now", k === i); });
-      mv.camera([b.lon - 1.35, b.lat + .95, b.lon + 1.35, b.lat - .95], animate);
+      // legenda antes da câmera: os nomes do mapa se ajustam ao tamanho dela
       if (cap) cap.textContent = b.where;
+      mv.camera([b.lon - 1.35, b.lat + .95, b.lon + 1.35, b.lat - .95], animate);
     };
     show(0, false);
     slide.addEventListener("gp:step", function (e) { show(e.detail.step, e.detail.animate); });
@@ -673,9 +883,9 @@
   var POVOS = [
     ["Guarani", -55.2, -25.9, "tg", 4.2, 4.4, 1],
     ["Tupinambá", -42.4, -21.4, "tg", 1.6, 3.2, -1],
-    ["Guaicuru", -57.9, -20.6, "gk", 1.5, 1.9, -1],
+    ["Guaicuru", -57.9, -20.6, "gk", 1.5, 1.9, 0],
     ["Terena", -55.6, -20.3, "ak", 1.2, 1.3, 1],
-    ["Qom", -60.7, -24.9, "gk", 2.4, 2.3, -1],
+    ["Qom", -60.7, -24.9, "gk", 2.4, 2.3, 1],
     ["Kaingang", -51.4, -27.4, "je", 2.3, 2.1, 1],
     ["Charrua", -56.6, -32.3, "ch", 2.2, 1.7, 1]
   ];
@@ -706,7 +916,7 @@
       var a = mv.anchor(p[1], p[2], "m-fade m-povo fam-" + p[3] + (i === 0 ? " is-major" : ""));
       a.g.style.setProperty("--delay", (2.8 + i * .22) + "s");
       GP.svg("circle", { r: 4, "class": "m-povo-dot" }, a.g);
-      text(a.g, p[0], { "class": "m-povo-name", x: p[6] * 10, y: 6, "text-anchor": p[6] > 0 ? "start" : "end" });
+      text(a.g, p[0], { "class": "m-povo-name", x: p[6] * 10, y: p[6] ? 6 : -12, "text-anchor": p[6] > 0 ? "start" : p[6] < 0 ? "end" : "middle" });
     });
     var CAM = [-64.5, -19, -39.5, -39.5];
     mv.camera(CAM);

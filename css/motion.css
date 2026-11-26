@@ -140,8 +140,8 @@
 .js .slide.in [data-anim="mask"] img, .js .slide.in [data-anim="mask-up"] img { transform: none; transition-delay: calc(.18s + var(--d, 0) * 85ms); }
 
 /* Palavras e letras (divididas pelo JS) */
-.w { display: inline-block; overflow: hidden; vertical-align: top; padding: .12em .02em .1em; margin: -.12em -.02em -.1em; }
-.wi { display: inline-block; transform: translate3d(0, 112%, 0) rotate(4deg); transform-origin: 0 100%; }
+.w { display: inline-block; overflow: hidden; vertical-align: top; padding: .28em .04em .3em; margin: -.28em -.04em -.3em; }
+.wi { display: inline-block; transform: translate3d(0, 140%, 0) rotate(4deg); transform-origin: 0 100%; }
 .c { display: inline-block; transform: translate3d(0, 105%, 0); opacity: 0; }
 .js .slide.in .wi,
 .js .slide.in .c {
@@ -224,4 +224,6 @@
   .slide.in .m-fade, .slide.in .m-draw { transition-delay: 0s !important; transition-duration: .3s !important; }
   .js .slide [data-at] { transform: none !important; transition: opacity .3s !important; }
   .js .slide [data-at].is-now > * { animation: none !important; }
+  .js .slide-alianca.treaty-on .allies[data-anim] { opacity: 0 !important; }
+  .phase-stamp.is-swap, .tl-detail-copy.is-swapping, .tl-detail-img.is-swapping img { animation: none !important; }
 }

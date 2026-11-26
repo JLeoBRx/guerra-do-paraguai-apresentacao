@@ -304,7 +304,7 @@
 .nav-count { display: flex; align-items: baseline; gap: 6px; font-family: var(--font-label); font-size: 13px; font-weight: 600; letter-spacing: .06em; color: var(--gold); }
 .nav-count span:first-child { font-size: 17px; color: #fff; }
 .nav-count i { font-style: normal; opacity: .5; }
-.nav-title { margin-top: 2px; font-family: var(--font-display); font-size: 16px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 220px; }
+.nav-title { margin-top: 2px; font-family: var(--font-display); font-size: 16px; font-weight: 600; line-height: 1.15; color: #fff; max-width: 230px; overflow-wrap: break-word; }
 .nav-steps { display: flex; gap: 4px; margin-top: 4px; height: 4px; }
 .nav-steps i { flex: 0 0 14px; background: rgba(255, 255, 255, .22); border-radius: 2px; transition: background .3s; }
 .nav-steps i.on { background: var(--gold); }

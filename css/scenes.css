@@ -33,13 +33,15 @@
 @keyframes region-pulse { from { fill-opacity: .55; } to { fill-opacity: 1; } }
 .m-river-glow { fill: none; stroke: rgba(255, 201, 77, .7); stroke-width: calc(6px * var(--sw, 1)); stroke-linecap: round; stroke-linejoin: round; }
 .m-triangle { fill: none; stroke: var(--gold); stroke-width: calc(2.8px * var(--sw, 1)); stroke-linejoin: round; }
-.m-region-name { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 18px; letter-spacing: .02em; fill: #ffb0b0; }
+.m-region-name { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: max(1.12cqw, 11px); letter-spacing: .02em; fill: #ffb0b0; }
 .slide.in .scene-map .sc-item.is-now .mk-pulse { animation: pulse-ring 2.4s var(--ease-out) infinite; }
-.scene-map .map-note { position: absolute; left: calc(9 * var(--k)); bottom: calc(1.4 * var(--k)); z-index: 3; max-width: calc(34 * var(--k)); padding: calc(.35 * var(--k)) calc(.7 * var(--k)); font-family: var(--font-label); font-size: var(--fs-label); line-height: 1.3; color: #fff; background: rgba(4, 9, 26, .65); border-radius: calc(.3 * var(--k)); pointer-events: none; }
+.scene-map .map-note { position: absolute; left: calc(9 * var(--k)); bottom: calc(1.4 * var(--k)); z-index: 3; max-width: calc(20 * var(--k)); padding: calc(.35 * var(--k)) calc(.7 * var(--k)); font-family: var(--font-label); font-size: var(--fs-label); line-height: 1.3; color: #fff; background: rgba(4, 9, 26, .65); border-radius: calc(.3 * var(--k)); pointer-events: none; }
 
 /* ---------- 06 · Início do conflito ---------- */
 .slide-inicio { padding: 0; }
-.inicio-map { position: absolute !important; top: 0; right: 0; bottom: 0; width: calc(58 * var(--k)); overflow: hidden; background: #08142e; -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%); mask-image: linear-gradient(90deg, transparent, #000 15%); }
+.inicio-map { --safe-l: .1; position: absolute !important; top: 0; right: 0; bottom: 0; width: calc(58 * var(--k)); overflow: hidden; background: #08142e; -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%); mask-image: linear-gradient(90deg, transparent, #000 15%); }
+/* nota no alto: embaixo ficam os botões da apresentação e os pontos do sul (Montevidéu) */
+.inicio-map .map-note { top: calc(1.4 * var(--k)); bottom: auto; }
 .inicio-copy { position: absolute !important; left: var(--pad-x); top: calc(5.6 * var(--k)); bottom: calc(2 * var(--k)); width: calc(40 * var(--k)); display: flex; flex-direction: column; }
 .inicio-copy h2 { font-size: calc(4 * var(--k)); }
 .beats { margin-top: calc(1.6 * var(--k)); display: grid; gap: calc(.5 * var(--k)); }
@@ -65,7 +67,7 @@
 
 /* ---------- 07 · Tríplice Aliança ---------- */
 .slide-alianca { padding: 0; }
-.alianca-map { position: absolute !important; top: 0; right: 0; bottom: 0; width: calc(56 * var(--k)); overflow: hidden; background: #08142e; -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%); mask-image: linear-gradient(90deg, transparent, #000 15%); }
+.alianca-map { --safe-l: .1; position: absolute !important; top: 0; right: 0; bottom: 0; width: calc(56 * var(--k)); overflow: hidden; background: #08142e; -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%); mask-image: linear-gradient(90deg, transparent, #000 15%); }
 .alianca-copy { position: absolute !important; left: var(--pad-x); top: calc(5.6 * var(--k)); width: calc(40 * var(--k)); }
 .allies { margin-top: calc(1.6 * var(--k)); display: grid; gap: calc(.7 * var(--k)); transition: opacity .8s; }
 .ally {
@@ -114,11 +116,11 @@
 
 /* ---------- 10 · Batalhas: ano, localizador e sequência ---------- */
 .reel-year { position: absolute; left: calc(1 * var(--k)); top: calc(1 * var(--k)); z-index: 4; pointer-events: none; padding: calc(.2 * var(--k)) calc(.8 * var(--k)); font-family: var(--font-display); font-size: calc(3.6 * var(--k)); font-weight: 700; line-height: 1.05; color: var(--dark); background: var(--gold); border-radius: calc(.4 * var(--k)); font-variant-numeric: lining-nums; }
-.locator { position: absolute; right: calc(1 * var(--k)); top: calc(1 * var(--k)); z-index: 4; width: calc(15 * var(--k)); height: calc(11 * var(--k)); overflow: hidden; background: #08142e; border: 1.5px solid rgba(255, 255, 255, .6); border-radius: calc(.5 * var(--k)); box-shadow: 0 calc(.6 * var(--k)) calc(1.6 * var(--k)) rgba(0, 0, 0, .5); }
+.locator { --safe-b: .24; position: absolute; right: calc(1 * var(--k)); top: calc(1 * var(--k)); z-index: 4; width: calc(15 * var(--k)); height: calc(11 * var(--k)); overflow: hidden; background: #08142e; border: 1.5px solid rgba(255, 255, 255, .6); border-radius: calc(.5 * var(--k)); box-shadow: 0 calc(.6 * var(--k)) calc(1.6 * var(--k)) rgba(0, 0, 0, .5); }
 .locator-mount { position: absolute; inset: 0; }
 .locator figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: calc(.2 * var(--k)) calc(.5 * var(--k)); font-family: var(--font-label); font-size: max(calc(.85 * var(--k)), 10px); font-weight: 600; line-height: 1.25; color: var(--dark); background: var(--gold); }
-.locator .m-country-name.small { font-size: 11px; letter-spacing: .16em; }
-.locator .m-marker-label { font-size: 12px; }
+.locator .m-country-name.small { font-size: max(.69cqw, 8.5px); letter-spacing: .16em; }
+.locator .m-marker-label { font-size: max(.75cqw, 9px); }
 .loc-mark { opacity: 0; transition: opacity .5s; }
 .loc-mark.is-now { opacity: 1; }
 .loc-mark.is-now .mk-pulse { animation: pulse-ring 2s var(--ease-out) infinite; }
@@ -279,14 +281,14 @@
 .slide-pindorama .slide-head, .slide-pindorama .topics { width: calc(48 * var(--k)); max-width: none; }
 .pin-thumb { width: calc(6 * var(--k)); height: calc(6.6 * var(--k)); }
 .pin-thumb img { object-position: 50% 20%; }
-.pin-map { position: absolute !important; top: 0; right: 0; bottom: 0; width: calc(49 * var(--k)); margin: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 13%); mask-image: linear-gradient(90deg, transparent, #000 13%); }
+.pin-map { --safe-l: .09; position: absolute !important; top: 0; right: 0; bottom: 0; width: calc(49 * var(--k)); margin: 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 13%); mask-image: linear-gradient(90deg, transparent, #000 13%); }
 .pin-map .map-mount { position: absolute; inset: 0; overflow: hidden; }
 .pin-map.map-dark .m-sea { fill: #061a2c; }
 .pin-map.map-dark .m-land, .pin-map.map-dark .m-land.is-key, .pin-map.map-dark .m-land.is-py { fill: #10302f; stroke: #10302f; stroke-width: calc(.8px * var(--sw, 1)); }
 .pin-map.map-dark .m-river { stroke: rgba(95, 182, 255, .8); }
 .pin-map.map-dark .m-river.is-main { stroke: #8fd0ff; }
 .pin-map .m-border { fill: none; stroke: rgba(255, 255, 255, .85); stroke-width: calc(1.5px * var(--sw, 1)); stroke-dasharray: calc(6px * var(--sw, 1)) calc(4px * var(--sw, 1)); }
-.pin-map .m-country-name { fill: rgba(255, 255, 255, .8); font-size: 17px; }
+.pin-map .m-country-name { fill: rgba(255, 255, 255, .8); font-size: max(1.06cqw, 10.5px); }
 .pin-map .m-modern { opacity: 0; }
 .slide-pindorama.in .pin-map .m-modern { animation: pin-modern 3.6s var(--ease-in-out) .3s both; }
 @keyframes pin-modern { 0% { opacity: 0; } 20% { opacity: 1; } 52% { opacity: 1; } 100% { opacity: 0; } }
@@ -301,8 +303,8 @@
 .m-povo.fam-je { --c: var(--fam-je); }
 .m-povo.fam-ch { --c: var(--fam-ch); }
 .m-povo-dot { fill: var(--c); stroke: rgba(4, 9, 26, .9); stroke-width: 2.5px; }
-.m-povo-name { font: italic 700 22px var(--font-display); letter-spacing: .02em; fill: var(--c); stroke: rgba(4, 9, 26, .92); stroke-width: 5px; stroke-linejoin: round; paint-order: stroke; }
-.m-povo.is-major .m-povo-name { font-size: 30px; letter-spacing: .08em; }
+.m-povo-name { font: italic 700 max(1.38cqw, 12px) var(--font-display); letter-spacing: .02em; fill: var(--c); stroke: rgba(4, 9, 26, .92); stroke-width: 5px; stroke-linejoin: round; paint-order: stroke; }
+.m-povo.is-major .m-povo-name { font-size: max(1.88cqw, 15px); letter-spacing: .08em; }
 .pin-legend { display: flex; flex-wrap: wrap; gap: calc(.4 * var(--k)) calc(1.3 * var(--k)); margin-bottom: calc(.4 * var(--k)); font-size: var(--fs-label); font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: #fff; }
 .pin-legend li { display: flex; align-items: center; gap: calc(.5 * var(--k)); }
 .pin-legend li::before { content: ""; width: calc(.9 * var(--k)); height: calc(.9 * var(--k)); border-radius: 50%; background: var(--c); }
@@ -331,19 +333,21 @@
   .inicio-copy, .alianca-copy { display: contents; }
   .inicio-copy .slide-head, .alianca-copy .slide-head { order: 0; padding: 0 var(--pad-x); }
   .inicio-copy h2 { font-size: var(--fs-h1); }
-  .inicio-map, .alianca-map { order: 1; position: relative !important; width: auto; height: clamp(220px, 64vw, 380px); margin-top: 12px; -webkit-mask-image: none; mask-image: none; }
+  .inicio-map, .alianca-map { --safe-l: 0; order: 1; position: relative !important; width: auto; height: auto; margin-top: 12px; overflow: visible; background: none; -webkit-mask-image: none; mask-image: none; }
+  .inicio-map .map-mount, .alianca-map .map-mount { position: relative; height: clamp(220px, 64vw, 380px); overflow: hidden; background: #08142e; }
   .beats, .allies { order: 2; margin: 12px var(--pad-x) 0; }
-  .scene-map .map-note { left: 10px; bottom: 8px; font-size: 11px; }
+  /* a nota sai de cima do mapa e vira legenda logo abaixo dele */
+  .scene-map .map-note { position: static; max-width: none; padding: 6px var(--pad-x) 0; font-size: 12.5px; color: var(--ink-mute); background: none; border-radius: 0; }
   .beat strong, .ally strong { font-size: 19px; }
   .beat p, .ally p { font-size: 16px; }
   .beat.is-now p { max-height: 240px; }
   .slide-alianca .treaty { order: 3; position: relative !important; left: auto; top: auto; width: auto; margin: 16px var(--pad-x) 0; display: none; }
   .slide-alianca.treaty-on .treaty { display: block; }
-  .slide-alianca.treaty-on .allies { opacity: .35; }
+  .slide-alianca.treaty-on .allies, .js .slide-alianca.treaty-on .allies[data-anim] { opacity: .35 !important; }
   .tl-bigyear { display: none; }
   .tl-detail { position: sticky; }
-  .phase-stamp { bottom: 10px; left: 10px; }
-  .ps-years { font-size: 30px; }
+  /* a fase e as datas já aparecem logo abaixo do mapa; o carimbo sairia por cima de nomes e pontos */
+  .phase-stamp { display: none; }
   .locator { width: 120px; height: 88px; }
   .reel-year { font-size: 30px; }
   .seq li { grid-template-columns: 92px 1fr; font-size: 16.5px; }
@@ -355,7 +359,7 @@
   .slide-pindorama .slide-head, .slide-pindorama .topics { width: auto; }
   .slide-pindorama .topics { order: 2; margin-top: 12px; }
   .pin-thumb { width: 56px; height: 60px; }
-  .pin-map { order: 1; position: relative !important; width: auto; height: auto; margin: 12px calc(var(--pad-x) * -1) 0; -webkit-mask-image: none; mask-image: none; }
+  .pin-map { --safe-l: 0; order: 1; position: relative !important; width: auto; height: auto; margin: 12px calc(var(--pad-x) * -1) 0; -webkit-mask-image: none; mask-image: none; }
   .pin-map .map-mount { position: relative; height: clamp(220px, 62vw, 380px); }
   .pin-legend { gap: 6px 14px; font-size: 12px; }
   .pin-legend li::before { width: 10px; height: 10px; }
