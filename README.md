@@ -8,6 +8,16 @@ Site publicado: https://guerra-do-paraguai-museu-digital.onrender.com
 
 Ao abrir o endereço, a apresentação começa direto na abertura. Não há página de artigo nem botão para revelar os slides.
 
+### Outras apresentações neste repositório
+
+Cada uma fica numa pasta própria, com o mesmo motor de slides e seu próprio README:
+
+| Pasta | Apresentação | Endereço |
+|---|---|---|
+| `segundo-reinado/` | A Crise do Segundo Reinado (18 slides, com PowerPoint e PDF) | https://guerra-do-paraguai-museu-digital.onrender.com/segundo-reinado/ |
+| `o-segundo-reinado/` | O Segundo Reinado, 1840–1889 (18 slides, panorama do período) | https://guerra-do-paraguai-museu-digital.onrender.com/o-segundo-reinado/ |
+| `crise-do-segundo-reinado/` | A Crise do Segundo Reinado em 12 slides (capa, 10 de conteúdo e referências), com arco narrativo | https://guerra-do-paraguai-museu-digital.onrender.com/crise-do-segundo-reinado/ |
+
 ## Visual: feito para projetor fraco
 
 - **Fundo escuro com degradê forte** (azul-noite → roxo → vinho) e **texto branco grande**, com destaque dourado. Pensado para projetores opacos, em que fundos claros ficam lavados.

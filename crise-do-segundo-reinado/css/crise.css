@@ -1,0 +1,219 @@
+/* =========================================================
+   A Crise do Segundo Reinado — versão em 12 slides (capa, 10 de conteúdo, referências).
+   Motor e componentes vêm do site de 18 slides (deck, slides, reinado.css);
+   aqui ficam a identidade própria desta versão: arco narrativo, moldura imperial,
+   papel antigo, as composições novas e os ajustes de celular.
+   calc(1 * var(--k)) = 1% da largura do slide.
+   ========================================================= */
+
+/* ---------- Arco narrativo na barra superior ---------- */
+.arc {
+  position: absolute;
+  left: 50%;
+  top: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  transform: translateX(-50%);
+  background: rgba(3, 16, 11, .62);
+  border: 1px solid rgba(243, 197, 97, .28);
+  transition: opacity .5s, transform .5s var(--ease-out);
+}
+.arc.is-hidden { opacity: 0; transform: translate(-50%, -8px); pointer-events: none; }
+.arc li { display: flex; align-items: center; gap: 4px; padding: 4px 9px; border-radius: 999px; font-family: var(--font-label); font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: rgba(255, 255, 255, .45); transition: color .5s, background .5s; }
+.arc li + li::before { content: ""; width: 12px; height: 1px; margin-right: 6px; margin-left: -6px; background: rgba(243, 197, 97, .35); }
+.arc li.is-past { color: rgba(243, 197, 97, .75); }
+.arc li.is-now { color: var(--dark); background: var(--gold); }
+
+/* ---------- Capa: moldura imperial e prévia do arco ---------- */
+.capa-frame { position: absolute !important; left: calc(1.2 * var(--k)); top: calc(4.6 * var(--k)); z-index: 1 !important; width: calc(100% - 2.4 * var(--k)); height: calc(100% - 5.8 * var(--k)); color: var(--gold); opacity: .5; pointer-events: none; }
+.slide.in .capa-frame { animation: frame-in 2.4s var(--ease-out) both; }
+@keyframes frame-in { from { opacity: 0; transform: scale(1.02); } to { opacity: .5; transform: none; } }
+.arc-preview { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: calc(1.8 * var(--k)); max-width: calc(66 * var(--k)); }
+.arc-preview li { display: flex; align-items: center; gap: 6px; font-family: var(--font-label); font-size: max(calc(1.1 * var(--k)), 11.5px); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.arc-preview li + li::before { content: "→"; color: var(--gold); }
+.arc-preview li:last-child { color: var(--gold); }
+
+/* ---------- Documento em papel antigo ---------- */
+.paper-card {
+  padding: calc(1 * var(--k)) calc(1.4 * var(--k)) calc(1 * var(--k)) calc(1.6 * var(--k)) !important;
+  background: #e9dcc0 url("../assets/img/papel.jpg") center / cover;
+  border-left: calc(.4 * var(--k)) solid #8e2a22 !important;
+  border-radius: calc(.3 * var(--k));
+  box-shadow: 0 calc(1 * var(--k)) calc(2.6 * var(--k)) rgba(0, 0, 0, .55);
+  transform: rotate(-.6deg);
+}
+.paper-card p { color: #2a1d12 !important; }
+.paper-card cite, .paper-card .cite { color: #7d5c22 !important; }
+
+/* ---------- 01 · Estabilidade: nota do mapa ---------- */
+.map-note { position: absolute !important; left: var(--pad-x); bottom: calc(1.8 * var(--k)); font-family: var(--font-label); font-size: var(--fs-label); color: var(--ink-mute, rgba(255, 255, 255, .55)); }
+
+/* ---------- 02 · Questão Religiosa (regras + bispos + linha do tempo) ---------- */
+.slide-igreja .slide-head h2 { font-size: calc(3.2 * var(--k)); }
+.rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(1 * var(--k)); width: calc(62 * var(--k)); margin-top: calc(1.4 * var(--k)); }
+.rules li { padding: calc(.7 * var(--k)) calc(1 * var(--k)); border-radius: calc(.7 * var(--k)); background: rgba(255, 255, 255, .07); border: 1.5px solid rgba(243, 197, 97, .55); }
+.rules strong { display: block; font-family: var(--font-label); font-size: calc(1.6 * var(--k)); font-weight: 600; color: var(--gold-2); }
+.rules span { display: block; margin-top: calc(.2 * var(--k)); font-size: calc(1.22 * var(--k)); line-height: 1.28; color: #fff; }
+.slide-igreja .cast { margin-top: calc(1.4 * var(--k)); gap: calc(1.2 * var(--k)); }
+.slide-igreja .cast-p .cameo { width: calc(5 * var(--k)); height: calc(5 * var(--k)); }
+.slide-igreja .tl-h { grid-template-columns: repeat(4, 1fr); }
+
+/* ---------- 05 · Lei Áurea: foto mais baixa para caberem as duas colunas ---------- */
+.slide-aurea .aurea-photo { height: calc(27.5 * var(--k)); }
+.slide-aurea .aurea-law { top: calc(30.2 * var(--k)); }
+.slide-aurea .aurea-cols { top: calc(29.4 * var(--k)); }
+.slide-aurea .aurea-cols li { font-size: calc(1.45 * var(--k)); }
+
+/* ---------- 07 · Isolamento: fundo com a família imperial ---------- */
+.baile.is-familia img { object-position: 50% 35%; filter: sepia(.4) saturate(.8); }
+
+/* ---------- 08 · A articulação militar e a crise final ---------- */
+.baile.is-baile img { filter: saturate(.85); }
+.baile.is-baile::after { background: linear-gradient(180deg, rgba(4, 18, 13, .84) 0%, rgba(4, 18, 13, .5) 38%, rgba(4, 18, 13, .62) 62%, rgba(4, 18, 13, .94)); }
+.countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(1.3 * var(--k)); margin-top: calc(2.2 * var(--k)); }
+.countdown li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "time cameo" "title title" "text text";
+  align-items: center;
+  column-gap: calc(.8 * var(--k));
+  padding: calc(1.1 * var(--k)) calc(1.2 * var(--k));
+  border-radius: calc(1 * var(--k));
+  background: rgba(3, 16, 11, .82);
+  border: 1.5px solid rgba(243, 197, 97, .4);
+  border-top: calc(.4 * var(--k)) solid var(--gold);
+}
+.countdown li.is-red { border-top-color: var(--red); }
+.countdown li.is-now { border-color: var(--gold); background: linear-gradient(180deg, rgba(243, 197, 97, .2), rgba(3, 16, 11, .88) 55%); box-shadow: 0 calc(1 * var(--k)) calc(2.6 * var(--k)) rgba(0, 0, 0, .45); }
+.countdown time { grid-area: time; font-family: var(--font-label); font-size: calc(1.4 * var(--k)); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+.countdown time b { display: block; font-family: var(--font-display); font-size: calc(4.2 * var(--k)); line-height: 1; letter-spacing: -.02em; color: #fff; }
+.countdown li.is-red time b { color: #ffb3a8; }
+.countdown .cameo { grid-area: cameo; width: calc(5.4 * var(--k)); height: calc(5.4 * var(--k)); }
+.countdown strong { grid-area: title; margin-top: calc(.9 * var(--k)); font-family: var(--font-label); font-size: calc(1.75 * var(--k)); line-height: 1.15; color: #fff; }
+.countdown p { grid-area: text; margin-top: calc(.4 * var(--k)); font-size: calc(1.32 * var(--k)); line-height: 1.32; color: var(--ink-soft); }
+.slide-articulacao .caution { right: calc(30 * var(--k)); bottom: calc(5.8 * var(--k)); }
+
+/* ---------- 09 · Proclamação: o exílio e a frase de Aristides Lobo ---------- */
+.slide-proclamacao .procl-head { max-width: calc(56 * var(--k)); }
+.procl-after {
+  position: absolute !important;
+  right: var(--pad-x);
+  top: calc(10.6 * var(--k));
+  width: calc(33 * var(--k));
+  padding: calc(1 * var(--k)) calc(1.3 * var(--k));
+  border-radius: calc(.9 * var(--k));
+  background: rgba(4, 12, 9, .86);
+  border: 1.5px solid rgba(243, 197, 97, .7);
+}
+.pa-line { display: grid; grid-template-columns: auto 1fr; gap: calc(1 * var(--k)); align-items: center; font-size: calc(1.4 * var(--k)); line-height: 1.3; color: #fff; }
+.pa-line time { display: block; font-family: var(--font-label); font-size: var(--fs-label); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+.procl-after blockquote { margin-top: calc(.9 * var(--k)); padding-top: calc(.8 * var(--k)); border-top: 1px solid rgba(243, 197, 97, .4); }
+.procl-after blockquote p { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: calc(1.55 * var(--k)); line-height: 1.25; color: var(--gold-2); }
+.procl-after cite { display: block; margin-top: calc(.4 * var(--k)); font-style: normal; font-size: var(--fs-label); color: var(--ink-soft); }
+
+/* ---------- 10 · Conclusão: a frase final ---------- */
+.finale-banner {
+  position: absolute !important;
+  left: var(--pad-x);
+  right: var(--pad-x);
+  bottom: calc(6.6 * var(--k));
+  overflow: hidden;
+  padding: calc(1.4 * var(--k)) calc(2 * var(--k));
+  border-radius: calc(1 * var(--k));
+  font-family: var(--font-display);
+  font-size: calc(2.45 * var(--k));
+  font-weight: 600;
+  line-height: 1.22;
+  color: var(--dark);
+  background: linear-gradient(90deg, #f3c561, #f7d68a 60%, #e7b54e);
+  box-shadow: 0 calc(1.4 * var(--k)) calc(3.6 * var(--k)) rgba(0, 0, 0, .55);
+}
+.finale-banner em { display: block; font-style: italic; font-weight: 700; color: #4a1424; }
+.fb-mark { position: absolute; right: calc(1.4 * var(--k)); top: 50%; transform: translateY(-50%); font-size: calc(8 * var(--k)); font-weight: 700; line-height: 1; color: rgba(10, 31, 23, .1); pointer-events: none; }
+.js .slide .finale-banner[data-at] { transform: translate3d(0, calc(3 * var(--k)), 0) scale(.98); }
+.js .slide .finale-banner[data-at].is-shown { transform: none; transition: opacity 1s var(--ease-out), transform 1.2s var(--ease-out); }
+.slide-finale:has(.finale-banner.is-shown) .factors li { opacity: .5; }
+
+/* ---------- Referências: slide em papel antigo ---------- */
+.slide-referencias { color: #2a1d12; background: #e9dcc0 url("../assets/img/papel.jpg") center / cover !important; }
+.slide-referencias::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: calc(5.6 * var(--k)); background: linear-gradient(180deg, rgba(10, 31, 23, .92), rgba(10, 31, 23, 0)); pointer-events: none; }
+.slide-referencias .slide-head { max-width: none; }
+.slide-referencias .kicker { color: #7d5c22; }
+.slide-referencias .kicker::after { background: rgba(125, 92, 34, .6); }
+.slide-referencias .slide-head h2 { font-size: calc(3.6 * var(--k)); color: #1e1610; text-shadow: none; }
+.slide-referencias .slide-head::after { background: linear-gradient(90deg, #8e2a22, rgba(142, 42, 34, .2)); }
+.refs-list { columns: 2; column-gap: calc(3 * var(--k)); margin-top: calc(1.6 * var(--k)); counter-reset: ref; }
+.refs-list li { break-inside: avoid; position: relative; margin-bottom: calc(.55 * var(--k)); padding-left: calc(2.6 * var(--k)); font-size: max(calc(1.1 * var(--k)), 12px); line-height: 1.34; color: #2a1d12; counter-increment: ref; }
+.refs-list li::before { content: "[" counter(ref) "]"; position: absolute; left: 0; font-family: var(--font-label); font-weight: 700; color: #8e2a22; }
+.refs-list strong { color: #1e1610; }
+.refs-list li.is-flash { animation: flash 1.6s var(--ease-out); }
+.refs-foot { position: absolute !important; left: var(--pad-x); right: calc(26 * var(--k)); bottom: calc(1.8 * var(--k)); display: flex; flex-wrap: wrap; align-items: center; gap: calc(.4 * var(--k)) calc(1.6 * var(--k)); padding-top: calc(.8 * var(--k)); border-top: 1px solid rgba(125, 92, 34, .5); font-size: var(--fs-label); color: #4a3520; }
+.refs-foot p { margin: 0; }
+.refs-foot strong { color: #1e1610; }
+.refs-foot .ghost-btn { color: #1e1610; border-color: rgba(30, 22, 16, .5); }
+.refs-foot .ghost-btn:hover { color: var(--dark); background: var(--gold); }
+.refs-card.is-credits .refs-scroll { display: block; }
+
+/* ---------- Balão de citação ---------- */
+.cite-pop {
+  position: fixed;
+  z-index: 70;
+  max-width: min(440px, calc(100vw - 24px));
+  padding: 12px 14px;
+  font-family: var(--font-body, inherit);
+  font-size: 14px;
+  line-height: 1.45;
+  color: #fff;
+  background: #0b2e22;
+  border: 1.5px solid var(--gold);
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .5);
+  animation: fade-in .2s;
+}
+.cite-pop strong { color: var(--gold-2); }
+.cp-n { font-weight: 700; color: var(--gold); }
+.cp-go { display: block; margin-top: 8px; padding: 0; font: 600 12.5px var(--font-label); letter-spacing: .04em; color: var(--gold-2); text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; cursor: pointer; }
+
+/* ---------- Telas médias: arco compacto ---------- */
+@media (max-width: 1180px) {
+  .arc li:not(.is-now) { font-size: 0; padding: 4px; }
+  .arc li:not(.is-now)::after { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .arc li + li::before { width: 8px; margin-right: 2px; margin-left: -2px; }
+}
+
+/* ---------- Celular e telas estreitas ---------- */
+@media (max-width: 760px), (max-aspect-ratio: 4/5), (max-height: 500px) {
+  .arc { top: 58px; padding: 3px 6px; }
+  .app .deck { --pad-t: 100px; }
+  .arc li.is-now { font-size: 10.5px; padding: 3px 8px; }
+  .capa-frame { display: none; }
+  .arc-preview { max-width: none; }
+  .map-note, .slide-articulacao .caution, .procl-after, .finale-banner, .refs-foot {
+    position: relative !important; left: auto; right: auto; top: auto; bottom: auto; width: auto; max-width: none; margin-top: 18px;
+  }
+  .rules { width: auto; grid-template-columns: 1fr; }
+  .rules strong { font-size: 18px; }
+  .rules span, .countdown p, .pa-line { font-size: 15.5px; }
+  .slide-igreja .tl-h { grid-template-columns: 1fr; }
+  .countdown { grid-template-columns: 1fr; }
+  .countdown time b { font-size: 34px; }
+  .countdown .cameo { width: 56px; height: 56px; }
+  .countdown strong { font-size: 18px; }
+  .procl-after blockquote p { font-size: 17px; }
+  .finale-banner { font-size: 19px; padding: 16px 18px; }
+  .fb-mark { font-size: 60px; }
+  .slide-finale:has(.finale-banner.is-shown) .factors li { opacity: 1; }
+  .refs-list { columns: 1; }
+  .slide-aurea .aurea-photo { height: 52vh; }
+  .slide-aurea .aurea-law, .slide-aurea .aurea-cols { top: auto; }
+  .slide-aurea .aurea-cols li { font-size: 17px; }
+  .refs-list li { font-size: 14px; padding-left: 30px; }
+  .slide-referencias .slide-head h2 { font-size: 30px; }
+}
+
+/* Subtítulos sobre fotos e pinturas: faixa escura para leitura */
+.slide-aurea .aurea-sub, .slide-proclamacao .procl-sub { display: inline-block; padding: calc(.2 * var(--k)) calc(.8 * var(--k)); border-radius: calc(.4 * var(--k)); background: rgba(10, 5, 7, .7); text-shadow: none; }

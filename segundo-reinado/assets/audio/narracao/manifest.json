@@ -1,0 +1,4 @@
+{
+  "_sobre": "Liste aqui SOMENTE gravações reais que existam nesta pasta. Exemplo: \"abertura\": { \"arquivo\": \"01-abertura.mp3\" }. Em cenas com etapas, \"etapas\" lista os segundos em que cada etapa seguinte começa, por exemplo [12.5, 24, 38, 51]. Veja LEIA-ME.md.",
+  "slides": {}
+}

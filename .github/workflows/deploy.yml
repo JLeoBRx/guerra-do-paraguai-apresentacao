@@ -20,3 +20,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Validar conteúdo, acessibilidade e estilos
         run: node scripts/validate-site.mjs
+      - name: Validar o site do Segundo Reinado
+        run: node segundo-reinado/scripts/validate.mjs
+      - name: Validar o site O Segundo Reinado
+        run: node o-segundo-reinado/scripts/validate.mjs
+      - name: Validar o site A Crise do Segundo Reinado (12 slides)
+        run: node crise-do-segundo-reinado/scripts/validate.mjs
